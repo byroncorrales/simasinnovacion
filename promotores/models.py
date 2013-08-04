@@ -147,8 +147,7 @@ class Promotor(models.Model):
         return u'%s -- %s' % (self.nombre, self.edad)
 
     class Meta:
-        verbose_name = 'Promotor'
-        verbose_name_plural = 'Promotores' 
+        verbose_name_plural = 'Ficha de los promotores o promotoras' 
 
 class FotosPromotor(models.Model):
     promotor = models.ForeignKey(Promotor)
@@ -217,7 +216,7 @@ class PracticasProductivas(models.Model):
         return self.nombre_prueba
 
     class Meta:
-        verbose_name_plural = "Practicas productivas"
+        verbose_name_plural = "Ficha de Pruebas de Prácticas Productivas"
 
 class DiasCampoPrueba(models.Model):
     prueba = models.ForeignKey(PracticasProductivas)

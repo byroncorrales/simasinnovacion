@@ -57,8 +57,7 @@ class Empresas(models.Model):
         return self.nombre
 
     class Meta:
-        verbose_name = 'Empresa rural'
-        verbose_name_plural = "Empresas rurales"
+        verbose_name_plural = "Ficha de las Empresas rurales"
 
 #------------------- fin -----------------------------
 
@@ -177,17 +176,22 @@ class MejoraEmpresas(models.Model):
     mercado_prueba = models.ForeignKey(Mercados)
     fecha_inicio = models.DateField(null=True, blank=True)
     fecha_finalizacion = models.DateField(null=True, blank=True)
-    problema = models.TextField('El problema')
-    causa = models.TextField('Análisis de causas')
-    mejorar = models.TextField('Opciones a mejorar')
-    resultados = models.TextField('Resultados esperados')
-    volumen_acopio = models.TextField('Sobre el volumen de acopio')
-    mejora_proce_calidad = models.TextField('Sobre mejora de procesamiento y calidad')
-    presentacion_acceso = models.TextField('Sobre la mejora en presentación y acceso a mercado')
-    inversion_credito = models.TextField('Sobre la mejora en inversión o crédito')
-    mejora_precio = models.TextField('Sobre la mejora en precio o condiciones de comercialización')
-    mejora_ingreso = models.TextField('Sobre la mejora en ingresos')
-    reduccion_costo = models.TextField('Sobre la reducción de costo y riesgo')
+    problema = models.TextField('El problema', null=True, blank=True)
+    causa = models.TextField('Análisis de causas', null=True, blank=True)
+    mejorar = models.TextField('Opciones a mejorar', null=True, blank=True)
+    resultados = models.TextField('Resultados esperados', null=True, blank=True)
+    volumen_acopio = models.TextField('Sobre el volumen de acopio', null=True, blank=True)
+    mejora_proce_calidad = models.TextField('Sobre mejora de procesamiento y calidad',
+                            null=True, blank=True)
+    presentacion_acceso = models.TextField('Sobre la mejora en presentación y acceso a mercado',
+                            null=True, blank=True)
+    inversion_credito = models.TextField('Sobre la mejora en inversión o crédito',
+                        null=True, blank=True)
+    mejora_precio = models.TextField('Sobre la mejora en precio o condiciones de comercialización',
+                    null=True, blank=True)
+    mejora_ingreso = models.TextField('Sobre la mejora en ingresos', null=True, blank=True)
+    reduccion_costo = models.TextField('Sobre la reducción de costo y riesgo',
+                        null=True, blank=True)
 
     def __unicode__(self):
         return u'%s - %s' % (self.nombre_mejora, self.empresa.nombre)
@@ -204,12 +208,12 @@ class DiasCampoEmpresa(models.Model):
     comentario = models.TextField()
 
     def __unicode__(self):
-        return 'Dias de campos de: %s' % self.prueba
+        return 'Dias de campos de: %s' % self.mejora_empresa
 
     class Meta:
         verbose_name_plural = "Dias de campos de las pruebas"
 
-class FotosPrueba(models.Model):
+class FotosMejoraEmpresa(models.Model):
     mejora_empresa = models.ForeignKey(MejoraEmpresas)
     nombre = models.CharField(max_length=200)
     foto = ImageField(upload_to=get_file_path, blank=True, null=True)
