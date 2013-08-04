@@ -50,6 +50,24 @@ class PromotorAdmin(admin.ModelAdmin):
         }
 
 class PracticasProductivasAdmin(admin.ModelAdmin):
+
+    fieldsets = (
+        (None, {
+            'fields': (('promotor', 'nombre_prueba', 'fecha_prueba'), 
+                       ('tema_prueba','rubro_prueba','escala_prueba'),
+                       'historia',('fecha_inicio','fecha_finalizacion'),)
+        }),
+        ('La logica', {
+            'fields': ('problema', 'agroecologico','aprobar',
+                        'resultados',)
+        }),
+        ('Resultados', {
+            'fields': ('salud_planta', 'vida_suelo', 
+                       'prod_rendimiento','calidad_producto',
+                       'plagas','costo',)
+        }),
+        
+    )
     inlines = [FotosPracticasInline,DiasCampoPruebaInline]
 
 admin.site.register(Promotor, PromotorAdmin)

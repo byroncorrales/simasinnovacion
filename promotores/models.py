@@ -26,11 +26,17 @@ class OrganizacionCampesina(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = "Organizaciones campesinas"
+
 class OrganizacionCivil(models.Model):
     nombre = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = "Organizaciones civiles"
 
 class EscuelaCampo(models.Model):
     nombre = models.CharField(max_length=200)
@@ -38,11 +44,17 @@ class EscuelaCampo(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = "Escuelas de campos"
+
 class CultivosFinca(models.Model):
     nombre = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = "Cultivos en la finca"
 
 class AnimalesFinca(models.Model):
     nombre = models.CharField(max_length=200)
@@ -50,11 +62,17 @@ class AnimalesFinca(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = "Animales en la finca"
+
 class ProductoProcesado(models.Model):
     nombre = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = "Productos procesados"
 
 class MercadoAcceso(models.Model):
     nombre = models.CharField(max_length=200)
@@ -62,21 +80,28 @@ class MercadoAcceso(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = "Mercados de accesos"
+
 class TipoSuelo(models.Model):
     nombre = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
-#--------------------------------------------------
 
-#-------- ficha de promotores ---------------------
+    class Meta:
+        verbose_name_plural = "Tipos de suelos"
+#--------------------------------------------------
+        #modelo de promotor 
+#--------------------------------------------------
 class Promotor(models.Model):
     nombre = models.CharField(max_length=200)
     sexo = models.IntegerField(choices=((1,'Masculino'),(2, 'Femenino')))
     edad = models.IntegerField()
     educacion = models.IntegerField('Nivel de educación formal', 
                                     choices=CHOICE_EDUCACION)
-    contacto = models.CharField(help_text='Número de celular', max_length=50)
+    contacto = models.CharField(help_text='Número de celular', max_length=50,
+                                null=True, blank=True)
     activo = models.IntegerField('Años activos en prueba de practicas', 
                                   choices=((1, '2013'),(2, '2014'),(3, '2015'),
                                            (4, '2016'),))
@@ -125,10 +150,6 @@ class Promotor(models.Model):
         verbose_name = 'Promotor'
         verbose_name_plural = 'Promotores' 
 
-
-#class Promotores(models.Model):
-#    pass
-
 class FotosPromotor(models.Model):
     promotor = models.ForeignKey(Promotor)
     nombre = models.CharField(max_length=200)
@@ -150,17 +171,26 @@ class TemasPruebas(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = "Temas de las pruebas"
+
 class RubroPruebas(models.Model):
     nombre = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = "Rubros de las pruebas"
+
 class EscalaPruebas(models.Model):
     nombre = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = "Escalas de las pruebas"
 
 class PracticasProductivas(models.Model):
     promotor = models.ForeignKey(Promotor)
@@ -186,6 +216,9 @@ class PracticasProductivas(models.Model):
     def __unicode__(self):
         return self.nombre_prueba
 
+    class Meta:
+        verbose_name_plural = "Practicas productivas"
+
 class DiasCampoPrueba(models.Model):
     prueba = models.ForeignKey(PracticasProductivas)
     fechas = models.DateField()
@@ -195,6 +228,9 @@ class DiasCampoPrueba(models.Model):
 
     def __unicode__(self):
         return 'Dias de campos de: %s' % self.prueba
+
+    class Meta:
+        verbose_name_plural = "Dias de campos de las pruebas"
 
 class FotosPrueba(models.Model):
     practicas = models.ForeignKey(PracticasProductivas)
@@ -206,4 +242,4 @@ class FotosPrueba(models.Model):
     def __unicode__(self):
         return self.nombre
     class Meta:
-        verbose_name_plural = "Fotos actividades practicas"
+        verbose_name_plural = "Fotos actividades pruebas practicas"

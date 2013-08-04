@@ -90,6 +90,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'lugar',
     'promotores',
+    'empresas',
     'smart_selects',
     'geoposition',
     'south',
