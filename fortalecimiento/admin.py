@@ -1,11 +1,27 @@
 from django.contrib import admin
 from .models import *
 
+class ParticipantesInline(admin.TabularInline):
+	model = Participantes
+	extra = 1
+
+class NivelConocimientoInline(admin.TabularInline):
+	model = NivelConocimiento
+	extra = 1
+
+class FotosMediosInline(admin.TabularInline):
+	model = FotosMedios
+	extra = 1
+
+class MediosFortalecimientoAdmin(admin.ModelAdmin):
+	inlines = [ParticipantesInline,NivelConocimientoInline,
+				FotosMediosInline]
+
+admin.site.register(MediosFortalecimiento, MediosFortalecimientoAdmin)
 admin.site.register(TiposMedios)
 admin.site.register(TemasAbordan)
 admin.site.register(GruposMetas)
 admin.site.register(PapelSimas)
-admin.site.register(MediosFortalecimiento)
 admin.site.register(PersonasResultados)
 admin.site.register(Participantes)
 admin.site.register(NivelConocimiento)

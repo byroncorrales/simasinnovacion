@@ -18,7 +18,7 @@ CHOICE_COBERTURA = (
             (1, 'Regional'),
             (2, 'Nacional'),
             (3, 'Territorial'),
-            (4, '7. Municipal'),
+            (4, 'Municipal'),
         )
 
 class PapelSimas(models.Model):
@@ -136,19 +136,25 @@ class IniciativaInnovacion(models.Model):
 	tipo = models.ForeignKey(TipoIniciativa, verbose_name="Tipo de iniciativa")
 	fecha_inicio = models.DateField()
 	fecha_finalizacion = models.DateField()
-	temas = models.ManyToManyField(TemasAborda)
-	actividades = models.ManyToManyField(ActividadIniciativa)
-	problema = models.TextField('El problema')
-	analisis = models.TextField('Análisis de tema')
-	enfoque = models.TextField('Enfoque de la iniciativa')
-	resultado = models.TextField('Resultados esperados')
-	sobre_tierra  = models.TextField('Sobre la defensa de tierra')
-	fomento = models.TextField('Sobre el fomento de producción agroecológica y alimentos sanos')
-	conservacion = models.TextField('Sobre la conservación de recursos naturales, semilla criolla y biodiversidad')
-	inversion = models.TextField('Sobre la mejora en inversión pública, privada  o acceso a crédito')
-	acceso_mercado = models.TextField('Sobre la mejora en acceso a mercados locales para los alimentos')
-	comunicacion = models.TextField('Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores')
-	reduccion = models.TextField('Sobre la reducción de riesgo de los sistemas locales de alimentos')
+	temas = models.ManyToManyField(TemasAborda, null=True, blank=True)
+	actividades = models.ManyToManyField(ActividadIniciativa, null=True, blank=True)
+	problema = models.TextField('El problema', null=True, blank=True)
+	analisis = models.TextField('Análisis de tema', null=True, blank=True)
+	enfoque = models.TextField('Enfoque de la iniciativa', null=True, blank=True)
+	resultado = models.TextField('Resultados esperados', null=True, blank=True)
+	sobre_tierra  = models.TextField('Sobre la defensa de tierra', null=True, blank=True)
+	fomento = models.TextField('Sobre el fomento de producción agroecológica y alimentos sanos', 
+								null=True, blank=True)
+	conservacion = models.TextField('Sobre la conservación de recursos naturales, semilla criolla y biodiversidad',
+								null=True, blank=True)
+	inversion = models.TextField('Sobre la mejora en inversión pública, privada  o acceso a crédito',
+								null=True, blank=True)
+	acceso_mercado = models.TextField('Sobre la mejora en acceso a mercados locales para los alimentos', 
+								null=True, blank=True)
+	comunicacion = models.TextField('Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores', 
+								null=True, blank=True)
+	reduccion = models.TextField('Sobre la reducción de riesgo de los sistemas locales de alimentos', 
+								null=True, blank=True)
 
 	def __unicode__(self):
 		return self.nombre
