@@ -59,9 +59,9 @@ class EspacioInnovacion(models.Model):
                                   choices=((1, '2013'),(2, '2014'),(3, '2015'),
                                            (4, '2016'),))
 	tiempo_formado = models.IntegerField('Años de haber formado en espacio')
-	nombre = models.CharField('Nombre del contacto', max_length=200)
-	celular = models.CharField(max_length=50)
-	correo = models.EmailField()
+	nombre_contacto = models.CharField('Nombre del contacto', max_length=200, null=True, blank=True)
+	celular_contacto = models.CharField(max_length=50, null=True, blank=True)
+	correo_contacto = models.EmailField(null=True, blank=True)
 	zona = models.IntegerField(choices=((1, 'Seca'),(2, 'Alta'),(3, 'Húmeda'),))
 	cobertura = models.IntegerField(choices=CHOICE_COBERTURA)
 	departamento_influye = models.ManyToManyField(Departamento)
@@ -130,6 +130,7 @@ class ActividadIniciativa(models.Model):
 		verbose_name_plural = "Las actividades que contempla la iniciativa"
 
 class IniciativaInnovacion(models.Model):
+	fecha = models.DateField('año de la iniciativa')
 	nombre = models.CharField('Nombre de la iniciativa', max_length=200)
 	espacio = models.ForeignKey(EspacioInnovacion)
 	tipo = models.ForeignKey(TipoIniciativa, verbose_name="Tipo de iniciativa")
