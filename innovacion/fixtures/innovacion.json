@@ -1,0 +1,401 @@
+[
+{
+  "pk": 1, 
+  "model": "innovacion.tipoespacio", 
+  "fields": {
+    "nombre": "COMUSSAN"
+  }
+},
+{
+  "pk": 2, 
+  "model": "innovacion.tipoespacio", 
+  "fields": {
+    "nombre": "Plataforma territorial"
+  }
+},
+{
+  "pk": 3, 
+  "model": "innovacion.tipoespacio", 
+  "fields": {
+    "nombre": "Red territorial"
+  }
+},
+{
+  "pk": 4, 
+  "model": "innovacion.tipoespacio", 
+  "fields": {
+    "nombre": "Red nacional"
+  }
+},
+{
+  "pk": 5, 
+  "model": "innovacion.tipoespacio", 
+  "fields": {
+    "nombre": "Red regional"
+  }
+},
+{
+  "pk": 6, 
+  "model": "innovacion.tipoespacio", 
+  "fields": {
+    "nombre": "Movimiento Social"
+  }
+},
+{
+  "pk": 1, 
+  "model": "innovacion.papelsimas", 
+  "fields": {
+    "nombre": "Miembro pasivo"
+  }
+},
+{
+  "pk": 2, 
+  "model": "innovacion.papelsimas", 
+  "fields": {
+    "nombre": "Miembro activo"
+  }
+},
+{
+  "pk": 3, 
+  "model": "innovacion.papelsimas", 
+  "fields": {
+    "nombre": "Facilitador"
+  }
+},
+{
+  "pk": 4, 
+  "model": "innovacion.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo Metodolog\u00eda"
+  }
+},
+{
+  "pk": 5, 
+  "model": "innovacion.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo Contenido"
+  }
+},
+{
+  "pk": 6, 
+  "model": "innovacion.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo administrativo y finanza"
+  }
+},
+{
+  "pk": 1, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Defensa de tierra"
+  }
+},
+{
+  "pk": 2, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de Recursos naturales"
+  }
+},
+{
+  "pk": 3, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de semillas criollas"
+  }
+},
+{
+  "pk": 4, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Producci\u00f3n Agroecol\u00f3gica de alimentos sanos"
+  }
+},
+{
+  "pk": 5, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Procesamiento local de alimentos"
+  }
+},
+{
+  "pk": 6, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Mercados locales de alimentos"
+  }
+},
+{
+  "pk": 7, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Fomento de inversi\u00f3n p\u00fablica y acceso a cr\u00e9dito"
+  }
+},
+{
+  "pk": 8, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Prevenci\u00f3n de violencia"
+  }
+},
+{
+  "pk": 9, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Equidad y G\u00e9nero"
+  }
+},
+{
+  "pk": 10, 
+  "model": "innovacion.temasincidencia", 
+  "fields": {
+    "nombre": "Comunicaci\u00f3n para desarrollo"
+  }
+},
+{
+  "pk": 1, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Formaci\u00f3n"
+  }
+},
+{
+  "pk": 2, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Construcci\u00f3n colectivo de conocimiento"
+  }
+},
+{
+  "pk": 3, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Campa\u00f1as de sensibilizaci\u00f3n y aprendizaje"
+  }
+},
+{
+  "pk": 4, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Foros y debates en los territorios"
+  }
+},
+{
+  "pk": 5, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Foros y debates a nivel nacional"
+  }
+},
+{
+  "pk": 6, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Formulaci\u00f3n de anteproyecto de leyes, reglamentos, normas, ordenanzas"
+  }
+},
+{
+  "pk": 7, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Observatorio o seguimiento de las legislaciones nacionales o ordenanzas municipales"
+  }
+},
+{
+  "pk": 8, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Cabildos territoriales y nacionales"
+  }
+},
+{
+  "pk": 9, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Marchas y eventos"
+  }
+},
+{
+  "pk": 10, 
+  "model": "innovacion.actividadesespacio", 
+  "fields": {
+    "nombre": "Uso de medio masivos (TV, radio, Internet)"
+  }
+},
+{
+  "pk": 1, 
+  "model": "innovacion.tipoiniciativa", 
+  "fields": {
+    "nombre": "Acuerdo"
+  }
+},
+{
+  "pk": 2, 
+  "model": "innovacion.tipoiniciativa", 
+  "fields": {
+    "nombre": "Ordenanza"
+  }
+},
+{
+  "pk": 3, 
+  "model": "innovacion.tipoiniciativa", 
+  "fields": {
+    "nombre": "Anteproyecto de ley"
+  }
+},
+{
+  "pk": 4, 
+  "model": "innovacion.tipoiniciativa", 
+  "fields": {
+    "nombre": "Propuesta de pol\u00edtica"
+  }
+},
+{
+  "pk": 5, 
+  "model": "innovacion.tipoiniciativa", 
+  "fields": {
+    "nombre": "Campa\u00f1a"
+  }
+},
+{
+  "pk": 1, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Defensa de tierra"
+  }
+},
+{
+  "pk": 2, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de Recursos naturales"
+  }
+},
+{
+  "pk": 3, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de semillas criollas"
+  }
+},
+{
+  "pk": 4, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Producci\u00f3n Agroecol\u00f3gica de alimentos sanos"
+  }
+},
+{
+  "pk": 5, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Procesamiento local de alimentos"
+  }
+},
+{
+  "pk": 6, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Mercados locales de alimentos"
+  }
+},
+{
+  "pk": 7, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Fomento de inversi\u00f3n p\u00fablica y acceso a cr\u00e9dito"
+  }
+},
+{
+  "pk": 8, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Prevenci\u00f3n de violencia"
+  }
+},
+{
+  "pk": 9, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Equidad y G\u00e9nero"
+  }
+},
+{
+  "pk": 10, 
+  "model": "innovacion.temasaborda", 
+  "fields": {
+    "nombre": "Comunicaci\u00f3n para desarrollo"
+  }
+},
+{
+  "pk": 1, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Formaci\u00f3n"
+  }
+},
+{
+  "pk": 2, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Construcci\u00f3n colectivo de conocimiento"
+  }
+},
+{
+  "pk": 3, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Campa\u00f1as de sensibilizaci\u00f3n y aprendizaje"
+  }
+},
+{
+  "pk": 4, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Foros y debates en los territorios"
+  }
+},
+{
+  "pk": 5, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Foros y debates a nivel nacional"
+  }
+},
+{
+  "pk": 6, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Formulaci\u00f3n de anteproyecto de leyes, reglamentos, normas, ordenanzas"
+  }
+},
+{
+  "pk": 7, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Observatorio o seguimiento de las legislaciones nacionales o ordenanzas municipales"
+  }
+},
+{
+  "pk": 8, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Cabildos territoriales y nacionales"
+  }
+},
+{
+  "pk": 9, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Marchas y eventos"
+  }
+},
+{
+  "pk": 10, 
+  "model": "innovacion.actividadiniciativa", 
+  "fields": {
+    "nombre": "Uso de medio masivos (TV, radio, Internet)"
+  }
+}
+]

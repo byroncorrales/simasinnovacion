@@ -1,0 +1,149 @@
+[
+{
+  "pk": 1, 
+  "model": "empresas.tipoempresa", 
+  "fields": {
+    "nombre": "Asociaci\u00f3n"
+  }
+},
+{
+  "pk": 2, 
+  "model": "empresas.tipoempresa", 
+  "fields": {
+    "nombre": "Cooperativa"
+  }
+},
+{
+  "pk": 3, 
+  "model": "empresas.tipoempresa", 
+  "fields": {
+    "nombre": "Empresa (PYME)"
+  }
+},
+{
+  "pk": 4, 
+  "model": "empresas.tipoempresa", 
+  "fields": {
+    "nombre": "Grupo de Negocio"
+  }
+},
+{
+  "pk": 5, 
+  "model": "empresas.tipoempresa", 
+  "fields": {
+    "nombre": "Colectivo"
+  }
+},
+{
+  "pk": 1, 
+  "model": "empresas.mercados", 
+  "fields": {
+    "nombre": "Campesino"
+  }
+},
+{
+  "pk": 2, 
+  "model": "empresas.mercados", 
+  "fields": {
+    "nombre": "Local"
+  }
+},
+{
+  "pk": 3, 
+  "model": "empresas.mercados", 
+  "fields": {
+    "nombre": "Municipal"
+  }
+},
+{
+  "pk": 4, 
+  "model": "empresas.mercados", 
+  "fields": {
+    "nombre": "Regional"
+  }
+},
+{
+  "pk": 5, 
+  "model": "empresas.mercados", 
+  "fields": {
+    "nombre": "Nacional"
+  }
+},
+{
+  "pk": 6, 
+  "model": "empresas.mercados", 
+  "fields": {
+    "nombre": "Internacional"
+  }
+},
+{
+  "pk": 7, 
+  "model": "empresas.mercados", 
+  "fields": {
+    "nombre": "Especial"
+  }
+},
+{
+  "pk": 1, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Acopio"
+  }
+},
+{
+  "pk": 2, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Procesamiento"
+  }
+},
+{
+  "pk": 3, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Presentaci\u00f3n"
+  }
+},
+{
+  "pk": 4, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Empaque"
+  }
+},
+{
+  "pk": 5, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Calidad"
+  }
+},
+{
+  "pk": 6, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Mercadeo"
+  }
+},
+{
+  "pk": 7, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Inventario"
+  }
+},
+{
+  "pk": 8, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Contrato"
+  }
+},
+{
+  "pk": 9, 
+  "model": "empresas.temasempresa", 
+  "fields": {
+    "nombre": "Reducci\u00f3n de riesgo"
+  }
+}
+]

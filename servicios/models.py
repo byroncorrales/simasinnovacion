@@ -56,7 +56,8 @@ class Servicios(models.Model):
 	monto = models.FloatField('Monto del servicio US$')
 	tipos_servicios = models.ManyToManyField(TiposServicio)
 	temas_abordan = models.ManyToManyField(TemasAbordan)
-	org_benefician = models.ManyToManyField(TiposOrganizacionBenefician)
+	org_benefician = models.ManyToManyField(TiposOrganizacionBenefician, 
+					 verbose_name=u'Tipo de organización que beneficia')
 	fecha_inicio = models.DateField()
 	fecha_finalizacion = models.DateField()
 	objetivos = models.TextField()

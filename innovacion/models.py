@@ -54,7 +54,7 @@ class ActividadesEspacio(models.Model):
 
 class EspacioInnovacion(models.Model):
 	nombre = models.CharField('Nombre del espacio', max_length=200)
-	tipos = models.ForeignKey(TipoEspacio)
+	tipos = models.ForeignKey(TipoEspacio, verbose_name='Tipos de espacios')
 	activos = models.IntegerField('Años activo en innovación de políticas', 
                                   choices=((1, '2013'),(2, '2014'),(3, '2015'),
                                            (4, '2016'),))
@@ -67,8 +67,8 @@ class EspacioInnovacion(models.Model):
 	departamento_influye = models.ManyToManyField(Departamento)
 	municipios_influye = models.ManyToManyField(Municipio)
 	numero_entidades = models.IntegerField('Número de entidades (actores y organizaciones) que conforman el espacio') 
-	papel = models.ManyToManyField(PapelSimas)
-	temas = models.ManyToManyField(TemasIncidencia)
+	papel = models.ManyToManyField(PapelSimas, verbose_name=u'Papel de SIMAS')
+	temas = models.ManyToManyField(TemasIncidencia, verbose_name=u'Temas principales de incidencia')
 
 	def __unicode__(self):
 		return self.nombre

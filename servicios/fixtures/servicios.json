@@ -1,0 +1,261 @@
+[
+{
+  "pk": 1, 
+  "model": "servicios.tiposservicio", 
+  "fields": {
+    "nombre": "Sistematizaci\u00f3n de experiencias"
+  }
+},
+{
+  "pk": 2, 
+  "model": "servicios.tiposservicio", 
+  "fields": {
+    "nombre": "Sistema de informaci\u00f3n"
+  }
+},
+{
+  "pk": 3, 
+  "model": "servicios.tiposservicio", 
+  "fields": {
+    "nombre": "An\u00e1lisis y desarrollo de mercado"
+  }
+},
+{
+  "pk": 4, 
+  "model": "servicios.tiposservicio", 
+  "fields": {
+    "nombre": "Estudio o Investigaci\u00f3n"
+  }
+},
+{
+  "pk": 5, 
+  "model": "servicios.tiposservicio", 
+  "fields": {
+    "nombre": "Planificaci\u00f3n Estrat\u00e9gica"
+  }
+},
+{
+  "pk": 6, 
+  "model": "servicios.tiposservicio", 
+  "fields": {
+    "nombre": "Comunicaci\u00f3n para el desarrollo"
+  }
+},
+{
+  "pk": 1, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Defensa de tierra"
+  }
+},
+{
+  "pk": 2, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de Recursos naturales"
+  }
+},
+{
+  "pk": 3, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de semillas criollas"
+  }
+},
+{
+  "pk": 4, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Producci\u00f3n Agroecol\u00f3gica de alimentos sanos"
+  }
+},
+{
+  "pk": 5, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Procesamiento local de alimentos"
+  }
+},
+{
+  "pk": 6, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Mercados locales de alimentos"
+  }
+},
+{
+  "pk": 7, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Fomento de inversi\u00f3n p\u00fablica y acceso a cr\u00e9dito"
+  }
+},
+{
+  "pk": 8, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Prevenci\u00f3n de violencia"
+  }
+},
+{
+  "pk": 9, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Equidad y G\u00e9nero"
+  }
+},
+{
+  "pk": 10, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Comunicaci\u00f3n para desarrollo"
+  }
+},
+{
+  "pk": 11, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Pol\u00edticas p\u00fablicas"
+  }
+},
+{
+  "pk": 12, 
+  "model": "servicios.temasabordan", 
+  "fields": {
+    "nombre": "Econom\u00eda Solidaria"
+  }
+},
+{
+  "pk": 1, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Organizaciones campesina"
+  }
+},
+{
+  "pk": 2, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Organizaciones No-Gubernamentales"
+  }
+},
+{
+  "pk": 3, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Organizaci\u00f3n de Cooperaci\u00f3n"
+  }
+},
+{
+  "pk": 4, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Empresas rurales"
+  }
+},
+{
+  "pk": 5, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Organizaciones de educaci\u00f3n"
+  }
+},
+{
+  "pk": 6, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Gobiernos municipales"
+  }
+},
+{
+  "pk": 7, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Redes Nacionales"
+  }
+},
+{
+  "pk": 8, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Redes regionales o internacionales"
+  }
+},
+{
+  "pk": 9, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Instituciones de Estado"
+  }
+},
+{
+  "pk": 10, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Movimientos sociales"
+  }
+},
+{
+  "pk": 11, 
+  "model": "servicios.tiposorganizacionbenefician", 
+  "fields": {
+    "nombre": "Movimientos sociales"
+  }
+},
+{
+  "pk": 1, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Relevancia de servicio"
+  }
+},
+{
+  "pk": 2, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Eficacia y entrega a tiempo"
+  }
+},
+{
+  "pk": 3, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Efectividad y calidad de productos"
+  }
+},
+{
+  "pk": 4, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Utilidad de productos"
+  }
+},
+{
+  "pk": 5, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Costo-beneficio, valor de inversi\u00f3n de servicio"
+  }
+},
+{
+  "pk": 6, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Grado de aprendizaje de las organizaciones usuarias"
+  }
+},
+{
+  "pk": 7, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Fortalecimiento de capacidad de las organizaciones usuarias"
+  }
+},
+{
+  "pk": 8, 
+  "model": "servicios.evaluacionservicio", 
+  "fields": {
+    "nombre": "Calidad de abordaje y acompa\u00f1amiento por SIMAS"
+  }
+}
+]

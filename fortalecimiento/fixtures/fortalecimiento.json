@@ -1,0 +1,380 @@
+[
+{
+  "pk": 1, 
+  "model": "fortalecimiento.tiposmedios", 
+  "fields": {
+    "nombre": "Curso o Taller"
+  }
+},
+{
+  "pk": 2, 
+  "model": "fortalecimiento.tiposmedios", 
+  "fields": {
+    "nombre": "Sesiones de Escuela de promotores/as"
+  }
+},
+{
+  "pk": 3, 
+  "model": "fortalecimiento.tiposmedios", 
+  "fields": {
+    "nombre": "Publicaciones"
+  }
+},
+{
+  "pk": 4, 
+  "model": "fortalecimiento.tiposmedios", 
+  "fields": {
+    "nombre": "Bibliotecas digitales"
+  }
+},
+{
+  "pk": 5, 
+  "model": "fortalecimiento.tiposmedios", 
+  "fields": {
+    "nombre": "Consultas CIDOC"
+  }
+},
+{
+  "pk": 1, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Defensa de tierra"
+  }
+},
+{
+  "pk": 2, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de Recursos naturales"
+  }
+},
+{
+  "pk": 3, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Conservaci\u00f3n de semillas criollas"
+  }
+},
+{
+  "pk": 4, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Producci\u00f3n Agroecol\u00f3gica de alimentos sanos"
+  }
+},
+{
+  "pk": 5, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Procesamiento local de alimentos"
+  }
+},
+{
+  "pk": 6, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Mercados locales de alimentos"
+  }
+},
+{
+  "pk": 7, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Fomento de inversi\u00f3n p\u00fablica y acceso a cr\u00e9dito"
+  }
+},
+{
+  "pk": 8, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Prevenci\u00f3n de violencia"
+  }
+},
+{
+  "pk": 9, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Equidad y G\u00e9nero"
+  }
+},
+{
+  "pk": 10, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Comunicaci\u00f3n para desarrollo"
+  }
+},
+{
+  "pk": 11, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Pol\u00edticas p\u00fablicas"
+  }
+},
+{
+  "pk": 12, 
+  "model": "fortalecimiento.temasabordan", 
+  "fields": {
+    "nombre": "Econom\u00eda Solidaria"
+  }
+},
+{
+  "pk": 1, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "L\u00edderes de Organizaci\u00f3n Campesina"
+  }
+},
+{
+  "pk": 2, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Dirigentes de empresas rurales"
+  }
+},
+{
+  "pk": 3, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Promotores(as) rurales"
+  }
+},
+{
+  "pk": 4, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Campesinos(as)"
+  }
+},
+{
+  "pk": 5, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "J\u00f3venes rurales y urbanos"
+  }
+},
+{
+  "pk": 6, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "T\u00e9cnicos de campo"
+  }
+},
+{
+  "pk": 7, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Dirigentes de organizaciones sociedad civil"
+  }
+},
+{
+  "pk": 8, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Maestros rurales"
+  }
+},
+{
+  "pk": 9, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Miembros de medios de comunicaci\u00f3n"
+  }
+},
+{
+  "pk": 10, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Miembros de gobiernos municipales"
+  }
+},
+{
+  "pk": 11, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Miembros de Instituciones de Estado"
+  }
+},
+{
+  "pk": 12, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Miembros de Universidades/Institutos t\u00e9cnicos"
+  }
+},
+{
+  "pk": 13, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Estudiantes"
+  }
+},
+{
+  "pk": 14, 
+  "model": "fortalecimiento.gruposmetas", 
+  "fields": {
+    "nombre": "Consumidores"
+  }
+},
+{
+  "pk": 1, 
+  "model": "fortalecimiento.papelsimas", 
+  "fields": {
+    "nombre": "Participante"
+  }
+},
+{
+  "pk": 2, 
+  "model": "fortalecimiento.papelsimas", 
+  "fields": {
+    "nombre": "Facilitador"
+  }
+},
+{
+  "pk": 3, 
+  "model": "fortalecimiento.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo Metodolog\u00eda"
+  }
+},
+{
+  "pk": 4, 
+  "model": "fortalecimiento.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo Metodolog\u00eda"
+  }
+},
+{
+  "pk": 5, 
+  "model": "fortalecimiento.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo Contenido"
+  }
+},
+{
+  "pk": 6, 
+  "model": "fortalecimiento.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo Organizativo"
+  }
+},
+{
+  "pk": 7, 
+  "model": "fortalecimiento.papelsimas", 
+  "fields": {
+    "nombre": "Apoyo financiero"
+  }
+},
+{
+  "pk": 1, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "L\u00edderes de Organizaci\u00f3n Campesina"
+  }
+},
+{
+  "pk": 2, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Dirigentes de empresas rurales"
+  }
+},
+{
+  "pk": 3, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Promotores(as) rurales"
+  }
+},
+{
+  "pk": 4, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Campesinos(as)"
+  }
+},
+{
+  "pk": 5, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "J\u00f3venes"
+  }
+},
+{
+  "pk": 6, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "J\u00f3venes"
+  }
+},
+{
+  "pk": 7, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "T\u00e9cnicos de campo"
+  }
+},
+{
+  "pk": 8, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "T\u00e9cnicos de campo"
+  }
+},
+{
+  "pk": 9, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Dirigentes de organizaciones sociedad civil"
+  }
+},
+{
+  "pk": 10, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Maestros rurales"
+  }
+},
+{
+  "pk": 11, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Miembros de medios de comunicaci\u00f3n"
+  }
+},
+{
+  "pk": 12, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Miembros de gobiernos municipales"
+  }
+},
+{
+  "pk": 13, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Miembros de Instituciones de Estado"
+  }
+},
+{
+  "pk": 14, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Miembros de Universidades/Institutos t\u00e9cnicos"
+  }
+},
+{
+  "pk": 15, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Estudiantes"
+  }
+},
+{
+  "pk": 16, 
+  "model": "fortalecimiento.personasresultados", 
+  "fields": {
+    "nombre": "Consumidores"
+  }
+}
+]

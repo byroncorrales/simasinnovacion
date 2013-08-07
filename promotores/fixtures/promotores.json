@@ -1,0 +1,408 @@
+[
+{
+  "pk": 1, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Ma\u00edz"
+  }
+},
+{
+  "pk": 2, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Frijol"
+  }
+},
+{
+  "pk": 3, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Arroz"
+  }
+},
+{
+  "pk": 4, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Caf\u00e9"
+  }
+},
+{
+  "pk": 5, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Sorgo"
+  }
+},
+{
+  "pk": 6, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Ca\u00f1a"
+  }
+},
+{
+  "pk": 7, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Cacao"
+  }
+},
+{
+  "pk": 8, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Hortalizas"
+  }
+},
+{
+  "pk": 9, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Pl\u00e1tano"
+  }
+},
+{
+  "pk": 10, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Banano"
+  }
+},
+{
+  "pk": 11, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Mara\u00f1on"
+  }
+},
+{
+  "pk": 12, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Yuca"
+  }
+},
+{
+  "pk": 13, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Coco"
+  }
+},
+{
+  "pk": 14, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Maracuya"
+  }
+},
+{
+  "pk": 15, 
+  "model": "promotores.cultivosfinca", 
+  "fields": {
+    "nombre": "Granadilla"
+  }
+},
+{
+  "pk": 1, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Vaca"
+  }
+},
+{
+  "pk": 2, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Cabra"
+  }
+},
+{
+  "pk": 3, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Pelibueye"
+  }
+},
+{
+  "pk": 4, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Abejas"
+  }
+},
+{
+  "pk": 5, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Cerdo"
+  }
+},
+{
+  "pk": 6, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Gallina"
+  }
+},
+{
+  "pk": 7, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Pescado"
+  }
+},
+{
+  "pk": 8, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Caballo"
+  }
+},
+{
+  "pk": 9, 
+  "model": "promotores.animalesfinca", 
+  "fields": {
+    "nombre": "Mula"
+  }
+},
+{
+  "pk": 1, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Leche"
+  }
+},
+{
+  "pk": 2, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Cuajada"
+  }
+},
+{
+  "pk": 3, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Queso"
+  }
+},
+{
+  "pk": 4, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Miel"
+  }
+},
+{
+  "pk": 5, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Vino"
+  }
+},
+{
+  "pk": 6, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Cereales"
+  }
+},
+{
+  "pk": 7, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Caf\u00e9 tostado"
+  }
+},
+{
+  "pk": 8, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Chocolate"
+  }
+},
+{
+  "pk": 9, 
+  "model": "promotores.productoprocesado", 
+  "fields": {
+    "nombre": "Pinol"
+  }
+},
+{
+  "pk": 1, 
+  "model": "promotores.mercadoacceso", 
+  "fields": {
+    "nombre": "Campesino"
+  }
+},
+{
+  "pk": 2, 
+  "model": "promotores.mercadoacceso", 
+  "fields": {
+    "nombre": "Municipal"
+  }
+},
+{
+  "pk": 3, 
+  "model": "promotores.mercadoacceso", 
+  "fields": {
+    "nombre": "Departamental"
+  }
+},
+{
+  "pk": 4, 
+  "model": "promotores.mercadoacceso", 
+  "fields": {
+    "nombre": "Regional"
+  }
+},
+{
+  "pk": 5, 
+  "model": "promotores.mercadoacceso", 
+  "fields": {
+    "nombre": "Nacional"
+  }
+},
+{
+  "pk": 6, 
+  "model": "promotores.mercadoacceso", 
+  "fields": {
+    "nombre": "Internacional"
+  }
+},
+{
+  "pk": 1, 
+  "model": "promotores.tiposuelo", 
+  "fields": {
+    "nombre": "Arenoso"
+  }
+},
+{
+  "pk": 2, 
+  "model": "promotores.tiposuelo", 
+  "fields": {
+    "nombre": "Franco-arenoso"
+  }
+},
+{
+  "pk": 3, 
+  "model": "promotores.tiposuelo", 
+  "fields": {
+    "nombre": "Limoso"
+  }
+},
+{
+  "pk": 4, 
+  "model": "promotores.tiposuelo", 
+  "fields": {
+    "nombre": "Franco-arcilloso"
+  }
+},
+{
+  "pk": 5, 
+  "model": "promotores.tiposuelo", 
+  "fields": {
+    "nombre": "Arcilloso"
+  }
+},
+{
+  "pk": 1, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Suelo"
+  }
+},
+{
+  "pk": 2, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Agua"
+  }
+},
+{
+  "pk": 3, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Semilla"
+  }
+},
+{
+  "pk": 4, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Nutrici\u00f3n"
+  }
+},
+{
+  "pk": 5, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Plagas"
+  }
+},
+{
+  "pk": 6, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Enfermedades"
+  }
+},
+{
+  "pk": 7, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Cosecha"
+  }
+},
+{
+  "pk": 8, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Reciclaje"
+  }
+},
+{
+  "pk": 9, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Abono"
+  }
+},
+{
+  "pk": 10, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Mala hierba"
+  }
+},
+{
+  "pk": 11, 
+  "model": "promotores.temaspruebas", 
+  "fields": {
+    "nombre": "Sanidad animal"
+  }
+},
+{
+  "pk": 1, 
+  "model": "promotores.escalapruebas", 
+  "fields": {
+    "nombre": "Peque\u00f1a (menos de 1/8 mz)"
+  }
+},
+{
+  "pk": 2, 
+  "model": "promotores.escalapruebas", 
+  "fields": {
+    "nombre": "Mediana (entre 1/8 y 1/2 mz)"
+  }
+},
+{
+  "pk": 3, 
+  "model": "promotores.escalapruebas", 
+  "fields": {
+    "nombre": "Grande (m\u00e1s de 1/2 mz)"
+  }
+}
+]
