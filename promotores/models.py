@@ -213,7 +213,7 @@ class PracticasProductivas(models.Model):
     costo = models.TextField('Sobre ingresos y costos', null=True,blank=True)
 
     def __unicode__(self):
-        return self.nombre_prueba
+        return u'%s -- %s -- %s' % (self.nombre_prueba, self.promotor, str(self.fecha_prueba))
 
     class Meta:
         verbose_name_plural = "Ficha de Pruebas de Prácticas Productivas"

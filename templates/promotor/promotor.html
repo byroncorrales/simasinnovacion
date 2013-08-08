@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Lista de los promotores
+{% endblock title %}
+
+{% block contenido %}
+	<form class="form-inline" action="." method="POST">
+		{%csrf_token%}
+		<div class="selects">
+		{{form.zona}}
+		{{form.zona.errors}}
+		{{form.organizacion_civil}}
+		{{form.organizacion_civil.errors}}
+		{{form.sexo}}
+		{{form.sexo.errors}}
+		{{form.activo}}
+		{{form.activo.errors}}
+		</div>  
+		<button type="submit" class="boton">Consultar</button>
+	</form>
+	
+	{% for lista in lista_promotor %}
+	 	{{lista.nombre}}--{{lista.get_activo_display}}--{{lista.get_zona_display}}--{{lista.organizacion_campesina}}--{{lista.organizacion_civil}}--{{lista.get_sexo_display}} --> <a href="/promotor/{{lista.id}}/">ficha promotor</a>
+	 {% endfor %} 
+{% endblock contenido %}
