@@ -1,10 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <html lang="en">
+{% load staticfiles %}
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+  	<link rel="stylesheet" href="{% static 'css/normalize.css' %}" /> 
+	<link rel="stylesheet" href="{% static 'css/foundation.css' %}" /> 
+	<link rel="stylesheet" href="{% static 'css/simas.css' %}" />
+
+  	<script src="{% static 'js/vendor/custom.modernizr.js' %}"></script>
 	<title>{% block title %}Sistema SIMAS EED{% endblock title %}</title>
+	
 </head>
 <body>
-	{% block contenido %}{% endblock contenido %}
+<div class="row">
+  <div class="large-12 columns">
+
+    <!-- Navigation -->
+      <nav class="top-bar">
+        <ul class="title-area">
+          <!-- Title Area -->
+          <li class="name">
+            <h1>
+              <a href="#">
+                Top Bar Title
+              </a>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+          <ul class="left">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+          </ul>
+
+          <ul class="right">
+            <li class="search">
+              <form>
+                <input type="search">
+              </form>
+            </li>
+
+            <li class="has-button">
+              <a class="small button" href="#">Search</a>
+            </li>
+          </ul>
+        </section>
+      </nav>
+
+    <!-- End Navigation -->
+  
+    </div>
+  </div>
+{% block contenido %}
+    
+{% endblock contenido %}
+
+{% include "footer.html" %}
+<script> 
+  document.write('<script src=' + 
+	('__proto__' in {} ? '/static/js/vendor/zepto' : '/static/js/vendor/jquery') + 
+	'.js><\/script>') 
+</script> 
+
+  <script src="/static/js/foundation.min.js"></script>
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.interchange.js"></script>
+  
+  <script src="js/foundation/foundation.abide.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  -->
+  
+  <script>
+    $(document).foundation();
+  </script>
+{% block extra_js %}{% endblock extra_js %}
+
 </body>
 </html>

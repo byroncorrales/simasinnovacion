@@ -66,8 +66,8 @@ def mapa_completo(request):
         for objeto in params:
             dicc = dict(nombre=objeto.nombre, 
                         id=objeto.id,
-                        lon=float(objeto.gps.longitud) , 
-                        lat=float(objeto.gps.latitud),
+                        lon=float(objeto.gps.longitude) , 
+                        lat=float(objeto.gps.latitude),
                         )
             lista.append(dicc)
 
