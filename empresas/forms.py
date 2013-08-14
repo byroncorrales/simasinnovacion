@@ -12,3 +12,7 @@ class EmpresasForm(forms.Form):
                             required=False, empty_label="Organización")
     activo = forms.ChoiceField(choices=[('', 'año activo'),(1, '2013'),(2, '2014'),
                                 (3, '2015'),(4, '2016')], required=False)
+    tipo = forms.ModelChoiceField(queryset=TipoEmpresa.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Tipo empresa")
+    rubro = forms.ModelChoiceField(queryset=Rubros.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Rubros")

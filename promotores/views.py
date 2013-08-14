@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render, get_object_or_404
-from .models import Promotor
+from .models import Promotor, PracticasProductivas
 from .forms import PromotorForm
 import json
 from django.http import HttpResponse
@@ -87,3 +87,9 @@ def mapa_completo_index(request):
 
         serializado = json.dumps(lista)
         return HttpResponse(serializado, mimetype='application/json')
+
+#parte de la practicas del promotor
+
+def practica_pagina(request, id, template="promotor/ficha_practica.html"):
+    practica = get_object_or_404(PracticasProductivas, id=id)
+    return render(request, template, {'practica':practica})

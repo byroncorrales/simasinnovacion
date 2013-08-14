@@ -4,5 +4,104 @@
 {% endblock title %}
 
 {% block contenido %}
-	{{promotor.nombre}}
+<div class="row">
+	<div class="large-12 column">
+		nombre promotor: 
+		{{promotor.nombre}} <br>
+		sexo: 
+		{{promotor.get_sexo_display}} <br>
+		edad: 
+		{{promotor.edad}} <br>
+		educacion:
+		{{promotor.get_educacion_display}} <br>
+		contacto: 
+		{{promotor.contacto}} <br>
+		año activo: 
+		{{promotor.get_activo_display}} <br>
+		zona: 
+		{{promotor.get_zona_display}} <br>
+		departamento: 
+		{{promotor.departamento}} <br>
+		municipio: 
+		{{promotor.municipio}} <br>
+		organizacion campesina: 
+		{{promotor.organizacion_campesina}} <br>
+		organizacion civil: 
+		{{promotor.organizacion_civil}} <br>
+		escuela: 
+		{{promotor.escuela}} <br>
+		tipo suelo: 
+		{{promotor.tipo_suelo}} <br>
+		tipo de clima: 
+		{{promotor.get_tipo_clima_display}} <br>
+		meses lluvia: 
+		{{promotor.meses_lluvia}} meses <br>
+		tamaño de finca: 
+		{{promotor.finca}} Mz<br>
+		acceso a riego: 
+		{{promotor.get_riego_display}} <br>
+		cultivos de la finca: 
+		{% for cultivo in promotor.cultivos_finca.all %}
+			{{cultivo}},
+		{% empty %}
+			<p>No tiene cultivos en la finca</p>
+		{% endfor %} <br>
+		Animales en la finca: 
+		{% for animales in promotor.animales_finca.all %}
+			{{animales}},
+		{% empty %}
+			<p>No tienen animales en al finca</p>
+		{% endfor %} <br>
+		Productos procesados: 
+		{% for producto in promotor.producto_procesado.all %}
+			{{producto}},
+		{% empty %}
+			<p>No tiene productos procesados</p>
+		{% endfor %} <br>
+		Acceso a mercado: 
+		{% for mercado in promotor.mercado_accede.all  %}
+			{{mercado}},
+		{% empty %}
+			<p>No tiene acceso a mercado</p>
+		{% endfor %} <br> <br>
+
+	{% if promotor.practicasproductivas_set.all %}
+	Listados de pruebas del promotor: <br>
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Año</th>
+		      <th width="200">Nombre de la prueba</th>
+		      <th>Tema</th>
+		      <th>Rubro</th>
+		      <th width="150">Escala</th>
+		      <th>Inicio</th>
+		      <th>Final</th>
+		      <th width="150"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		   {% for lista in promotor.practicasproductivas_set.all %}    
+		    <tr>
+		      <td>{{lista.fecha_prueba}}</td>
+		      <td>{{lista.nombre_prueba}}</td>
+		      <td>{{lista.tema_prueba}}</td>
+		      <td>{{lista.rubro_prueba}}</td>
+		      <td>{{lista.escala_prueba}}</td>
+		      <td>{{lista.fecha_inicio}}</td>
+		      <td>{{lista.fecha_finalizacion}}</td>
+		      <td><a href="/practica/{{lista.id}}/">Ficha prueba practica</a></td>
+		    </tr>
+		    {% endfor %} 
+		  </tbody>
+		</table>
+	{% endif %}
+
+
+
+
+	</div>
+
+</div>
+	
 {% endblock contenido %}

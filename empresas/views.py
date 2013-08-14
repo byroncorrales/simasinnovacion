@@ -14,6 +14,10 @@ def _queryset_filtrado(request):
         params['organizacion_civil'] = request.session['organizacion_civil']
     if 'activo' in request.session:
         params['activo'] = request.session['activo']
+    if 'tipo' in request.session:
+        params['tipo'] = request.session['tipo']
+    if 'rubro' in request.session:
+        params['rubro'] = request.session['rubro']
 
     unvalid_keys = []
     for key in params:
@@ -32,6 +36,7 @@ def empresas_index(request, template="empresas/empresas.html"):
             request.session['zona'] = form.cleaned_data['zona']            
             request.session['organizacion_civil'] = form.cleaned_data['organizacion_civil']
             request.session['activo'] = form.cleaned_data['activo']
+            request.session['tipo'] = form.cleaned_data['tipo']
             request.session['bandera'] = 1
     else:
         form = EmpresasForm()

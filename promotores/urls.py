@@ -10,4 +10,5 @@ urlpatterns = patterns('promotores.views',
     
     # url(r'^(?P<slug>[-_\w]+)/$', view=EventosDetailView.as_view(), 
     #                              name='eventos_detalle'),
+    url(r'^practica/(?P<id>\w+)/$', 'practica_pagina', name="practica_pagina"),
     )

@@ -71,33 +71,37 @@ $(document).ready(function() {
                 {{form.organizacion_civil.errors}}
                 {{form.activo}}
                 {{form.activo.errors}}
+                {{form.tipo}}
+                {{form.tipo.errors}}
+                {{form.rubro}}
+                {{form.rubro.errors}}
             </div>  
             <button type="submit" class="boton">Consultar</button>
         </form>
         <div id="map" style="width: 100%; height: 400px"> </div>
-    {% if  lista_promotor %}
+    {% if  lista_empresas %}
         <table>
           <thead>
             <tr>
               <th width="200">Nombre</th>
               <th>Año activo</th>
-              <th width="150">Zona</th>
-              <th width="150">Organización campesina</th>
-              <th width="150">Organización civil</th>
-              <th width="150">Sexo</th>
+              <th >Zona</th>
+              <th >Organización civil</th>
+              <th >Tipo empresa</th>
+              <th width="150">Rubro</th>
               <th width="150"></th>
             </tr>
           </thead>
           <tbody>
-           {% for lista in lista_promotor %}    
+           {% for lista in lista_empresas %}    
             <tr>
               <td>{{lista.nombre}}</td>
               <td>{{lista.get_activo_display}}</td>
               <td>{{lista.get_zona_display}}</td>
-              <td>{{lista.organizacion_campesina}}</td>
               <td>{{lista.organizacion_civil}}</td>
-              <td>{{lista.get_sexo_display}}</td>
-              <td><a href="/promotor/{{lista.id}}/">ficha promotor</a></td>
+              <td>{{lista.tipo}}</td>
+              <td>{{lista.rubrosprincipales_set.all}}</td>
+              <td><a href="/empresas/empresa/{{lista.id}}/">Ficha empresa rural</a></td>
             </tr>
             {% endfor %} 
           </tbody>
