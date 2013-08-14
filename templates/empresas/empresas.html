@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Lista de las empresas rurales
+{% endblock title %}
+
+{% block extra_js %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    
+      var styles = [ { "featureType": "road", "stylers": [ { "visibility": "off" }, { "hue": "#ff0000" } ] },{ "featureType": "administrative", "stylers": [ { "hue": "#c3ff00" }, { "saturation": 10 } ] },{ "stylers": [ { "lightness": 10 }, { "hue": "#00ffaa" } ] },{ "featureType": "landscape.natural", "elementType": "geometry.fill", "stylers": [ { "color": "#fcf7f4" } ] },{ "featureType": "administrative.province", "elementType": "geometry.stroke" },{ } ]
+
+      var styledMap = new google.maps.StyledMapType(styles,
+      {name: "Styled Map"});
+
+
+      var mapOptions = {
+            center: new google.maps.LatLng(12.877, -85.001),
+            zoom: 7,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+            }
+          }
+          var map = new google.maps.Map(document.getElementById('map'),
+                                        mapOptions);
+
+          map.mapTypes.set('map_style', styledMap);
+          map.setMapTypeId('map_style');
+
+          //comineza para mostrar mapa
+          $.getJSON('/empresas/mapa_completo_empresa/', function(data){
+              $.each(data, function(i, elemento){
+                  var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
+                  var marker = new google.maps.Marker({
+                      position: latlng,
+                      map: map,
+                      name: elemento.nombre,
+                      desc: elemento.id,
+                      //icon: '/files/img/fruits.png' 
+                  });
+                  google.maps.event.addListener(marker, "click", function() {
+                   var html = '<b><a href="/empresas/empresa/'+ elemento.id +'" class="verde">' + elemento.nombre +  
+                              '<br><a href="/empresas/empresa/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                    infowindow = new google.maps.InfoWindow({
+                              content: html,
+                              zIndex: 999,
+                    });
+                    infowindow.open(map, this);
+                    });
+              });
+          });
+
+});
+</script>
+{% endblock extra_js %}
+
+{% block contenido %}
+
+<div class="row">
+    
+    <div class="large-12 columns">
+        
+        <form class="form-inline" action="." method="POST">
+            {%csrf_token%}
+            <div class="selects">
+                {{form.zona}}
+                {{form.zona.errors}}
+                {{form.organizacion_civil}}
+                {{form.organizacion_civil.errors}}
+                {{form.activo}}
+                {{form.activo.errors}}
+            </div>  
+            <button type="submit" class="boton">Consultar</button>
+        </form>
+        <div id="map" style="width: 100%; height: 400px"> </div>
+    {% if  lista_promotor %}
+        <table>
+          <thead>
+            <tr>
+              <th width="200">Nombre</th>
+              <th>Año activo</th>
+              <th width="150">Zona</th>
+              <th width="150">Organización campesina</th>
+              <th width="150">Organización civil</th>
+              <th width="150">Sexo</th>
+              <th width="150"></th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in lista_promotor %}    
+            <tr>
+              <td>{{lista.nombre}}</td>
+              <td>{{lista.get_activo_display}}</td>
+              <td>{{lista.get_zona_display}}</td>
+              <td>{{lista.organizacion_campesina}}</td>
+              <td>{{lista.organizacion_civil}}</td>
+              <td>{{lista.get_sexo_display}}</td>
+              <td><a href="/promotor/{{lista.id}}/">ficha promotor</a></td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+    {% endif %}  
+
+    </div>
+</div>
+    
+
+{% endblock contenido %}

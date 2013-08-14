@@ -73,3 +73,17 @@ def mapa_completo(request):
 
         serializado = json.dumps(lista)
         return HttpResponse(serializado, mimetype='application/json')
+
+def mapa_completo_index(request):
+    if request.is_ajax():
+        lista = []
+        for objeto in Promotor.objects.all():
+            dicc = dict(nombre=objeto.nombre, 
+                        id=objeto.id,
+                        lon=float(objeto.gps.longitude) , 
+                        lat=float(objeto.gps.latitude),
+                        )
+            lista.append(dicc)
+
+        serializado = json.dumps(lista)
+        return HttpResponse(serializado, mimetype='application/json')

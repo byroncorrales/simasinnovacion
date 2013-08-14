@@ -2,6 +2,47 @@
 
 {% block title %}Sistema SIMAS - EED{% endblock title %}
 
+{% block extra_js %}
+      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+       
+        var mapOptions = {
+          center: new google.maps.LatLng(12.877, -85.001),
+          zoom: 7,
+          mapTypeControlOptions: {
+              mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+          }
+        }
+        var map = new google.maps.Map(document.getElementById('map'),
+                                      mapOptions);
+
+        $.getJSON('/ver_mapa_completo_index/', function(data){
+            $.each(data, function(i, elemento){
+                var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
+                var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    name: elemento.nombre,
+                    desc: elemento.id,
+                    //icon: '/files/img/fruits.png' 
+                });
+                google.maps.event.addListener(marker, "click", function() {
+                 var html = '<a href="/promotor/'+ elemento.id +'" class="">'+ elemento.nombre +'</a>';
+                  infowindow = new google.maps.InfoWindow({
+                            content: html,
+                            zIndex: 999,
+                  });
+                  infowindow.open(map, this);
+                  });
+            });
+        });
+     
+      });
+    </script>
+{% endblock extra_js %}
+
 {% block contenido %}
 
 <div class="row">
@@ -11,9 +52,7 @@
 
       <div class="hide-for-small">
         <div id="featured">
-              <img src="http://placehold.it/1000x400&text=Slide Image" alt="slide image">
-              <!-- <img src="http://placehold.it/1000x400&text=Slide Image" alt="slide image">
-              <img src="http://placehold.it/1000x400&text=Slide Image" alt="slide image"> -->
+             <div id="map" style="width: 980px; height: 400px;"></div>
           </div>
         </div>
 
@@ -25,7 +64,7 @@
 
     <div class="row">
       <div class="small-12 show-for-small"><br>
-        <img src="http://placehold.it/1000x600&text=For Small Screens" />
+        que nose poner aca
       </div>
     </div>
 
@@ -42,23 +81,23 @@
     <!-- Thumbnails -->
 
         <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
+          <img src="http://placehold.it/250x250&text=Sistema de innovación" />
+          <h6 class="panel">Placerat lorem vel. Nec, turpis. Lectus turpis dapibus! Turpis in tincidunt, scelerisque mauris tortor natoque integer! </h6>
         </div>
 
         <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
+          <img src="http://placehold.it/250x250&text=Monitoreo de familias" />
+          <h6 class="panel">Placerat lorem vel. Nec, turpis. Lectus turpis dapibus! Turpis in tincidunt, scelerisque mauris tortor natoque integer! </h6>
         </div>
 
         <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
+          <img src="http://placehold.it/250x250&text=Monitoreo de actividades" />
+          <h6 class="panel">Placerat lorem vel. Nec, turpis. Lectus turpis dapibus! Turpis in tincidunt, scelerisque mauris tortor natoque integer! </h6>
         </div>
 
         <div class="large-3 small-6 columns">
-          <img src="http://placehold.it/250x250&text=Thumbnail" />
-          <h6 class="panel">Description</h6>
+          <img src="http://placehold.it/250x250&text=Sistema de evaluación" />
+          <h6 class="panel">Placerat lorem vel. Nec, turpis. Lectus turpis dapibus! Turpis in tincidunt, scelerisque mauris tortor natoque integer! </h6>
         </div>
 
     <!-- End Thumbnails -->
