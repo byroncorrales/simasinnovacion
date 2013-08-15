@@ -4,5 +4,97 @@
 {% endblock title %}
 
 {% block contenido %}
-    {{empresa.nombre}}
+<div class="row">
+	<div class="large-12 column">
+		nombre empresa rural:
+		{{empresa.nombre}} <br>
+		tipo de empresa:
+		{{empresa.tipo}} <br>
+		año activo:
+		{{empresa.activo}} <br>
+		años de haberse formado la empresa:
+		{{empresa.formado_empresa}} <br>
+		{% if empresa.contacto_nombre %}
+			Nombre de la persona para contactar:
+			{{empresa.contacto_nombre}} <br>
+		{% endif %}
+		{% if empresa.contacto_celular %}
+			Celular de la persona para contactar:
+			{{empresa.contacto_celular}} <br>
+		{% endif %}
+		{% if empresa.contacto_correo %}
+			Correo de la persona para contactar:
+			{{empresa.contacto_correo}} <br>
+		{% endif %}
+		zona:
+		{{empresa.get_zona_display}} <br>
+		departamento:
+		{{empresa.departamento}} <br>
+		municipio:
+		{{empresa.municipio}} <br>
+		organizacion que apoya:
+		{{empresa.organiacion_civil}} <br>
+		RUBROS PRINCIPALES:
+		{% for rubros in empresa.rubrosprincipales_set.all %}
+			{{rubros.rubro}},
+		{% empty %}
+			<p>No tiene rubros principales</p>
+		{% endfor %} <br><br>
+		ACTIVIDAD EMPRESARIAL:
+		{% for actividad in empresa.actividadempresarial_set.all %}
+			{{actividad.actividad}},
+		{% empty %}
+			<p>Aun no tienen actividad empresarial</p>
+		{% endfor %} <br> <br>
+		MERCADOS:
+		{% for mercado in empresa.mercadosrubros_set.all %}
+			{{mercado.mercado}},
+		{% empty %}
+			<p>Aun no tiene mercados</p>
+		{% endfor %} <br> <br>
+		COMPRADORES:
+		{% for comprador in empresa.compradoresrubros_set.all %}
+			{{comprador.mercado}},
+		{% empty %}
+			<p>Aun no tiene compradores</p>
+		{% endfor %} <br> <br>
+		CERTIFICACIONES:
+		{% for certificado in empresa.certificacionesrubros_set.all %}
+			{{certificado.certificaciones}},
+		{% empty %}
+			<p>Aun no tienen certificaciones</p>
+		{% endfor %} <br> <br>
+		volumen de venta anual: sumaXD <br> 
+		involucrados: tambien sumaXD <br>
+		{% if empresa.mejoraempresas_set.all %}
+		
+		LISTA DE MEJORAS
+		<table>
+          <thead>
+            <tr>
+              <th width="200">Nombre de mejora</th>
+              <th>Fecha</th>
+              <th >Tema</th>
+              <th >Rubro</th>
+              <th >Mercado</th>
+              <th width="150"></th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in empresa.mejoraempresas_set.all %}    
+            <tr>
+              <td>{{lista.nombre_mejora}}</td>
+              <td>{{lista.fecha_prueba}}</td>
+              <td>{{lista.tema_prueba}}</td>
+              <td>{{lista.rubro_prueba}}</td>
+              <td>{{lista.mercado_prueba}}</td>
+              <td><a href="/empresas/mejora/{{lista.id}}/">Ficha mejora de empresa</a></td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+		{% endif %}
+	</div>
+</div>
+    
 {% endblock contenido %}

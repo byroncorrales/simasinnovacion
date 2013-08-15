@@ -6,7 +6,75 @@
 {% block contenido %}
 <div class="row">
 	<div class="large-12 column">
-		{{practica.nombre_prueba}}
+		nombre de la prueba:
+		{{practica.nombre_prueba}} <br>
+		año:
+		{{practica.fecha_prueba}} <br>
+		tema:
+		{{practica.tema_prueba}} <br>
+		rubro:
+		{{practica.rubro_prueba}} <br>
+		escala:
+		{{practica.escala_prueba}} <br>
+		zona:
+		{{practica.promotor.get_zona_display}}<br>
+		departamento:
+		{{practica.promotor.departamento}} <br>
+		municipio:
+		{{practica.promotor.municipio}} <br>
+		promotor:
+		<a href="/promotor/{{practica.promotor.id}}">{{practica.promotor.nombre}}</a>
+		 <br>
+		tipo de suelo:
+		{{practica.promotor.tipo_suelo}} <br>
+		tipo de clima:
+		{{practica.promotor.get_tipo_clima_display}} <br>
+		Historia:
+		{{practica.historia}} <br> <br> <br>
+		La Logicas: <br> <br>	
+		el 	problema:
+		{{practica.problema}} <br>
+		analisis agroecologico:
+		{{practica.agroecologico}} <br>
+		opciones a probar y razones:
+		{{practica.aprobar}} <br>
+		resultados:
+		{{practica.resultados}} <br> <br> <br>
+		Los Resulados: <br>
+		salud de las plantas:
+		{{practica.salud_planta}} <br>
+		vida de suelo:
+		{{practica.vida_suelo}} <br>
+		producción y rendimiento:
+		{{practica.prod_rendimiento}} <br>
+		calidad del producto:
+		{{practica.calidad_producto}} <br>
+		incidencia de plagas y contral natural:
+		{{practica.plagas}} <br>
+		costos:
+		{{practica.costo}} <br> <br>
+		Dias de campos: <br> <br>
+
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Fecha</th>
+		      <th>Hombre</th>
+		      <th>Mujeres</th>
+		      <th width="200">Comentario</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		   {% for lista in practica.diascampoprueba_set.all  %}    
+		    <tr>
+		      <td>{{lista.fechas}}</td>
+		      <td>{{lista.hombres}}</td>
+		      <td>{{lista.mujeres}}</td>
+		      <td>{{lista.comentario}}</td>
+		    </tr>
+		    {% endfor %} 
+		  </tbody>
+		</table>
 
 	</div>
 </div>

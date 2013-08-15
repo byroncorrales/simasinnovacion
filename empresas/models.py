@@ -94,6 +94,15 @@ class Mercados(models.Model):
     class Meta:
         verbose_name_plural = "Mercados"
 
+class MercadosCompradores(models.Model):
+    nombre = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name_plural = "Mercados para los compradores"
+
 class Certificaciones(models.Model):
     nombre = models.CharField(max_length=200)
 
@@ -125,7 +134,7 @@ class MercadosRubros(models.Model):
 
 class CompradoresRubros(models.Model):
     empresa = models.ForeignKey(Empresas)
-    mercado = models.ForeignKey(Mercados)
+    mercado = models.ForeignKey(MercadosCompradores)
     rubro_1 = models.ForeignKey(Rubros, related_name="com_rubrouno", null=True, blank=True)
     rubro_2 = models.ForeignKey(Rubros, related_name="com_rubrodos", null=True, blank=True)
     rubro_3 = models.ForeignKey(Rubros, related_name="com_rubrotres", null=True, blank=True)

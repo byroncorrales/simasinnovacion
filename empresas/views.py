@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render, get_object_or_404
-from .models import Empresas
+from .models import Empresas, MejoraEmpresas
 from .forms import EmpresasForm
 import json
 from django.http import HttpResponse
@@ -74,3 +74,8 @@ def mapa_completo_empresa(request):
 
         serializado = json.dumps(lista)
         return HttpResponse(serializado, mimetype='application/json')
+
+#ficha de las mejoras
+def mejora_pagina(request, id, template="empresas/ficha_mejora.html"):
+    mejora = get_object_or_404(MejoraEmpresas, id=id)
+    return render(request, template, {'mejora':mejora})

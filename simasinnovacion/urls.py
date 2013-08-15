@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^', include('promotores.urls')),
     url(r'^empresas/', include('empresas.urls')),
+    url(r'^fortalecimiento/', include('fortalecimiento.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^chaining/', include('smart_selects.urls')),
 )

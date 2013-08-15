@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}
+    {{medios.nombre}}
+{% endblock title %}
+
+{% block contenido %}
+<div class="row">
+	<div class="large-12 column">
+		Nombre de medio:
+		{{medios.nombre}} <br>
+		Año:
+		{{medios.fecha}} <br>
+		Tipo de medio:
+		{% for obj in medios.tipo_medio.all%}
+            {{obj}},
+        {%endfor%}<br>
+		Temas:
+		{% for obj in medios.temas.all%}
+          	{{obj}},
+        {%endfor%} <br>
+		fecha de inicio:
+		{{medios.fecha_inicio}} <br>
+		fecha de finalización:
+		{{medios.fecha_finalizacion}} <br>
+		Objetivos:
+		{{medios.objetivos}} <br>
+
+		ACTORES BENEFICIADOS
+		<table>
+          <thead>
+            <tr>
+              <th>Grupo meta</th>
+              <th>Número hombres</th>
+              <th>Número mujeres</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in medios.participantes_set.all %}    
+            <tr>
+              <td>{{lista.opcion}}</td>
+              <td>{{lista.hombres}}</td>
+              <td>{{lista.mujeres}}</td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Grupo meta</th>
+              <th>Antes del evento</th>
+              <th>Despues del evento</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in medios.nivelconocimiento_set.all %}    
+            <tr>
+              <td>{{lista.opcion}}</td>
+              <td>{{lista.get_ante_evento_display}}</td>
+              <td>{{lista.get_despues_evento_display}}</td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+
+
+	</div>
+</div>
+{%endblock%}

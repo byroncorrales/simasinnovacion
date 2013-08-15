@@ -59,7 +59,7 @@ $(document).ready(function() {
 {% block contenido %}
 
 <div class="row">
-    
+    <h1>Empresas rurales</h1>
     <div class="large-12 columns">
         
         <form class="form-inline" action="." method="POST">
@@ -100,7 +100,10 @@ $(document).ready(function() {
               <td>{{lista.get_zona_display}}</td>
               <td>{{lista.organizacion_civil}}</td>
               <td>{{lista.tipo}}</td>
-              <td>{{lista.rubrosprincipales_set.all}}</td>
+              <td>{% for  items in lista.rubrosprincipales_set.all%}
+                    {{items.rubro}},
+                  {%endfor%}
+              </td>
               <td><a href="/empresas/empresa/{{lista.id}}/">Ficha empresa rural</a></td>
             </tr>
             {% endfor %} 

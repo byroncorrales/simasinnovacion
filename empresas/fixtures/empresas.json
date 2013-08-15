@@ -36,6 +36,69 @@
 },
 {
   "pk": 1, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Acopio"
+  }
+},
+{
+  "pk": 2, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Procesamiento"
+  }
+},
+{
+  "pk": 3, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Comercializaci\u00f3n"
+  }
+},
+{
+  "pk": 4, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Cr\u00e9dito"
+  }
+},
+{
+  "pk": 5, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Insumos"
+  }
+},
+{
+  "pk": 6, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Certificaciones"
+  }
+},
+{
+  "pk": 7, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Servicio de maquinaria"
+  }
+},
+{
+  "pk": 8, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Asistencia t\u00e9cnica"
+  }
+},
+{
+  "pk": 9, 
+  "model": "empresas.actividadesempresariales", 
+  "fields": {
+    "nombre": "Prueba de calidad"
+  }
+},
+{
+  "pk": 1, 
   "model": "empresas.mercados", 
   "fields": {
     "nombre": "Campesino"
@@ -81,6 +144,76 @@
   "model": "empresas.mercados", 
   "fields": {
     "nombre": "Especial"
+  }
+},
+{
+  "pk": 1, 
+  "model": "empresas.mercadoscompradores", 
+  "fields": {
+    "nombre": "Intermediarios"
+  }
+},
+{
+  "pk": 2, 
+  "model": "empresas.mercadoscompradores", 
+  "fields": {
+    "nombre": "Empresa nacional"
+  }
+},
+{
+  "pk": 3, 
+  "model": "empresas.mercadoscompradores", 
+  "fields": {
+    "nombre": "Super mercados"
+  }
+},
+{
+  "pk": 4, 
+  "model": "empresas.mercadoscompradores", 
+  "fields": {
+    "nombre": "Tiendas"
+  }
+},
+{
+  "pk": 5, 
+  "model": "empresas.mercadoscompradores", 
+  "fields": {
+    "nombre": "Empresa exportadora"
+  }
+},
+{
+  "pk": 6, 
+  "model": "empresas.mercadoscompradores", 
+  "fields": {
+    "nombre": "Consumidores"
+  }
+},
+{
+  "pk": 1, 
+  "model": "empresas.certificaciones", 
+  "fields": {
+    "nombre": "Comercio justo"
+  }
+},
+{
+  "pk": 2, 
+  "model": "empresas.certificaciones", 
+  "fields": {
+    "nombre": "Organico"
+  }
+},
+{
+  "pk": 3, 
+  "model": "empresas.certificaciones", 
+  "fields": {
+    "nombre": "Rain forest alliance"
+  }
+},
+{
+  "pk": 4, 
+  "model": "empresas.certificaciones", 
+  "fields": {
+    "nombre": "Utz-caf\u00e9"
   }
 },
 {
