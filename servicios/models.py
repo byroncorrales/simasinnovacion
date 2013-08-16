@@ -62,6 +62,12 @@ class Servicios(models.Model):
 	fecha_finalizacion = models.DateField()
 	objetivos = models.TextField()
 	conclusiones = models.TextField('Conclusiones del servicio')
+	#campo oculto
+	fecha = models.IntegerField(editable=False, null=True, blank=True)
+
+	def save(self):
+	    self.fecha = self.fecha_inicio.year
+	    super(Servicios, self).save()
 
 	def __unicode__(self):
 		return self.nombre

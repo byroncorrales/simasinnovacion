@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}
+    {{servicio.nombre}}
+{% endblock title %}
+
+{% block contenido %}
+<div class="row">
+    <div class="large-12 column">
+        nombre de servicio:
+        {{servicio.nombre}} <br>
+        objetivos:
+        {{servicio.objetivos}} <br>
+        año:
+        {{servicio.fecha}} <br>
+        tipo de servicio:
+        {% for obj in servicio.tipos_servicios.all %}
+            {{obj}},
+        {% endfor %} <br>
+        temas que abordan:
+        {% for obj in servicio.temas_abordan.all %}
+            {{obj}},
+        {% endfor %} <br>
+        organismo que se beneficiaron:
+        {% for obj in servicio.org_benefician.all %}
+            {{obj}},
+        {% endfor %} <br>
+        fecha de inicio:
+        {{servicio.fecha_inicio}} <br>
+        fecha de finalizacion:
+        {{servicio.fecha_finalizacion}} <br>
+        Monto:
+        {{servicio.monto}} <br>
+        conclusiones:
+        {{servicio.conclusiones}} <br>
+        EVALUACION DE IMPACTO DEL SERVICIO <br><br>
+         <table>
+          <thead>
+            <tr>
+              <th>Evalaucion</th>
+              <th>Escala (1 - 5)</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in servicio.resultadoevaluacion_set.all %}    
+            <tr>
+              <td>{{lista.evaluacion}}</td>
+              <td>{{lista.escala}}</td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+
+    </div>
+</div>
+
+{%endblock%}
