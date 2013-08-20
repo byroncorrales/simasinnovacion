@@ -27,6 +27,9 @@ class EspacioInnovacionAdmin(admin.ModelAdmin):
 		)
 	inlines = [ActividadEmpresarialInline,IniciativaInnovacionInline,
 				FotosInnovacionInline]
+	list_display = ['nombre','tipos','zona','cobertura']
+	list_filter = ['departamento_influye','papel']
+	search_fields = ['nombre']
 
 admin.site.register(EspacioInnovacion, EspacioInnovacionAdmin)
 admin.site.register(TipoEspacio)
@@ -61,6 +64,9 @@ class IniciativaInnovacionAdmin(admin.ModelAdmin):
 		}),
 		)
 	inlines = [FotosInicitivasInline]
+	list_display = ['nombre','fecha','espacio']
+	list_filter = ['tipo','temas']
+	search_fields = ['nombre']
 
 admin.site.register(IniciativaInnovacion, IniciativaInnovacionAdmin)
 admin.site.register(FotosIniciativa)

@@ -16,6 +16,9 @@ class FotosMediosInline(admin.TabularInline):
 class MediosFortalecimientoAdmin(admin.ModelAdmin):
 	inlines = [ParticipantesInline,NivelConocimientoInline,
 				FotosMediosInline]
+	list_display = ['nombre','get_medios','get_temas']
+	list_filter = ['papel_simas','grupos_metas']
+	search_fields = ['nombre'] 
 
 admin.site.register(MediosFortalecimiento, MediosFortalecimientoAdmin)
 admin.site.register(TiposMedios)

@@ -144,7 +144,7 @@ class Promotor(models.Model):
     mercado_accede = models.ManyToManyField(MercadoAcceso)
 
     def __unicode__(self):
-        return u'%s -- %s' % (self.nombre, self.edad)
+        return u'%s' % (self.nombre)
 
     class Meta:
         verbose_name_plural = 'Ficha de los promotores o promotoras' 

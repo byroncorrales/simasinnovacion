@@ -49,6 +49,9 @@ class EmpresasAdmin(admin.ModelAdmin):
                MercadosRubrosInlines,CompradoresRubrosInlines,
                CertificacionesRubrosInlines,FotosActividadEmpresarialInlines,
                MejoraEmpresaInline]
+    list_display = ['nombre', 'tipo','zona','departamento']
+    list_filter = ['nombre', 'zona']
+    search_fields = ['nombre']
 
 admin.site.register(Empresas, EmpresasAdmin)
 admin.site.register(TipoEmpresa)
@@ -91,6 +94,9 @@ class MejoraEmpresarialAdmin(admin.ModelAdmin):
         
     )
     inlines = [FotosMejoraEmpresaInline,DiasCampoEmpresaInline]
+    list_display = ['nombre_mejora','empresa','fecha_prueba', 'tema_prueba']
+    search_fields = ['empresa__nombre', 'nombre_mejora']
+    list_filter = ['empresa__nombre', 'tema_prueba', 'rubro_prueba']
 
 admin.site.register(MejoraEmpresas, MejoraEmpresarialAdmin)
 admin.site.register(TemasEmpresa)

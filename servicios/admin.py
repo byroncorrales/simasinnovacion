@@ -11,6 +11,9 @@ class FotosServiciosInline(admin.TabularInline):
 
 class ServiciosAdmin(admin.ModelAdmin):
 	inlines = [ResultadoEvaluacionInline,FotosServiciosInline]
+	list_display = ['nombre','solicita_servicio','fecha_inicio','fecha_finalizacion']
+	list_filter = ['tipos_servicios','temas_abordan']
+	search_fields = ['nombre']
 
 admin.site.register(Servicios, ServiciosAdmin)
 admin.site.register(OrganizacionSolicita)

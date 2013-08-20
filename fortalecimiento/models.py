@@ -59,6 +59,14 @@ class MediosFortalecimiento(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def get_medios(self):
+        return "\n,".join([medio.nombre for medio in self.tipo_medio.all()])
+    get_medios.short_description = "Tipos de medios"
+
+    def get_temas(self):
+        return "\n,".join([tema.nombre for tema in self.temas.all()])
+    get_temas.short_description = "Temas"
+
     class Meta:
         verbose_name_plural = "Ficha de Medios para fortalecimiento de conocimiento de actores"
 
