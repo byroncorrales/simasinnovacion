@@ -7,6 +7,7 @@ urlpatterns = patterns('promotores.views',
     url(r'^promotor/(?P<id>\w+)/$', 'promotor_pagina', name="promotor_pagina"),
     url(r'^ver_mapa_completo_index/$', 'mapa_completo_index', name="mapa-completo-index"),
     url(r'^ver_mapa_completo/$', 'mapa_completo', name="mapa-completo"),
-    
+    #practicas
+    url(r'^practicas/$', 'practicas_index', name="lista_practicas"),
     url(r'^practica/(?P<id>\w+)/$', 'practica_pagina', name="practica_pagina"),
     )

@@ -76,6 +76,10 @@ def mapa_completo_empresa(request):
         return HttpResponse(serializado, mimetype='application/json')
 
 #ficha de las mejoras
+
+
+
+
 def mejora_pagina(request, id, template="empresas/ficha_mejora.html"):
     mejora = get_object_or_404(MejoraEmpresas, id=id)
     return render(request, template, {'mejora':mejora})

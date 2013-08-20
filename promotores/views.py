@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, get_object_or_404
 from .models import Promotor, PracticasProductivas
-from .forms import PromotorForm
+from .forms import PromotorForm, PracticaForm
 import json
 from django.http import HttpResponse
 
@@ -89,6 +89,50 @@ def mapa_completo_index(request):
         return HttpResponse(serializado, mimetype='application/json')
 
 #parte de la practicas del promotor
+
+def _queryset_filtrado_practica(request):
+    params = {}
+    if 'zona' in request.session:
+        params['promotor__zona'] = request.session['zona']
+    if 'tema_prueba' in request.session:
+        params['tema_prueba'] = request.session['tema_prueba']
+    if 'rubro_prueba' in request.session:
+        params['rubro_prueba'] = request.session['rubro_prueba']
+    if 'escala_prueba' in request.session:
+        params['escala_prueba'] = request.session['escala_prueba']
+
+    unvalid_keys = []
+    for key in params:
+        if not params[key]:
+            unvalid_keys.append(key)
+    
+    for key in unvalid_keys:
+        del params[key]
+    
+    return PracticasProductivas.objects.filter(**params)
+
+
+def practicas_index(request, template="promotor/practica.html"):
+    if request.method == 'POST':
+        form = PracticaForm(request.POST)
+        if form.is_valid():
+            request.session['zona'] = form.cleaned_data['zona']            
+            request.session['tema_prueba'] = form.cleaned_data['tema_prueba']
+            request.session['rubro_prueba'] = form.cleaned_data['rubro_prueba']
+            request.session['escala_prueba'] = form.cleaned_data['escala_prueba']
+            request.session['bandera'] = 1
+    else:
+        form = PracticaForm()
+        request.session['bandera'] = 0
+
+    if request.session['bandera'] == 1:
+        con = _queryset_filtrado_practica(request)
+    else:
+        con = ''
+    
+    return render(request, template, {'form':form,
+                                      'lista_practica':con})
+
 
 def practica_pagina(request, id, template="promotor/ficha_practica.html"):
     practica = get_object_or_404(PracticasProductivas, id=id)

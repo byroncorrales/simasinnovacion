@@ -15,6 +15,25 @@ class PromotorForm(forms.Form):
     activo = forms.ChoiceField(choices=[('', 'año activo'),(1, '2013'),(2, '2014'),
                                 (3, '2015'),(4, '2016')], required=False)
 
-    # class Meta:
-    #     model = Promotor
-    #     fields = ('zona','organizacion_civil','sexo','activo',)
+def get_anios():
+    years = []
+    for en in PracticasProductivas.objects.order_by('anio').values_list('anio', flat=True):
+        years.append((en, en))
+    return list(set(years))
+
+class CustomChoiceField(forms.ChoiceField):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomChoiceField, self).__init__(*args, **kwargs)
+        self.choices.insert(0, (None , 'Año'))
+
+class PracticaForm(forms.Form):
+    zona = forms.ChoiceField(choices=[('', 'zona'),(1, 'Seca'),(2, 'Alta'),
+                            (3, 'Húmeda')],required=False)
+    anio = CustomChoiceField(choices=get_anios(), label="Año")
+    tema_prueba = forms.ModelChoiceField(queryset=TemasPruebas.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Tema")
+    rubro_prueba = forms.ModelChoiceField(queryset=RubroPruebas.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Rubro")
+    escala_prueba = forms.ModelChoiceField(queryset=EscalaPruebas.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Escala")

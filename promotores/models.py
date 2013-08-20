@@ -212,8 +212,15 @@ class PracticasProductivas(models.Model):
     plagas = models.TextField('Sobre las plagas e enfermedades', null=True,blank=True)
     costo = models.TextField('Sobre ingresos y costos', null=True,blank=True)
 
+    #campo oculto
+    anio = models.IntegerField(editable=False, null=True, blank=True)
+
+    def save(self):
+        self.anio = self.fecha_prueba.year
+        super(PracticasProductivas, self).save()
+        
     def __unicode__(self):
-        return u'%s -- %s -- %s' % (self.nombre_prueba, self.promotor, str(self.fecha_prueba))
+        return u'%s' % (self.nombre_prueba)
 
     class Meta:
         verbose_name_plural = "Ficha de Pruebas de Prácticas Productivas"
