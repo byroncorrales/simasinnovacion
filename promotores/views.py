@@ -138,7 +138,7 @@ def mapa_completo_practica(request):
         lista = []
         params = []
         if request.session['bandera'] == 1:
-            params = _queryset_filtrado(request)
+            params = _queryset_filtrado_practica(request)
         else:
             params = PracticasProductivas.objects.all()
 

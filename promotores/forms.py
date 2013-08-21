@@ -25,7 +25,7 @@ class CustomChoiceField(forms.ChoiceField):
 
     def __init__(self, *args, **kwargs):
         super(CustomChoiceField, self).__init__(*args, **kwargs)
-        self.choices.insert(0, (None , 'Año'))
+        self.choices.insert(0, (None, 'Año'))
 
 class PracticaForm(forms.Form):
     zona = forms.ChoiceField(choices=[('', 'zona'),(1, 'Seca'),(2, 'Alta'),

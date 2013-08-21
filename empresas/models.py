@@ -202,8 +202,14 @@ class MejoraEmpresas(models.Model):
     reduccion_costo = models.TextField('Sobre la reducción de costo y riesgo',
                         null=True, blank=True)
 
+    anio = models.IntegerField(editable=False, null=True, blank=True)
+
+    def save(self):
+        self.anio = self.fecha_prueba.year
+        super(MejoraEmpresas, self).save()
+
     def __unicode__(self):
-        return u'%s - %s' % (self.nombre_mejora, self.empresa.nombre)
+        return u'%s' % (self.nombre_mejora)
 
     class Meta:
         verbose_name_plural = "Ficha de Mejoras de Prácticas Empresariales"

@@ -15,3 +15,26 @@ class EmpresasForm(forms.Form):
                             required=False, empty_label="Tipo empresa")
     rubro = forms.ModelChoiceField(queryset=Rubros.objects.all().order_by('nombre'), 
                             required=False, empty_label="Rubros")
+
+def get_anios():
+    years = []
+    for en in MejoraEmpresas.objects.order_by('anio').values_list('anio', flat=True):
+        years.append((en, en))
+    return list(set(years))
+
+class CustomChoiceField(forms.ChoiceField):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomChoiceField, self).__init__(*args, **kwargs)
+        self.choices.insert(0, (None, 'Año'))
+
+class MejoraForm(forms.Form):
+    zona = forms.ChoiceField(choices=[('', 'zona'),(1, 'Seca'),(2, 'Alta'),
+                            (3, 'Húmeda')],required=False)
+    anio = CustomChoiceField(choices=get_anios(),required=False,label="Año")
+    tema_prueba = forms.ModelChoiceField(queryset=TemasEmpresa.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Tema")
+    rubro_prueba = forms.ModelChoiceField(queryset=Rubros.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Rubro")
+    mercado_prueba = forms.ModelChoiceField(queryset=Mercados.objects.all().order_by('nombre'), 
+                            required=False, empty_label="Mercados")
