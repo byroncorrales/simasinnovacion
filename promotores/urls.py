@@ -10,4 +10,5 @@ urlpatterns = patterns('promotores.views',
     #practicas
     url(r'^practicas/$', 'practicas_index', name="lista_practicas"),
     url(r'^practica/(?P<id>\w+)/$', 'practica_pagina', name="practica_pagina"),
+    url(r'^mapa_completo_practica/$', 'mapa_completo_practica', name="mapa-completo-practica"),
     )

@@ -13,7 +13,8 @@
           zoom: 7,
           mapTypeControlOptions: {
               mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-          }
+          },
+          scrollwheel: false
         }
         var map = new google.maps.Map(document.getElementById('map'),
                                       mapOptions);

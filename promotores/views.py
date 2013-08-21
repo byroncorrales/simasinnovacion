@@ -133,6 +133,26 @@ def practicas_index(request, template="promotor/practica.html"):
     return render(request, template, {'form':form,
                                       'lista_practica':con})
 
+def mapa_completo_practica(request):
+    if request.is_ajax():
+        lista = []
+        params = []
+        if request.session['bandera'] == 1:
+            params = _queryset_filtrado(request)
+        else:
+            params = PracticasProductivas.objects.all()
+
+        for objeto in params:
+            dicc = dict(nombre=objeto.nombre_prueba, 
+                        id=objeto.id,
+                        lon=float(objeto.promotor.gps.longitude) , 
+                        lat=float(objeto.promotor.gps.latitude),
+                        )
+            lista.append(dicc)
+
+        serializado = json.dumps(lista)
+        return HttpResponse(serializado, mimetype='application/json')
+
 
 def practica_pagina(request, id, template="promotor/ficha_practica.html"):
     practica = get_object_or_404(PracticasProductivas, id=id)

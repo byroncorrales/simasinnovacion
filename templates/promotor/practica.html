@@ -21,7 +21,8 @@ $(document).ready(function() {
 	        zoom: 7,
 	        mapTypeControlOptions: {
 	            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-	        }
+	        },
+	        scrollwheel: false
 	      }
 	      var map = new google.maps.Map(document.getElementById('map'),
 	                                    mapOptions);
@@ -30,7 +31,7 @@ $(document).ready(function() {
 	      map.setMapTypeId('map_style');
 
 	      //comineza para mostrar mapa
-	      $.getJSON('/ver_mapa_completo/', function(data){
+	      $.getJSON('/mapa_completo_practica/', function(data){
 	          $.each(data, function(i, elemento){
 	              var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
 	              var marker = new google.maps.Marker({
@@ -42,7 +43,7 @@ $(document).ready(function() {
 	              });
 	              google.maps.event.addListener(marker, "click", function() {
 	               var html = '<b><a href="/promotor/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-	                          '<br><a href="/promotor/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+	                          '<br><a href="/practica/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
 	                infowindow = new google.maps.InfoWindow({
 	                          content: html,
 	                          zIndex: 999,
