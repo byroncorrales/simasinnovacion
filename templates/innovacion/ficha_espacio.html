@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}
+    {{espacio.nombre}}
+{% endblock title %}
+
+{% block contenido %}
+<div class="row">
+    <div class="large-12 column">
+        nombre espacio: 
+        {{espacio.nombre}} <br>
+        Tipo de espacio:
+        {{espacio.tipos}} <br>
+        Año activo:
+        {{espacio.activos}} <br>
+        tiempo de haber formado el espacio:
+        {{espacio.tiempo_formado}} <br>
+        {%if espacio.nombre_contacto%}
+        contacto: 
+        {{espacio.nombre_contacto}} <br>
+        {%endif%}
+        {%if espacio.celular_contacto%}
+        celular: 
+        {{espacio.celular_contacto}} <br>
+        {%endif%}
+        {%if espacio.correo_contacto%}
+        correo electronico: 
+        {{espacio.correo_contacto}} <br>
+        {%endif%}
+        zona: 
+        {{espacio.get_zona_display}} <br>
+        Cobertura: 
+        {{espacio.get_cobertura_display}} <br>
+        
+        Departamento que influyen: 
+        {% for obj in espacio.departamento_influye.all %}
+            {{obj}},
+        {% empty %}
+            <p>No tiene departamento donde influya</p>
+        {% endfor %} <br>
+        Municipios donde influye:
+        {% for obj in espacio.municipios_influye.all %}
+            {{obj}},
+        {% empty %}
+            <p>No tienen municios donde influya</p>
+        {% endfor %} <br>
+        Número de entidades (actores y organizaciones) que conforman el espacio:
+        {{espacio.numero_entidades}} <br>
+  
+        Papel de SIMAS: 
+        {% for obj in espacio.papel.all  %}
+            {{obj}},
+        {% empty %}
+            <p>SIMAS no cumple ningun papel</p>
+        {% endfor %} <br> <br>
+        Temas principales de incidencia: 
+        {% for obj in espacio.temas.all  %}
+            {{obj}},
+        {% empty %}
+            <p>No tiene temas principales de incidencia</p>
+        {% endfor %} <br> <br>
+
+        {% if espacio.actividadempresarial_set.all %}
+            Listados de las actividades empresariales: <br>
+        <table>
+          <thead>
+            <tr>
+              <th width="200">Actividad</th>
+              <th>Tema 1</th>
+              <th>Tema 2</th>
+              <th>Tema 3</th>  
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in espacio.actividadempresarial_set.all %}    
+            <tr>
+              <td>{{lista.actividad}}</td>
+              <td>{{lista.tema_1}}</td>
+              <td>{{lista.tema_2}}</td>
+              <td>{{lista.tema_3}}</td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+    {% endif %}
+
+    {% if espacio.iniciativainnovacion_set.all %}
+    Listados de las iniciativas de innovación: <br>
+        <table>
+          <thead>
+            <tr>
+              <th width="200">Nombre</th>
+              <th>Zona</th>
+              <th>Cobertura</th>
+              <th>Tipo iniciativa</th>
+              <th>Año activo</th>
+              <th width="150"></th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in espacio.iniciativainnovacion_set.all %}    
+            <tr>
+              <td>{{lista.nombre}}</td>
+              <td>{{lista.espacio.get_zona_display}}</td>
+              <td>{{lista.espacio.get_cobertura_display}}</td>
+              <td>{{lista.tipo}}</td>
+              <td>{{lista.fecha}}</td>
+              <td><a href="/iniciativa/{{lista.id}}/">Ficha Iniciativa innovación</a></td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+    {% endif %}
+
+
+
+
+    </div>
+
+</div>
+    
+{% endblock contenido %}

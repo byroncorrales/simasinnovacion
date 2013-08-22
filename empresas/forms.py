@@ -26,12 +26,12 @@ class CustomChoiceField(forms.ChoiceField):
 
     def __init__(self, *args, **kwargs):
         super(CustomChoiceField, self).__init__(*args, **kwargs)
-        self.choices.insert(0, (None, 'Año'))
+        self.choices.insert(0, ('', 'Año'))
 
 class MejoraForm(forms.Form):
     zona = forms.ChoiceField(choices=[('', 'zona'),(1, 'Seca'),(2, 'Alta'),
                             (3, 'Húmeda')],required=False)
-    anio = CustomChoiceField(choices=get_anios(),required=False,label="Año")
+    anio = CustomChoiceField(choices=get_anios(),required=False, label="Año")
     tema_prueba = forms.ModelChoiceField(queryset=TemasEmpresa.objects.all().order_by('nombre'), 
                             required=False, empty_label="Tema")
     rubro_prueba = forms.ModelChoiceField(queryset=Rubros.objects.all().order_by('nombre'), 

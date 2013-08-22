@@ -94,6 +94,8 @@ def _queryset_filtrado_practica(request):
     params = {}
     if 'zona' in request.session:
         params['promotor__zona'] = request.session['zona']
+    if 'anio' in request.session:
+        params['anio'] = request.session['anio']
     if 'tema_prueba' in request.session:
         params['tema_prueba'] = request.session['tema_prueba']
     if 'rubro_prueba' in request.session:
@@ -116,7 +118,8 @@ def practicas_index(request, template="promotor/practica.html"):
     if request.method == 'POST':
         form = PracticaForm(request.POST)
         if form.is_valid():
-            request.session['zona'] = form.cleaned_data['zona']            
+            request.session['zona'] = form.cleaned_data['zona']
+            request.session['anio'] = form.cleaned_data['anio']         
             request.session['tema_prueba'] = form.cleaned_data['tema_prueba']
             request.session['rubro_prueba'] = form.cleaned_data['rubro_prueba']
             request.session['escala_prueba'] = form.cleaned_data['escala_prueba']

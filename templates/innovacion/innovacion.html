@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Lista de las mejoras empresariales
+    Lista de los espacios para innovar politicas
 {% endblock title %}
 
 {% block extra_js %}
@@ -30,7 +30,7 @@ $(document).ready(function() {
           map.setMapTypeId('map_style');
 
           //comineza para mostrar mapa
-          $.getJSON('/empresas/mapa_completo_empresa/', function(data){
+          $.getJSON('/ver_mapa_completo/', function(data){
               $.each(data, function(i, elemento){
                   var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
                   var marker = new google.maps.Marker({
@@ -41,8 +41,8 @@ $(document).ready(function() {
                       //icon: '/files/img/fruits.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/empresas/empresa/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/empresas/empresa/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><a href="/promotor/'+ elemento.id +'" class="verde">' + elemento.nombre +  
+                              '<br><a href="/promotor/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,
@@ -59,7 +59,7 @@ $(document).ready(function() {
 {% block contenido %}
 
 <div class="row">
-    <h1>Mejoras empresas rurales</h1>
+    <h1>Espacios para innovar politicas</h1>
     <div class="large-12 columns">
         
         <form class="form-inline" action="." method="POST">
@@ -67,41 +67,37 @@ $(document).ready(function() {
             <div class="selects">
                 {{form.zona}}
                 {{form.zona.errors}}
-                {{form.anio}}
-                {{form.anio.errors}}
-                {{form.tema_prueba}}
-                {{form.tema_prueba.errors}}
-                {{form.rubro_prueba}}
-                {{form.rubro_prueba.errors}}
-                {{form.mercado_prueba}}
-                {{form.mercado_prueba.errors}}
+                {{form.cobertura}}
+                {{form.cobertura.errors}}
+                {{form.activo}}
+                {{form.activo.errors}}
+                {{form.tipos}}
+                {{form.tipos.errors}}
             </div>  
             <button type="submit" class="boton">Consultar</button>
         </form>
         <div id="map" style="width: 100%; height: 400px"> </div>
-    {% if  lista_mejora %}
+    {% if  lista_espacio %}
         <table>
           <thead>
             <tr>
               <th width="200">Nombre</th>
               <th>Año activo</th>
-              <th >Zona</th>
-              <th >Tema</th>
-              <th >Rubro</th>
-              <th width="150">Mercado</th>
+              <th width="150">Zona</th>
+              <th width="150">Cobertura</th>
+              <th width="150">Tipo</th>
               <th width="150"></th>
             </tr>
           </thead>
           <tbody>
-           {% for lista in lista_mejora %}    
+           {% for lista in lista_espacio %}    
             <tr>
-              <td>{{lista.nombre_mejora}}</td>
-              <td>{{lista.fecha_prueba}}</td>
-              <td>{{lista.empresa.get_zona_display}}</td>
-              <td>{{lista.tema_prueba}}</td>
-              <td>{{lista.rubro_prueba}}</td>
-              <td>{{lista.mercado_prueba}}</td>
-              <td><a href="/mejora/{{lista.id}}/">Ficha mejora empresa</a></td>
+              <td>{{lista.nombre}}</td>
+              <td>{{lista.get_activos_display}}</td>
+              <td>{{lista.get_zona_display}}</td>
+              <td>{{lista.get_cobertura_display}}</td>
+              <td>{{lista.tipos}}</td>
+              <td><a href="/espacio/{{lista.id}}/">Ficha Espacio</a></td>
             </tr>
             {% endfor %} 
           </tbody>
