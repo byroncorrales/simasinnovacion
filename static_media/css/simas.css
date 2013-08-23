@@ -1,3 +1,24 @@
+body {
+    background: #cacaca url(../img/bg.jpg)
+}
+
 #map img {
     max-width: none !important;
  }
+
+ .top-bar {
+    background: #fff;
+    overflow: visible;
+}
+
+.three img {
+    height: 128px;
+    width: 128px;
+}
+
+header { margin-bottom: 20px; }
+header nav ul { margin: 0 0 0 -20px; padding: 0; float: right; overflow: hidden; }
+header nav ul li { margin: 0 0 0 20px; padding: 0; display: block; float: left; }
+
+footer { padding-bottom: 20px; }
+footer .row { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; }

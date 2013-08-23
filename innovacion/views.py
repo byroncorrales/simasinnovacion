@@ -51,3 +51,10 @@ def espacio_index(request, template="innovacion/innovacion.html"):
 def espacio_pagina(request, id, template="innovacion/ficha_espacio.html"):
     espacio = get_object_or_404(EspacioInnovacion, id=id)
     return render(request, template, {'espacio':espacio})
+
+
+#aca va los de iniciativa
+
+def iniciativa_pagina(request, id, template="innovacion/ficha_iniciativa.html"):
+    iniciativa = get_object_or_404(IniciativaInnovacion, id=id)
+    return render(request, template, {'iniciativa':iniciativa})

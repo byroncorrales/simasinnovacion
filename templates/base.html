@@ -19,23 +19,31 @@
   <div class="large-12 columns">
 
     <!-- Navigation -->
-      <nav class="top-bar">
-        <ul class="title-area">
-          <!-- Title Area -->
-          <li class="name">
-            <h1>
-              <a href="#">
-                SIMAS
-              </a>
-            </h1>
-          </li>
-          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-        </ul>
-      </nav>
-
-    <!-- End Navigation -->
+    <header>
+    <div class="container">
+  
+    <div class="row">
+      <div class="three columns">
+        <a href="/"><img src="{%static 'img/logosimas.png' %}"/></a>
+      </div>
+      <div class="nine columns">
+        <nav>
+          <ul>
+            <li><a href="/Promotores/">Promotores</a></li>
+            <li><a href="/Empresas/">Empresas</a></li>
+            <li><a href="/Innovación/">Innovacion</a></li>
+            <li><a href="/fortalecimiento/">Fortalecimiento</a></li>
+            <li><a href="/servicios/">Servicios</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
+  
+    </div>
+    </header>
+    <!-- End Navigation -->
   </div>
+</div>
 {% block contenido %}
     
 {% endblock contenido %}

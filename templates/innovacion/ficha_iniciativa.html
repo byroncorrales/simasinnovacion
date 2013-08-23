@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}
+    {{iniciativa.nombre}}
+{% endblock title %}
+
+{% block contenido %}
+<div class="row">
+    <div class="large-12 column">
+        nombre de la prueba:
+        {{iniciativa.nombre}} <br>
+        año:
+        {{iniciativa.fecha}} <br>
+        Espacio de innovación:
+        <a href="/espacio/{{iniciativa.espacio.id}}">{{iniciativa.espacio}}</a>
+        <br>
+        Tipo:
+        {{iniciativa.tipo}} <br>
+        fecha de inicio:
+        {{iniciativa.fecha_inicio}} <br>
+        fecha de finalización:
+        {{iniciativa.fecha_finalizacion}}<br>
+        temas que aborda:
+        {% for obj in iniciativa.temas.all %}
+            {{obj}} <br>
+        {% endfor %}
+        actividades:
+        {% for obj in iniciativa.actividades.all %}
+            {{obj}} <br>
+        {% endfor %}
+        <h2>La logica de la iniciativa</h2>
+        <br><br>
+        el problema:
+        {{iniciativa.problema}} <br>
+        Analisis del tema:
+        {{iniciativa.analisis}} <br>
+        Enfoque de la iniciativa:
+        {{iniciativa.enfoque}} <br>
+        Resultados esperados:
+        {{iniciativa.resultado}} <br>
+         <h2>Resultados obtenidos de la iniciativa</h2><br>
+         Sobre defensa de la tierra:
+        {{iniciativa.sobre_tierra}} <br>
+        Sobre el fomento de producción agroecológica y alimentos sanos:
+        {{iniciativa.fomento}} <br>
+        Sobre la conservación de recursos naturales, semilla criolla y biodiversidad:
+        {{iniciativa.conservacion}} <br>
+        Sobre la mejora en inversión pública, privada  o acceso a crédito
+        {{iniciativa.inversion}} <br>
+        Sobre la mejora en acceso a mercados locales para los alimentos
+        {{iniciativa.acceso_mercado}} <br>
+        Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores
+        {{iniciativa.comunicacion}} <br>
+        Sobre la reducción de riesgo de los sistemas locales de alimentos
+        {{iniciativa.reduccion}} <br>
+
+    </div>
+</div>
+{% endblock%}
