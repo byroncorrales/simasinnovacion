@@ -1,14 +1,19 @@
 body {
-    background: #cacaca url(../img/bg.jpg)
+    background: #cacaca url(../img/bg.png)
 }
 
 #map img {
     max-width: none !important;
  }
 
- .top-bar {
-    background: #fff;
-    overflow: visible;
+ header { 
+    margin-bottom: 20px; 
+}
+header nav ul { 
+    margin: 0 0 0 -20px; padding: 0; float: right; overflow: hidden; 
+}
+header nav ul li { 
+    margin: 0 0 0 20px; padding: 0; display: block; float: left; 
 }
 
 .three img {
@@ -16,9 +21,16 @@ body {
     width: 128px;
 }
 
-header { margin-bottom: 20px; }
-header nav ul { margin: 0 0 0 -20px; padding: 0; float: right; overflow: hidden; }
-header nav ul li { margin: 0 0 0 20px; padding: 0; display: block; float: left; }
+.nine {
+    margin: -41px 2px 3px 4px;
+}
 
-footer { padding-bottom: 20px; }
-footer .row { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; }
+.elem-apps {
+    background: #f3f3f2;
+}
+
+.elem-apps .elem-tittle {
+    padding: 1px 2px 2px 20px;
+    color: #000;
+    font-size: 13px;
+}
