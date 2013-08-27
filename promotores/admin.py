@@ -69,7 +69,7 @@ class PracticasProductivasAdmin(admin.ModelAdmin):
         
     )
     inlines = [FotosPracticasInline,DiasCampoPruebaInline]
-    list_display = ['nombre_prueba','promotor','fecha_prueba','tema_prueba']
+    list_display = ['nombre_prueba','promotor','fecha_prueba','tema_prueba','color_completo']
     list_filter = ['tema_prueba','rubro_prueba','escala_prueba']
     search_fields = ['nombre_prueba','promotor__nombre']
 

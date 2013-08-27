@@ -64,7 +64,7 @@ class IniciativaInnovacionAdmin(admin.ModelAdmin):
 		}),
 		)
 	inlines = [FotosInicitivasInline]
-	list_display = ['nombre','fecha','espacio']
+	list_display = ['nombre','fecha','espacio','color_completo']
 	list_filter = ['tipo','temas']
 	search_fields = ['nombre']
 

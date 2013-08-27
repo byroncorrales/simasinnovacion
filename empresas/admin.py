@@ -94,7 +94,7 @@ class MejoraEmpresarialAdmin(admin.ModelAdmin):
         
     )
     inlines = [FotosMejoraEmpresaInline,DiasCampoEmpresaInline]
-    list_display = ['nombre_mejora','empresa','fecha_prueba', 'tema_prueba']
+    list_display = ['nombre_mejora','empresa','fecha_prueba', 'tema_prueba','color_completo']
     search_fields = ['empresa__nombre', 'nombre_mejora']
     list_filter = ['empresa__nombre', 'tema_prueba', 'rubro_prueba']
 

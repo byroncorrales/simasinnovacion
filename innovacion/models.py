@@ -6,13 +6,13 @@ from sorl.thumbnail import ImageField
 from simasinnovacion.utils import get_file_path 
 
 class TipoEspacio(models.Model):
-	nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Tipos de espacios"
+    class Meta:
+        verbose_name_plural = "Tipos de espacios"
 
 CHOICE_COBERTURA = (
             (1, 'Regional'),
@@ -22,59 +22,59 @@ CHOICE_COBERTURA = (
         )
 
 class PapelSimas(models.Model):
-	nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Papel de SIMAS"
+    class Meta:
+        verbose_name_plural = "Papel de SIMAS"
 
 class TemasIncidencia(models.Model):
-	nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Temas principales de incidencia o innovación política"
+    class Meta:
+        verbose_name_plural = "Temas principales de incidencia o innovación política"
 
 class ActividadesEspacio(models.Model):
-	nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Actividades empresarial del espacio"
+    class Meta:
+        verbose_name_plural = "Actividades empresarial del espacio"
 
 #--------------------------------------------------------------------------------------------
 #                      Ficha de las Espacios de Innovación Políticas
 #--------------------------------------------------------------------------------------------
 
 class EspacioInnovacion(models.Model):
-	nombre = models.CharField('Nombre del espacio', max_length=200)
-	tipos = models.ForeignKey(TipoEspacio, verbose_name='Tipos de espacios')
-	activos = models.IntegerField('Años activo en innovación de políticas', 
+    nombre = models.CharField('Nombre del espacio', max_length=200)
+    tipos = models.ForeignKey(TipoEspacio, verbose_name='Tipos de espacios')
+    activos = models.IntegerField('Años activo en innovación de políticas', 
                                   choices=((1, '2013'),(2, '2014'),(3, '2015'),
                                            (4, '2016'),))
-	tiempo_formado = models.IntegerField('Años de haber formado en espacio')
-	nombre_contacto = models.CharField('Nombre del contacto', max_length=200, null=True, blank=True)
-	celular_contacto = models.CharField(max_length=50, null=True, blank=True)
-	correo_contacto = models.EmailField(null=True, blank=True)
-	zona = models.IntegerField(choices=((1, 'Seca'),(2, 'Alta'),(3, 'Húmeda'),))
-	cobertura = models.IntegerField(choices=CHOICE_COBERTURA)
-	departamento_influye = models.ManyToManyField(Departamento)
-	municipios_influye = models.ManyToManyField(Municipio)
-	numero_entidades = models.IntegerField('Número de entidades (actores y organizaciones) que conforman el espacio') 
-	papel = models.ManyToManyField(PapelSimas, verbose_name=u'Papel de SIMAS')
-	temas = models.ManyToManyField(TemasIncidencia, verbose_name=u'Temas principales de incidencia')
+    tiempo_formado = models.IntegerField('Años de haber formado en espacio')
+    nombre_contacto = models.CharField('Nombre del contacto', max_length=200, null=True, blank=True)
+    celular_contacto = models.CharField(max_length=50, null=True, blank=True)
+    correo_contacto = models.EmailField(null=True, blank=True)
+    zona = models.IntegerField(choices=((1, 'Seca'),(2, 'Alta'),(3, 'Húmeda'),))
+    cobertura = models.IntegerField(choices=CHOICE_COBERTURA)
+    departamento_influye = models.ManyToManyField(Departamento)
+    municipios_influye = models.ManyToManyField(Municipio)
+    numero_entidades = models.IntegerField('Número de entidades (actores y organizaciones) que conforman el espacio') 
+    papel = models.ManyToManyField(PapelSimas, verbose_name=u'Papel de SIMAS')
+    temas = models.ManyToManyField(TemasIncidencia, verbose_name=u'Temas principales de incidencia')
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Ficha de las Espacios de Innovación Políticas"
+    class Meta:
+        verbose_name_plural = "Ficha de las Espacios de Innovación Políticas"
 
 
 class ActividadEmpresarial(models.Model):
@@ -103,64 +103,72 @@ class FotosInnovacion(models.Model):
 #                       Ficha de Iniciativas de innovación de políticas
 #--------------------------------------------------------------------------------------------
 class TipoIniciativa(models.Model):
-	nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Tipos de iniciativas"
+    class Meta:
+        verbose_name_plural = "Tipos de iniciativas"
 
 class TemasAborda(models.Model):
-	nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Los temas que aborda la iniciativa"
+    class Meta:
+        verbose_name_plural = "Los temas que aborda la iniciativa"
 
 class ActividadIniciativa(models.Model):
-	nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Las actividades que contempla la iniciativa"
+    class Meta:
+        verbose_name_plural = "Las actividades que contempla la iniciativa"
 
 class IniciativaInnovacion(models.Model):
-	fecha = models.DateField('año de la iniciativa')
-	nombre = models.CharField('Nombre de la iniciativa', max_length=200)
-	espacio = models.ForeignKey(EspacioInnovacion)
-	tipo = models.ForeignKey(TipoIniciativa, verbose_name="Tipo de iniciativa")
-	fecha_inicio = models.DateField()
-	fecha_finalizacion = models.DateField()
-	temas = models.ManyToManyField(TemasAborda, null=True, blank=True)
-	actividades = models.ManyToManyField(ActividadIniciativa, null=True, blank=True)
-	problema = models.TextField('El problema', null=True, blank=True)
-	analisis = models.TextField('Análisis de tema', null=True, blank=True)
-	enfoque = models.TextField('Enfoque de la iniciativa', null=True, blank=True)
-	resultado = models.TextField('Resultados esperados', null=True, blank=True)
-	sobre_tierra  = models.TextField('Sobre la defensa de tierra', null=True, blank=True)
-	fomento = models.TextField('Sobre el fomento de producción agroecológica y alimentos sanos', 
-								null=True, blank=True)
-	conservacion = models.TextField('Sobre la conservación de recursos naturales, semilla criolla y biodiversidad',
-								null=True, blank=True)
-	inversion = models.TextField('Sobre la mejora en inversión pública, privada  o acceso a crédito',
-								null=True, blank=True)
-	acceso_mercado = models.TextField('Sobre la mejora en acceso a mercados locales para los alimentos', 
-								null=True, blank=True)
-	comunicacion = models.TextField('Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores', 
-								null=True, blank=True)
-	reduccion = models.TextField('Sobre la reducción de riesgo de los sistemas locales de alimentos', 
-								null=True, blank=True)
+    fecha = models.DateField('año de la iniciativa')
+    nombre = models.CharField('Nombre de la iniciativa', max_length=200)
+    espacio = models.ForeignKey(EspacioInnovacion)
+    tipo = models.ForeignKey(TipoIniciativa, verbose_name="Tipo de iniciativa")
+    fecha_inicio = models.DateField()
+    fecha_finalizacion = models.DateField()
+    temas = models.ManyToManyField(TemasAborda, null=True, blank=True)
+    actividades = models.ManyToManyField(ActividadIniciativa, null=True, blank=True)
+    problema = models.TextField('El problema', null=True, blank=True)
+    analisis = models.TextField('Análisis de tema', null=True, blank=True)
+    enfoque = models.TextField('Enfoque de la iniciativa', null=True, blank=True)
+    resultado = models.TextField('Resultados esperados', null=True, blank=True)
+    sobre_tierra  = models.TextField('Sobre la defensa de tierra', null=True, blank=True)
+    fomento = models.TextField('Sobre el fomento de producción agroecológica y alimentos sanos', 
+                                null=True, blank=True)
+    conservacion = models.TextField('Sobre la conservación de recursos naturales, semilla criolla y biodiversidad',
+                                null=True, blank=True)
+    inversion = models.TextField('Sobre la mejora en inversión pública, privada  o acceso a crédito',
+                                null=True, blank=True)
+    acceso_mercado = models.TextField('Sobre la mejora en acceso a mercados locales para los alimentos', 
+                                null=True, blank=True)
+    comunicacion = models.TextField('Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores', 
+                                null=True, blank=True)
+    reduccion = models.TextField('Sobre la reducción de riesgo de los sistemas locales de alimentos', 
+                                null=True, blank=True)
 
-	def __unicode__(self):
-		return self.nombre
+    def __unicode__(self):
+        return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Ficha de Iniciativas de innovación de políticas"
+    def color_completo(self):
+        if not self.resultado and not self.reduccion:
+            return False
+        else:
+            return True
+    color_completo.boolean = True
+    color_completo.short_description = 'Ficha completa'
+
+    class Meta:
+        verbose_name_plural = "Ficha de Iniciativas de innovación de políticas"
 
 class FotosIniciativa(models.Model):
     iniciativa = models.ForeignKey(IniciativaInnovacion)

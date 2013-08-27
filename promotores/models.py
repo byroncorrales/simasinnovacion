@@ -218,6 +218,14 @@ class PracticasProductivas(models.Model):
     def save(self):
         self.anio = self.fecha_prueba.year
         super(PracticasProductivas, self).save()
+
+    def color_completo(self):
+        if not self.resultados and not self.costo:
+            return False
+        else:
+            return True
+    color_completo.boolean = True
+    color_completo.short_description = 'Ficha completa'
         
     def __unicode__(self):
         return u'%s' % (self.nombre_prueba)
