@@ -8,16 +8,24 @@
 
       $(document).ready(function() {
        
-        var mapOptions = {
-          center: new google.maps.LatLng(12.877, -85.001),
-          zoom: 7,
-          mapTypeControlOptions: {
-              mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-          },
-          scrollwheel: false
-        }
-        var map = new google.maps.Map(document.getElementById('map'),
-                                      mapOptions);
+       var styles = [{"featureType": "landscape","stylers": [{"hue": "#FFA800"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "road.highway","stylers": [{"hue": "#FF0300"},{"saturation": -100},{"lightness": 61.39999999999998},{"gamma": 1}]},{"featureType": "road.arterial","stylers": [{"hue": "#FBFF00"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "road.local","stylers": [{"hue": "#00FFFD"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "water","stylers": [{"hue": "#0094FF"},{"saturation": 39.39393939393935},{"lightness": -12.70588235294116},{"gamma": 1}]},{"featureType": "poi","stylers": [{"hue": "#9FFF00"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]}]
+
+      var styledMap = new google.maps.StyledMapType(styles,
+      {name: "Styled Map"});
+
+
+      var mapOptions = {
+            center: new google.maps.LatLng(12.877, -85.001),
+            zoom: 7,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+            }
+          }
+          var map = new google.maps.Map(document.getElementById('map'),
+                                        mapOptions);
+
+          map.mapTypes.set('map_style', styledMap);
+          map.setMapTypeId('map_style');
 
         $.getJSON('/ver_mapa_completo_index/', function(data){
             $.each(data, function(i, elemento){
@@ -85,9 +93,9 @@
         <div class="large-3 small-6 columns">
           <div class="elem-apps">
               <div class="elem-tittle">
-                  <h3>Monitoreo  de Innovacion</h3>
+                  <h3>Monitoreo  de Innovación</h3>
               </div>
-              <div class-="elem-figura">
+              <div class="elem-figura">
                   <img width="150" height="150" src="http://placehold.it/400x100&text=Logo" alt="">
               </div>
           </div>
@@ -98,7 +106,7 @@
               <div class="elem-tittle">
                   <h3>Monitores familias rurales</h3>
               </div>
-              <div class-="elem-figura">
+              <div class="elem-figura">
                   <img width="150" height="150" src="http://placehold.it/400x100&text=Logo" alt="">
               </div>
           </div>
@@ -109,7 +117,7 @@
               <div class="elem-tittle">
                   <h3>Monitoreo de actividades</h3>
               </div>
-              <div class-="elem-figura">
+              <div class="elem-figura">
                   <img width="150" height="150" src="http://placehold.it/400x100&text=Logo" alt="">
               </div>
           </div>
@@ -118,9 +126,9 @@
         <div class="large-3 small-6 columns">
           <div class="elem-apps">
               <div class="elem-tittle">
-                  <h3>Evalaucion de involucramiento</h3>
+                  <h3>Evaluación de involucramiento</h3>
               </div>
-              <div class-="elem-figura">
+              <div class="elem-figura">
                   <img width="150" height="150" src="http://placehold.it/400x100&text=Logo" alt="">
               </div>
           </div>
