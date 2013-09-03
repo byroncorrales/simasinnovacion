@@ -70,6 +70,12 @@ class EspacioInnovacion(models.Model):
     papel = models.ManyToManyField(PapelSimas, verbose_name=u'Papel de SIMAS')
     temas = models.ManyToManyField(TemasIncidencia, verbose_name=u'Temas principales de incidencia')
 
+    identificador = models.IntegerField(editable=False, null=True, blank=True)
+
+    def save(self):
+        self.identificador = 3
+        super(EspacioInnovacion, self).save()
+
     def __unicode__(self):
         return self.nombre
 

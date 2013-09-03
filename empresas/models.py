@@ -53,6 +53,12 @@ class Empresas(models.Model):
     organizacion_civil = models.ForeignKey(OrganizacionCivil,
                          verbose_name=u'Nombre Organización de sociedad civil que apoya')
 
+    identificador = models.IntegerField(editable=False, null=True, blank=True)
+
+    def save(self):
+        self.identificador = 2
+        super(Empresas, self).save()
+
     def __unicode__(self):
         return self.nombre
 
