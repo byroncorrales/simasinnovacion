@@ -67,6 +67,7 @@ def mapa_completo_empresa(request):
         for objeto in params:
             dicc = dict(nombre=objeto.nombre, 
                         id=objeto.id,
+                        identificador=objeto.identificador,
                         lon=float(objeto.gps.longitude), 
                         lat=float(objeto.gps.latitude),
                         )

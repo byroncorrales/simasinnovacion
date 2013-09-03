@@ -30,19 +30,20 @@ $(document).ready(function() {
           map.setMapTypeId('map_style');
 
           //comineza para mostrar mapa
-          $.getJSON('/ver_mapa_completo/', function(data){
+          $.getJSON('/mapa_completo_espacios/', function(data){
               $.each(data, function(i, elemento){
+                console.log(elemento);
                   var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
                   var marker = new google.maps.Marker({
                       position: latlng,
                       map: map,
                       name: elemento.nombre,
                       desc: elemento.id,
-                      //icon: '/files/img/fruits.png' 
+                      icon: '/static/img/'+elemento.identificador+'.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/promotor/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/promotor/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><a href="/espacio/'+ elemento.id +'" class="verde">' + elemento.nombre +  
+                              '<br><a href="/espacio/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,

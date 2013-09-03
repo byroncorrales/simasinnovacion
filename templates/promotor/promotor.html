@@ -38,7 +38,7 @@ $(document).ready(function() {
 	                  map: map,
 	                  name: elemento.nombre,
 	                  desc: elemento.id,
-	                  //icon: '/files/img/fruits.png' 
+	                  icon: '/static/img/'+ elemento.identificador + '.png' 
 	              });
 	              google.maps.event.addListener(marker, "click", function() {
 	               var html = '<b><a href="/promotor/'+ elemento.id +'" class="verde">' + elemento.nombre +  

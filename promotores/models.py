@@ -143,6 +143,12 @@ class Promotor(models.Model):
     producto_procesado = models.ManyToManyField(ProductoProcesado)
     mercado_accede = models.ManyToManyField(MercadoAcceso)
 
+    identificador = models.IntegerField(editable=False, null=True, blank=True)
+
+    def save(self):
+        self.identificador = 1
+        super(Promotor, self).save()
+
     def __unicode__(self):
         return u'%s' % (self.nombre)
 
@@ -214,12 +220,6 @@ class PracticasProductivas(models.Model):
 
     #campo oculto
     anio = models.IntegerField(editable=False, null=True, blank=True)
-    identificador = models.IntegerField(editable=False, null=True, blank=True)
-
-    def save(self):
-        self.anio = self.fecha_prueba.year
-        self.identificador = 1
-        super(PracticasProductivas, self).save()
 
     def color_completo(self):
         if not self.resultados and not self.costo:

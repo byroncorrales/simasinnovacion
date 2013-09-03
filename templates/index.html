@@ -17,6 +17,7 @@
       var mapOptions = {
             center: new google.maps.LatLng(12.877, -85.001),
             zoom: 7,
+            scrollwheel: false,
             mapTypeControlOptions: {
                 mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
             }
@@ -35,7 +36,7 @@
                     map: map,
                     name: elemento.nombre,
                     desc: elemento.id,
-                    //icon: '/files/img/fruits.png' 
+                    icon: '/static/img/'+elemento.identificador+'.png' 
                 });
                 google.maps.event.addListener(marker, "click", function() {
                  var html = '<a href="/promotor/'+ elemento.id +'" class="">'+ elemento.nombre +'</a>';
@@ -43,7 +44,7 @@
                             content: html,
                             zIndex: 999,
                   });
-                  infowindow.open(map, this);
+                  //infowindow.open(map, this);
                   });
             });
         });
@@ -61,7 +62,7 @@
 
       <div class="hide-for-small">
         <div id="featured">
-             <div id="map" style="width: 980px; height: 400px;"></div>
+             <div id="map" style="width: 980px; height: 450px;"></div>
              <img src="{% static 'img/shadow3.png' %}" alt="mapa">
           </div>
         </div>

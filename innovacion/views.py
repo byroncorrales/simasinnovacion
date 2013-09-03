@@ -5,6 +5,7 @@ from .models import EspacioInnovacion, IniciativaInnovacion
 from .forms import EspacioForm
 import json
 from django.http import HttpResponse
+from lugar.models import *
 
 def _queryset_filtrado(request):
     params = {}
@@ -45,8 +46,32 @@ def espacio_index(request, template="innovacion/innovacion.html"):
     else:
         con = ''
     
+    for obj in EspacioInnovacion.objects.all():
+        for obj2 in obj.municipios_influye.all():
+            print obj2
+            print obj2.latitud
+            print obj2.longitud
+            
+
     return render(request, template, {'form':form,
                                       'lista_espacio':con})
+
+def mapa_completo_espacios(request):
+    if request.is_ajax():
+        lista = []
+        dicc = ''
+        for obj in EspacioInnovacion.objects.all():
+            for objeto in obj.municipios_influye.all():
+                dicc = dict(nombre=obj.nombre, 
+                            id=obj.id,
+                            identificador=obj.identificador,
+                            lon=float(objeto.longitud), 
+                            lat=float(objeto.latitud),
+                        )
+                lista.append(dicc)
+
+        serializado = json.dumps(lista)
+        return HttpResponse(serializado, mimetype='application/json')
 
 def espacio_pagina(request, id, template="innovacion/ficha_espacio.html"):
     espacio = get_object_or_404(EspacioInnovacion, id=id)

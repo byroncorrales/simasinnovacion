@@ -2,6 +2,8 @@
 
 from django.shortcuts import render, get_object_or_404
 from .models import Promotor, PracticasProductivas
+from empresas.models import Empresas
+from innovacion.models import EspacioInnovacion
 from .forms import PromotorForm, PracticaForm
 import json
 from django.http import HttpResponse
@@ -66,6 +68,7 @@ def mapa_completo(request):
         for objeto in params:
             dicc = dict(nombre=objeto.nombre, 
                         id=objeto.id,
+                        identificador=objeto.identificador,
                         lon=float(objeto.gps.longitude) , 
                         lat=float(objeto.gps.latitude),
                         )
@@ -80,10 +83,29 @@ def mapa_completo_index(request):
         for objeto in Promotor.objects.all():
             dicc = dict(nombre=objeto.nombre, 
                         id=objeto.id,
+                        identificador=objeto.identificador,
                         lon=float(objeto.gps.longitude) , 
                         lat=float(objeto.gps.latitude),
                         )
             lista.append(dicc)
+        for obj in Empresas.objects.all():
+            dicc = dict(nombre=obj.nombre,
+                        id=obj.id,
+                        identificador=obj.identificador,
+                        lon=float(obj.gps.longitude),
+                        lat=float(obj.gps.latitude),
+                        )
+            lista.append(dicc)
+
+        for obj in EspacioInnovacion.objects.all():
+            for objeto in obj.municipios_influye.all():
+                dicc = dict(nombre=obj.nombre, 
+                            id=obj.id,
+                            identificador=obj.identificador,
+                            lon=float(objeto.longitud), 
+                            lat=float(objeto.latitud),
+                        )
+                lista.append(dicc)
 
         serializado = json.dumps(lista)
         return HttpResponse(serializado, mimetype='application/json')

@@ -17,6 +17,8 @@ class ActividadEmpresarialInline(admin.TabularInline):
 	extra = 1
 
 class EspacioInnovacionAdmin(admin.ModelAdmin):
+	filter_horizontal = ('departamento_influye','municipios_influye',
+                        'papel','temas')
 	fieldsets = (
 		(None, {
 			'fields': (('nombre', 'tipos', 'activos','tiempo_formado'),
@@ -25,8 +27,8 @@ class EspacioInnovacionAdmin(admin.ModelAdmin):
                         'municipios_influye','numero_entidades','papel','temas',)
 		}),
 		)
-	inlines = [ActividadEmpresarialInline,IniciativaInnovacionInline,
-				FotosInnovacionInline]
+	inlines = [ActividadEmpresarialInline,FotosInnovacionInline,
+				IniciativaInnovacionInline]
 	list_display = ['nombre','tipos','zona','cobertura']
 	list_filter = ['departamento_influye','papel']
 	search_fields = ['nombre']
