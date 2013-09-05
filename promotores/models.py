@@ -152,6 +152,10 @@ class Promotor(models.Model):
     def __unicode__(self):
         return u'%s' % (self.nombre)
 
+    def get_fotos(self):
+        fotos = FotosPromotor.objects.filter(promotor__id = self.id)
+        return fotos
+
     class Meta:
         verbose_name_plural = 'Ficha de los promotores o promotoras' 
 

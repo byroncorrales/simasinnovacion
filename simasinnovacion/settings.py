@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'smart_selects',
     'geoposition',
     'south',
+    'sorl.thumbnail',
 )
 
 # A sample logging configuration. The only tangible logging

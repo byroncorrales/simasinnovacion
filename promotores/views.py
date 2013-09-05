@@ -77,6 +77,8 @@ def mapa_completo(request):
         serializado = json.dumps(lista)
         return HttpResponse(serializado, mimetype='application/json')
 
+#Esta mapa es el de la pagina principal al inicio del sistema
+
 def mapa_completo_index(request):
     if request.is_ajax():
         lista = []

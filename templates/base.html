@@ -54,7 +54,7 @@
 	('__proto__' in {} ? '/static/js/vendor/zepto' : '/static/js/vendor/jquery') + 
 	'.js><\/script>') 
 </script> 
-
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="/static/js/foundation.min.js"></script>
   <!--
   
@@ -95,6 +95,28 @@
   <script>
     $(document).foundation();
   </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+
+        $(".fancybox-effects-d").fancybox({
+                padding: 0,
+
+                openEffect : 'elastic',
+                openSpeed  : 150,
+
+                closeEffect : 'elastic',
+                closeSpeed  : 150,
+
+                closeClick : true,
+
+                helpers : {
+                    overlay : null
+                }
+            });
+
+    });
+</script>
 {% block extra_js %}{% endblock extra_js %}
 
 </body>

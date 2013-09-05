@@ -3,9 +3,31 @@
 	{{promotor.nombre}}
 {% endblock title %}
 
+{% block extra_js %}
+<link rel="stylesheet" href="{{STATIC_URL}}css/jquery.fancybox.css" >
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.pack.js"></script>
+{% endblock extra_js %}
+
+{% load thumbnail %}
+
 {% block contenido %}
 <div class="row">
 	<div class="large-12 column">
+		{% if promotor.get_fotos %}
+			<div class="gallery row">
+				<div class="showcase large-4 columns">
+	        		{% for obj in promotor.get_fotos %}
+	        			{% thumbnail obj.foto "85x90" crop="10%" as img%}
+	        			<img src="/media/{{obj.foto}}">
+	        			{{img}}
+            			<img src="/media/{{img}}">
+            			<div class="th"><a href="#">{{obj.nombre}}</a></div> 
+          				{% endthumbnail %}
+	        		{% endfor %}
+    			</div>
+			</div>
+		{% endif %} <br>
 		nombre promotor: 
 		{{promotor.nombre}} <br>
 		sexo: 

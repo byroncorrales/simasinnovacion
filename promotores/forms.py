@@ -22,7 +22,6 @@ def get_anios():
     return list(set(years))
 
 class CustomChoiceField(forms.ChoiceField):
-
     def __init__(self, *args, **kwargs):
         super(CustomChoiceField, self).__init__(*args, **kwargs)
         self.choices.insert(0, ('', 'Año'))

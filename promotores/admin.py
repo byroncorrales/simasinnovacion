@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import *
+from sorl.thumbnail.admin import AdminImageMixin
 
-class FotosPromotorInline(admin.TabularInline):
+class FotosPromotorInline(AdminImageMixin, admin.TabularInline):
     model = FotosPromotor
     extra = 1
 
