@@ -79,6 +79,10 @@ class EspacioInnovacion(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def get_fotos(self):
+        fotos = FotosInnovacion.objects.filter(espacio__id = self.id)
+        return fotos
+
     class Meta:
         verbose_name_plural = "Ficha de las Espacios de Innovación Políticas"
 
@@ -164,6 +168,10 @@ class IniciativaInnovacion(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
+    def get_fotos(self):
+        fotos = FotosIniciativa.objects.filter(iniciativa__id = self.id)
+        return fotos
 
     def color_completo(self):
         if not self.resultado and not self.reduccion:

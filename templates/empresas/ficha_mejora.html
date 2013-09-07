@@ -1,80 +1,126 @@
 {% extends "base.html" %}
 {% block title %}
-	{{mejora.nombre_mejora}}
+    {{mejora.nombre_mejora}}
 {% endblock title %}
+
+{% load thumbnail %}
 
 {% block contenido %}
 <div class="row">
-	<div class="large-12 column">
-		nombre de la mejora:
-		{{mejora.nombre_mejora}} <br>
-		año: 
-		{{mejora.fecha_prueba}} <br>
-		tema:
-		{{mejora.tema_prueba}} <br>
-		rubro:
-		{{mejora.rubro_prueba}} <br>
-		zona:
-		{{mejora.empresa.get_zona_display}} <br>
-		departamento:
-		{{mejora.empresa.departamento}} <br>
-		municipio:
-		{{mejora.empresa.municipio}} <br>
-		empresa: 
-		<a href="/empresa/{{mejora.empresa.id}}/">{{mejora.empresa.nombre}} </a> <br><br>
-		tipo de empresa:
-		{{mejora.empresa.tipo}} <br>
-		mercado:
-		{{mejora.mercado_prueba}} <br>
-		LA LOGICA <br><br>
-		problema:
-		{{mejora.problema}} <br>
-		analisis de causa:
-		{{mejora.causa}} <br>
-		opciones a mejorar:
-		{{mejora.mejorar}} <br>
-		resultados esperados:
-		{{mejora.resultados}} <br> <br>
-		RESULTADOS <br>
-		mejora de volumen de acopio:
-		{{mejora.volumen_acopio}} <br>
-		mejora en procesamiento y calidad:
-		{{mejora.mejora_proce_calidad}} <br>
-		Mejora en presentacion y acceso a mercado:
-		{{mejora.presentacion_acceso}} <br>
-		mercado de inversion acceso a credito:
-		{{mejora.inversion_credito}} <br>
-		mejora de precio y condicion de comercialización:
-		{{mejora.mejora_precio}} <br>
-		Mejora en ingresos:
-		{{mejora.mejora_ingreso}} <br>
-		Reducción de riesgo y costo:
-		{{mejora.reduccion_costo}} <br> <br>
-		
-		Dias de campos: <br> <br>
+    <div class="large-12 column">
+        
+        {% if mejora.get_fotos %}
+            <div class="gallery">
+                <div class="showcase large-2 columns">
+                    {% for obj in mejora.get_fotos %}
+                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        <img class="th" src="/media/{{img}}">
+                        <div><a href="#">{{obj.nombre}}</a></div>  <br>
+                        {% endthumbnail %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %} <br>
 
-		<table>
-		  <thead>
-		    <tr>
-		      <th>Fecha</th>
-		      <th>Hombre</th>
-		      <th>Mujeres</th>
-		      <th width="200">Comentario</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		   {% for lista in mejora.diascampoempresa_set.all  %}    
-		    <tr>
-		      <td>{{lista.fechas}}</td>
-		      <td>{{lista.hombres}}</td>
-		      <td>{{lista.mujeres}}</td>
-		      <td>{{lista.comentario}}</td>
-		    </tr>
-		    {% endfor %} 
-		  </tbody>
-		</table>
+        nombre de la mejora:
+        {{mejora.nombre_mejora}} <br>
+        año: 
+        {{mejora.fecha_prueba}} <br>
+        tema:
+        {{mejora.tema_prueba}} <br>
+        rubro:
+        {{mejora.rubro_prueba}} <br>
+        zona:
+        {{mejora.empresa.get_zona_display}} <br>
+        departamento:
+        {{mejora.empresa.departamento}} <br>
+        municipio:
+        {{mejora.empresa.municipio}} <br>
+        empresa: 
+        <a href="/empresa/{{mejora.empresa.id}}/">{{mejora.empresa.nombre}} </a> <br><br>
+        tipo de empresa:
+        {{mejora.empresa.tipo}} <br>
+        mercado:
+        {{mejora.mercado_prueba}} <br>
+        {% if  mejora.problema%}
+             LA LOGICA <br><br>
+        problema:
+        {{mejora.problema}} <br>
+        {% else %}
+            aun no tiene logica ingresada
+        {% endif %}
+        {% if mejora.causa %}
+            analisis de causa:
+        {{mejora.causa}} <br>
+        {% endif %}
+        {% if mejora.mejorar %}
+            opciones a mejorar:
+        {{mejora.mejorar}} <br>
+        {% endif %}
+        {% if  mejora.resultados%}
+            resultados esperados:
+        {{mejora.resultados}} <br> <br>
+        {% endif %}
+        {% if  mejora.volumen_acopio%}
+            RESULTADOS <br>
+        mejora de volumen de acopio:
+        {{mejora.volumen_acopio}} <br>
+        {% else %}
+            <p>Aun no Ingresa resultados</p>
+        {% endif %}
+        {% if mejora.mejora_proce_calidad %}
+             mejora en procesamiento y calidad:
+        {{mejora.mejora_proce_calidad}} <br>
+        {% endif %}
+        {% if  mejora.presentacion_acceso%}
+            Mejora en presentacion y acceso a mercado:
+        {{mejora.presentacion_acceso}} <br>
+        {% endif %}
+        {% if  mejora.inversion_credito%}
+            mercado de inversion acceso a credito:
+        {{mejora.inversion_credito}} <br>
+        {% endif %}
+        {% if  mejora.mejora_precio%}
+             mejora de precio y condicion de comercialización:
+        {{mejora.mejora_precio}} <br>
+        {% endif %}
+        {% if  mejora.mejora_ingreso%}
+            Mejora en ingresos:
+        {{mejora.mejora_ingreso}} <br>
+        {% endif %}
+        {% if  mejora.reduccion_costo%}
+            Reducción de riesgo y costo:
+        {{mejora.reduccion_costo}} <br> <br>
+        {% endif %}
+        
+        {% if  mejora.diascampoempresa_set.all%}
+             Dias de campos: <br> <br>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Hombre</th>
+              <th>Mujeres</th>
+              <th width="200">Comentario</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in mejora.diascampoempresa_set.all  %}    
+            <tr>
+              <td>{{lista.fechas}}</td>
+              <td>{{lista.hombres}}</td>
+              <td>{{lista.mujeres}}</td>
+              <td>{{lista.comentario}}</td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+        {% else %}
+            <p>Aun no tienen dias de campo</p>
+        {% endif %}
 
 
-	</div>
+    </div>
 </div>
 {%endblock%}

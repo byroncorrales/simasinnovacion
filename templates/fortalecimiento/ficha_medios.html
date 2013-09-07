@@ -3,30 +3,47 @@
     {{medios.nombre}}
 {% endblock title %}
 
+{% load thumbnail %}
+
 {% block contenido %}
 <div class="row">
-	<div class="large-12 column">
-		Nombre de medio:
-		{{medios.nombre}} <br>
-		Año:
-		{{medios.fecha}} <br>
-		Tipo de medio:
-		{% for obj in medios.tipo_medio.all%}
+  <div class="large-12 column">
+
+        {% if medios.get_fotos %}
+            <div class="gallery">
+                <div class="showcase large-2 columns">
+                    {% for obj in medios.get_fotos %}
+                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        <img class="th" src="/media/{{img}}">
+                        <div><a href="#">{{obj.nombre}}</a></div>  <br>
+                        {% endthumbnail %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %} <br>
+
+    Nombre de medio:
+    {{medios.nombre}} <br>
+    Año:
+    {{medios.fecha}} <br>
+    Tipo de medio:
+    {% for obj in medios.tipo_medio.all%}
             {{obj}},
         {%endfor%}<br>
-		Temas:
-		{% for obj in medios.temas.all%}
-          	{{obj}},
+    Temas:
+    {% for obj in medios.temas.all%}
+            {{obj}},
         {%endfor%} <br>
-		fecha de inicio:
-		{{medios.fecha_inicio}} <br>
-		fecha de finalización:
-		{{medios.fecha_finalizacion}} <br>
-		Objetivos:
-		{{medios.objetivos}} <br>
+    fecha de inicio:
+    {{medios.fecha_inicio}} <br>
+    fecha de finalización:
+    {{medios.fecha_finalizacion}} <br>
+    Objetivos:
+    {{medios.objetivos}} <br>
 
-		ACTORES BENEFICIADOS
-		<table>
+    {% if  medios.participantes_set.all %}
+        ACTORES BENEFICIADOS
+    <table>
           <thead>
             <tr>
               <th>Grupo meta</th>
@@ -44,7 +61,11 @@
             {% endfor %} 
           </tbody>
         </table>
-        <table>
+            {% else %}
+                <p>Aun no existen ingresados participantes</p>
+            {% endif %}
+      {% if  medios.nivelconocimiento_set.all%}
+          <table>
           <thead>
             <tr>
               <th>Grupo meta</th>
@@ -62,8 +83,10 @@
             {% endfor %} 
           </tbody>
         </table>
+      {% else %}
+          <p>Aun no hay ingresado niveles de conocimiento</p>
+      {% endif %}
 
-
-	</div>
+  </div>
 </div>
 {%endblock%}

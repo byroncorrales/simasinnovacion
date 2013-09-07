@@ -59,6 +59,10 @@ class MediosFortalecimiento(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def get_fotos(self):
+        fotos = FotosMedios.objects.filter(medios__id = self.id)
+        return fotos
+
     def get_medios(self):
         return "\n,".join([medio.nombre for medio in self.tipo_medio.all()])
     get_medios.short_description = "Tipos de medios"
