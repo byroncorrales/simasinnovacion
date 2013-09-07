@@ -236,6 +236,10 @@ class PracticasProductivas(models.Model):
     def __unicode__(self):
         return u'%s' % (self.nombre_prueba)
 
+    def get_fotos(self):
+        fotos = FotosPrueba.objects.filter(practicas__id = self.id)
+        return fotos
+
     class Meta:
         verbose_name_plural = "Ficha de Pruebas de Prácticas Productivas"
 

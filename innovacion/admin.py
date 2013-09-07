@@ -27,8 +27,8 @@ class EspacioInnovacionAdmin(admin.ModelAdmin):
                         'municipios_influye','numero_entidades','papel','temas',)
 		}),
 		)
-	inlines = [ActividadEmpresarialInline,FotosInnovacionInline,
-				IniciativaInnovacionInline]
+	inlines = [ActividadEmpresarialInline,IniciativaInnovacionInline,
+                                FotosInnovacionInline,]
 	list_display = ['nombre','tipos','zona','cobertura']
 	list_filter = ['departamento_influye','papel']
 	search_fields = ['nombre']

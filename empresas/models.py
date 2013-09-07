@@ -62,6 +62,10 @@ class Empresas(models.Model):
     def __unicode__(self):
         return self.nombre
 
+    def get_fotos(self):
+        fotos = FotosActividadEmpresarial.objects.filter(empresa__id = self.id)
+        return fotos
+
     class Meta:
         verbose_name_plural = "Ficha de las Empresas rurales"
 
@@ -224,6 +228,10 @@ class MejoraEmpresas(models.Model):
 
     def __unicode__(self):
         return u'%s' % (self.nombre_mejora)
+
+    def get_fotos(self):
+        fotos = FotosMejoraEmpresa.objects.filter(mejora_empresa__id = self.id)
+        return fotos
 
     class Meta:
         verbose_name_plural = "Ficha de Mejoras de Prácticas Empresariales"

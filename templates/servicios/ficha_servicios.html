@@ -3,9 +3,49 @@
     {{servicio.nombre}}
 {% endblock title %}
 
+{% load thumbnail %}
+
+{% block extra_js %}
+
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.raty.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+   
+    $('span[id^="star"]').each(function(){
+    var tid = $(this).attr('rel'); 
+     $(this).raty({
+        readOnly: true,
+        target : tid ,
+        score: function() {
+          return $(this).attr('data-score');
+        },
+        starOff : '{{STATIC_URL}}img/star-off.png', 
+        starOn : '{{STATIC_URL}}img/star-on.png'     
+
+      }) 
+    }) 
+
+    });
+</script>
+{% endblock extra_js %}
+
 {% block contenido %}
 <div class="row">
     <div class="large-12 column">
+
+      {% if servicio.get_fotos %}
+            <div class="gallery">
+                <div class="showcase large-2 columns">
+                    {% for obj in servicio.get_fotos %}
+                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        <img class="th" src="/media/{{img}}">
+                        <div><a href="#">{{obj.nombre}}</a></div>  <br>
+                        {% endthumbnail %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %} <br>
+
         nombre de servicio:
         {{servicio.nombre}} <br>
         objetivos:
@@ -44,7 +84,7 @@
            {% for lista in servicio.resultadoevaluacion_set.all %}    
             <tr>
               <td>{{lista.evaluacion}}</td>
-              <td>{{lista.escala}}</td>
+              <td><span id="star_{{lista.escala}}" data-score="{{lista.escala}}" rel="#hint_{{lista.escala}}" ></span>  <span  id="hint_{{lista.escala}}">   </span>{{lista.escala}}</td>
             </tr>
             {% endfor %} 
           </tbody>

@@ -3,73 +3,89 @@
     {{empresa.nombre}}
 {% endblock title %}
 
+{% load thumbnail %}
+
 {% block contenido %}
 <div class="row">
-	<div class="large-12 column">
-		nombre empresa rural:
-		{{empresa.nombre}} <br>
-		tipo de empresa:
-		{{empresa.tipo}} <br>
-		año activo:
-		{{empresa.activo}} <br>
-		años de haberse formado la empresa:
-		{{empresa.formado_empresa}} <br>
-		{% if empresa.contacto_nombre %}
-			Nombre de la persona para contactar:
-			{{empresa.contacto_nombre}} <br>
-		{% endif %}
-		{% if empresa.contacto_celular %}
-			Celular de la persona para contactar:
-			{{empresa.contacto_celular}} <br>
-		{% endif %}
-		{% if empresa.contacto_correo %}
-			Correo de la persona para contactar:
-			{{empresa.contacto_correo}} <br>
-		{% endif %}
-		zona:
-		{{empresa.get_zona_display}} <br>
-		departamento:
-		{{empresa.departamento}} <br>
-		municipio:
-		{{empresa.municipio}} <br>
-		organizacion que apoya:
-		{{empresa.organiacion_civil}} <br>
-		RUBROS PRINCIPALES:
-		{% for rubros in empresa.rubrosprincipales_set.all %}
-			{{rubros.rubro}},
-		{% empty %}
-			<p>No tiene rubros principales</p>
-		{% endfor %} <br><br>
-		ACTIVIDAD EMPRESARIAL:
-		{% for actividad in empresa.actividadempresarial_set.all %}
-			{{actividad.actividad}},
-		{% empty %}
-			<p>Aun no tienen actividad empresarial</p>
-		{% endfor %} <br> <br>
-		MERCADOS:
-		{% for mercado in empresa.mercadosrubros_set.all %}
-			{{mercado.mercado}},
-		{% empty %}
-			<p>Aun no tiene mercados</p>
-		{% endfor %} <br> <br>
-		COMPRADORES:
-		{% for comprador in empresa.compradoresrubros_set.all %}
-			{{comprador.mercado}},
-		{% empty %}
-			<p>Aun no tiene compradores</p>
-		{% endfor %} <br> <br>
-		CERTIFICACIONES:
-		{% for certificado in empresa.certificacionesrubros_set.all %}
-			{{certificado.certificaciones}},
-		{% empty %}
-			<p>Aun no tienen certificaciones</p>
-		{% endfor %} <br> <br>
-		volumen de venta anual: sumaXD <br> 
-		involucrados: tambien sumaXD <br>
-		{% if empresa.mejoraempresas_set.all %}
-		
-		LISTA DE MEJORAS
-		<table>
+    <div class="large-12 column">
+                
+            {% if empresa.get_fotos %}
+            <div class="gallery">
+                <div class="showcase large-2 columns">
+                    {% for obj in empresa.get_fotos %}
+                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        <img class="th" src="/media/{{img}}">
+                        <div><a href="#">{{obj.nombre}}</a></div>  <br>
+                        {% endthumbnail %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %} <br>
+
+        nombre empresa rural:
+        {{empresa.nombre}} <br>
+        tipo de empresa:
+        {{empresa.tipo}} <br>
+        año activo:
+        {{empresa.activo}} <br>
+        años de haberse formado la empresa:
+        {{empresa.formado_empresa}} <br>
+        {% if empresa.contacto_nombre %}
+            Nombre de la persona para contactar:
+            {{empresa.contacto_nombre}} <br>
+        {% endif %}
+        {% if empresa.contacto_celular %}
+            Celular de la persona para contactar:
+            {{empresa.contacto_celular}} <br>
+        {% endif %}
+        {% if empresa.contacto_correo %}
+            Correo de la persona para contactar:
+            {{empresa.contacto_correo}} <br>
+        {% endif %}
+        zona:
+        {{empresa.get_zona_display}} <br>
+        departamento:
+        {{empresa.departamento}} <br>
+        municipio:
+        {{empresa.municipio}} <br>
+        organizacion que apoya:
+        {{empresa.organiacion_civil}} <br>
+        RUBROS PRINCIPALES:
+        {% for rubros in empresa.rubrosprincipales_set.all %}
+            {{rubros.rubro}},
+        {% empty %}
+            <p>No tiene rubros principales</p>
+        {% endfor %} <br><br>
+        ACTIVIDAD EMPRESARIAL:
+        {% for actividad in empresa.actividadempresarial_set.all %}
+            {{actividad.actividad}},
+        {% empty %}
+            <p>Aun no tienen actividad empresarial</p>
+        {% endfor %} <br> <br>
+        MERCADOS:
+        {% for mercado in empresa.mercadosrubros_set.all %}
+            {{mercado.mercado}},
+        {% empty %}
+            <p>Aun no tiene mercados</p>
+        {% endfor %} <br> <br>
+        COMPRADORES:
+        {% for comprador in empresa.compradoresrubros_set.all %}
+            {{comprador.mercado}},
+        {% empty %}
+            <p>Aun no tiene compradores</p>
+        {% endfor %} <br> <br>
+        CERTIFICACIONES:
+        {% for certificado in empresa.certificacionesrubros_set.all %}
+            {{certificado.certificaciones}},
+        {% empty %}
+            <p>Aun no tienen certificaciones</p>
+        {% endfor %} <br> <br>
+        volumen de venta anual: sumaXD <br> 
+        involucrados: tambien sumaXD <br>
+        {% if empresa.mejoraempresas_set.all %}
+        
+        LISTA DE MEJORAS
+        <table>
           <thead>
             <tr>
               <th width="200">Nombre de mejora</th>
@@ -93,8 +109,8 @@
             {% endfor %} 
           </tbody>
         </table>
-		{% endif %}
-	</div>
+        {% endif %}
+    </div>
 </div>
     
 {% endblock contenido %}

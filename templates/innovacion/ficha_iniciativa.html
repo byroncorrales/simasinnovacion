@@ -3,9 +3,26 @@
     {{iniciativa.nombre}}
 {% endblock title %}
 
+{% load thumbnail %}
+
 {% block contenido %}
 <div class="row">
     <div class="large-12 column">
+        
+        {% if iniciativa.get_fotos %}
+            <div class="gallery">
+                <div class="showcase large-2 columns">
+                    {% for obj in iniciativa.get_fotos %}
+                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        <img class="th" src="/media/{{img}}">
+                        <div><a href="#">{{obj.nombre}}</a></div>  <br>
+                        {% endthumbnail %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %} <br>
+
+
         nombre de la prueba:
         {{iniciativa.nombre}} <br>
         año:
@@ -19,40 +36,70 @@
         {{iniciativa.fecha_inicio}} <br>
         fecha de finalización:
         {{iniciativa.fecha_finalizacion}}<br>
-        temas que aborda:
+        {% if  iniciativa.temas.all%}
+            temas que aborda:
         {% for obj in iniciativa.temas.all %}
             {{obj}} <br>
-        {% endfor %}
-        actividades:
+        {% endfor %} <br>
+        {% endif %}
+        {% if  iniciativa.actividades.all%}
+            actividades:
         {% for obj in iniciativa.actividades.all %}
             {{obj}} <br>
         {% endfor %}
-        <h2>La logica de la iniciativa</h2>
+        {% endif %}
+        {% if  iniciativa.problema%}
+            <h4>La logica de la iniciativa</h4>
         <br><br>
         el problema:
         {{iniciativa.problema}} <br>
-        Analisis del tema:
+        {% else %}
+            <p>No hay logicas de iniciativas</p>
+        {% endif %}
+        {% if iniciativa.analisis %}
+            Analisis del tema:
         {{iniciativa.analisis}} <br>
-        Enfoque de la iniciativa:
+        {% endif %}
+        {% if  iniciativa.enfoque%}
+            Enfoque de la iniciativa:
         {{iniciativa.enfoque}} <br>
-        Resultados esperados:
+        {% endif %}
+        {% if  iniciativa.resultado%}
+            Resultados esperados:
         {{iniciativa.resultado}} <br>
-         <h2>Resultados obtenidos de la iniciativa</h2><br>
-         Sobre defensa de la tierra:
-        {{iniciativa.sobre_tierra}} <br>
-        Sobre el fomento de producción agroecológica y alimentos sanos:
+        {% endif %}
+        {% if  iniciativa.sobre_tierra%}
+             <h4>Resultados obtenidos de la iniciativa</h4><br>
+            Sobre defensa de la tierra:
+            {{iniciativa.sobre_tierra}} <br>
+        {% else %}
+            <p>Aun no hay resultados obtenidos de la iniciativa</p>
+        {% endif %}
+        {% if  iniciativa.fomento%}
+            Sobre el fomento de producción agroecológica y alimentos sanos:
         {{iniciativa.fomento}} <br>
-        Sobre la conservación de recursos naturales, semilla criolla y biodiversidad:
+        {% endif %}
+        {% if iniciativa.conservacion %}
+            Sobre la conservación de recursos naturales, semilla criolla y biodiversidad:
         {{iniciativa.conservacion}} <br>
-        Sobre la mejora en inversión pública, privada  o acceso a crédito
+        {% endif %}
+        {% if  iniciativa.inversion%}
+             Sobre la mejora en inversión pública, privada  o acceso a crédito
         {{iniciativa.inversion}} <br>
-        Sobre la mejora en acceso a mercados locales para los alimentos
+        {% endif %}
+       {% if  iniciativa.acceso_mercado%}
+            Sobre la mejora en acceso a mercados locales para los alimentos
         {{iniciativa.acceso_mercado}} <br>
-        Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores
+       {% endif %}
+       {% if  iniciativa.comunicacion%}
+           Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores
         {{iniciativa.comunicacion}} <br>
-        Sobre la reducción de riesgo de los sistemas locales de alimentos
-        {{iniciativa.reduccion}} <br>
-
+       {% endif %}
+        {% if iniciativa.reduccion %}
+             Sobre la reducción de riesgo de los sistemas locales de alimentos
+            {{iniciativa.reduccion}} <br>
+        {% endif %}
+       
     </div>
 </div>
 {% endblock%}

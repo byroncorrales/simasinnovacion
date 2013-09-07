@@ -14,6 +14,7 @@ class FotosMediosInline(admin.TabularInline):
 	extra = 1
 
 class MediosFortalecimientoAdmin(admin.ModelAdmin):
+	filter_horizontal = ['tipo_medio','temas','grupos_metas','papel_simas']
 	inlines = [ParticipantesInline,NivelConocimientoInline,
 				FotosMediosInline]
 	list_display = ['nombre','get_medios','get_temas']
