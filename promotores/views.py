@@ -2,11 +2,25 @@
 
 from django.shortcuts import render, get_object_or_404
 from .models import Promotor, PracticasProductivas
-from empresas.models import Empresas
-from innovacion.models import EspacioInnovacion
+from empresas.models import Empresas, MejoraEmpresas
+from innovacion.models import EspacioInnovacion, IniciativaInnovacion
+from fortalecimiento.models import MediosFortalecimiento
+from servicios.models import Servicios 
 from .forms import PromotorForm, PracticaForm
 import json
 from django.http import HttpResponse
+
+def inicio(request, template="inicio.html"):
+    promotores = Promotor.objects.count()
+    practicas = PracticasProductivas.objects.count()
+    empresas = Empresas.objects.count()
+    mejoras_empresa = MejoraEmpresas.objects.count()
+    espacios = EspacioInnovacion.objects.count()
+    iniciativas = IniciativaInnovacion.objects.count()
+    fortalecimientos = MediosFortalecimiento.objects.count()
+    servicios = Servicios.objects.count()
+
+    return render(request, template, locals())
 
 def _queryset_filtrado(request):
     params = {}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block menu %}
+<div class="nine columns">
+        <nav>
+          <ul>
+            <li><a href="/promotores/">Promotores</a></li>
+            <li><a href="/empresas/">Empresas</a></li>
+            <li><a href="/espacios/">Espacios</a></li>
+            <li><a href="/fortalecimiento/">Fortalecimiento</a></li>
+            <li><a href="/servicios/">Servicios</a></li>
+          </ul>
+        </nav>
+</div>
+{% endblock menu %}
+
+{% block contenido %}
+
+<div class="row">
+  <div class="large-12 columns">
+
+        <div class="large-3 columns panel">
+            Promotores: {{promotores}} <br>
+            Practicas productivas: {{practicas}} <br>
+        </div>
+         <div class="large-3 columns panel">
+              Empresas : {{empresas}} <br>
+              Mejoras empresariales: {{mejoras_empresa}} <br>
+         </div>
+       <div class="large-3 columns panel">
+         Espacios: {{espacios}} <br>
+         Iniciativas: {{iniciativas}} <br>
+       </div>
+        <div class="large-3 columns panel">
+         Fortalecimientos: {{fortalecimientos}} <br>
+         Servicios: {{servicios}} <br>
+        </div>
+        
+  </div>
+</div>
+   
+{% endblock contenido %}

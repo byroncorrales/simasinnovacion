@@ -22,23 +22,12 @@
     <header>
     <div class="container">
   
-    <div class="row">
-      <div class="three columns">
-        <a href="/"><img src="{%static 'img/logosimas.png' %}"/></a>
+      <div class="row">
+        <div class="three columns">
+          <a href="/"><img src="{%static 'img/logosimas.png' %}"/></a>
+        </div>
       </div>
-      <div class="nine columns">
-        <nav>
-          <ul>
-            <li><a href="/promotores/">Promotores</a></li>
-            <li><a href="/empresas/">Empresas</a></li>
-            <li><a href="/espacios/">Espacios</a></li>
-            <li><a href="/fortalecimiento/">Fortalecimiento</a></li>
-            <li><a href="/servicios/">Servicios</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  
+        {% block menu %}{% endblock menu %}
     </div>
     </header>
     <!-- End Navigation -->
