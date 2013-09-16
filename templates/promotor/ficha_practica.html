@@ -8,105 +8,137 @@
 {% block contenido %}
 <div class="row">
     <div class="large-12 column">
-        
-        {% if practica.get_fotos %}
-            <div class="gallery row">
-                <div class="showcase large-2 columns">
+
+    <ul class="breadcrumbs">
+
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/inicio/">Indicadores</a></li>
+    <li><a href="/promotores/">Promotores</a></li>
+    <li class="current"><a href="#">{{practica.nombre_prueba}}</a></li>
+
+  </ul>
+
+<div class="section-container vertical-tabs" data-section="vertical-tabs">
+  <section>
+    <p class="title" data-section-title><a href="#">Datos Generales</a></p>
+    <div class="content" data-section-content>
+
+        <div class="row">
+          <div class="large-4 columns">
+      {% if practica.get_fotos %}
+            
                   <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
                     {% for obj in practica.get_fotos %}
                         {% thumbnail obj.foto "150x150" crop="10%" as img%}
                         <li>
                           <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
-                          <div class="orbit-caption">{{obj.nombre}}</div>
                       </li>
                         {% endthumbnail %}
                     {% endfor %}
                     </ul>
-                </div>
-            </div>
-        {% endif %} <br>
 
-        nombre de la prueba:
-        {{practica.nombre_prueba}} <br>
-        año:
-        {{practica.fecha_prueba}} <br>
-        tema:
-        {{practica.tema_prueba}} <br>
-        rubro:
-        {{practica.rubro_prueba}} <br>
-        escala:
-        {{practica.escala_prueba}} <br>
-        {% if practica.promotor.get_zona_display %}
-             zona:
-        {{practica.promotor.get_zona_display}}<br>
-        {% endif %}
-        departamento:
-        {{practica.promotor.departamento}} <br>
-        municipio:
-        {{practica.promotor.municipio}} <br>
-        promotor:
-        <a href="/promotor/{{practica.promotor.id}}">{{practica.promotor.nombre}}</a>
-         <br>
-        tipo de suelo:
-        {{practica.promotor.tipo_suelo}} <br>
-        tipo de clima:
-        {{practica.promotor.get_tipo_clima_display}} <br>
-        {% if  practica.historia%}
-             Historia:
-        {{practica.historia}} <br> <br> <br>
-        {% endif %}
+        {%else%}
+                <p>No tienes imagenes</p>
+        {% endif %} 
+        </div>
+        <div class="large-8 columns">
+            <h6>Nombre de la prueba:</h6>
+            {{practica.nombre_prueba}} 
+            <h6>Año:</h6>
+            {{practica.fecha_prueba}} 
+            <h6>Tema:</h6>
+            {{practica.tema_prueba}} 
+            <h6>Rubro:</h6>
+            {{practica.rubro_prueba}} 
+            <h6>Escala:</h6>
+            {{practica.escala_prueba}} 
+            {% if practica.promotor.get_zona_display %}
+              <h6>Zona:</h6>
+            {{practica.promotor.get_zona_display}}
+            {% endif %}
+            <h6>Departamento:</h6>
+            {{practica.promotor.departamento}} 
+            <h6>Municipio:</h6>
+            {{practica.promotor.municipio}} 
+            <h6>Promotor:</h6>
+            <a href="/promotor/{{practica.promotor.id}}">{{practica.promotor.nombre}}</a>
+             <br>
+            <h6>Tipo de suelo:</h6>
+            {{practica.promotor.tipo_suelo}} 
+            <h6>Tipo de clima:</h6>
+            {{practica.promotor.get_tipo_clima_display}} 
+      </div>
+    </div> {# cierra el row #}
+  </section>
 
+  <section>
+    <p class="title" data-section-title><a href="#">La lógica</a></p>
+    <div class="content" data-section-content>
+      {% if  practica.historia%}
+             <h6>Historia:</h6>
+        {{practica.historia}} 
+        {% endif %}
         {% if practica.problema %}
-             La Logicas: <br> <br>   
-        el  problema:
-        {{practica.problema}} <br>
-
+             La Logicas: <br> 
+        <h6>El  problema:</h6>
+        {{practica.problema}}
         {% else%}
             <p>No tiene logica aun ingresada en la ficha</p>
         {% endif %}
-
         {% if  practica.agroecologico%}
-            analisis agroecologico:
-        {{practica.agroecologico}} <br>
+           <h6>Analisis agroecologico:</h6>
+        {{practica.agroecologico}} 
         {% endif %}
         {% if practica.aprobar %}
-            opciones a probar y razones:
-        {{practica.aprobar}} <br>
+            <h6>Opciones a probar y razones:</h6>
+        {{practica.aprobar}} 
         {% endif %}
         {% if  practica.resultados%}
-            resultados:
-        {{practica.resultados}} <br> <br> <br>
+            <h6>Resultados:</h6>
+        {{practica.resultados}} <br> 
         {% endif %}
+    </div>
+  </section>
+
+  <section>
+    <p class="title" data-section-title><a href="#">Los resultados</a></p>
+    <div class="content" data-section-content>
         {% if  practica.salud_planta%}
-             Los Resulados: <br>
-        salud de las plantas:
+             <h6>Los Resulados: <br></h6>
+        <h6>Salud de las plantas:</h6>
         {{practica.salud_planta}} <br>
         {% else %}
             <p>Aun no tiene ingresados los resultados</p>
         {% endif %}
        {% if  practica.vida_suelo%}
-           vida de suelo:
-        {{practica.vida_suelo}} <br>
+           <h6>vida de suelo:</h6>
+        {{practica.vida_suelo}} 
        {% endif %}
         {% if  practica.prod_rendimiento%}
-             producción y rendimiento:
-        {{practica.prod_rendimiento}} <br>
+             <h6>Producción y rendimiento:</h6>
+        {{practica.prod_rendimiento}} 
         {% endif %}
        {% if  practica.calidad_producto%}
-           calidad del producto:
-        {{practica.calidad_producto}} <br>
+           <h6>Calidad del producto:</h6>
+        {{practica.calidad_producto}}
        {% endif %}
         {% if  practica.plagas%}
-            incidencia de plagas y contral natural:
-        {{practica.plagas}} <br>
+            <h6>Incidencia de plagas y contral natural:</h6>
+        {{practica.plagas}}
         {% endif %}
         {% if practica.costo %}
-            costos:
-        {{practica.costo}} <br> <br>
+            <h6>Costos:</h6>
+        {{practica.costo}} <br>
         {% endif %}
+    </div>
+  </section>
 
-        {% if  practica.diascampoprueba_set.all%}
-             Dias de campos: <br> <br>
+  <section>
+    <p class="title" data-section-title><a href="#">Dias de campos</a></p>
+    <div class="content" data-section-content>
+
+       {% if  practica.diascampoprueba_set.all%}
+            <h6>Dias de campos:</h6>
 
         <table>
           <thead>
@@ -131,7 +163,9 @@
         {% else %}
             <p>No tiene dias de campo</p>
         {% endif %}
-        
+    </div>
+  </section>
+</div> {# fin del tabs #}
 
     </div>
 </div>
