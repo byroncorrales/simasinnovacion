@@ -3,6 +3,41 @@
     {{promotor.nombre}}
 {% endblock title %}
 
+{% block extra_js %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Bosque', {{promotor.bosque}}],
+          ['Potrero con arboles', {{promotor.potrero}}],
+          ['Tacotales', {{promotor.tacotales}}],
+          ['Forestal', {{promotor.forestal}}],
+          ['Cultivos perennes', {{promotor.perennes}}],
+          ['Plantacion para leña', {{promotor.lena}}],
+          ['Cultivos anuales', {{promotor.anuales}}],
+          ['Frutales', {{promotor.frutales}}],
+          ['Potrero abierto', {{promotor.potrero_abierto}}],
+          ['Cultivos patio', {{promotor.patio}}],
+        ]);
+        var options = {'title':'Uso de tierra',
+                       'width':400,
+                       'height':300,
+                       'is3D':true,
+                       'legend': 'bottom',};
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  
+{% endblock extra_js %}
+
 {% load thumbnail %}
 
 {% block contenido %}
@@ -39,6 +74,13 @@
         {% endif %}
           </div>
               <div class="large-8 columns">
+                    <div id="chart_div"></div> 
+              </div>
+        
+      </div> {# cierra el row #}
+        
+        <div class="row">
+          <div class="large-4 columns">
                     <h6>Nombre promotor: </h6>
                     {{promotor.nombre}}
                     <h6>Sexo: </h6>
@@ -47,11 +89,7 @@
                     {{promotor.edad}}
                     
               </div>
-        
-      </div> {# cierra el row #}
-        
-        <div class="row">
-          <div class="large-6 columns">
+          <div class="large-4 columns">
               <h6>Educación:</h6>
                     {{promotor.get_educacion_display}}
               <h6>Contacto: </h6>
@@ -64,7 +102,7 @@
               {{promotor.departamento}}
           </div>
 
-          <div class="large-6 columns">
+          <div class="large-4 columns">
               <h6>Municipio: </h6>
               {{promotor.municipio}}
               <h6>Organización campesina: </h6>
