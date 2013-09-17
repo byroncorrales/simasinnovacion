@@ -28,8 +28,9 @@
         var options = {'title':'Uso de tierra',
                        'width':400,
                        'height':300,
+                       'chartArea': {'width': '100%', 'height': '80%'},
                        'is3D':true,
-                       'legend': 'bottom',};
+                        'legend': {'position': 'bottom'},};
 
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
