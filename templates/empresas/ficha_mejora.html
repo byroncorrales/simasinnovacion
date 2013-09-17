@@ -8,98 +8,129 @@
 {% block contenido %}
 <div class="row">
     <div class="large-12 column">
-        
+
+<ul class="breadcrumbs">
+
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/inicio/">Indicadores</a></li>
+    <li><a href="/empresa/">Empresa</a></li>
+    <li class="current"><a href="#">{{mejora.nombre_mejora}}</a></li>
+
+</ul>
+
+<div class="section-container vertical-tabs" data-section="vertical-tabs">
+  <section>
+    <p class="title" data-section-title><a href="#">Datos Generales</a></p>
+    <div class="content" data-section-content>
+            
+        <div class="row">
+          <div class="large-4 columns">
         {% if mejora.get_fotos %}
-            <div class="gallery row">
-                <div class="showcase large-2 columns">
+            
                     <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
                     {% for obj in mejora.get_fotos %}
-                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        {% thumbnail obj.foto "250x170" crop="10%" as img%}
                         <li>
                             <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
-                            <div class="orbit-caption">{{obj.nombre}}</div>
                         </li>
                         {% endthumbnail %}
                     {% endfor %}
                     </ul>
-                </div>
-            </div>
-        {% endif %} <br>
+              
+        {% endif %}
+    </div>
+    <div class="large-8 columns">
+        <h6>Nombre de la mejora:</h6>
+        {{mejora.nombre_mejora}}
+        <h6>Año:</h6> 
+        {{mejora.fecha_prueba}} 
+        <h6>Tema:</h6>
+        {{mejora.tema_prueba}}
+        <h6>Rubro:</h6>
+        {{mejora.rubro_prueba}}
+        <h6>Zona:</h6>
+        {{mejora.empresa.get_zona_display}}
+        <h6>Departamento:</h6>
+        {{mejora.empresa.departamento}} 
+        <h6>Municipio:</h6>
+        {{mejora.empresa.municipio}} 
+        <h6>Empresa:</h6> 
+        <a href="/empresa/{{mejora.empresa.id}}/">{{mejora.empresa.nombre}} </a> <br>
+        <h6>Tipo de empresa:</h6>
+        {{mejora.empresa.tipo}} 
+        <h6>Mercado:</h6>
+        {{mejora.mercado_prueba}}
+    </div>
+    </div>
+</section>
 
-        nombre de la mejora:
-        {{mejora.nombre_mejora}} <br>
-        año: 
-        {{mejora.fecha_prueba}} <br>
-        tema:
-        {{mejora.tema_prueba}} <br>
-        rubro:
-        {{mejora.rubro_prueba}} <br>
-        zona:
-        {{mejora.empresa.get_zona_display}} <br>
-        departamento:
-        {{mejora.empresa.departamento}} <br>
-        municipio:
-        {{mejora.empresa.municipio}} <br>
-        empresa: 
-        <a href="/empresa/{{mejora.empresa.id}}/">{{mejora.empresa.nombre}} </a> <br><br>
-        tipo de empresa:
-        {{mejora.empresa.tipo}} <br>
-        mercado:
-        {{mejora.mercado_prueba}} <br>
+<section>
+    <p class="title" data-section-title><a href="#">La lógica</a></p>
+    <div class="content" data-section-content>
         {% if  mejora.problema%}
-             LA LOGICA <br><br>
-        problema:
+             LA LOGICA <br>
+        <h6>Problema:</h6>
         {{mejora.problema}} <br>
         {% else %}
             aun no tiene logica ingresada
         {% endif %}
         {% if mejora.causa %}
-            analisis de causa:
+            <h6>Analisis de causa:</h6>
         {{mejora.causa}} <br>
         {% endif %}
         {% if mejora.mejorar %}
-            opciones a mejorar:
+            <h6>Opciones a mejorar:</h6>
         {{mejora.mejorar}} <br>
         {% endif %}
         {% if  mejora.resultados%}
-            resultados esperados:
+            <h6>Resultados esperados:</h6>
         {{mejora.resultados}} <br> <br>
         {% endif %}
-        {% if  mejora.volumen_acopio%}
+    </div>
+  </section>
+
+<section>
+    <p class="title" data-section-title><a href="#">Los resultados</a></p>
+    <div class="content" data-section-content>
+       {% if  mejora.volumen_acopio%}
             RESULTADOS <br>
-        mejora de volumen de acopio:
+        <h6>Mejora de volumen de acopio:</h6>
         {{mejora.volumen_acopio}} <br>
         {% else %}
             <p>Aun no Ingresa resultados</p>
         {% endif %}
         {% if mejora.mejora_proce_calidad %}
-             mejora en procesamiento y calidad:
+             <h6>Mejora en procesamiento y calidad:</h6>
         {{mejora.mejora_proce_calidad}} <br>
         {% endif %}
         {% if  mejora.presentacion_acceso%}
-            Mejora en presentacion y acceso a mercado:
+            <h6>Mejora en presentacion y acceso a mercado:</h6>
         {{mejora.presentacion_acceso}} <br>
         {% endif %}
         {% if  mejora.inversion_credito%}
-            mercado de inversion acceso a credito:
+            <h6>Mercado de inversion acceso a credito:</h6>
         {{mejora.inversion_credito}} <br>
         {% endif %}
         {% if  mejora.mejora_precio%}
-             mejora de precio y condicion de comercialización:
+             <h6>Mejora de precio y condicion de comercialización:</h6>
         {{mejora.mejora_precio}} <br>
         {% endif %}
         {% if  mejora.mejora_ingreso%}
-            Mejora en ingresos:
+            <h6>Mejora en ingresos:</h6>
         {{mejora.mejora_ingreso}} <br>
         {% endif %}
         {% if  mejora.reduccion_costo%}
-            Reducción de riesgo y costo:
+            <h6>Reducción de riesgo y costo:</h6>
         {{mejora.reduccion_costo}} <br> <br>
         {% endif %}
-        
-        {% if  mejora.diascampoempresa_set.all%}
-             Dias de campos: <br> <br>
+    </div>
+  </section>
 
+  <section>
+    <p class="title" data-section-title><a href="#">Dias de campos</a></p>
+    <div class="content" data-section-content>
+         {% if  mejora.diascampoempresa_set.all%}
+             <h6>Dias de campos: </h6>
         <table>
           <thead>
             <tr>
@@ -124,6 +155,10 @@
             <p>Aun no tienen dias de campo</p>
         {% endif %}
 
+    </div>
+  </section>
+
+</div>
 
     </div>
 </div>

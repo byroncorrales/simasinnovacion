@@ -10,25 +10,47 @@
 {% block contenido %}
 
 <div class="row">
-    <h1>Servicios</h1>
+    
     <div class="large-12 columns">
+
+       <ul class="breadcrumbs">
+
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/inicio/">Indicadores</a></li>
+        <li class="current"><a href="#">Servicios</a></li>
+
+      </ul>
         
+        <h3>Servicios</h3>
+
+        <div class="panel">
         <form class="form-inline" action="." method="POST">
             {%csrf_token%}
-            <div class="selects">
+            <div class="row">
+              <div class="large-3 columns">
                 {{form.tipos_servicios}}
                 {{form.tipos_servicios.errors}}
                 {{form.temas_abordan}}
                 {{form.temas_abordan.errors}}
+              </div>
+              <div class="large-3 columns">
                 {{form.org_benefician}}
                 {{form.org_benefician.errors}}
                 {{form.fecha}}
                 {{form.fecha.errors}}
             </div>  
+            <div class="large-6 columns">
             <button type="submit" class="boton">Consultar</button>
+          </div>
+        </div>
         </form>
+      </div>
 
-    {% if  lista_servicios %}
+  <div class="section-container  auto" data-section>
+  {% if  lista_servicios %}
+  <section>
+    <p class="title" data-section-title><a href="#">Lista de servicios</a></p>
+    <div class="content" data-section-content>
         <table>
           <thead>
             <tr>
@@ -64,7 +86,10 @@
             {% endfor %} 
           </tbody>
         </table>
-    {% endif %}  
+      </div>
+  </section>
+  {% endif %}
+  </div>  
 
     </div>
 </div>

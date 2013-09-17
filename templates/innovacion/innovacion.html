@@ -60,25 +60,50 @@ $(document).ready(function() {
 {% block contenido %}
 
 <div class="row">
-    <h1>Espacios para innovar politicas</h1>
     <div class="large-12 columns">
-        
+    <ul class="breadcrumbs">
+
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/inicio/">Indicadores</a></li>
+        <li class="current"><a href="#">Espacios</a></li>
+
+    </ul>
+
+        <h3>Espacios para innovar politicas</h3>
+        <div class="panel">
         <form class="form-inline" action="." method="POST">
             {%csrf_token%}
-            <div class="selects">
+            <div class="row">
+              <div class="large-3 columns">
                 {{form.zona}}
                 {{form.zona.errors}}
                 {{form.cobertura}}
                 {{form.cobertura.errors}}
+              </div>
+              <div class="large-3 columns">
                 {{form.activos}}
                 {{form.activos.errors}}
                 {{form.tipos}}
                 {{form.tipos.errors}}
             </div>  
+            <div class="large-6 columns">
             <button type="submit" class="boton">Consultar</button>
+            </div>
+            </div>
         </form>
-        <div id="map" style="width: 100%; height: 400px"> </div>
+      </div>
+    
+    <div class="section-container auto" data-section>
+    <section>
+        <p class="title" data-section-title><a href="#">Mapa espacios</a></p>
+            <div class="content" data-section-content>
+                <div id="map" style="width: 100%; height: 400px"> </div>
+            </div>
+    </section>
     {% if  lista_espacio %}
+    <section>
+        <p class="title" data-section-title><a href="#">Lista espacios {{lista_espacio.count}} encontrados</a></p>
+            <div class="content" data-section-content>         
         <table>
           <thead>
             <tr>
@@ -103,8 +128,12 @@ $(document).ready(function() {
             {% endfor %} 
           </tbody>
         </table>
+    
+            </div>
+    </section>
     {% endif %}  
-
+</div>
+    
     </div>
 </div>
     

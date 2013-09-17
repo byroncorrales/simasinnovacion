@@ -8,87 +8,132 @@
 {% block contenido %}
 <div class="row">
     <div class="large-12 column">
-                
-            {% if empresa.get_fotos %}
-            <div class="gallery row">
-                <div class="showcase large-2 columns">
+
+        <ul class="breadcrumbs">
+
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/inicio/">Indicadores</a></li>
+    <li><a href="/empresas/">Empresas</a></li>
+    <li class="current"><a href="#">{{empresa.nombre}}</a></li>
+
+  </ul>
+
+  <div class="section-container vertical-tabs" data-section="vertical-tabs">
+  <section>
+    <p class="title" data-section-title><a href="#">Datos Generales</a></p>
+    <div class="content" data-section-content>
+        <div class="row">
+          <div class="large-4 columns">
+         {% if empresa.get_fotos %}
                     <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
                     {% for obj in empresa.get_fotos %}
-                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        {% thumbnail obj.foto "250x170" crop="10%" as img%}
                         <li>
                             <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
-                            <div class="orbit-caption">{{obj.nombre}}</div>
                         </li>
                         {% endthumbnail %}
                     {% endfor %}
                     </ul>
-                </div>
-            </div>
-        {% endif %} <br>
 
-        nombre empresa rural:
-        {{empresa.nombre}} <br>
-        tipo de empresa:
-        {{empresa.tipo}} <br>
-        año activo:
-        {{empresa.activo}} <br>
-        años de haberse formado la empresa:
-        {{empresa.formado_empresa}} <br>
-        {% if empresa.contacto_nombre %}
-            Nombre de la persona para contactar:
-            {{empresa.contacto_nombre}} <br>
+        {%else%}
+                <p>No tienen imagenes</p>
         {% endif %}
-        {% if empresa.contacto_celular %}
-            Celular de la persona para contactar:
-            {{empresa.contacto_celular}} <br>
-        {% endif %}
-        {% if empresa.contacto_correo %}
-            Correo de la persona para contactar:
-            {{empresa.contacto_correo}} <br>
-        {% endif %}
-        zona:
-        {{empresa.get_zona_display}} <br>
-        departamento:
-        {{empresa.departamento}} <br>
-        municipio:
-        {{empresa.municipio}} <br>
-        organizacion que apoya:
-        {{empresa.organiacion_civil}} <br>
-        RUBROS PRINCIPALES:
+    </div>
+        <div class="large-8 columns">
+                <h6>Nombre empresa rural:</h6>
+                {{empresa.nombre}}
+                <h6>Tipo de empresa:</h6>
+                {{empresa.tipo}}
+                <h6>Año activo:</h6>
+                {{empresa.activo}}
+                <h6>Años de haberse formado la empresa:</h6>
+                {{empresa.formado_empresa}}
+                {% if empresa.contacto_nombre %}
+                <h6>Nombre de la persona para contactar:</h6>
+                {{empresa.contacto_nombre}}
+                {% endif %}
+                {% if empresa.contacto_celular %}
+                <h6>Celular de la persona para contactar:</h6>
+                {{empresa.contacto_celular}}
+                {% endif %}
+                {% if empresa.contacto_correo %}
+                <h6>Correo de la persona para contactar:</h6>
+                {{empresa.contacto_correo}}
+                {% endif %}
+                <h6>Zona:</h6>
+                {{empresa.get_zona_display}}
+                <h6>Departamento:</h6>
+                {{empresa.departamento}}
+                <h6>Municipio:</h6>
+                {{empresa.municipio}}
+                <h6>Organización que apoya:</h6>
+                {{empresa.organiacion_civil}}
+        </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="title" data-section-title><a href="#">Rubros principales</a></p>
+    <div class="content" data-section-content>
+        <h6>RUBROS PRINCIPALES:</h6>
         {% for rubros in empresa.rubrosprincipales_set.all %}
             {{rubros.rubro}},
         {% empty %}
             <p>No tiene rubros principales</p>
-        {% endfor %} <br><br>
-        ACTIVIDAD EMPRESARIAL:
+        {% endfor %} <br>
+    </div>
+  </section>
+
+  <section>
+    <p class="title" data-section-title><a href="#">Actividad empresarial</a></p>
+    <div class="content" data-section-content>
+        <h6>ACTIVIDAD EMPRESARIAL:</h6>
         {% for actividad in empresa.actividadempresarial_set.all %}
             {{actividad.actividad}},
         {% empty %}
             <p>Aun no tienen actividad empresarial</p>
-        {% endfor %} <br> <br>
-        MERCADOS:
+        {% endfor %} <br>
+    </div>
+  </section>
+
+  <section>
+    <p class="title" data-section-title><a href="#">Mercados y compradores</a></p>
+    <div class="content" data-section-content>
+        <h6>MERCADOS:</h6>
         {% for mercado in empresa.mercadosrubros_set.all %}
             {{mercado.mercado}},
         {% empty %}
             <p>Aun no tiene mercados</p>
         {% endfor %} <br> <br>
-        COMPRADORES:
+        <h6>COMPRADORES:</h6>
         {% for comprador in empresa.compradoresrubros_set.all %}
             {{comprador.mercado}},
         {% empty %}
             <p>Aun no tiene compradores</p>
         {% endfor %} <br> <br>
-        CERTIFICACIONES:
+    </div>
+  </section>
+
+  <section>
+    <p class="title" data-section-title><a href="#">Certificación y volumen</a></p>
+    <div class="content" data-section-content>
+        <h6>CERTIFICACIONES:</h6>
         {% for certificado in empresa.certificacionesrubros_set.all %}
             {{certificado.certificaciones}},
         {% empty %}
             <p>Aun no tienen certificaciones</p>
-        {% endfor %} <br> <br>
-        volumen de venta anual: sumaXD <br> 
-        involucrados: tambien sumaXD <br>
-        {% if empresa.mejoraempresas_set.all %}
+        {% endfor %} 
+        <h6>Volumen de venta anual:</h6> sumaXD 
+        <h6>Involucrados:</h6> tambien sumaXD 
         
-        LISTA DE MEJORAS
+    </div>
+  </section>
+
+<section>
+    <p class="title" data-section-title><a href="#">Lista de mejoras empresarial</a></p>
+    <div class="content" data-section-content>
+        {% if empresa.mejoraempresas_set.all %}
+        <h6>LISTA DE MEJORAS</h6>
         <table>
           <thead>
             <tr>
@@ -114,6 +159,11 @@
           </tbody>
         </table>
         {% endif %}
+    </div>
+  </section>
+
+</div>
+         
     </div>
 </div>
     

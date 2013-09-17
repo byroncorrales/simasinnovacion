@@ -9,49 +9,66 @@
 <div class="row">
     <div class="large-12 column">
 
-        {% if espacio.get_fotos %}
-            <div class="gallery row">
-                <div class="showcase large-2 columns">
+    <ul class="breadcrumbs">
+
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/inicio/">Indicadores</a></li>
+    <li><a href="/espacios/">Espacios</a></li>
+    <li class="current"><a href="#">{{espacio.nombre}}</a></li>
+
+  </ul>
+ <div class="section-container vertical-tabs" data-section="vertical-tabs">
+    <section>
+        <p class="title" data-section-title><a href="#">Datos generales</a></p>
+            <div class="content" data-section-content>
+                <div class="row">
+                <div class="large-4 columns">
+                     {% if espacio.get_fotos %}
                   <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
                     {% for obj in espacio.get_fotos %}
-                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        {% thumbnail obj.foto "250x170" crop="10%" as img%}
                         <li>
                           <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
-                          <div class="orbit-caption">{{obj.nombre}}</div>
                       </li>
                         {% endthumbnail %}
                     {% endfor %}
                     </ul>
+                  {%else%}
+                        <p>No tiene imagenes</p>
+                  {% endif %}
                 </div>
-            </div>
-        {% endif %} <br>
-
-        nombre espacio: 
-        {{espacio.nombre}} <br>
-        Tipo de espacio:
-        {{espacio.tipos}} <br>
-        Año activo:
-        {{espacio.activos}} <br>
-        tiempo de haber formado el espacio:
-        {{espacio.tiempo_formado}} <br>
-        {%if espacio.nombre_contacto%}
-        contacto: 
-        {{espacio.nombre_contacto}} <br>
-        {%endif%}
-        {%if espacio.celular_contacto%}
-        celular: 
-        {{espacio.celular_contacto}} <br>
-        {%endif%}
-        {%if espacio.correo_contacto%}
-        correo electronico: 
-        {{espacio.correo_contacto}} <br>
-        {%endif%}
-        zona: 
-        {{espacio.get_zona_display}} <br>
-        Cobertura: 
-        {{espacio.get_cobertura_display}} <br>
-        
-        Departamento que influyen: 
+              <div class="large-8 columns">
+                   nombre espacio: 
+                  {{espacio.nombre}} <br>
+                  Tipo de espacio:
+                  {{espacio.tipos}} <br>
+                  Año activo:
+                  {{espacio.activos}} <br>
+                  tiempo de haber formado el espacio:
+                  {{espacio.tiempo_formado}} <br>
+                  {%if espacio.nombre_contacto%}
+                  contacto: 
+                  {{espacio.nombre_contacto}} <br>
+                  {%endif%}
+                  {%if espacio.celular_contacto%}
+                  celular: 
+                  {{espacio.celular_contacto}} <br>
+                  {%endif%}
+                  {%if espacio.correo_contacto%}
+                  correo electronico: 
+                  {{espacio.correo_contacto}} <br>
+                  {%endif%}
+                  zona: 
+                  {{espacio.get_zona_display}} <br>
+                  Cobertura: 
+                  {{espacio.get_cobertura_display}} <br>
+              </div>
+      </div>
+    </section>
+    <section>
+        <p class="title" data-section-title><a href="#">Lugar de influencia</a></p>
+            <div class="content" data-section-content>
+                  Departamento que influyen: 
         {% for obj in espacio.departamento_influye.all %}
             {{obj}},
         {% empty %}
@@ -79,7 +96,13 @@
             <p>No tiene temas principales de incidencia</p>
         {% endfor %} <br> <br>
 
-        {% if espacio.actividadempresarial_set.all %}
+            </div>
+    </section>
+
+     <section>
+        <p class="title" data-section-title><a href="#">Listado actividades emp.</a></p>
+            <div class="content" data-section-content>
+                {% if espacio.actividadempresarial_set.all %}
             Listados de las actividades empresariales: <br>
         <table>
           <thead>
@@ -102,8 +125,13 @@
           </tbody>
         </table>
     {% endif %}
+            </div>
+    </section>
 
-    {% if espacio.iniciativainnovacion_set.all %}
+     <section>
+        <p class="title" data-section-title><a href="#">Iniciativas de innovación</a></p>
+            <div class="content" data-section-content>
+                  {% if espacio.iniciativainnovacion_set.all %}
     Listados de las iniciativas de innovación: <br>
         <table>
           <thead>
@@ -130,9 +158,12 @@
           </tbody>
         </table>
     {% endif %}
+            </div>
+    </section>
+
+</div>
 
     </div>
-
 </div>
     
 {% endblock contenido %}

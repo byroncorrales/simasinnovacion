@@ -25,8 +25,7 @@
 
       <div class="row">
           <div class="large-4 columns">
-      {% if promotor.get_fotos %}
-              
+      {% if promotor.get_fotos %} 
                   <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;" class="th">
                     {% for obj in promotor.get_fotos %}
                         {% thumbnail obj.foto "250x170" crop="10%" as img%}

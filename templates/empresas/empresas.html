@@ -59,27 +59,52 @@ $(document).ready(function() {
 {% block contenido %}
 
 <div class="row">
-    <h1>Empresas rurales</h1>
     <div class="large-12 columns">
-        
+      <ul class="breadcrumbs">
+
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/inicio/">Indicadores</a></li>
+        <li class="current"><a href="#">Empresas</a></li>
+
+      </ul>
+
+       <h3>Empresas rurales</h3>
+        <div class="panel">
         <form class="form-inline" action="." method="POST">
             {%csrf_token%}
-            <div class="selects">
+            <div class="row">
+              <div class="large-3 columns">
                 {{form.zona}}
                 {{form.zona.errors}}
                 {{form.organizacion_civil}}
                 {{form.organizacion_civil.errors}}
                 {{form.activo}}
                 {{form.activo.errors}}
+              </div>
+              <div class="large-3 columns">
                 {{form.tipo}}
                 {{form.tipo.errors}}
                 {{form.rubro}}
                 {{form.rubro.errors}}
-            </div>  
+              </div>  
+            <div class="large-6 columns">
             <button type="submit" class="boton">Consultar</button>
+            </div>  
+            </div>  
         </form>
-        <div id="map" style="width: 100%; height: 400px"> </div>
+      </div>
+
+      <div class="section-container auto" data-section>
+    <section>
+        <p class="title" data-section-title><a href="#">Mapa promotores</a></p>
+            <div class="content" data-section-content>
+                <div id="map" style="width: 100%; height: 400px"> </div>
+            </div>
+    </section>
     {% if  lista_empresas %}
+    <section>
+        <p class="title" data-section-title><a href="#">Lista empresa ({{lista_empresas.count }}encontrados)</a></p>
+            <div class="content" data-section-content>
         <table>
           <thead>
             <tr>
@@ -109,7 +134,10 @@ $(document).ready(function() {
             {% endfor %} 
           </tbody>
         </table>
+    </div>
+    </section>
     {% endif %}  
+</div>
 
     </div>
 </div>

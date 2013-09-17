@@ -32,24 +32,39 @@ $(document).ready(function(){
 <div class="row">
     <div class="large-12 column">
 
+       <ul class="breadcrumbs">
+
+    <li><a href="/">Inicio</a></li>
+    <li><a href="/inicio/">Indicadores</a></li>
+    <li><a href="/servicios/">Servicios</a></li>
+    <li class="current"><a href="#">{{servicio.nombre}}</a></li>
+
+  </ul>
+
+
+ <div class="section-container vertical-tabs" data-section="vertical-tabs">
+  <section>
+    <p class="title" data-section-title><a href="#">Datos Generales</a></p>
+    <div class="content" data-section-content>
+        <div class="row">
+          <div class="large-4 columns">
       {% if servicio.get_fotos %}
-            <div class="gallery row">
-                <div class="showcase large-2 columns">
                   <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
                     {% for obj in servicio.get_fotos %}
-                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        {% thumbnail obj.foto "250x170" crop="10%" as img%}
                         <li>
                           <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
-                          <div class="orbit-caption">{{obj.nombre}}</div>
+                          
                       </li>
                         {% endthumbnail %}
                     {% endfor %}
                     </ul>
-                </div>
-            </div>
-        {% endif %} <br>
-
-        nombre de servicio:
+          {%else%} 
+              <p>No tiene imagenes</p>
+        {% endif %} 
+      </div>
+      <div class="large-8 columns">
+            nombre de servicio:
         {{servicio.nombre}} <br>
         objetivos:
         {{servicio.objetivos}} <br>
@@ -75,7 +90,14 @@ $(document).ready(function(){
         {{servicio.monto}} <br>
         conclusiones:
         {{servicio.conclusiones}} <br>
-        EVALUACION DE IMPACTO DEL SERVICIO <br><br>
+      </div>
+  </div>
+</section>
+
+<section>
+    <p class="title" data-section-title><a href="#">Evaluación del servicio</a></p>
+    <div class="content" data-section-content>
+         EVALUACION DE IMPACTO DEL SERVICIO <br><br>
          <table>
           <thead>
             <tr>
@@ -87,11 +109,14 @@ $(document).ready(function(){
            {% for lista in servicio.resultadoevaluacion_set.all %}    
             <tr>
               <td>{{lista.evaluacion}}</td>
-              <td><span id="star_{{lista.escala}}" data-score="{{lista.escala}}" rel="#hint_{{lista.escala}}" ></span>  <span  id="hint_{{lista.escala}}">   </span>{{lista.escala}}</td>
+              <td><span id="star_{{lista.escala}}" data-score="{{lista.escala}}" rel="#hint_{{lista.escala}}" ></span>  <span  id="hint_{{lista.escala}}">   </span></td>
             </tr>
             {% endfor %} 
           </tbody>
         </table>
+    </div>
+</section>
+</div>        
 
     </div>
 </div>

@@ -29,7 +29,7 @@
             
                   <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
                     {% for obj in practica.get_fotos %}
-                        {% thumbnail obj.foto "150x150" crop="10%" as img%}
+                        {% thumbnail obj.foto "250x170" crop="10%" as img%}
                         <li>
                           <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
                       </li>
