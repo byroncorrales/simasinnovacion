@@ -9,72 +9,69 @@
 <div class="row">
     <div class="large-12 column">
 
-        <ul class="breadcrumbs">
+    <ul class="breadcrumbs">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/inicio/">Indicadores</a></li>
+        <li><a href="/espacios/">Espacios</a></li>
+        <li class="current"><a href="#">{{iniciativa.nombre}}</a></li>
+    </ul>
 
-    <li><a href="/">Inicio</a></li>
-    <li><a href="/inicio/">Indicadores</a></li>
-    <li><a href="/espacios/">Espacios</a></li>
-    <li class="current"><a href="#">{{iniciativa.nombre}}</a></li>
-
-  </ul>
-
-<div class="section-container vertical-tabs" data-section="vertical-tabs">
-    <section>
+    <div class="section-container vertical-tabs" data-section="vertical-tabs">
+        <section>
         <p class="title" data-section-title><a href="#">Datos generales</a></p>
             <div class="content" data-section-content>
-                <div class="row">
+            <div class="row">
                 <div class="large-4 columns">
-                {% if iniciativa.get_fotos %}
-                    <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
-                    {% for obj in iniciativa.get_fotos %}
-                        {% thumbnail obj.foto "250x170" crop="10%" as img%}
-                        <li>
+                    {% if iniciativa.get_fotos %}
+                        <ul data-orbit data-options="bullets:false; navigation_arrows:false;slide_number:false;">
+                        {% for obj in iniciativa.get_fotos %}
+                            {% thumbnail obj.foto "250x170" crop="10%" as img%}
+                            <li>
                             <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>    
-                        </li>
-                        {% endthumbnail %}
-                    {% endfor %}
-                    </ul>
-                 {%else%}
+                            </li>
+                            {% endthumbnail %}
+                        {% endfor %}
+                        </ul>
+                    {%else%}
                         <p>No tiene imagenes</p>    
-                {% endif %} 
+                    {% endif %} 
+                </div>
+                <div class="large-8 columns">
+                    nombre de la prueba:
+                    {{iniciativa.nombre}} <br>
+                    año:
+                    {{iniciativa.fecha}} <br>
+                    Espacio de innovación:
+                    <a href="/espacio/{{iniciativa.espacio.id}}">{{iniciativa.espacio}}</a>
+                    <br>
+                    Tipo:
+                    {{iniciativa.tipo}} <br>
+                    fecha de inicio:
+                    {{iniciativa.fecha_inicio}} <br>
+                    fecha de finalización:
+                    {{iniciativa.fecha_finalizacion}}<br>
+                    {% if  iniciativa.temas.all%}
+                        temas que aborda:
+                    {% for obj in iniciativa.temas.all %}
+                        {{obj}} <br>
+                    {% endfor %} <br>
+                    {% endif %}
+                    {% if  iniciativa.actividades.all%}
+                        actividades:
+                    {% for obj in iniciativa.actividades.all %}
+                        {{obj}} <br>
+                    {% endfor %}
+                    {% endif %}
+                </div>
             </div>
-            <div class="large-8 columns">
-                nombre de la prueba:
-                {{iniciativa.nombre}} <br>
-                año:
-                {{iniciativa.fecha}} <br>
-                Espacio de innovación:
-                <a href="/espacio/{{iniciativa.espacio.id}}">{{iniciativa.espacio}}</a>
-                <br>
-                Tipo:
-                {{iniciativa.tipo}} <br>
-                fecha de inicio:
-                {{iniciativa.fecha_inicio}} <br>
-                fecha de finalización:
-                {{iniciativa.fecha_finalizacion}}<br>
-                {% if  iniciativa.temas.all%}
-                    temas que aborda:
-                {% for obj in iniciativa.temas.all %}
-                    {{obj}} <br>
-                {% endfor %} <br>
-                {% endif %}
-                {% if  iniciativa.actividades.all%}
-                    actividades:
-                {% for obj in iniciativa.actividades.all %}
-                    {{obj}} <br>
-                {% endfor %}
-                {% endif %}
-            </div>
+        </section>
 
-    </div>
- </section>
-
-<section>
+        <section>
         <p class="title" data-section-title><a href="#">La logica</a></p>
             <div class="content" data-section-content>
                  {% if  iniciativa.problema%}
                     <h4>La logica de la iniciativa</h4>
-                <br><br>
+                <br>
                 el problema:
                 {{iniciativa.problema}} <br>
                 {% else %}
@@ -93,9 +90,9 @@
                 {{iniciativa.resultado}} <br>
                 {% endif %}
             </div>
-</section>
+        </section>
 
-<section>
+        <section>
         <p class="title" data-section-title><a href="#">Los resultados</a></p>
             <div class="content" data-section-content>
                  {% if  iniciativa.sobre_tierra%}
@@ -130,8 +127,8 @@
                     {{iniciativa.reduccion}} <br>
                 {% endif %}
             </div>
-</section>
-</div>
+        </section>
+    </div>
        
     </div>
 </div>

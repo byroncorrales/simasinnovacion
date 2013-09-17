@@ -44,14 +44,7 @@ def espacio_index(request, template="innovacion/innovacion.html"):
     if request.session['bandera'] == 1:
         con = _queryset_filtrado(request)
     else:
-        con = ''
-    
-    for obj in EspacioInnovacion.objects.all():
-        for obj2 in obj.municipios_influye.all():
-            print obj2
-            print obj2.latitud
-            print obj2.longitud
-            
+        con = ''           
 
     return render(request, template, {'form':form,
                                       'lista_espacio':con})
