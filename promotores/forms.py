@@ -2,7 +2,6 @@
 
 from django import forms
 from .models import *
-from django.forms import ModelForm
 
 class PromotorForm(forms.Form):
     zona = forms.ChoiceField(choices=[('', 'zona'),(1, 'Seca'),(2, 'Alta'),
@@ -29,7 +28,7 @@ class CustomChoiceField(forms.ChoiceField):
 class PracticaForm(forms.Form):
     zona = forms.ChoiceField(choices=[('', 'zona'),(1, 'Seca'),(2, 'Alta'),
                             (3, 'Húmeda')],required=False)
-    anio = CustomChoiceField(choices=get_anios(), label="Año")
+    anio = CustomChoiceField(choices=get_anios())
     tema_prueba = forms.ModelChoiceField(queryset=TemasPruebas.objects.all().order_by('nombre'), 
                             required=False, empty_label="Tema")
     rubro_prueba = forms.ModelChoiceField(queryset=RubroPruebas.objects.all().order_by('nombre'), 

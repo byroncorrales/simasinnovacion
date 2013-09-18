@@ -225,6 +225,10 @@ class PracticasProductivas(models.Model):
     #campo oculto
     anio = models.IntegerField(editable=False, null=True, blank=True)
 
+    def save(self):
+        self.anio = self.fecha_prueba.year
+        super(PracticasProductivas, self).save()
+
     def color_completo(self):
         if not self.resultados and not self.costo:
             return False
