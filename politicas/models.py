@@ -86,13 +86,17 @@ class EspacioInnovacion(models.Model):
     class Meta:
         verbose_name_plural = "Ficha de las Espacios de Innovación Políticas"
 
+CHOICES_SI_N0=(
+            (1, 'Si'),
+            (2, 'No'),
+    )
 
 class ActividadEmpresarial(models.Model):
     espacio = models.ForeignKey(EspacioInnovacion)
     actividad = models.ForeignKey(ActividadesEspacio)
-    tema_1 = models.ForeignKey(TemasIncidencia, related_name="act_temauno", null=True, blank=True)
-    tema_2 = models.ForeignKey(TemasIncidencia, related_name="act_temados", null=True, blank=True)
-    tema_3 = models.ForeignKey(TemasIncidencia, related_name="act_tematres", null=True, blank=True)
+    tema_1 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    tema_2 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    tema_3 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Actividad empresarial relacionadas a los rubros"
