@@ -105,12 +105,6 @@
         {% empty %}
             <p>Aun no tiene mercados</p>
         {% endfor %} <br> <br>
-        <h6>COMPRADORES:</h6>
-        {% for comprador in empresa.compradoresrubros_set.all %}
-            {{comprador.mercado}},
-        {% empty %}
-            <p>Aun no tiene compradores</p>
-        {% endfor %} <br> <br>
     </div>
   </section>
 
