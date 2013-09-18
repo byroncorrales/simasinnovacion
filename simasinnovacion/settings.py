@@ -91,7 +91,7 @@ INSTALLED_APPS = (
     'lugar',
     'promotores',
     'empresas',
-    'innovacion',
+    'politicas',
     'fortalecimiento',
     'servicios',
     'smart_selects',

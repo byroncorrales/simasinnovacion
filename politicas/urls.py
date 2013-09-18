@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 
 
-urlpatterns = patterns('innovacion.views',
+urlpatterns = patterns('politicas.views',
 
     url(r'^espacios/$', 'espacio_index', name="lista_espacios"),
     url(r'^espacio/(?P<id>\w+)/$', 'espacio_pagina', name="espacio_pagina"),

@@ -3,7 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Promotor, PracticasProductivas
 from empresas.models import Empresas, MejoraEmpresas
-from innovacion.models import EspacioInnovacion, IniciativaInnovacion
+from politicas.models import EspacioInnovacion, IniciativaInnovacion
 from fortalecimiento.models import MediosFortalecimiento
 from servicios.models import Servicios 
 from .forms import PromotorForm, PracticaForm

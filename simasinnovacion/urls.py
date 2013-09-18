@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^', include('empresas.urls')),
     url(r'^fortalecimiento/', include('fortalecimiento.urls')),
     url(r'^servicios/', include('servicios.urls')),
-    url(r'^', include('innovacion.urls')),
+    url(r'^', include('politicas.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^chaining/', include('smart_selects.urls')),
 )
