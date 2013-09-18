@@ -46,9 +46,8 @@ class EmpresasAdmin(admin.ModelAdmin):
         }),
         )
     inlines = [RubrosPrincipalesInlines,ActividadEmpresarialInlines,
-               MercadosRubrosInlines,CompradoresRubrosInlines,
-               CertificacionesRubrosInlines,FotosActividadEmpresarialInlines,
-               MejoraEmpresaInline]
+               MercadosRubrosInlines,CertificacionesRubrosInlines,
+               FotosActividadEmpresarialInlines,MejoraEmpresaInline]
     list_display = ['nombre', 'tipo','zona','departamento']
     list_filter = ['nombre', 'zona']
     search_fields = ['nombre']
@@ -63,7 +62,7 @@ admin.site.register(MercadosCompradores)
 admin.site.register(Certificaciones)
 admin.site.register(ActividadEmpresarial)
 admin.site.register(MercadosRubros)
-admin.site.register(CompradoresRubros)
+#admin.site.register(CompradoresRubros)
 admin.site.register(CertificacionesRubros)
 admin.site.register(FotosActividadEmpresarial)
 #-------------- admin de mejora empresarial -----------------------

@@ -122,12 +122,17 @@ class Certificaciones(models.Model):
     class Meta:
         verbose_name_plural = "Certificaciones"
 
+CHOICES_SI_N0=(
+            (1, 'Si'),
+            (2, 'No'),
+    )
+
 class ActividadEmpresarial(models.Model):
     empresa = models.ForeignKey(Empresas)
     actividad = models.ForeignKey(ActividadesEmpresariales)
-    rubro_1 = models.ForeignKey(Rubros, related_name="act_rubrouno", null=True, blank=True)
-    rubro_2 = models.ForeignKey(Rubros, related_name="act_rubrodos", null=True, blank=True)
-    rubro_3 = models.ForeignKey(Rubros, related_name="act_rubrotres", null=True, blank=True)
+    rubro_1 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_2 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_3 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Actividad empresarial relacionadas a los rubros"
@@ -135,9 +140,9 @@ class ActividadEmpresarial(models.Model):
 class MercadosRubros(models.Model):
     empresa = models.ForeignKey(Empresas)
     mercado = models.ForeignKey(Mercados)
-    rubro_1 = models.ForeignKey(Rubros, related_name="mer_rubrouno", null=True, blank=True)
-    rubro_2 = models.ForeignKey(Rubros, related_name="mer_rubrodos", null=True, blank=True)
-    rubro_3 = models.ForeignKey(Rubros, related_name="mer_rubrotres", null=True, blank=True)
+    rubro_1 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_2 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_3 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Mercados de los rubros"
@@ -145,9 +150,9 @@ class MercadosRubros(models.Model):
 class CompradoresRubros(models.Model):
     empresa = models.ForeignKey(Empresas)
     mercado = models.ForeignKey(MercadosCompradores)
-    rubro_1 = models.ForeignKey(Rubros, related_name="com_rubrouno", null=True, blank=True)
-    rubro_2 = models.ForeignKey(Rubros, related_name="com_rubrodos", null=True, blank=True)
-    rubro_3 = models.ForeignKey(Rubros, related_name="com_rubrotres", null=True, blank=True)
+    rubro_1 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_2 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_3 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Compradores de los rubros"
@@ -155,9 +160,9 @@ class CompradoresRubros(models.Model):
 class CertificacionesRubros(models.Model):
     empresa = models.ForeignKey(Empresas)
     certificaciones = models.ForeignKey(Certificaciones)
-    rubro_1 = models.ForeignKey(Rubros, related_name="cer_rubrouno", null=True, blank=True)
-    rubro_2 = models.ForeignKey(Rubros, related_name="cer_rubrodos", null=True, blank=True)
-    rubro_3 = models.ForeignKey(Rubros, related_name="cer_rubrotres", null=True, blank=True)
+    rubro_1 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_2 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
+    rubro_3 = models.IntegerField(choices=CHOICES_SI_N0, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Certificaciones de los rubros"

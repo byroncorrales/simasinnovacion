@@ -37,6 +37,7 @@ class Migration(SchemaMigration):
             ('municipio', self.gf('smart_selects.db_fields.ChainedForeignKey')(to=orm['lugar.Municipio'])),
             ('gps', self.gf('geoposition.fields.GeopositionField')(max_length=42, null=True, blank=True)),
             ('organizacion_civil', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['promotores.OrganizacionCivil'])),
+            ('identificador', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'empresas', ['Empresas'])
 
@@ -67,6 +68,13 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'empresas', ['Mercados'])
 
+        # Adding model 'MercadosCompradores'
+        db.create_table(u'empresas_mercadoscompradores', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('nombre', self.gf('django.db.models.fields.CharField')(max_length=200)),
+        ))
+        db.send_create_signal(u'empresas', ['MercadosCompradores'])
+
         # Adding model 'Certificaciones'
         db.create_table(u'empresas_certificaciones', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -79,9 +87,9 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('empresa', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.Empresas'])),
             ('actividad', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.ActividadesEmpresariales'])),
-            ('rubro_1', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='act_rubrouno', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_2', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='act_rubrodos', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_3', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='act_rubrotres', null=True, to=orm['empresas.Rubros'])),
+            ('rubro_1', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_2', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_3', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'empresas', ['ActividadEmpresarial'])
 
@@ -90,9 +98,9 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('empresa', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.Empresas'])),
             ('mercado', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.Mercados'])),
-            ('rubro_1', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='mer_rubrouno', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_2', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='mer_rubrodos', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_3', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='mer_rubrotres', null=True, to=orm['empresas.Rubros'])),
+            ('rubro_1', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_2', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_3', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'empresas', ['MercadosRubros'])
 
@@ -100,10 +108,10 @@ class Migration(SchemaMigration):
         db.create_table(u'empresas_compradoresrubros', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('empresa', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.Empresas'])),
-            ('mercado', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.Mercados'])),
-            ('rubro_1', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='com_rubrouno', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_2', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='com_rubrodos', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_3', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='com_rubrotres', null=True, to=orm['empresas.Rubros'])),
+            ('mercado', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.MercadosCompradores'])),
+            ('rubro_1', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_2', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_3', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'empresas', ['CompradoresRubros'])
 
@@ -112,9 +120,9 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('empresa', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.Empresas'])),
             ('certificaciones', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['empresas.Certificaciones'])),
-            ('rubro_1', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='cer_rubrouno', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_2', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='cer_rubrodos', null=True, to=orm['empresas.Rubros'])),
-            ('rubro_3', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='cer_rubrotres', null=True, to=orm['empresas.Rubros'])),
+            ('rubro_1', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_2', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('rubro_3', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'empresas', ['CertificacionesRubros'])
 
@@ -156,6 +164,7 @@ class Migration(SchemaMigration):
             ('mejora_precio', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
             ('mejora_ingreso', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
             ('reduccion_costo', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
+            ('anio', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'empresas', ['MejoraEmpresas'])
 
@@ -199,6 +208,9 @@ class Migration(SchemaMigration):
         # Deleting model 'Mercados'
         db.delete_table(u'empresas_mercados')
 
+        # Deleting model 'MercadosCompradores'
+        db.delete_table(u'empresas_mercadoscompradores')
+
         # Deleting model 'Certificaciones'
         db.delete_table(u'empresas_certificaciones')
 
@@ -236,9 +248,9 @@ class Migration(SchemaMigration):
             'actividad': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.ActividadesEmpresariales']"}),
             'empresa': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Empresas']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'rubro_1': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'act_rubrouno'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_2': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'act_rubrodos'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_3': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'act_rubrotres'", 'null': 'True', 'to': u"orm['empresas.Rubros']"})
+            'rubro_1': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_2': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_3': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
         u'empresas.actividadesempresariales': {
             'Meta': {'object_name': 'ActividadesEmpresariales'},
@@ -255,18 +267,18 @@ class Migration(SchemaMigration):
             'certificaciones': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Certificaciones']"}),
             'empresa': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Empresas']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'rubro_1': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'cer_rubrouno'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_2': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'cer_rubrodos'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_3': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'cer_rubrotres'", 'null': 'True', 'to': u"orm['empresas.Rubros']"})
+            'rubro_1': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_2': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_3': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
         u'empresas.compradoresrubros': {
             'Meta': {'object_name': 'CompradoresRubros'},
             'empresa': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Empresas']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'mercado': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Mercados']"}),
-            'rubro_1': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'com_rubrouno'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_2': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'com_rubrodos'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_3': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'com_rubrotres'", 'null': 'True', 'to': u"orm['empresas.Rubros']"})
+            'mercado': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.MercadosCompradores']"}),
+            'rubro_1': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_2': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_3': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
         u'empresas.diascampoempresa': {
             'Meta': {'object_name': 'DiasCampoEmpresa'},
@@ -287,6 +299,7 @@ class Migration(SchemaMigration):
             'formado_empresa': ('django.db.models.fields.IntegerField', [], {}),
             'gps': ('geoposition.fields.GeopositionField', [], {'max_length': '42', 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'identificador': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'municipio': ('smart_selects.db_fields.ChainedForeignKey', [], {'to': u"orm['lugar.Municipio']"}),
             'nombre': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'organizacion_civil': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['promotores.OrganizacionCivil']"}),
@@ -309,6 +322,7 @@ class Migration(SchemaMigration):
         },
         u'empresas.mejoraempresas': {
             'Meta': {'object_name': 'MejoraEmpresas'},
+            'anio': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'causa': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'empresa': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Empresas']"}),
             'fecha_finalizacion': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
@@ -335,14 +349,19 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'nombre': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         },
+        u'empresas.mercadoscompradores': {
+            'Meta': {'object_name': 'MercadosCompradores'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'nombre': ('django.db.models.fields.CharField', [], {'max_length': '200'})
+        },
         u'empresas.mercadosrubros': {
             'Meta': {'object_name': 'MercadosRubros'},
             'empresa': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Empresas']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'mercado': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['empresas.Mercados']"}),
-            'rubro_1': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'mer_rubrouno'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_2': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'mer_rubrodos'", 'null': 'True', 'to': u"orm['empresas.Rubros']"}),
-            'rubro_3': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'mer_rubrotres'", 'null': 'True', 'to': u"orm['empresas.Rubros']"})
+            'rubro_1': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_2': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'rubro_3': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
         },
         u'empresas.rubros': {
             'Meta': {'object_name': 'Rubros'},
