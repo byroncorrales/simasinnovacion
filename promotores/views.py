@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render, get_object_or_404
-from .models import Promotor, PracticasProductivas
+from .models import Promotor, PracticasProductivas, EscalaPruebas
 from empresas.models import Empresas, MejoraEmpresas
 from politicas.models import EspacioInnovacion, IniciativaInnovacion
 from fortalecimiento.models import MediosFortalecimiento
@@ -12,7 +12,24 @@ from django.http import HttpResponse
 
 def inicio(request, template="inicio.html"):
     promotores = Promotor.objects.count()
+    #salidas graficos promotores por sexo
+    h_promotor = Promotor.objects.filter(sexo=1).count()
+    m_promotor = Promotor.objects.filter(sexo=2).count()
+    #salidas graficos promotor por zona
+    seca = Promotor.objects.filter(zona=1).count()
+    alta = Promotor.objects.filter(zona=2).count()
+    humeda = Promotor.objects.filter(zona=3).count()
+    #salidas grafico de practicas
     practicas = PracticasProductivas.objects.count()
+    #practicas por escala
+    escala = []
+
+    for obj in EscalaPruebas.objects.all():
+        escala.append([obj.nombre,PracticasProductivas.objects.filter(escala_prueba=obj).count()])
+    print escala
+
+
+
     empresas = Empresas.objects.count()
     mejoras_empresa = MejoraEmpresas.objects.count()
     espacios = EspacioInnovacion.objects.count()

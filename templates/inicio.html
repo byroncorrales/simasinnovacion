@@ -1,5 +1,173 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
+{% block extra_js %}
+<script src="{% static 'js/highcharts.js' %}"></script>
+<script src="{% static 'js/modules/exporting.js'%}"></script>
+<script type="text/javascript">
+  
+$(function () {
+      // Radialize the colors
+    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+        return {
+            radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    });
+    // Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'sexo de los promotores y promotoras'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [
+                    ['Hombres',    {{h_promotor}}],
+                    ['Mujeres',    {{m_promotor}}]
+                ]
+            }]
+        });
+        //aca va el grafico de zona
+        $('#container1').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Cantidad de promotores/as por zona'
+            },
+            xAxis: {
+                categories: [
+                    'Seca',
+                    'Alta',
+                    'Húmeda'
+                ],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{{seca}}, {{alta}}, {{humeda}}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+      // grafico por practicas de prueba
+       $('#container2').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Cantidad escalas de prueba realizadas'
+            },
+            xAxis: {
+                categories: [ {% for obj in escala %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in escala%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+
+
+
+    });  
+</script>
+  
+{% endblock extra_js %}
+
 {% block menu %}
 <div class="row">
   <div class="large-4 columns"></div>
@@ -54,26 +222,54 @@
 {% block contenido %}
 <div class="row">
   <div class="large-12 columns">
-
         <h3>Aca son estadisticas en contruccion!!</h3>
 
-        <div class="large-3 columns panel">
-            Promotores: {{promotores}} <br>
-            Practicas productivas: {{practicas}} <br>
+        <div class="large-6 columns panel">
+            Número de promotores registrados: {{promotores}} <br>
+            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <br>
+            <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>
-         <div class="large-3 columns panel">
-              Empresas : {{empresas}} <br>
-              Mejoras empresariales: {{mejoras_empresa}} <br>
+
+         <div class="large-6 columns panel">
+              Número de prácticas productivas que se estan llevando: {{practicas}} <br>
+              <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
          </div>
-       <div class="large-3 columns panel">
-         Espacios: {{espacios}} <br>
-         Iniciativas: {{iniciativas}} <br>
+          
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+         <div class="large-6 columns panel">
+            Número de empresas registradas: {{empresas}} <br>
+            
+         </div>
+       <div class="large-6 columns panel">
+         Número de mejoras empresariales que se han registrado: {{mejoras_empresa}} <br>
+       </div>       
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+       <div class="large-6 columns panel">
+         Número de espacios registrados: {{espacios}} <br>
        </div>
-        <div class="large-3 columns panel">
-         Fortalecimientos: {{fortalecimientos}} <br>
-         Servicios: {{servicios}} <br>
-        </div>
-        
+        <div class="large-6 columns panel">
+         Número de iniciativas que se estan llevando acabo: {{iniciativas}} <br>
+        </div>        
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+       <div class="large-6 columns panel">
+         Número de medios de fortalecimientos que se han registrado: {{fortalecimientos}} <br>
+       </div>
+        <div class="large-6 columns panel">
+         Número de servicios que se han realizado: {{servicios}} <br>
+        </div>        
   </div>
 </div>
    
