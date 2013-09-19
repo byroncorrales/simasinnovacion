@@ -88,12 +88,13 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'politicas',
     'lugar',
     'promotores',
     'empresas',
-    'politicas',
     'fortalecimiento',
     'servicios',
+    # terceras apps
     'smart_selects',
     'geoposition',
     'south',

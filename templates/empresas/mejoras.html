@@ -30,7 +30,7 @@ $(document).ready(function() {
           map.setMapTypeId('map_style');
 
           //comineza para mostrar mapa
-          $.getJSON('/empresas/mapa_completo_empresa/', function(data){
+          $.getJSON('/mapa_completo_empresa/', function(data){
               $.each(data, function(i, elemento){
                   var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
                   var marker = new google.maps.Marker({
@@ -41,8 +41,7 @@ $(document).ready(function() {
                       //icon: '/files/img/fruits.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/empresas/empresa/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/empresas/empresa/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><a href="/empresa/'+ elemento.id +'" class="verde">' + elemento.nombre + '';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,
