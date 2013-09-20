@@ -5,7 +5,8 @@ from lugar.models import Departamento, Municipio
 from smart_selects.db_fields import ChainedForeignKey
 from geoposition.fields import GeopositionField
 from sorl.thumbnail import ImageField
-from simasinnovacion.utils import get_file_path 
+from simasinnovacion.utils import get_file_path
+from django.contrib.auth.models import User 
 
 CHOICE_EDUCACION = (
             (1, 'Analfabeta'),
@@ -144,6 +145,7 @@ class Promotor(models.Model):
     mercado_accede = models.ManyToManyField(MercadoAcceso)
 
     identificador = models.IntegerField(editable=False, null=True, blank=True)
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def save(self):
         self.identificador = 1
@@ -224,6 +226,7 @@ class PracticasProductivas(models.Model):
 
     #campo oculto
     anio = models.IntegerField(editable=False, null=True, blank=True)
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         self.anio = self.fecha_prueba.year

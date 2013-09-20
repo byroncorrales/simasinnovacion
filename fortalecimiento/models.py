@@ -3,6 +3,7 @@
 from django.db import models
 from simasinnovacion.utils import get_file_path
 from sorl.thumbnail import ImageField
+from django.contrib.auth.models import User
 
 class TiposMedios(models.Model):
     nombre = models.CharField(max_length=200)
@@ -51,6 +52,7 @@ class MediosFortalecimiento(models.Model):
     objetivos = models.TextField()
     #oculto
     fecha = models.IntegerField(editable=False, null=True, blank=True)
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def save(self):
         self.fecha = self.fecha_inicio.year

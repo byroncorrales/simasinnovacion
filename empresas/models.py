@@ -7,6 +7,7 @@ from geoposition.fields import GeopositionField
 from sorl.thumbnail import ImageField
 from simasinnovacion.utils import get_file_path 
 from promotores.models import OrganizacionCivil
+from django.contrib.auth.models import User
 
 #modelos utiles para la fichas de empresas y practicas empresariales
 class TipoEmpresa(models.Model):
@@ -54,6 +55,7 @@ class Empresas(models.Model):
                          verbose_name=u'Nombre Organización de sociedad civil que apoya')
 
     identificador = models.IntegerField(editable=False, null=True, blank=True)
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def save(self):
         self.identificador = 2
@@ -218,6 +220,7 @@ class MejoraEmpresas(models.Model):
                         null=True, blank=True)
 
     anio = models.IntegerField(editable=False, null=True, blank=True)
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def save(self):
         self.anio = self.fecha_prueba.year

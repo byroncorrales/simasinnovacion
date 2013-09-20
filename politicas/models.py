@@ -3,7 +3,8 @@
 from django.db import models
 from lugar.models import Departamento, Municipio
 from sorl.thumbnail import ImageField
-from simasinnovacion.utils import get_file_path 
+from simasinnovacion.utils import get_file_path
+from django.contrib.auth.models import User  
 
 class TipoEspacio(models.Model):
     nombre = models.CharField(max_length=200)
@@ -71,6 +72,7 @@ class EspacioInnovacion(models.Model):
     temas = models.ManyToManyField(TemasIncidencia, verbose_name=u'Temas principales de incidencia')
 
     identificador = models.IntegerField(editable=False, null=True, blank=True)
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def save(self):
         self.identificador = 3
@@ -169,6 +171,8 @@ class IniciativaInnovacion(models.Model):
                                 null=True, blank=True)
     reduccion = models.TextField('Sobre la reducción de riesgo de los sistemas locales de alimentos', 
                                 null=True, blank=True)
+
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def __unicode__(self):
         return self.nombre

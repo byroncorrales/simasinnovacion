@@ -3,6 +3,7 @@
 from django.db import models
 from sorl.thumbnail import ImageField
 from simasinnovacion.utils import get_file_path
+from django.contrib.models import User
 
 class OrganizacionSolicita(models.Model):
     nombre = models.CharField(max_length=200)
@@ -64,6 +65,7 @@ class Servicios(models.Model):
     conclusiones = models.TextField('Conclusiones del servicio')
     #campo oculto
     fecha = models.IntegerField(editable=False, null=True, blank=True)
+    usuario = models.ForeignKey(User, null=True, blank=True)
 
     def save(self):
         self.fecha = self.fecha_inicio.year
