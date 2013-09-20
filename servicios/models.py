@@ -3,7 +3,7 @@
 from django.db import models
 from sorl.thumbnail import ImageField
 from simasinnovacion.utils import get_file_path
-from django.contrib.models import User
+from django.contrib.auth.models import User
 
 class OrganizacionSolicita(models.Model):
     nombre = models.CharField(max_length=200)
