@@ -5,17 +5,18 @@
 {% endblock title %}
 
 {% block extra_js %}
-<link rel="stylesheet" href="{% static 'css/chosen.min.css' %}" /> 
-<script type="text/javascript" src="{% static 'js/chosen.jquery.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/jquery.multiselect.css' %}" /> 
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{% static 'js/jquery.multiselect.js' %}"></script>
 
 <script type="text/javascript">
-  $('#id_tipos_servicios').chosen({
-    placeholder_text_multiple:"Seleccione algunas opciones",
-    });
-  $('#id_temas_abordan').chosen();
-  $('#id_org_benefician').chosen();
-
-</script>
+    $(function(){
+      $("#id_tipos_servicios").multiselect(); 
+      
+    });   
+  </script>
 {% endblock extra_js %}
 
 {% block contenido %}
