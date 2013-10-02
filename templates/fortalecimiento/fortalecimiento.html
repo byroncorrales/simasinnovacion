@@ -1,10 +1,45 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 {% block title %}
     Medios para fortalecimiento de conocimiento de actores
 {% endblock title %}
 
 {% block extra_js %}
+<link rel="stylesheet" href="{% static 'css/jquery.multiselect.css' %}" /> 
+<link rel="stylesheet" href="{% static 'css/prettify.css' %}" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{% static 'js/prettify.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.multiselect.js' %}"></script>
+
+<script type="text/javascript">
+    $(function(){
+      $("#id_tipo_medio").multiselect({
+          noneSelectedText: 'Tipo de medios',
+          selectedText: '# seleccionados',
+          checkAllText: 'Todos',
+          uncheckAllText: 'Quitar seleccion',
+          minWidth: 200,
+      });
+      $("#id_temas").multiselect({
+        noneSelectedText: 'Temas',
+        selectedText: '# seleccionados',
+        checkAllText: 'Todos',
+        uncheckAllText: 'Quitar seleccion',
+        minWidth: 200,
+      });
+      $("#id_grupos_metas").multiselect({
+        noneSelectedText: 'Grupos metas',
+        selectedText: '# seleccionados',
+        checkAllText: 'Todos',
+        uncheckAllText: 'Quitar seleccion',
+        minWidth: 200,
+      }); 
+      
+    });   
+  </script>
+
 {% endblock extra_js %}
 
 {% block contenido %}

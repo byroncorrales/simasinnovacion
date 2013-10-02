@@ -6,14 +6,34 @@
 
 {% block extra_js %}
 <link rel="stylesheet" href="{% static 'css/jquery.multiselect.css' %}" /> 
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="{% static 'js/jquery.multiselect.js' %}"></script>
 
 <script type="text/javascript">
     $(function(){
-      $("#id_tipos_servicios").multiselect(); 
+      $("#id_tipos_servicios").multiselect({
+          noneSelectedText: 'Tipos de servicios',
+          selectedText: '# seleccionados',
+          checkAllText: 'Todos',
+          uncheckAllText: 'Quitar seleccion',
+          minWidth: 200,
+      });
+      $("#id_temas_abordan").multiselect({
+        noneSelectedText: 'Temas que abordan',
+        selectedText: '# seleccionados',
+        checkAllText: 'Todos',
+        uncheckAllText: 'Quitar seleccion',
+        minWidth: 200,
+      });
+      $("#id_org_benefician").multiselect({
+        noneSelectedText: 'Org. beneficiarios',
+        selectedText: '# seleccionados',
+        checkAllText: 'Todos',
+        uncheckAllText: 'Quitar seleccion',
+        minWidth: 200,
+      }); 
       
     });   
   </script>

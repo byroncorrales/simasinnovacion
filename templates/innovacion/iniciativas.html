@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Lista de las Iniciativas de innovación de políticas
+{% endblock title %}
+
+{% block extra_js %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    
+     var styles = [{"featureType": "landscape","stylers": [{"hue": "#FFA800"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "road.highway","stylers": [{"hue": "#FF0300"},{"saturation": -100},{"lightness": 61.39999999999998},{"gamma": 1}]},{"featureType": "road.arterial","stylers": [{"hue": "#FBFF00"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "road.local","stylers": [{"hue": "#00FFFD"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "water","stylers": [{"hue": "#0094FF"},{"saturation": 39.39393939393935},{"lightness": -12.70588235294116},{"gamma": 1}]},{"featureType": "poi","stylers": [{"hue": "#9FFF00"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]}]
+
+      var styledMap = new google.maps.StyledMapType(styles,
+      {name: "Styled Map"});
+
+
+      var mapOptions = {
+            center: new google.maps.LatLng(12.877, -85.001),
+            zoom: 7,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+            }
+          }
+          var map = new google.maps.Map(document.getElementById('map'),
+                                        mapOptions);
+
+          map.mapTypes.set('map_style', styledMap);
+          map.setMapTypeId('map_style');
+
+          //comineza para mostrar mapa
+          $.getJSON('/mapa_completo_espacios/', function(data){
+              $.each(data, function(i, elemento){
+                console.log(elemento);
+                  var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
+                  var marker = new google.maps.Marker({
+                      position: latlng,
+                      map: map,
+                      name: elemento.nombre,
+                      desc: elemento.id,
+                      icon: '/static/img/'+elemento.identificador+'.png' 
+                  });
+                  google.maps.event.addListener(marker, "click", function() {
+                   var html = '<b><a href="/espacio/'+ elemento.id +'" class="verde">' + elemento.nombre +  
+                              '<br><a href="/espacio/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                    infowindow = new google.maps.InfoWindow({
+                              content: html,
+                              zIndex: 999,
+                    });
+                    infowindow.open(map, this);
+                    });
+              });
+          });
+
+});
+</script>
+{% endblock extra_js %}
+
+{% block contenido %}
+
+<div class="row">
+    <div class="large-12 columns">
+    <ul class="breadcrumbs">
+
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/inicio/">Indicadores</a></li>
+        <li class="current"><a href="#">Iniciativas</a></li>
+
+    </ul>
+
+        <h3>Espacios para innovar politicas</h3>
+        <div class="panel">
+        <form class="form-inline" action="." method="POST">
+            {%csrf_token%}
+            <div class="row">
+              <div class="large-3 columns">
+                {{form.tipo}}
+                {{form.tipo.errors}}
+                {{form.tema}}
+                {{form.tema.errors}}
+                
+              </div>
+              <div class="large-3 columns">
+                {{form.cobertura}}
+                {{form.cobertura.errors}}
+                {{form.activos}}
+                {{form.activos.errors}}
+                
+            </div>  
+            <div class="large-6 columns">
+            <button type="submit" class="boton">Consultar</button>
+            </div>
+            </div>
+        </form>
+      </div>
+    
+    <div class="section-container auto" data-section>
+    <section>
+        <p class="title" data-section-title><a href="#">Mapa iniciativas</a></p>
+            <div class="content" data-section-content>
+                <div id="map" style="width: 100%; height: 400px"> </div>
+            </div>
+    </section>
+    {% if  lista_iniciativas %}
+    <section>
+        <p class="title" data-section-title><a href="#">Lista iniciativas {{lista_iniciativas.count}} encontrados</a></p>
+            <div class="content" data-section-content>         
+        <table>
+          <thead>
+            <tr>
+              <th>Año activo</th>
+              <th width="200">Nombre</th>
+              <th width="150">Tipo</th>
+              <th width="150">Tema</th>
+              <th width="150">Cobertura</th>
+              <th width="150">Fecha inicio</th>
+              <th width="150">Fecha finalización</th>
+              <th width="150"></th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in lista_iniciativas %}    
+            <tr>
+              <td>{{lista.espacio.get_activos_display}}</td>
+              <td>{{lista.nombre}}</td>
+              <td>{{lista.tipo}}</td>
+              <td>{% for obj in lista.temas.all %} {{obj}}, {%endfor%}</td>
+              <td>{{lista.espacio.get_cobertura_display}}</td>
+              <td>{{lista.fecha_inicio}}</td>
+              <td>{{lista.fecha_finalizacion}}</td>
+              <td><a href="/iniciativa/{{lista.id}}/">Ficha Iniciativa</a></td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+    
+            </div>
+    </section>
+    {% endif %}  
+</div>
+    
+    </div>
+</div>
+    
+
+{% endblock contenido %}
