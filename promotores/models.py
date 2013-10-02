@@ -104,8 +104,9 @@ class Promotor(models.Model):
     contacto = models.CharField(help_text='Número de celular', max_length=50,
                                 null=True, blank=True)
     activo = models.IntegerField('Años activos en prueba de practicas', 
-                                  choices=((1, '2013'),(2, '2014'),(3, '2015'),
-                                           (4, '2016'),))
+                                  choices=((1, '2009'),(2, '2010'),(3, '2011'),
+                                           (4, '2012'),(5, '2013'),(6, '2014'),
+                                           (7, '2015'),(8, '2016'),))
     zona = models.IntegerField(choices=((1, 'Seca'),(2, 'Alta'),(3, 'Húmeda'),))
     departamento = models.ForeignKey(Departamento)
     municipio = ChainedForeignKey(
@@ -120,7 +121,7 @@ class Promotor(models.Model):
                              verbose_name=u'Nombre de organización campesina que pertenece')
     organizacion_civil = models.ForeignKey(OrganizacionCivil,
                          verbose_name=u'Nombre Organización de sociedad civil que apoya')
-    escuela = models.ForeignKey(EscuelaCampo, verbose_name=u'Escuela de campo que asiste')
+    escuela = models.ForeignKey(EscuelaCampo, verbose_name=u'Escuela promotores que asiste')
     tipo_suelo = models.ForeignKey(TipoSuelo)
     tipo_clima = models.IntegerField(choices=((1, 'Árido'),(2, 'Seco'),
                                               (3, 'Semi-seco'),(4, 'Semi-húmedo'),

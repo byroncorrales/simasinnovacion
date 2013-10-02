@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, get_object_or_404
 from .models import Promotor, PracticasProductivas, EscalaPruebas
-from empresas.models import Empresas, MejoraEmpresas
+from empresas.models import Empresas, MejoraEmpresas, TipoEmpresa, TemasEmpresa, Mercados
 from politicas.models import EspacioInnovacion, IniciativaInnovacion
 from fortalecimiento.models import MediosFortalecimiento
 from servicios.models import Servicios 
@@ -11,6 +11,7 @@ import json
 from django.http import HttpResponse
 
 def inicio(request, template="inicio.html"):
+    choice_zonas=((1, 'Seca'),(2, 'Alta'),(3, 'Húmeda'),)
     promotores = Promotor.objects.count()
     #salidas graficos promotores por sexo
     h_promotor = Promotor.objects.filter(sexo=1).count()
@@ -21,17 +22,47 @@ def inicio(request, template="inicio.html"):
     humeda = Promotor.objects.filter(zona=3).count()
     #salidas grafico de practicas
     practicas = PracticasProductivas.objects.count()
+
     #practicas por escala
     escala = []
-
     for obj in EscalaPruebas.objects.all():
         escala.append([obj.nombre,PracticasProductivas.objects.filter(escala_prueba=obj).count()])
-    print escala
+    #numero de practicas por años
+    years = []
+    for en in PracticasProductivas.objects.order_by('anio').values_list('anio', flat=True):
+        years.append(en)
+    lista_years = list(set(years))
+    numero_practica = []
+    for year in lista_years:
+        a = PracticasProductivas.objects.filter(anio=year).count()
+        numero_practica.append([year,a])
 
-
-
+    #salidas graficas sobre empresas
     empresas = Empresas.objects.count()
+    #conteo de tipos de empresas registradas
+    tipo_empresas = []
+    for obj in TipoEmpresa.objects.all():
+        tipo_empresas.append([obj.nombre,Empresas.objects.filter(tipo=obj).count()])
+    #conteo de las empresas por zonas
+    lista_empresas_zonas = []
+    for obj in choice_zonas:
+        lista_empresas_zonas.append([str(obj[1]), Empresas.objects.filter(zona=obj[0]).count()])
+    
+    #graficos de las mejoras de las empresas
     mejoras_empresa = MejoraEmpresas.objects.count()
+    #grafica de los temas de mejoras en las empresas
+    lista_mejora_empresa = []
+    for obj in TemasEmpresa.objects.all():
+        lista_mejora_empresa.append([obj.nombre, 
+                                    MejoraEmpresas.objects.filter(tema_prueba=obj).count()])
+    
+    #grafico de los mercados de las pruebas sobre mejora de las empresas
+    lista_mercados = []
+    for obj in Mercados.objects.all():
+        lista_mercados.append([obj.nombre, 
+                               MejoraEmpresas.objects.filter(mercado_prueba=obj).count()])
+
+    #graficos de los espacios
     espacios = EspacioInnovacion.objects.count()
     iniciativas = IniciativaInnovacion.objects.count()
     fortalecimientos = MediosFortalecimiento.objects.count()

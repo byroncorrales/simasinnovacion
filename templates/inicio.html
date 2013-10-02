@@ -159,9 +159,215 @@ $(function () {
                 }
             }]
         });
+    //grafico de numeros de practica por años
+    // Build the chart
+        $('#container3').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Número de practicas por años'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in numero_practica%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
 
+        //graficos de los tipos de empresas
+        $('#container4').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Tipos de empresas (conteo)'
+            },
+            xAxis: {
+                categories: [ {% for obj in tipo_empresas %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in tipo_empresas%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    //grafico del conteo de empresas por zona
+        $('#container5').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Número de empresas por zonas'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_empresas_zonas%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
 
+      //grafico del conteo de las mejoras empresariales
+        $('#container6').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Temas de las mejoras empresariales'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_mejora_empresa%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
 
+           //graficos de conteo de los tipos de mercados de la pruebas empresariales
+        $('#container7').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Tipos de Mercados de las pruebas(conteo)'
+            },
+            xAxis: {
+                categories: [ {% for obj in lista_mercados %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in lista_mercados%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
 
     });  
 </script>
@@ -234,6 +440,8 @@ $(function () {
          <div class="large-6 columns panel">
               Número de prácticas productivas que se estan llevando: {{practicas}} <br>
               <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
+              <br>
+              <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
          </div>
           
   </div>
@@ -243,10 +451,15 @@ $(function () {
   <div class="large-12 columns">
          <div class="large-6 columns panel">
             Número de empresas registradas: {{empresas}} <br>
-            
+            <div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <br>
+            <div id="container5" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
          </div>
        <div class="large-6 columns panel">
          Número de mejoras empresariales que se han registrado: {{mejoras_empresa}} <br>
+         <div id="container6" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+         <br>
+         <div id="container7" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
        </div>       
   </div>
 </div>
@@ -255,9 +468,15 @@ $(function () {
   <div class="large-12 columns">
        <div class="large-6 columns panel">
          Número de espacios registrados: {{espacios}} <br>
+         <div id="container8" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+         <br>
+         <div id="container9" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
        </div>
         <div class="large-6 columns panel">
          Número de iniciativas que se estan llevando acabo: {{iniciativas}} <br>
+         <div id="container10" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+         <br>
+         <div id="container11" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>        
   </div>
 </div>
