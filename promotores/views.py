@@ -3,9 +3,10 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Promotor, PracticasProductivas, EscalaPruebas
 from empresas.models import Empresas, MejoraEmpresas, TipoEmpresa, TemasEmpresa, Mercados
-from politicas.models import EspacioInnovacion, IniciativaInnovacion
-from fortalecimiento.models import MediosFortalecimiento
-from servicios.models import Servicios 
+from politicas.models import EspacioInnovacion, IniciativaInnovacion, TipoEspacio, \
+                             PapelSimas, TipoIniciativa
+from fortalecimiento.models import MediosFortalecimiento, TiposMedios
+from servicios.models import Servicios, TiposServicio
 from .forms import PromotorForm, PracticaForm
 import json
 from django.http import HttpResponse
@@ -64,9 +65,52 @@ def inicio(request, template="inicio.html"):
 
     #graficos de los espacios
     espacios = EspacioInnovacion.objects.count()
+    #graficos de tipos de espacios
+    lista_espacios = []
+    for obj in TipoEspacio.objects.all():
+        lista_espacios.append([obj.nombre, 
+                             EspacioInnovacion.objects.filter(tipos=obj).count()])
+    #grafico de papel de simas
+    lista_papel_simas = []
+    for obj in PapelSimas.objects.all():
+        lista_papel_simas.append([obj.nombre, 
+                                 EspacioInnovacion.objects.filter(papel=obj).count()])
+    #graficos de las iniciativas politicas
     iniciativas = IniciativaInnovacion.objects.count()
+    #grafico de tipos de iniciativas
+    lista_iniciativas = []
+    for obj in TipoIniciativa.objects.all():
+        lista_iniciativas.append([obj.nombre,
+                                 IniciativaInnovacion.objects.filter(tipo=obj).count()])
+    #grafico de numero de iniciativas por años
+    lista_years = []
+    for en in IniciativaInnovacion.objects.order_by('anio').values_list('anio', flat=True):
+        lista_years.append(en)
+    iniciativa_years = list(set(lista_years))
+    numero_iniciativa = []
+    for year in iniciativa_years:
+        a = IniciativaInnovacion.objects.filter(anio=year).count()
+        numero_iniciativa.append([year,a])
+
+    #graficos de fortalecimiento 
     fortalecimientos = MediosFortalecimiento.objects.count()
+    tipo_medio = []
+    for obj in TiposMedios.objects.all():
+        tipo_medio.append([obj.nombre, 
+                           MediosFortalecimiento.objects.filter(tipo_medio=obj).count()])
+    simas_fotalece = []
+    for obj in PapelSimas.objects.all():
+        simas_fotalece.append([obj.nombre, 
+                               MediosFortalecimiento.objects.filter(papel_simas=obj)])
+
+    #gráficos de los servicios
     servicios = Servicios.objects.count()
+    #grafico tipos de servicios
+    tipo_servicios = []
+    for obj in TiposServicio.objects.all():
+        tipo_servicios.append([obj.nombre, 
+                              Servicios.objects.filter(tipos_servicios=obj).count()])
+
 
     return render(request, template, locals())
 

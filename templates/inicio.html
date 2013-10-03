@@ -378,7 +378,7 @@ $(function () {
 <div class="row">
   <div class="large-4 columns"></div>
   <div class="large-8 columns">
-
+    
       <div class="section-container horizontal-nav" data-section="horizontal-nav" data-options="one_up: false;">
               <section class="section">
                 <p class="title"><a href="#">PROMOTORES</a></p>
@@ -428,68 +428,101 @@ $(function () {
 {% block contenido %}
 <div class="row">
   <div class="large-12 columns">
+
         <h3>Aca son estadisticas en contruccion!!</h3>
+        
+    <div class="section-container auto" data-section>
+    <section>
+    <p class="title" data-section-title><a href="#">Promotores</a></p>
+    <div class="content" data-section-content>
+        <div class="row">
+            <div class="large-12 columns">
+            <div class="large-6 columns">
+                Número de promotores registrados: {{promotores}} <br>
+                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <br>
+                <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
 
-        <div class="large-6 columns panel">
-            Número de promotores registrados: {{promotores}} <br>
-            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-            <br>
-            <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <div class="large-6 columns">
+                Número de prácticas productivas que se estan llevando: {{practicas}} <br>
+                <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
+                <br>
+                <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+            </div>
         </div>
+    </div>
+    </section>
 
-         <div class="large-6 columns panel">
-              Número de prácticas productivas que se estan llevando: {{practicas}} <br>
-              <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
-              <br>
-              <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-         </div>
+    <section>
+    <p class="title" data-section-title><a href="#">Empresas</a></p>
+    <div class="content" data-section-content>
+        <div class="row">
+            <div class="large-12 columns">
+            <div class="large-6 columns">
+                Número de empresas registradas: {{empresas}} <br>
+                <div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <br>
+                <div id="container5" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+            <div class="large-6 columns">
+                Número de mejoras empresariales que se han registrado: {{mejoras_empresa}} <br>
+                <div id="container6" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <br>
+                <div id="container7" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>       
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section>
+    <p class="title" data-section-title><a href="#">Espacios</a></p>
+    <div class="content" data-section-content>
+    <div class="row">
+    <div class="large-12 columns">
+       <div class="large-6 columns">
+            Número de espacios registrados: {{espacios}} <br>
+            <div id="container8" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <br>
+            <div id="container9" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        </div>
+        <div class="large-6 columns">
+            Número de iniciativas que se estan llevando acabo: {{iniciativas}} <br>
+            <div id="container10" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <br>
+            <div id="container11" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        </div>        
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <section>
+    <p class="title" data-section-title><a href="#">Fortalecimiento</a></p>
+    <div class="content" data-section-content>
+    <div class="row">
+    <div class="large-12 columns">
+        <div class="large-6 columns">
+            Número de medios de fortalecimientos que se han registrado: {{fortalecimientos}} <br>
+            </div>
+        <div class="large-6 columns">
+            Número de servicios que se han realizado: {{servicios}} <br>
+        </div>        
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <section>
+    <p class="title" data-section-title><a href="#">Servicios</a></p>
+    <div class="content" data-section-content>
+                <p>mundo</p>
+    </div>
+    </section>
+    </div>    
           
   </div>
 </div>
-
-<div class="row">
-  <div class="large-12 columns">
-         <div class="large-6 columns panel">
-            Número de empresas registradas: {{empresas}} <br>
-            <div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-            <br>
-            <div id="container5" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-         </div>
-       <div class="large-6 columns panel">
-         Número de mejoras empresariales que se han registrado: {{mejoras_empresa}} <br>
-         <div id="container6" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-         <br>
-         <div id="container7" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-       </div>       
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-12 columns">
-       <div class="large-6 columns panel">
-         Número de espacios registrados: {{espacios}} <br>
-         <div id="container8" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-         <br>
-         <div id="container9" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-       </div>
-        <div class="large-6 columns panel">
-         Número de iniciativas que se estan llevando acabo: {{iniciativas}} <br>
-         <div id="container10" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-         <br>
-         <div id="container11" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-        </div>        
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-12 columns">
-       <div class="large-6 columns panel">
-         Número de medios de fortalecimientos que se han registrado: {{fortalecimientos}} <br>
-       </div>
-        <div class="large-6 columns panel">
-         Número de servicios que se han realizado: {{servicios}} <br>
-        </div>        
-  </div>
-</div>
-   
 {% endblock contenido %}

@@ -173,6 +173,11 @@ class IniciativaInnovacion(models.Model):
                                 null=True, blank=True)
 
     usuario = models.ForeignKey(User, null=True, blank=True)
+    anio = models.IntegerField(editable=False, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.anio = self.fecha.year
+        super(IniciativaInnovacion, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return self.nombre
