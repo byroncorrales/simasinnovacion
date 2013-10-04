@@ -101,7 +101,7 @@ def inicio(request, template="inicio.html"):
     simas_fotalece = []
     for obj in PapelSimas.objects.all():
         simas_fotalece.append([obj.nombre, 
-                               MediosFortalecimiento.objects.filter(papel_simas=obj)])
+                               MediosFortalecimiento.objects.filter(papel_simas=obj).count()])
 
     #gráficos de los servicios
     servicios = Servicios.objects.count()
@@ -110,6 +110,17 @@ def inicio(request, template="inicio.html"):
     for obj in TiposServicio.objects.all():
         tipo_servicios.append([obj.nombre, 
                               Servicios.objects.filter(tipos_servicios=obj).count()])
+
+    #graficos de servicios por año
+    servicios_anios = []
+    anios = []
+    for en in Servicios.objects.order_by('fecha').values_list('fecha', flat=True):
+        anios.append(en)
+    servicios_anios = list(set(anios))
+    numero_servicios = []
+    for year in servicios_anios:
+        a = Servicios.objects.filter(fecha=year).count()
+        numero_servicios.append([year,a])
 
 
     return render(request, template, locals())

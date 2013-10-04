@@ -369,6 +369,366 @@ $(function () {
             }]
         });
 
+        //graficos de conteo de los tipos de espacios
+        $('#container8').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Tipos de espacios(conteo)'
+            },
+            xAxis: {
+                categories: [ {% for obj in lista_espacios %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in lista_espacios%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+        //grafico de papel de simas
+        $('#container9').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Papel de SIMAS'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_papel_simas%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+
+
+        //grafico de iniciativas tipo de iniciativas
+        $('#container10').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Tipos de Iniciativas'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_iniciativas%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+
+        //graficos iniciativas por años
+        $('#container11').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Número de iniciativas'
+            },
+            xAxis: {
+                categories: [ {% for obj in numero_iniciativa %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in numero_iniciativa%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+    
+        //grafico de fortalecimiento tipos de medios
+        $('#container12').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Tipos de medios para fortalecimiento'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in tipo_medio%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+
+        //graficos simas fortalece
+        $('#container13').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Papel de SIMAS para fortalecer'
+            },
+            xAxis: {
+                categories: [ {% for obj in simas_fotalece %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in simas_fotalece%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+
+      //grafico de fortalecimiento tipos de medios
+        $('#container14').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Tipos de servicios brindados'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in tipo_servicios%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+         //graficos de los tipos de empresas
+        $('#container15').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Número de servicios por años'
+            },
+            xAxis: {
+                categories: [ {% for obj in numero_servicios %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in numero_servicios%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+
+
     });  
 </script>
   
@@ -431,12 +791,12 @@ $(function () {
 
         <h3>Aca son estadisticas en contruccion!!</h3>
         
-    <div class="section-container auto" data-section>
+<div class="section-container auto" data-section>
     <section>
     <p class="title" data-section-title><a href="#">Promotores</a></p>
     <div class="content" data-section-content>
         <div class="row">
-            <div class="large-12 columns">
+          <div class="large-12 columns">
             <div class="large-6 columns">
                 Número de promotores registrados: {{promotores}} <br>
                 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -450,7 +810,7 @@ $(function () {
                 <br>
                 <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             </div>
-            </div>
+          </div>
         </div>
     </div>
     </section>
@@ -459,7 +819,7 @@ $(function () {
     <p class="title" data-section-title><a href="#">Empresas</a></p>
     <div class="content" data-section-content>
         <div class="row">
-            <div class="large-12 columns">
+          <div class="large-12 columns">
             <div class="large-6 columns">
                 Número de empresas registradas: {{empresas}} <br>
                 <div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
@@ -472,7 +832,7 @@ $(function () {
                 <br>
                 <div id="container7" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             </div>       
-            </div>
+          </div>
         </div>
     </div>
     </section>
@@ -481,19 +841,19 @@ $(function () {
     <p class="title" data-section-title><a href="#">Espacios</a></p>
     <div class="content" data-section-content>
     <div class="row">
-    <div class="large-12 columns">
-       <div class="large-6 columns">
+        <div class="large-12 columns">
+            <div class="large-6 columns">
             Número de espacios registrados: {{espacios}} <br>
             <div id="container8" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             <br>
             <div id="container9" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-        </div>
-        <div class="large-6 columns">
+            </div>
+            <div class="large-6 columns">
             Número de iniciativas que se estan llevando acabo: {{iniciativas}} <br>
             <div id="container10" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             <br>
             <div id="container11" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-        </div>        
+            </div>        
         </div>
     </div>
     </div>
@@ -503,13 +863,14 @@ $(function () {
     <p class="title" data-section-title><a href="#">Fortalecimiento</a></p>
     <div class="content" data-section-content>
     <div class="row">
-    <div class="large-12 columns">
-        <div class="large-6 columns">
+        <div class="large-12 columns">
+            <div class="large-6 columns">
             Número de medios de fortalecimientos que se han registrado: {{fortalecimientos}} <br>
+            <div id="container12" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             </div>
-        <div class="large-6 columns">
-            Número de servicios que se han realizado: {{servicios}} <br>
-        </div>        
+            <div class="large-6 columns">
+                <div id="container13" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>        
         </div>
     </div>
     </div>
@@ -518,7 +879,9 @@ $(function () {
     <section>
     <p class="title" data-section-title><a href="#">Servicios</a></p>
     <div class="content" data-section-content>
-                <p>mundo</p>
+                Número de servicios que se han realizado: {{servicios}} <br>
+                <div id="container14" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                <div id="container15" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </div>
     </section>
     </div>    
