@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
+{% load staticfiles %}
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+  	<link rel="stylesheet" href="{% static 'css/normalize.css' %}" /> 
+	  <link rel="stylesheet" href="{% static 'css/foundation.css' %}" /> 
+	  <link rel="stylesheet" href="{% static 'css/simas.css' %}" />
+
+  	<script src="{% static 'js/vendor/custom.modernizr.js' %}"></script>
+	<title>{% block title %}Sistema SIMAS EED{% endblock title %}</title>
+	
+</head>
+<body>
+  <div class="headbg">
+<div class="row">
+  <div class="large-12 columns">
+
+    <!-- Navigation -->
+    <header>
+    <div class="container">
+    
+      <div class="row">
+        <button id="ingresar">Ingresar</button> <hr/>
+        <div class="large-2 columns">
+          <a href="/"><img src="{%static 'img/logosimas.png' %}"/></a>
+        </div>
+        <div class="large-10 columns">
+          <h5 class="name">Sistema EED Monitoreo Proyecto</h5>
+          <h5 class="name">Innovacion de Sistema Alimentaria</h5>
+        </div>
+    </div>
+      <div class="large-12 columns">
+        <div class="large-9 columns">
+          <p class="head-text">Lorem ipsum Pariatur fugiat non consectetur enim do exercitation. Lorem ipsum Sit do amet proident Excepteur consectetur tempor do enim voluptate sit. Lorem ipsum Qui elit proident pariatur magna Excepteur nisi sint dolor dolore ut. Lorem ipsum Laborum Ut cillum dolor exercitation culpa fugiat culpa voluptate Excepteur aliquip mollit nostrud. Lorem ipsum Sed amet aliqua consectetur eu sit consequat incididunt consequat eiusmod.</p>
+          <p class="head-text">Lorem ipsum Fugiat ut deserunt ut elit elit Excepteur consequat tempor incididunt in nisi sed. Lorem ipsum Exercitation veniam qui ut occaecat consectetur sunt amet dolore Excepteur dolor sit ex Duis qui in. Lorem ipsum Sit dolore elit irure dolore officia aliqua Excepteur sit sit ut reprehenderit.</p>
+        </div>
+        <div class="large-3 columns">
+          <img src="http://i.imgur.com/Veslh8C.jpg" alt="">
+        </div>
+      </div>
+        {% block menu %}{% endblock menu %}
+    </div>
+    </header>
+    <!-- End Navigation -->
+  </div>
+</div></div>
+{% block contenido %}
+    
+{% endblock contenido %}
+
+{% include "footer.html" %}
+<script> 
+  document.write('<script src=' + 
+	('__proto__' in {} ? '/static/js/vendor/zepto' : '/static/js/vendor/jquery') + 
+	'.js><\/script>') 
+</script> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{{STATIC_URL}}css/jquery.fancybox.css" >
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.pack.js"></script>
+  <script src="/static/js/foundation.min.js"></script>
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.interchange.js"></script>
+  
+  <script src="js/foundation/foundation.abide.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  -->
+  
+  <script>
+    $(document).foundation();
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+
+        $(".fancybox-effects-d").fancybox({
+                padding: 0,
+
+                openEffect : 'elastic',
+                openSpeed  : 150,
+
+                closeEffect : 'elastic',
+                closeSpeed  : 150,
+
+                closeClick : true,
+
+                helpers : {
+                    overlay : null
+                }
+            });
+
+    });
+</script>
+{% block extra_js %}{% endblock extra_js %}
+
+</body>
+</html>
