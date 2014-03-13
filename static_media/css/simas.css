@@ -1,17 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
 body {
-    background: #cacaca url(../img/bg.png)
+    background: #e7e5de url(../img/headeer.png);
+}
+
+#ingresar {
+    float: right;
+    margin-top: 20px;
+    background-color: green;
+}
+
+#ingresar:hover{
+    background-color: blue;
+}
+
+.logo{
+    float: left;
+    text-align: left;
+    width: 90px;
+}
+
+.headbg {
+    background: url(../img/header.png)  no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-bottom: 80px;
 }
 
 #map img {
     max-width: none !important;
  }
 
-header { 
-    margin-bottom: 20px; 
+ .name{
+    margin-top: 25px;
+ }
+
+.head-text { 
+   color: #fff;
+
 }
+
 header nav ul { 
     margin: 0 0 0 -20px; padding: 0; float: right; overflow: hidden; 
 }
+
 header nav ul li { 
     margin: 0 0 0 20px; padding: 0; display: block; float: left; 
 }
@@ -25,9 +59,13 @@ header nav ul li {
     margin: -41px 2px 3px 4px;
 }
 
+.apps{
+    margin-top: -90px;
+}
+
 .elem-apps {
     background: #f3f3f2;
-    height: 146px;
+    min-height: 146px;
     -webkit-border-top-left-radius: 5px 10px; 
     -webkit-border-top-right-radius: 5px 10px; 
     border-top-right-radius: 5px 10px;
@@ -37,7 +75,7 @@ header nav ul li {
 
 .elem-apps:hover {
     background: #f3f3f2;
-    height: 146px;
+    min-height: 146px;
     -webkit-border-top-left-radius: 5px 10px; 
     -webkit-border-top-right-radius: 5px 10px; 
     border-top-right-radius: 5px 10px;
@@ -48,19 +86,38 @@ header nav ul li {
 
 }
 
-.elem-tittle h3{
-    padding: 1px 2px 2px 20px;
+.elem-tittle p{
+    /*padding: 1px 2px 2px 20px;*/
     color: #000;
     font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
 }
 
-.elem-tittle h3:hover {
-    padding: 1px 2px 2px 20px;
+.elem-tittle p:hover {
+    /*padding: 1px 2px 2px 20px;*/
     color: blue;
     font-size: 16px;
+    text-align: center;
 }
 
 .elem-figura img{
-    border-radius: 5px 10px;
-    padding-left: 35px;
+    /*padding-left: 35px;*/
+    width: 190px;
+    margin-left: 15px;
+}
+
+.elem-cont{
+    text-align: left;
+    font-size: 14px;
+    margin-left: 10px;
+
+}
+
+.elem-boton{
+    text-align: center;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
