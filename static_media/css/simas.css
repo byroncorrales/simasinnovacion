@@ -7,11 +7,13 @@ body {
 #ingresar {
     float: right;
     margin-top: 20px;
-    background-color: green;
+    background-color: #3E8D68;
+    border-color: #3E8D68;
 }
 
 #ingresar:hover{
-    background-color: blue;
+    background-color: #6DB841;
+    border-color: #6DBB41;
 }
 
 .logo{
@@ -113,11 +115,19 @@ header nav ul li {
     margin-left: 10px;
 
 }
-
 .elem-boton{
-    text-align: center;
-    width: 100%;
     padding-left: 10px;
     padding-right: 10px;
+}
+.elem-botons{
+    text-align: center;
+    /*width: 100%;*/
+    background-color: #6DB883;
+    border-color: #6DB883;
+    color: #fff;
+}
 
+.elem-botons:hover{
+    background-color: #6DB861;
+    border-color: #6DB861;
 }
