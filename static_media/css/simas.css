@@ -9,6 +9,7 @@ body {
     margin-top: 20px;
     background-color: #3E8D68;
     border-color: #3E8D68;
+    margin-right: 20px;
 }
 
 #ingresar:hover{
@@ -130,4 +131,95 @@ header nav ul li {
 .elem-botons:hover{
     background-color: #6DB861;
     border-color: #6DB861;
+}
+
+/*==============================================
+        Aca va el css de seleccion.html
+================================================*/
+
+.gris {
+    background-color: #353535;
+    margin-bottom: 0px;
+}
+.gris p {
+    color: #fff;
+    margin-left: 90px;
+    margin-top:10px;
+}
+.gris img {
+    float:left;
+    margin-left: 30px;
+}
+.verde {
+    background-color: #6DB883;    
+}
+nav.top-bar > .title-area > .name h1 {
+    margin-left: 20px;
+    font-size: 26px;
+}
+
+li.has-form > a {
+    margin-right: 20px;
+}
+
+.info-elem {
+    background: #f3f3f2;
+    margin-top: 20px;
+    /*min-height: 146px;*/
+    -webkit-border-top-left-radius: 5px 10px; 
+    -webkit-border-top-right-radius: 5px 10px; 
+    border-top-right-radius: 5px 10px;
+    border-top-left-radius: 5px 10px;
+
+}
+.info-elem:hover {
+    background: #f3f3f2;
+    /*min-height: 146px;*/
+    -webkit-border-top-left-radius: 5px 10px; 
+    -webkit-border-top-right-radius: 5px 10px; 
+    border-top-right-radius: 5px 10px;
+    border-top-left-radius: 5px 10px;
+    -moz-box-shadow: 5px 5px 5px #888;
+    -webkit-box-shadow: 5px 5px 5px #888;
+    box-shadow: 5px 5px 5px #888;
+
+}
+
+.info-tittle p{
+    /*padding: 1px 2px 2px 20px;*/
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.info-tittle p:hover {
+    /*padding: 1px 2px 2px 20px;*/
+    color: blue;
+}
+.info-contenedor{
+    overflow: hidden;
+    width: 420;
+}
+.info-text {
+    font-size: 14px;
+    text-align: left;
+    padding-left: 15px;
+    width: 200px;
+    float: left;
+    
+}
+
+.info-boton {
+    width: 200px;
+    float: left;
+}
+.info-boton > a {
+    font-size: 12px;
+    background-color: #EA6753;
+    border-color: #EA6753;
+    width: 100%;
+    margin-left: 20px;
 }
