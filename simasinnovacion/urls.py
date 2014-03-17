@@ -15,8 +15,8 @@ urlpatterns = patterns('',
     url(r'^', include('politicas.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^chaining/', include('smart_selects.urls')),
-    url(r'^segunda/$', TemplateView.as_view(template_name="seleccion.html")),
-
+    url(r'^seleccion/$', TemplateView.as_view(template_name="seleccion.html")),
+    url(r'^tercera/$', TemplateView.as_view(template_name="promotores.html")),
 )
 
 urlpatterns += staticfiles_urlpatterns()

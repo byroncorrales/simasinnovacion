@@ -153,6 +153,7 @@ header nav ul li {
 .verde {
     background-color: #6DB883;    
 }
+
 nav.top-bar > .title-area > .name h1 {
     margin-left: 20px;
     font-size: 26px;
@@ -222,4 +223,64 @@ li.has-form > a {
     border-color: #EA6753;
     width: 100%;
     margin-left: 20px;
+}
+
+/*==============================================
+        Aca va el CSS de promotores.html
+===============================================*/
+
+.menu {
+    border-right: 2px solid #A2D;
+}
+
+.menu-titulo {
+    color: #EA6753 !important;
+}
+
+.menu > li > a {
+    text-align: right;
+    padding-right: 20px;
+    color: #777777;
+}
+
+.menu > li > a:active {
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: #F9FAF6;
+    color: #000;
+}
+
+.selector{
+    background-color: #fff;
+    color: #777;
+    border-bottom: #ccc;
+    width: 100%;
+    height: 100%;
+}
+
+.consulta {
+    background-color: #EA6753;
+    border-color: #EA6754;
+}
+
+.mapa{
+
+}
+
+table {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.tnombre {
+    background-color: #EA6753;
+    border-color: #EA6753;
+}
+
+table > thead > tr > th{
+    background-color: #E2E2E2;
+}
+
+tbody > tr > td {
+    background-color: #fff;
 }
