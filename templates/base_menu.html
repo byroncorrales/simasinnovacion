@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
+{% load staticfiles %}
+<head>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+  	<link rel="stylesheet" href="{% static 'css/normalize.css' %}" /> 
+	<link rel="stylesheet" href="{% static 'css/foundation.css' %}" /> 
+	<link rel="stylesheet" href="{% static 'css/simas.css' %}" />
+
+  	<script src="{% static 'js/vendor/custom.modernizr.js' %}"></script>
+	<title>{% block title %}Sistema SIMAS EED{% endblock title %}</title>
+	
+</head>
+<body>
+  <div>
+		<nav class="top-bar fixed gris">				
+          <a href="/"> <img src="{%static 'img/logosimas.png' %}" width="40px" heigth="40px"/></a>
+        	<p>Sistema de Monitoreo de Innovacion y Capacidad</p>
+    </nav>
+	</div>
+  <div>
+	<nav class="top-bar verde" data-topbar>
+		<ul class="title-area">
+      <li class="name">
+        <h1>Monitoreo de Innovacion</h1>
+      </li>
+    </ul>
+    <li class="has-form">
+      <a href="#" class="button right">Ingresar</a>
+    </li>
+  </nav>
+  </div>	
+	
+	
+
+
+{% block contenido %}
+    
+{% endblock contenido %}
+
+{% include "footer.html" %}
+
+<script> 
+  document.write('<script src=' + 
+	('__proto__' in {} ? '/static/js/vendor/zepto' : '/static/js/vendor/jquery') + 
+	'.js><\/script>') 
+</script> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{{STATIC_URL}}css/jquery.fancybox.css" >
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.js"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.pack.js"></script>
+  <script src="/static/js/foundation.min.js"></script>
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.interchange.js"></script>
+  
+  <script src="js/foundation/foundation.abide.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  -->
+  
+  <script>
+    $(document).foundation();
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+
+        $(".fancybox-effects-d").fancybox({
+                padding: 0,
+
+                openEffect : 'elastic',
+                openSpeed  : 150,
+
+                closeEffect : 'elastic',
+                closeSpeed  : 150,
+
+                closeClick : true,
+
+                helpers : {
+                    overlay : null
+                }
+            });
+
+    });
+</script>
+{% block extra_js %}{% endblock extra_js %}
+
+</body>
+</html>
