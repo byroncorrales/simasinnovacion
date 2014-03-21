@@ -42,7 +42,7 @@
 					<th width="120px" class="pdatosh">Departamento</th>
 					<th width="120px" class="pdatosh">Municipio</th>
 					<th width="180px" class="pdatosh">Organizacion Campesina</th>
-					<th width="150px" class="pdatosh">Organizacion de Apoyo</th>
+					<th width="170px" class="pdatosh">Organizacion de Apoyo</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -99,11 +99,11 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="large-9 columns">
-		<div class="large-4 columns">
-			<div class="ficha-elem">
-				<div class="cap">
+	<div class="row frow">
+	<div class="large-12 columns">
+		<div class="large-6 columns">
+			<div class="ficha-elem cap">
+				<div class="">
 					<p>Cultivos</p>
 					<img src="{% static 'img/maiz.png' %}" alt="Maiz">
 					<img src="{% static 'img/frijol.png' %}" alt="Frijol">
@@ -125,35 +125,48 @@
 				</div>
 			</div>
 		</div>
-		<div class="large-4 columns cap">
+		<div class="large-6 columns chart">
 			<div>
 				<img src="http://jcharts.sourceforge.net/samples/images/samples/clusteredBar/clusteredBarChart.png" alt="Bar Chart">
 			</div>
 		</div>
 	</div>
-
-	<div class="large-9 columns">
-		<p><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Pruebas Realizadas</p>
-
 	</div>
-	<div class="large-9 columns">
-		<table>
+	<div class="row frow">
+	<div class="large-12 columns">
+		<div class="large-9 columns">
+			<p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Pruebas Realizadas</p>
+		</div>
+		<div class="large-1 columns">
+			<a href="#" class="button bty">2014</a>
+		</div>
+		<div class="large-1 columns">
+			<a href="#" class="button bty">2013</a>
+		</div>
+		<div class="large-1 columns">
+			<a href="#" class="button bty">2012</a>
+		</div>
+	</div>
+	</div>
+	<div class="row frow">
+	<div class="large-12 columns">
+		<table class="tpruebasr">
 			<thead>
 				<tr>
-					<th>Año Activo</th>
-					<th>Nombre de Prueba</th>
-					<th>Tema</th>
-					<th>Rubro</th>
-					<th>Escala</th>
-					<th>Inicio</th>
-					<th>Fin</th>
-					<th>Dias de Campo</th>
+					<th class="tpruebasrh">Año Activo</th>
+					<th class="tpruebasrh">Nombre de Prueba</th>
+					<th class="tpruebasrh">Tema</th>
+					<th class="tpruebasrh">Rubro</th>
+					<th class="tpruebasrh">Escala</th>
+					<th class="tpruebasrh">Inicio</th>
+					<th class="tpruebasrh">Fin</th>
+					<th class="tpruebasrh">Dias de Campo</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="tpruebasrb">
 				<tr>
 					<td>2013</td>
-					<td>Prueba de Productividad</td>
+					<td class="pp">Prueba de Productividad</td>
 					<td>Abono</td>
 					<td>Frijol</td>
 					<td>1/2 Mz</td>
@@ -163,7 +176,7 @@
 				</tr>
 				<tr>
 					<td>2013</td>
-					<td>Prueba de Productividad</td>
+					<td class="pp">Prueba de Productividad</td>
 					<td>Abono</td>
 					<td>Frijol</td>
 					<td>1/2 Mz</td>
@@ -173,7 +186,7 @@
 				</tr>
 				<tr>
 					<td>2013</td>
-					<td>Prueba de Productividad</td>
+					<td class="pp">Prueba de Productividad</td>
 					<td>Abono</td>
 					<td>Frijol</td>
 					<td>1/2 Mz</td>
@@ -183,7 +196,7 @@
 				</tr>
 				<tr>
 					<td>2013</td>
-					<td>Prueba de Productividad</td>
+					<td class="pp">Prueba de Productividad</td>
 					<td>Abono</td>
 					<td>Frijol</td>
 					<td>1/2 Mz</td>
@@ -193,7 +206,7 @@
 				</tr>
 				<tr>
 					<td>2013</td>
-					<td>Prueba de Productividad</td>
+					<td class="pp">Prueba de Productividad</td>
 					<td>Abono</td>
 					<td>Frijol</td>
 					<td>1/2 Mz</td>
@@ -203,6 +216,7 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
 	</div>
 </div>
 
