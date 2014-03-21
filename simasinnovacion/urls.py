@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^chaining/', include('smart_selects.urls')),
     url(r'^seleccion/$', TemplateView.as_view(template_name="seleccion.html")),
     url(r'^tercera/$', TemplateView.as_view(template_name="promotores.html")),
+    url(r'^cuarta/$', TemplateView.as_view(template_name="fpromotor.html")),
 )
 
 urlpatterns += staticfiles_urlpatterns()

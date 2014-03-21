@@ -1,0 +1,210 @@
+{% extends "base_menu.html" %}
+
+{% block title %}Sistema SIMAS - EED{% endblock title %}
+{% load staticfiles %}
+{% block contenido %}
+<div class="large-12 columns">
+	<div class="large-3 columns">
+		<ul class="side-nav menu">
+		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+		  <li><a href="#">Promotoras y promotores</a></li>
+		  <li><a href="#">Pruebas de practicas productivas</a></li>
+		<br/>
+		  <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+		  <li><a href="#">Empresas Rurales</a></li>
+		  <li><a href="#">Mejoras para Innovar</a></li>
+		<br/>
+		  <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+		  <li><a href="#">Espacios para Innovar</a></li>
+		  <li><a href="#">Iniciativas para Innovar</a></li>
+		<br/>
+		  <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+		  <li><a href="#">Conocimientos de Actores</a></li>
+		  <li><a href="#">Servicios para Mejorar Org.</a></li>
+		</ul>
+	</div>
+	<div class="large-9 columns">
+		<p class="ptitulo">Promotoras y promotores</p>
+		<hr/>
+		<div class="large-1 columns">
+			<img src="{%static 'img/fpromotor.png' %}" alt="Ficha Promotor"/>
+		</div>
+		<div class="large-8 columns">
+			<p class="pmtr">Promotor</p>
+			<p class="npmtr">Jose Abelardo Espinales</p>
+		</div>
+	</div>
+
+	<div class="large-7 columns">
+		<table class="pdatos">
+			<thead>
+				<tr>
+					<th width="120px" class="pdatosh">Departamento</th>
+					<th width="120px" class="pdatosh">Municipio</th>
+					<th width="180px" class="pdatosh">Organizacion Campesina</th>
+					<th width="150px" class="pdatosh">Organizacion de Apoyo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="pdatosb">Matagalpa</td>
+					<td class="pdatosb">San Ramon</td>
+					<td class="pdatosb">UNAG</td>
+					<td class="pdatosb">SIMAS</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="large-9 columns">
+		<div class="large-4 columns">
+			<div class="ficha-elem">
+				<table class="tpromotor">
+					<tr>
+						<td class="tpromotort">Tipo de Suelo</td>
+						<td class="tpromotord">Franco-Arcilloso</td>
+					</tr>
+					<tr>
+						<td class="tpromotort">Tipo de Clima</td>
+						<td class="tpromotord">Seco</td>
+					</tr>
+					<tr>
+						<td class="tpromotort">Meses de Lluvia</td>
+						<td class="tpromotord">5 Meses</td>
+					</tr>
+					<tr>
+						<td class="tpromotort">Tamaño de Finca</td>
+						<td class="tpromotord">6 Mz</td>
+					</tr>
+					<tr>
+						<td class="tpromotort">Acceso Riego</td>
+						<td class="tpromotord">No hay</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="large-4 columns">
+			<div class="ficha-slid">
+				<ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
+	  				<li>
+					    <img src="http://placehold.it/430x300" alt="slide 1" />					 
+				  	</li>
+					<li>
+	    				<img src="http://placehold.it/430x300" alt="slide 2" />					    
+	  				</li>
+	  				<li>
+					    <img src="http://placehold.it/430x300" alt="slide 3" />					    
+	  				</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="large-9 columns">
+		<div class="large-4 columns">
+			<div class="ficha-elem">
+				<div class="cap">
+					<p>Cultivos</p>
+					<img src="{% static 'img/maiz.png' %}" alt="Maiz">
+					<img src="{% static 'img/frijol.png' %}" alt="Frijol">
+					<img src="{% static 'img/platano.png' %}" alt="Platano">
+					<img src="{% static 'img/pasto.png' %}" alt="Pasto">
+				</div>
+				<br/>
+				<div>
+					<p>Animales</p>
+					<img src="{% static 'img/vaca.png' %}" alt="Vaca">
+					<img src="{% static 'img/cerdo.png' %}" alt="Cerdo">
+					<img src="{% static 'img/gallina.png' %}" alt="Gallina">
+				</div>
+				<br/>
+				<div>
+					<p>Productos Procesados</p>
+					<p>Cuajada</p>
+					<p>Miel</p>
+				</div>
+			</div>
+		</div>
+		<div class="large-4 columns cap">
+			<div>
+				<img src="http://jcharts.sourceforge.net/samples/images/samples/clusteredBar/clusteredBarChart.png" alt="Bar Chart">
+			</div>
+		</div>
+	</div>
+
+	<div class="large-9 columns">
+		<p><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Pruebas Realizadas</p>
+
+	</div>
+	<div class="large-9 columns">
+		<table>
+			<thead>
+				<tr>
+					<th>Año Activo</th>
+					<th>Nombre de Prueba</th>
+					<th>Tema</th>
+					<th>Rubro</th>
+					<th>Escala</th>
+					<th>Inicio</th>
+					<th>Fin</th>
+					<th>Dias de Campo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>2013</td>
+					<td>Prueba de Productividad</td>
+					<td>Abono</td>
+					<td>Frijol</td>
+					<td>1/2 Mz</td>
+					<td>3 Ene</td>
+					<td>23 Abr</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>2013</td>
+					<td>Prueba de Productividad</td>
+					<td>Abono</td>
+					<td>Frijol</td>
+					<td>1/2 Mz</td>
+					<td>3 Ene</td>
+					<td>23 Abr</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>2013</td>
+					<td>Prueba de Productividad</td>
+					<td>Abono</td>
+					<td>Frijol</td>
+					<td>1/2 Mz</td>
+					<td>3 Ene</td>
+					<td>23 Abr</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>2013</td>
+					<td>Prueba de Productividad</td>
+					<td>Abono</td>
+					<td>Frijol</td>
+					<td>1/2 Mz</td>
+					<td>3 Ene</td>
+					<td>23 Abr</td>
+					<td>45</td>
+				</tr>
+				<tr>
+					<td>2013</td>
+					<td>Prueba de Productividad</td>
+					<td>Abono</td>
+					<td>Frijol</td>
+					<td>1/2 Mz</td>
+					<td>3 Ene</td>
+					<td>23 Abr</td>
+					<td>45</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+{% endblock contenido %}

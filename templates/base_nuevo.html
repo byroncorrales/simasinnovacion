@@ -20,31 +20,33 @@
   <div class="large-12 columns">
 
     <!-- Navigation -->
-    <header>
+  <header>
     <div class="container">
     
       <div class="row">
-        <button id="ingresar">Ingresar</button> <hr/>
+        <button id="ingresar">Ingresar</button> <hr class="hline"/>
         <div class="large-2 columns">
-          <a href="/"><img src="{%static 'img/logosimas.png' %}"/></a>
+          <a href="/"><img src="{% static 'img/logosimas2.png' %}"/></a>
         </div>
         <div class="large-10 columns">
-          <h3 class="name">Sistema EED Monitoreo Proyecto</h3>
-          <h5 class="name">Proyecto Innovacion de Sistema Alimentaria</h5>
+          <p class="name">Sistema EED Monitoreo</p><br/><br/>
+          <p class="named">Proyecto Innovacion de Sistema Alimentaria</p>
         </div>
-    </div>
-      <div class="large-12 columns">
-        <div class="large-9 columns">
-          <p class="head-text">Lorem ipsum Pariatur fugiat non consectetur enim do exercitation. Lorem ipsum Sit do amet proident Excepteur consectetur tempor do enim voluptate sit. Lorem ipsum Qui elit proident pariatur magna Excepteur nisi sint dolor dolore ut. Lorem ipsum Laborum Ut cillum dolor exercitation culpa fugiat culpa voluptate Excepteur aliquip mollit nostrud. Lorem ipsum Sed amet aliqua consectetur eu sit consequat incididunt consequat eiusmod.</p>
-          <p class="head-text">Lorem ipsum Fugiat ut deserunt ut elit elit Excepteur consequat tempor incididunt in nisi sed. Lorem ipsum Exercitation veniam qui ut occaecat consectetur sunt amet dolore Excepteur dolor sit ex Duis qui in. Lorem ipsum Sit dolore elit irure dolore officia aliqua Excepteur sit sit ut reprehenderit.</p>
-        </div>
-        <div class="large-3 columns">
-          <img src="http://i.imgur.com/Veslh8C.jpg" alt="">
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="large-8 columns">
+            <p class="head-text">Lorem ipsum Pariatur fugiat non consectetur enim do exercitation. Lorem ipsum Sit do amet proident Excepteur consectetur tempor do enim voluptate sit. Lorem ipsum Qui elit proident pariatur magna Excepteur nisi sint dolor dolore ut. Lorem ipsum dolor asit pariatur</p>
+            <p class="head-text">Lorem ipsum Fugiat ut deserunt ut elit elit Excepteur consequat tempor incididunt in nisi sed. Lorem ipsum Exercitation veniam qui ut occaecat consectetur sunt amet dolore Excepteur dolor sit ex Duis qui in. Lorem ipsum dolores asit paritur magna excepteur</p>
+          </div>
+          <div class="large-4 columns">
+            <img src="{% static 'img/pc.png' %}" alt="Sistemas">
+          </div>
         </div>
       </div>
         {% block menu %}{% endblock menu %}
     </div>
-    </header>
+  </header>
     <!-- End Navigation -->
   </div>
 </div></div>
