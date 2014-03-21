@@ -433,16 +433,70 @@ Aca va el CSS de ficha promotor.html
     text-align: left;
 }
 
+.frow{
+    margin-right: -1px;
+}
+
+.chart{
+    float: right;
+    margin-top: 30px;
+    width: 400px;
+}
+
 .cap {
     margin-top: 30px;
+    margin-bottom: 20px;
     background: #f3f3f2;
     /*min-height: 146px;*/
     -webkit-border-top-left-radius: 5px 10px; 
     -webkit-border-top-right-radius: 5px 10px; 
     border-top-right-radius: 5px 10px;
     border-top-left-radius: 5px 10px;
+    width: 330px;
 }
 
+.pruebasr {
+    font-size: 24px;
+    font-weight: normal;
+    color: rgb(155,155,155);
+    margin-bottom: -10px;
+}
+
+.bty {
+    float: left;
+    background-color: rgb(234,103,83);
+    border: rgb(234,103,83);
+    width: 65px;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: center;
+    --webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.tpruebasr {
+    width: 100%;
+}
+
+.tpruebasrh {
+    background-color: rgb(226,226,226);
+    color: rgb(66,66,66);
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.pp{
+    color: rgb(224,53,27) !important;
+}
+.tpruebasrb > tr > td{
+    background-color: rgb(255,255,255);
+    color: rgb(119,119,119);
+    font-size: 13px;
+    font-weight: normal;
+    border-bottom: 1px solid rgb(222,223,216);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 /*==========================================
     css de footer.html
 ===========================================*/
