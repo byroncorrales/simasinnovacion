@@ -391,7 +391,7 @@ Aca va el CSS de ficha promotor.html
 }
 
 .ficha-elem {
-    background: #f3f3f2;
+    background-color: #fff;
     /*min-height: 146px;*/
     -webkit-border-top-left-radius: 5px 10px; 
     -webkit-border-top-right-radius: 5px 10px; 
@@ -434,25 +434,51 @@ Aca va el CSS de ficha promotor.html
 }
 
 .frow{
-    margin-right: -1px;
-}
-
-.chart{
-    float: right;
-    margin-top: 30px;
-    width: 400px;
+    margin-right: 1px;
 }
 
 .cap {
+    background-color: #fff;
     margin-top: 30px;
     margin-bottom: 20px;
-    background: #f3f3f2;
     /*min-height: 146px;*/
     -webkit-border-top-left-radius: 5px 10px; 
     -webkit-border-top-right-radius: 5px 10px; 
     border-top-right-radius: 5px 10px;
     border-top-left-radius: 5px 10px;
-    width: 330px;
+    width: 100%;
+    height: 400px;
+}
+
+.ptittle {
+    color: rgb(69,146,92);
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.fpt {
+    margin-top: 25px;
+}
+
+.product{
+    float: left;
+    height: auto;
+    width: auto;  
+    margin-left: 25px;
+    margin-right: 25px;
+    display: inline;
+    text-align: center;
+}
+
+.prod-otrs{
+    float: left;
+    margin-right: 15px;
+}
+.chart > img{
+    float: right;
+    margin-top: 30px;
+    width: 550px;
+    height: 400px;
 }
 
 .pruebasr {
@@ -476,6 +502,7 @@ Aca va el CSS de ficha promotor.html
 
 .tpruebasr {
     width: 100%;
+    height: 300px;
 }
 
 .tpruebasrh {
@@ -494,8 +521,7 @@ Aca va el CSS de ficha promotor.html
     font-size: 13px;
     font-weight: normal;
     border-bottom: 1px solid rgb(222,223,216);
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 10px 10px;
 }
 /*==========================================
     css de footer.html
