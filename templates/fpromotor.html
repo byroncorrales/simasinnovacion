@@ -55,7 +55,7 @@
 			</tbody>
 		</table>
 	</div>
-
+	
 	<div class="large-9 columns">
 		<div class="large-4 columns">
 			<div class="ficha-elem">
@@ -101,33 +101,56 @@
 	</div>
 	<div class="row frow">
 	<div class="large-12 columns">
-		<div class="large-6 columns">
-			<div class="ficha-elem cap">
-				<div class="">
-					<p>Cultivos</p>
-					<img src="{% static 'img/maiz.png' %}" alt="Maiz">
-					<img src="{% static 'img/frijol.png' %}" alt="Frijol">
-					<img src="{% static 'img/platano.png' %}" alt="Platano">
-					<img src="{% static 'img/pasto.png' %}" alt="Pasto">
-				</div>
-				<br/>
+		<div class="large-5 columns">
+			<div class="cap">
 				<div>
-					<p>Animales</p>
-					<img src="{% static 'img/vaca.png' %}" alt="Vaca">
-					<img src="{% static 'img/cerdo.png' %}" alt="Cerdo">
-					<img src="{% static 'img/gallina.png' %}" alt="Gallina">
+					<p class="ptittle fpt">Cultivos</p>
+						<div class="product">
+							<img src="{% static 'img/maiz.png' %}" alt="Maiz">
+							<p>Maiz</p>
+						</div>
+						<div class="product">
+							<img src="{% static 'img/frijol.png' %}" alt="Frijol">
+							<p>Frijol</p>
+						</div>
+						<div class="product">
+							<img src="{% static 'img/platano.png' %}" alt="Platano">
+							<p>Platano</p>
+						</div>
+						<div class="product">
+							<img src="{% static 'img/pasto.png' %}" alt="Pasto">
+							<p>Pasto</p>
+						</div>
 				</div>
-				<br/>
+				<hr/>
 				<div>
-					<p>Productos Procesados</p>
-					<p>Cuajada</p>
-					<p>Miel</p>
+					<p class="ptittle">Animales</p>
+					<div class="product">
+						<img src="{% static 'img/vaca.png' %}" alt="Vaca">
+						<p>Vaca</p>
+					</div>
+					<div class="product">
+						<img src="{% static 'img/cerdo.png' %}" alt="Cerdo">
+						<p>Cerdo</p>
+					</div>
+					<div class="product">
+						<img src="{% static 'img/gallina.png' %}" alt="Gallina">
+						<p>Gallina</p>
+					</div>
+				</div>
+				<hr/>
+				<div>
+					<p class="ptittle">Productos Procesados</p>
+						<div class="product">
+							<span class="prod-otrs">Cuajada</span>
+							<span class="prod-otrs">Miel</span>
+						</div>
 				</div>
 			</div>
 		</div>
-		<div class="large-6 columns chart">
-			<div>
-				<img src="http://jcharts.sourceforge.net/samples/images/samples/clusteredBar/clusteredBarChart.png" alt="Bar Chart">
+		<div class="large-7 columns">
+			<div class="chart">
+				<img src="{% static 'img/chart.png' %}" alt="Bar Chart">
 			</div>
 		</div>
 	</div>
