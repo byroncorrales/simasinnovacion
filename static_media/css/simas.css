@@ -499,7 +499,10 @@ Aca va el CSS de ficha promotor.html
     --webkit-border-radius: 5px;
     border-radius: 5px;
 }
-
+.pruebas{
+    color: rgb(155,155,155);
+    font-size: 24px;
+}
 .tpruebasr {
     width: 100%;
     height: 300px;
@@ -522,6 +525,154 @@ Aca va el CSS de ficha promotor.html
     font-weight: normal;
     border-bottom: 1px solid rgb(222,223,216);
     margin: 10px 10px;
+}
+
+/*=========================================
+    css de fprueba.html
+==========================================*/
+
+.fpmtr{
+    text-align: left;
+    float: left;
+    font-size: 13px;
+    color: rgb(155,155,155);
+    margin-left: -260px;
+    margin-top: 5px;
+}
+
+.fnpmtr{
+    text-align: left;  
+    float: left;
+    font-size: 22px;
+    color: rgb(24,24,24);
+    margin-left: -270px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.btback{
+    background-color: rgb(234,103,83);
+    border: 3px;
+    font-size: 13px;
+    height: auto;
+}
+
+
+.fpdatos{
+    text-align: left;
+    float: left;
+    background-color: #e7e5de;
+    border: 0px;
+    border-bottom: 0px;
+    font-weight: normal;
+}
+
+.fpdatosh {
+    color: rgb(155,155,155);
+    font-size: 13px;
+    background-color: #e7e5de;
+}
+
+.fpdatosb {
+    color: rgb(24,24,24);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #e7e5de;
+    margin-top: -5px;
+}
+
+.cdat {
+    overflow: hidden;
+}
+
+.cdatf {
+    margin-left: 15px;
+}
+
+.calend{
+    float: left;
+    display: block;
+    margin-right: 5px;
+}
+
+.dat{
+    float: left;
+    text-align: left;
+    display: block;
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.dath{
+    text-align: left;
+    float: left;
+    font-size: 13px;
+    color: rgb(155,155,155);
+    margin-bottom: auto;
+}
+
+.datb{
+    text-align: left;  
+    float: left;
+    font-size: 13px;
+    color: rgb(24,24,24);
+    font-weight: bold;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+.ficha-prueba {
+    background-color: #fff;
+    /*min-height: 146px;*/
+    -webkit-border-top-left-radius: 5px 10px; 
+    -webkit-border-top-right-radius: 5px 10px; 
+    border-top-right-radius: 5px 10px;
+    border-top-left-radius: 5px 10px;
+    margin-top: 5px;
+    width: 430px;
+    height: 200px;
+
+}
+
+.ficha-slid{
+    margin-left: -150px;
+    margin-top: 5px;
+    border: 2px solid white;
+}
+
+.logica{
+    font-size: 24px;
+    color: rgb(155,155,155);
+}
+.resultado{
+    font-size: 24px;
+    color: rgb(155,155,155);
+}
+
+.tlogica{
+    width: 100%;
+}
+
+.tabpro{
+    color: rgb(69,146,92);
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    background-color: #fff;
+}
+
+.tabprod{
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.tresultado{
+    width: 100%;
+    background-color: #fff !important;
 }
 /*==========================================
     css de footer.html
