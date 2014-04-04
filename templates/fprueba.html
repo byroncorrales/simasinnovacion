@@ -5,7 +5,7 @@
 {% block contenido %}
 <div class="large-12 columns">
 	<div class="large-3 columns">
-		<ul class="side-nav menu">
+		<ul class="side-nav menu" id="men">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
 		  <li><a href="#">Promotoras y promotores</a></li>
 		  <li><a href="#">Pruebas de practicas productivas</a></li>
@@ -23,188 +23,211 @@
 		  <li><a href="#">Servicios para Mejorar Org.</a></li>
 		</ul>
 	</div>
-	<div class="large-9 columns">
-		<p class="ptitulo">Pruebas de Practicas Productivas</p>
-		<hr/>
-		<div class="large-1 columns">
-			<img src="{%static 'img/fpromotor.png' %}" alt="Ficha Promotor"/>
-		</div>
-		<div class="large-8 columns">
-			<p class="fpmtr">Promotor</p>
-			<p class="fnpmtr">Jose Abelardo Espinales</p>
-			<a href="#" class="button right btback">«Volver a Ficha</a>
-		</div>
-	</div>
-	<div class="large-9 columns">
-		<div class="large-1 columns">
-			<img src="{%static 'img/lista2.png'%}" alt"Ficha Prueba"/>
-		</div>
-		<div class="large-8 columns">
-			<p class="fpmtr">Nombre de Prueba</p>
-			<p class="fnpmtr">Prueba de productividad frijol caupi</p>
-		</div>
-	</div>
-
-	<div class="large-7 columns">
-		<table class="fpdatos">
-			<thead>
-				<tr>
-					<th width="120px" class="fpdatosh">Departamento</th>
-					<th width="120px" class="fpdatosh">Municipio</th>
-					<th width="50px" class="fpdatosh">Año</th>
-					<th width="80px" class="fpdatosh">Tema</th>
-					<th width="80px" class="fpdatosh">Rubro</th>
-					<th width="70x" class="fpdatosh">Escala</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="fpdatosb">Matagalpa</td>
-					<td class="fpdatosb">San Ramon</td>
-					<td class="fpdatosb">2013</td>
-					<td class="fpdatosb">Abono</td>
-					<td class="fpdatosb">Frijol</td>
-					<td class="fpdatosb">1/2 Mz</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<div class="large-9 columns">
-		<div class="large-4 columns">
-			<div class="cdat">
-				<div class="cdatf">
-					<div class="calend">
-						<img src="{%static 'img/calendar.png'%}">
+	<div class="large-9 columns" id="cont">
+		<div class="row ">
+			<div class="large-12 columns">
+				<p class="ptitulo">Pruebas de Practicas Productivas</p>
+				<hr/>
+				<div class="row ">
+					<div class="large-1 columns">
+						<img src="{%static 'img/fpromotor.png' %}" alt="Ficha Promotor"/>
 					</div>
-					<div class="dat">
-						<p class="dath">Inicio</p><br/>
-						<p class="datb">Mar 23</p>
-					</div>
-				</div>
-				<div class="cdatf">
-					<div class="calend">
-						<img src="{%static 'img/calendar.png'%}">
-					</div>
-					<div class="dat">
-						<p class="dath">Fin</p><br/>
-						<p class="datb">Jun 18</p>
+					<div class="large-11 columns">
+						<div class="fpmtr">Promotor</div>
+						<div class="fnpmtr">Jose Abelardo Espinales</div>
+						<a href="#" class="button right btback">«Volver a Ficha</a>
 					</div>
 				</div>
 			</div>
-			<div class="ficha-prueba">
-				<table class="tpromotor">
-					<tr>
-						<td class="tpromotort">Tipo de Suelo</td>
-						<td class="tpromotord">Franco-Arcilloso</td>
-					</tr>
-					<tr>
-						<td class="tpromotort">Tipo de Clima</td>
-						<td class="tpromotord">Seco</td>
-					</tr>
-					<tr>
-						<td class="tpromotort">Zona</td>
-						<td class="tpromotord">Seca</td>
-					</tr>
-				</table>
+	
+			<div class="row ">
+				<div class="large-12 columns">
+					<div class="large-1 columns">
+						<img src="{%static 'img/lista2.png'%}" alt"Ficha Prueba"/>
+					</div>
+					<div class="large-11 columns">
+						<p class="fpmtr">Nombre de Prueba</p>
+						<p class="fnpmtr">Prueba de productividad frijol caupi</p>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="large-4 columns">
-			<div class="ficha-slid">
-				<ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
-	  				<li>
-					    <img src="http://placehold.it/430x300" alt="slide 1" />					 
-				  	</li>
-					<li>
-	    				<img src="http://placehold.it/430x300" alt="slide 2" />					    
-	  				</li>
-	  				<li>
-					    <img src="http://placehold.it/430x300" alt="slide 3" />					    
-	  				</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="row frow">
-	<div class="large-12 columns">
-		<div class="large-1 columns">
-			<p class="logica">Logica</p>
-		</div>
-	</div>
-	<div class="large-12 columns">
-		<table class="tlogica">
-			<tr>
-				<td class="tabpro">Problema</td>
-				<td class="rabprod">Lorem ipsum Id amet officia sunt aliquip consequat culpa cillum incididunt quis dolore. Lorem ipsum Et non consectetur commodo incididunt minim aliquip esse anim culpa nostrud amet laboris voluptate tempor consectetur culpa do Ut incididunt Excepteur esse dolore minim fugiat.</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Analisis Agroecologico</td>
-				<td class="tabprod">Lorem ipsum Cillum esse velit pariatur Duis minim labore amet do in magna. Lorem ipsum Proident ea Excepteur officia incididunt pariatur in velit amet in sint irure aliquip ut amet fugiat consectetur ut et consectetur aute.</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Opciones a Probar y Razones</td>
-				<td class="tabprod">
-					<ul>
-						<li>Lorem ipsum Culpa cupidatat ex sunt irure velit ea dolore.</li>
-						<li>Lorem ipsum Ut cupidatat ea aute dolor amet aute qui culpa nisi et nostrud.</li>
-						<li>Lorem ipsum Nisi do Excepteur dolore ex dolor exercitation pariatur.</li>
-					</ul>
-				</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Resultados Esperados <img src="{%static 'img/check.png'%}"></td>
-				<td class="tabprod">
-					<ul>
-						<li>Lorem ipsum Consequat fugiat laborum pariatur voluptate Ut do ea aliquip anim .</li>
-						<li>Lorem  Est eiusmod nulla ullamco veniam culpa Ut proident laborum pariatur anim.</li>
-						<li>Lorem ipsum Voluptate amet est ut cupidatat et  voluptate ullamco est qui minim.</li>
-					</ul>
-				</td>
-			</tr>
-		</table>
 
-	</div>
-	<div class="large-12 columns">
-		<div class="large-1 columns">
-			<p class="resultado">Resultados</p>
+			<div class="row ">
+				<div class="large-12 columns">
+					<div class="row ">
+						<div class="large-11 columns">
+							<table class="fpdatos">
+								<thead>
+									<tr>
+										<th width="120px" class="fpdatosh">Departamento</th>
+										<th width="120px" class="fpdatosh">Municipio</th>
+										<th width="50px" class="fpdatosh">Año</th>
+										<th width="80px" class="fpdatosh">Tema</th>
+										<th width="80px" class="fpdatosh">Rubro</th>
+										<th width="70x" class="fpdatosh">Escala</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="fpdatosb">Matagalpa</td>
+										<td class="fpdatosb">San Ramon</td>
+										<td class="fpdatosb">2013</td>
+										<td class="fpdatosb">Abono</td>
+										<td class="fpdatosb">Frijol</td>
+										<td class="fpdatosb">1/2 Mz</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row ">
+				<div class="large-12 columns">
+					<div class="large-6 columns">
+						<div class="cdat">
+							<div class="cdatf">
+								<div class="calend">
+									<img src="{%static 'img/calendar.png'%}">
+								</div>
+								<div class="dat">
+									<p class="dath">Inicio</p><br/>
+									<p class="datb">Mar 23</p>
+								</div>
+							</div>
+							<div class="cdatf">
+								<div class="calend">
+									<img src="{%static 'img/calendar.png'%}">
+								</div>
+								<div class="dat">
+									<p class="dath">Fin</p><br/>
+									<p class="datb">Jun 18</p>
+								</div>
+							</div>
+						</div>
+						<div class="ficha-prueba">
+							<table class="tpromotor">
+								<tr>
+									<td class="tpromotort">Tipo de Suelo</td>
+									<td class="tpromotord">Franco-Arcilloso</td>
+								</tr>
+								<tr>
+									<td class="tpromotort">Tipo de Clima</td>
+									<td class="tpromotord">Seco</td>
+								</tr>
+								<tr>
+									<td class="tpromotort">Zona</td>
+									<td class="tpromotord">Seca</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="large-5 columns">
+						<div class="ficha-slid">
+							<ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
+				  				<li>
+								    <img src="http://placehold.it/430x300" alt="slide 1" />					 
+							  	</li>
+								<li>
+				    				<img src="http://placehold.it/430x300" alt="slide 2" />					    
+				  				</li>
+				  				<li>
+								    <img src="http://placehold.it/430x300" alt="slide 3" />					    
+				  				</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row ">
+				<div class="large-12 columns">
+					<div class="large-1 columns">
+						<p class="logica">Logica</p>
+					</div>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="large-12 columns">
+					<table class="tlogica">
+						<tr>
+							<td class="tabpro">Problema</td>
+							<td class="tabprod">Lorem ipsum Id amet officia sunt aliquip consequat culpa cillum incididunt quis dolore. Lorem ipsum Et non consectetur commodo incididunt minim aliquip esse anim culpa nostrud amet laboris voluptate tempor consectetur culpa do Ut incididunt Excepteur esse dolore minim fugiat.</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Analisis Agroecologico</td>
+							<td class="tabprod">Lorem ipsum Cillum esse velit pariatur Duis minim labore amet do in magna. Lorem ipsum Proident ea Excepteur officia incididunt pariatur in velit amet in sint irure aliquip ut amet fugiat consectetur ut et consectetur aute.</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Opciones a Probar y Razones</td>
+							<td class="tabprod">
+								<ul>
+									<li>Lorem ipsum Culpa cupidatat ex sunt irure velit ea dolore.</li>
+									<li>Lorem ipsum Ut cupidatat ea aute dolor amet aute qui culpa nisi et nostrud.</li>
+									<li>Lorem ipsum Nisi do Excepteur dolore ex dolor exercitation pariatur.</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Resultados Esperados <img src="{%static 'img/check.png'%}"></td>
+							<td class="tabprod">
+								<ul>
+									<li>Lorem ipsum Consequat fugiat laborum pariatur voluptate Ut do ea aliquip anim .</li>
+									<li>Lorem  Est eiusmod nulla ullamco veniam culpa Ut proident laborum pariatur anim.</li>
+									<li>Lorem ipsum Voluptate amet est ut cupidatat et  voluptate ullamco est qui minim.</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="large-12 columns">
+					<div class="large-1 columns">
+						<p class="resultado">Resultados</p>
+					</div>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="large-12 columns">
+					<table class="tresultado">
+						<tr>
+							<td class="tabpro">Salud de las Plantas</td>
+							<td class="tabprod">Lorem ipsum Eu aute pariatur sunt dolor culpa sit reprehenderit. Lorem ipsum Enim mollit irure reprehenderit velit minim commodo enim ut Ut consectetur cupidatat Ut Ut labore culpa culpa dolore commodo aliqua ut magna ullamco aliquip ex dolor velit mollit.</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Vida del Suelo</td>
+							<td class="tabprod">Lorem ipsum Deserunt nisi cillum adipisicing Ut irure amet dolore. Lorem ipsum Proident veniam in officia Excepteur labore commodo voluptate sit commodo. Lorem ipsum Qui cupidatat tempor ut in non aliquip amet dolor in et veniam exercitation.</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Produccion y Rendimiento</td>
+							<td class="tabprod">Lorem ipsum Enim exercitation Excepteur commodo enim consequat magna et consectetur nostrud do quis. Lorem ipsum Nisi cillum Ut nostrud exercitation nostrud aute. Lorem ipsum Voluptate incididunt aliqua non et consequat dolor mollit velit consequat.</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Calidad de Productos</td>
+							<td class="tabprod">Lorem ipsum Fugiat aliqua do dolor reprehenderit occaecat eu. Lorem ipsum Velit est in Excepteur dolore in ex quis ut consectetur Duis qui laborum ullamco occaecat ad consequat sint Duis est adipisicing sit icing exercitation laborum irure irure Excepteur officia in eiusmod velit aute.</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Incidencia de Plagas y Control Natural</td>
+							<td class="tabprod">Lorem ipsum Nisi cupidatat ex cillum eiusmod dolor ullamco ut ut magna. Lorem ipsum Ex minim non nisi ea consectetur aliquip reprehenderit deserunt Excepteur ea. Lorem ipsum Occaecat ut dolor tempor eiusmod ut dolore cupidatat cupidatat qui laboris.</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Ingresos</td>
+							<td class="tabprod">C$ 20000</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Costos</td>
+							<td class="tabprod">C$ 1500</td>
+						</tr>
+						<tr>
+							<td class="tabpro">Dias de Campo</td>
+							<td class="tabprod">28 Dias</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="large-12 columns">
-		<table class="tresultado">
-			<tr>
-				<td class="tabpro">Salud a las plantas</td>
-				<td class="tabprod">Lorem ipsum Eu aute pariatur sunt dolor culpa sit reprehenderit. Lorem ipsum Enim mollit irure reprehenderit velit minim commodo enim ut Ut consectetur cupidatat Ut Ut labore culpa culpa dolore commodo aliqua ut magna ullamco aliquip ex dolor velit mollit.</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Vida del Suelo</td>
-				<td class="tabprod">Lorem ipsum Deserunt nisi cillum adipisicing Ut irure amet dolore. Lorem ipsum Proident veniam in officia Excepteur labore commodo voluptate sit commodo. Lorem ipsum Qui cupidatat tempor ut in non aliquip amet dolor in et veniam exercitation.</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Produccion y Rendimiento</td>
-				<td class="tabprod">Lorem ipsum Enim exercitation Excepteur commodo enim consequat magna et consectetur nostrud do quis. Lorem ipsum Nisi cillum Ut nostrud exercitation nostrud aute. Lorem ipsum Voluptate incididunt aliqua non et consequat dolor mollit velit consequat.</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Calidad de Productos</td>
-				<td class="tabprod">Lorem ipsum Fugiat aliqua do dolor reprehenderit occaecat eu. Lorem ipsum Velit est in Excepteur dolore in ex quis ut consectetur Duis qui laborum ullamco occaecat ad consequat sint Duis est adipisicing sit icing exercitation laborum irure irure Excepteur officia in eiusmod velit aute.</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Incidencia de Plagas y Control Natural</td>
-				<td class="tabprod">Lorem ipsum Nisi cupidatat ex cillum eiusmod dolor ullamco ut ut magna. Lorem ipsum Ex minim non nisi ea consectetur aliquip reprehenderit deserunt Excepteur ea. Lorem ipsum Occaecat ut dolor tempor eiusmod ut dolore cupidatat cupidatat qui laboris.</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Ingresos</td>
-				<td class="tabprod">C$ 20000</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Costos</td>
-				<td class="tabprod">C$ 1500</td>
-			</tr>
-			<tr>
-				<td class="tabpro">Dias de Campo</td>
-				<td class="tabprod">28 Dias</td>
-			</tr>
-		</table>
-	</div>
 	</div>
 </div>
 {% endblock contenido %}
