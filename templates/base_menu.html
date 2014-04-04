@@ -53,6 +53,7 @@
   <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.js"></script>
   <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.pack.js"></script>
   <script src="/static/js/foundation.min.js"></script>
+  <script type="text/javascript" src="{{STATIC_URL}}js/autoheight.js"></script>
   <!--
   
   <script src="js/foundation/foundation.js"></script>
@@ -113,7 +114,12 @@
             });
 
     });
-</script>
+  </script>
+  <script>
+  $(document).ready(function () {
+           autoheight("#cont", "#men");
+        });
+  </script>
 {% block extra_js %}{% endblock extra_js %}
 
 </body>

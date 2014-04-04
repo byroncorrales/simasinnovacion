@@ -3,7 +3,7 @@
 {% block title %}Sistema SIMAS - EED{% endblock title %}
 {% load staticfiles %}
 {% block contenido %}
-<div class="large-12 columns">
+<div class="row frow">
 	<div class="large-3 columns">
 		<ul class="side-nav menu">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
@@ -24,47 +24,51 @@
 		</ul>
 	</div>
 	<div class="large-9 columns">
-		<p class="ptitulo">Promotoras y promotores</p>
+			<div class="large-12 columns">
+				<p class="ptitulo">Promotoras y promotores</p>
+			</div>
 		<hr/>
 		{# dropdowns #}
-		<div class="large-2 columns">
+		<div class="row frow">
+			<div class="large-12 columns">
+		
 			<select class="selector">
-	            <option value = "1">one</option>
+	            <option value = "1">ZONA</option>
 	            <option value = "2">two</option>
 	            <option value = "3">three</option>
 	            <option value = "4">four</option>
 	        </select>
-    	</div>
-    	<div class="large-2 columns">
+    	
+    	
             <select class="selector">
-               <option value = "1">one</option>
+               <option value = "1">SEXO</option>
                <option value = "2">two</option>
                <option value = "3">three</option>
                <option value = "4">four</option>
             </select>
-    	</div>
-    	<div class="large-2 columns">
+    	
+    	
             <select class="selector">
-               <option value = "1">one</option>
+               <option value = "1">ORGANIZACION</option>
                <option value = "2">two</option>
                <option value = "3">three</option>
                <option value = "4">four</option>
             </select>
-    	</div>    	
-    	<div class="large-2 columns">
+    	
             <select class="selector">
-               <option value = "1">one</option>
+               <option value = "1">AÑO ACTIVO</option>
                <option value = "2">two</option>
                <option value = "3">three</option>
                <option value = "4">four</option>
             </select>
+    		
+    	
+    		<a href="#" class="button consulta">CONSULTAR</a>
     	</div>
-    	<div class="large-2 columns">
-    		<a href="#" class="button consulta">Consultar</a>
-    	</div>
-	</div>
-
-	<div class="large-9 columns">
+    </div>
+	
+	<div class="row frow">
+	<div class="large-12 columns">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.7945424150384!2d-86.2707772!3d12.12620565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7155ef5b5b0717%3A0x52f30f8b3467ad29!2sUniversidad+Centroamericana!5e0!3m2!1ses!2ses!4v1395016518001" width="100%" height="450" frameborder="" style="border: 1px solid rgb(21,21,21)"></iframe>
 		<table class="promotord">
 		  <thead>
