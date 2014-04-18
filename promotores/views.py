@@ -301,3 +301,35 @@ def mapa_completo_practica(request):
 def practica_pagina(request, id, template="promotor/ficha_practica.html"):
     practica = get_object_or_404(PracticasProductivas, id=id)
     return render(request, template, {'practica':practica})
+
+
+    #Cambios elaborados por el equipo de Kronos Code
+
+def gpromotor(request, template="gpromotor.html"):
+    choice_zonas=((1, 'Seca'),(2, 'Alta'),(3, 'Húmeda'),)
+    promotores = Promotor.objects.count()
+    #salidas graficos promotores por sexo
+    h_promotor = Promotor.objects.filter(sexo=1).count()
+    m_promotor = Promotor.objects.filter(sexo=2).count()
+    #salidas graficos promotor por zona
+    seca = Promotor.objects.filter(zona=1).count()
+    alta = Promotor.objects.filter(zona=2).count()
+    humeda = Promotor.objects.filter(zona=3).count()
+    #salidas grafico de practicas
+    practicas = PracticasProductivas.objects.count()
+
+    #practicas por escala
+    escala = []
+    for obj in EscalaPruebas.objects.all():
+        escala.append([obj.nombre,PracticasProductivas.objects.filter(escala_prueba=obj).count()])
+    #numero de practicas por años
+    years = []
+    for en in PracticasProductivas.objects.order_by('anio').values_list('anio', flat=True):
+        years.append(en)
+    lista_years = list(set(years))
+    numero_practica = []
+    for year in lista_years:
+        a = PracticasProductivas.objects.filter(anio=year).count()
+        numero_practica.append([year,a])
+
+    return render(request, template, locals())
