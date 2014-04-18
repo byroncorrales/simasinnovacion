@@ -1,0 +1,251 @@
+{% extends "base_menu.html" %}
+
+{% block title %}Sistema SIMAS - EED{% endblock title %}
+{% load staticfiles %}
+{% block extra_js %}
+<script src="{% static 'js/highcharts.js' %}"></script>
+<script src="{% static 'js/modules/exporting.js'%}"></script>
+<script type="text/javascript">  
+$(function () {
+      // Radialize the colors
+    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+        return {
+            radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    });
+    // Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'sexo de los promotores y promotoras'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [
+                    ['Hombres',    {{h_promotor}}],
+                    ['Mujeres',    {{m_promotor}}]
+                ]
+            }]
+        });
+        //aca va el grafico de zona
+        $('#container1').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Cantidad de promotores/as por zona'
+            },
+            xAxis: {
+                categories: [
+                    'Seca',
+                    'Alta',
+                    'Húmeda'
+                ],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{{seca}}, {{alta}}, {{humeda}}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+      // grafico por practicas de prueba
+       $('#container2').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Cantidad escalas de prueba realizadas'
+            },
+            xAxis: {
+                categories: [ {% for obj in escala %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in escala%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    //grafico de numeros de practica por años
+    // Build the chart
+        $('#container3').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Número de practicas por años'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in numero_practica%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+
+
+    });  
+</script>
+{% endblock extra_js%}
+{% block contenido %}
+<!--menu-->
+<div class="large-12 columns">
+	<div class="large-3 columns">
+		<ul class="side-nav menu" id="men">
+		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+		  <li><a href="#">Promotoras y promotores</a></li>
+		  <li><a href="#">Pruebas de practicas productivas</a></li>
+		<br/>
+		  <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+		  <li><a href="#">Empresas Rurales</a></li>
+		  <li><a href="#">Mejoras para Innovar</a></li>
+		<br/>
+		  <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+		  <li><a href="#">Espacios para Innovar</a></li>
+		  <li><a href="#">Iniciativas para Innovar</a></li>
+		<br/>
+		  <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+		  <li><a href="#">Conocimientos de Actores</a></li>
+		  <li><a href="#">Servicios para Mejorar Org.</a></li>
+		</ul>
+	</div>
+<!--Contenido-->
+	<div class="large-9 columns" id="cont">
+		<div class="row ">
+			<div class="section-container auto" data-section>				
+			    <p class="title" data-section-title><a href="#">Promotores</a></p>
+			    <div class="content" data-section-content>
+			        <div class="row">
+			          <div class="large-12 columns">
+			            <div class="large-6 columns">
+			                Número de promotores registrados: {{promotores}} <br>
+			                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+			                <br>
+			                <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+			            </div>
+
+			            <div class="large-6 columns">
+			                Número de prácticas productivas que se estan llevando: {{practicas}} <br>
+			                <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div> 
+			                <br>
+			                <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+			            </div>
+			          </div>
+			        </div>
+			    </div>	    		
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock contenido %}
