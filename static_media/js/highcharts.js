@@ -278,3 +278,10 @@ h-f&&(C[1]=r(u(z+w-h+f),C[1])),E-x/2<0?C[0]=r(u(-E+x/2),C[0]):E+x/2>d&&(C[2]=r(u
 a.chart.renderer.path(j).attr({"stroke-width":g,stroke:e.connectorColor||b.color||"#606060",visibility:G}).add(a.group);else if(i)b.connector=i.destroy()})}},verifyDataLabelOverflow:function(a){var b=this.center,c=this.options,d=c.center,e=c=c.minSize||80,f;d[0]!==null?e=r(b[2]-r(a[1],a[3]),c):(e=r(b[2]-a[1]-a[3],c),b[0]+=(a[3]-a[1])/2);d[1]!==null?e=r(C(e,b[2]-r(a[0],a[2])),c):(e=r(C(e,b[2]-a[0]-a[2]),c),b[1]+=(a[0]-a[2])/2);e<b[2]?(b[2]=e,this.translate(b),n(this.points,function(a){if(a.dataLabel)a.dataLabel._pos=
 null}),this.drawDataLabels()):f=!0;return f},placeDataLabels:function(){n(this.points,function(a){var a=a.dataLabel,b;if(a)(b=a._pos)?(a.attr(a._attr),a[a.moved?"animate":"attr"](b),a.moved=!0):a&&a.attr({y:-999})})},alignDataLabel:ya,drawTracker:D.prototype.drawTracker,drawLegendSymbol:F.prototype.drawLegendSymbol,getSymbol:ya};X=ha(Q,X);aa.pie=X;s(Highcharts,{Axis:db,Chart:xb,Color:pa,Legend:wb,Pointer:vb,Point:Pa,Tick:La,Tooltip:ub,Renderer:Va,Series:Q,SVGElement:va,SVGRenderer:Ga,arrayMin:Ia,
 arrayMax:ua,charts:Fa,dateFormat:Xa,format:Ba,pathAnim:zb,getOptions:function(){return M},hasBidiBug:Ub,isTouchDevice:Ob,numberFormat:za,seriesTypes:aa,setOptions:function(a){M=x(M,a);Lb();return M},addEvent:J,removeEvent:ba,createElement:U,discardElement:Ta,css:L,each:n,extend:s,map:Na,merge:x,pick:p,splat:ia,extendClass:ha,pInt:A,wrap:Bb,svg:Z,canvas:$,vml:!Z&&!$,product:"Highcharts",version:"3.0.5"})})();
+//Esto agrega los colores a los charts
+Highcharts.setOptions({
+    colors: [
+        'yellow', '#50B432', '#ED561B', 
+        '#DDDF00', '#24CBE5', '#64E572', 
+        '#FF9655', '#FFF263', '#6AF9C4']
+});
