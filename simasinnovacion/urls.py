@@ -19,7 +19,6 @@ urlpatterns = patterns('',
     url(r'^tercera/$', TemplateView.as_view(template_name="promotores.html")),
     url(r'^cuarta/$', TemplateView.as_view(template_name="fpromotor.html")),
     url(r'^quinta/$',TemplateView.as_view(template_name="fprueba.html")),
-    url(r'^prueba/$',TemplateView.as_view(template_name="prueba.html")),
 )
 
 urlpatterns += staticfiles_urlpatterns()
