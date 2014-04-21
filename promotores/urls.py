@@ -12,4 +12,9 @@ urlpatterns = patterns('promotores.views',
     url(r'^practicas/$', 'practicas_index', name="lista_practicas"),
     url(r'^practica/(?P<id>\w+)/$', 'practica_pagina', name="practica_pagina"),
     url(r'^mapa_completo_practica/$', 'mapa_completo_practica', name="mapa-completo-practica"),
+    #KronosCode Cambios
+    url(r'^gpromotor/$', 'gpromotor', name="gpromotor"),
+    url(r'^gempresas/$', 'gempresas', name="gempresas"),
+    url(r'^gespacios/$', 'gespacios', name="gespacios"),
+    url(r'^gservicios/$', 'gservicios', name="gservicios"),
     )

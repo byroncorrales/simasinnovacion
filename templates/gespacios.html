@@ -1,0 +1,260 @@
+{% extends "base_menu.html" %}
+{% block title %}Sistema SIMAS - EED{% endblock title %}
+{% load staticfiles %}
+{% block extra_js %}
+<script src="{% static 'js/highcharts.js' %}"></script>
+<script src="{% static 'js/modules/exporting.js'%}"></script>
+<script type="text/javascript">
+$(function () {
+      // Radialize the colors
+    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+        return {
+            radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    });
+        //graficos de conteo de los tipos de espacios
+        $('#container8').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Tipos de espacios(conteo)'
+            },
+            xAxis: {
+                categories: [ {% for obj in lista_espacios %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in lista_espacios%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+
+        //grafico de papel de simas
+        $('#container9').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Papel de SIMAS'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_papel_simas%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+
+
+        //grafico de iniciativas tipo de iniciativas
+        $('#container10').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Tipos de Iniciativas'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_iniciativas%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+
+        //graficos iniciativas por años
+        $('#container11').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Número de iniciativas'
+            },
+            xAxis: {
+                categories: [ {% for obj in numero_iniciativa %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in numero_iniciativa%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+	});
+</script>
+
+{% endblock extra_js%}
+{% block contenido %}
+<!--menu-->
+<div class="large-12 columns">
+	<div class="large-3 columns">
+		<ul class="side-nav menu" id="men">
+		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+          <li><a href="/gpromotor">Estadisticas Generales</a></li>
+          <li><a href="#">Promotoras y promotores</a></li>
+          <li><a href="#">Pruebas de practicas productivas</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+          <li><a href="/gempresas">Estadisticas Generales</a></li>
+          <li><a href="#">Empresas Rurales</a></li>
+          <li><a href="#">Mejoras para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+          <li><a href="/gespacios" class="active">Estadisticas Generales</a></li>
+          <li><a href="#">Espacios para Innovar</a></li>
+          <li><a href="#">Iniciativas para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+          <li><a href="/gservicios">Estadisticas Generales</a></li>
+          <li><a href="#">Conocimientos de Actores</a></li>
+          <li><a href="#">Servicios para Mejorar Org.</a></li>
+		</ul>
+	</div>
+<!--Contenido-->
+	<div class="large-9 columns" id="cont">
+		<div class="row ">
+			<p class="gtitle">Estadisticas Espacios</p>
+            <hr/>
+		    <div class="content" data-section-content>
+		    <div class="row">
+		        <div class="large-12 columns">
+		            <div class="large-6 columns">
+                    <div class="estad">
+                        <span class="estadn">Número de espacios registrados:</span> 
+                        <span class="estadc">{{espacios}}</span>
+                    </div> <br>
+		            <div id="container8" class="charts"></div>
+		            <br>
+		            <div id="container9" class="charts"></div>
+		            </div>
+		            <div class="large-6 columns">
+                    <div class="estad">
+                        <span class="estadn">Número de iniciativas que se estan llevando acabo</span>
+                        <span class="estadc">{{iniciativas}}</span>
+                    </div> <br>
+		            <div id="container10" class="charts"></div>
+		            <br>
+		            <div id="container11" class="charts"></div>
+		            </div>        
+		        </div>
+		    </div>
+		    </div>
+		</div>
+	</div>
+</div>
+{% endblock contenido %}
+ 

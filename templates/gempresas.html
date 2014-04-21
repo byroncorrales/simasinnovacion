@@ -1,0 +1,257 @@
+{% extends "base_menu.html" %}
+
+{% block title %}Sistema SIMAS - EED{% endblock title %}
+{% load staticfiles %}
+{% block extra_js %}
+<script src="{% static 'js/highcharts.js' %}"></script>
+<script src="{% static 'js/modules/exporting.js'%}"></script>
+<script type="text/javascript">
+$(function () {
+      // Radialize the colors
+    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+        return {
+            radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    });
+	//graficos de los tipos de empresas
+        $('#container4').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Tipos de empresas (conteo)'
+            },
+            xAxis: {
+                categories: [ {% for obj in tipo_empresas %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in tipo_empresas%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    //grafico del conteo de empresas por zona
+        $('#container5').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Número de empresas por zonas'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_empresas_zonas%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+      //grafico del conteo de las mejoras empresariales
+        $('#container6').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Temas de las mejoras empresariales'
+            },
+            tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+          
+             plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'En porcentaje',
+                data: [{%for obj in lista_mejora_empresa%}
+                        ['{{obj.0}}-({{obj.1}})',    {{obj.1}}],
+                       {%endfor%}
+                ]
+            }]
+        });
+
+           //graficos de conteo de los tipos de mercados de la pruebas empresariales
+        $('#container7').highcharts({
+            chart: {
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {
+                text: 'Tipos de Mercados de las pruebas(conteo)'
+            },
+            xAxis: {
+                categories: [ {% for obj in lista_mercados %}
+                    '{{obj.0}}',
+                    {%endfor%}
+                ],
+                labels: {
+                    rotation: -20,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Conteo: <b>{point.y:.1f}</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: [{%for obj in lista_mercados%}{{obj.1}},{%endfor%}],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+	});
+</script>
+{% endblock extra_js%}
+{% block contenido %}
+<!--menu-->
+<div class="large-12 columns">
+	<div class="large-3 columns">
+		<ul class="side-nav menu" id="men">
+		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+          <li><a href="/gpromotor">Estadisticas Generales</a></li>
+          <li><a href="#">Promotoras y promotores</a></li>
+          <li><a href="#">Pruebas de practicas productivas</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+          <li><a href="/gempresas" class="active">Estadisticas Generales</a></li>
+          <li><a href="#">Empresas Rurales</a></li>
+          <li><a href="#">Mejoras para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+          <li><a href="/gespacios">Estadisticas Generales</a></li>
+          <li><a href="#">Espacios para Innovar</a></li>
+          <li><a href="#">Iniciativas para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+          <li><a href="/gservicios">Estadisticas Generales</a></li>
+          <li><a href="#">Conocimientos de Actores</a></li>
+          <li><a href="#">Servicios para Mejorar Org.</a></li>
+		</ul>
+	</div>
+<!--Contenido-->
+	<div class="large-9 columns" id="cont">
+		<div class="row ">
+			<div class="section-container auto" data-section>				
+				<p class="gtitle">Estadisticas Empresas</p>
+                <hr/>
+			    <div class="content" data-section-content>
+			        <div class="row">
+			          <div class="large-12 columns">
+			            <div class="large-6 columns">
+                            <div class="estad">
+                                <span class="estadn">Número de empresas registradas</span>
+                                <span class="estadc">{{empresas}}</span>
+                            </div> <br>
+			                <div id="container4" class="charts"></div>
+			                <br>
+			                <div id="container5" class="charts"></div>
+			            </div>
+			            <div class="large-6 columns">
+                            <div class="estad">
+                                <span class="estadn">Número de mejoras empresariales que se han registrado</span> 
+                                <span class="estadc">{{mejoras_empresa}}</span>
+                            </div> <br>
+			                <div id="container6" class="charts"></div>
+			                <br>
+			                <div id="container7" class="charts"></div>
+			            </div>       
+			          </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock contenido %}
