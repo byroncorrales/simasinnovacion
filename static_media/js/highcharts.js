@@ -281,7 +281,7 @@ arrayMax:ua,charts:Fa,dateFormat:Xa,format:Ba,pathAnim:zb,getOptions:function(){
 //Esto agrega los colores a los charts
 Highcharts.setOptions({
     colors: [
-        'yellow', '#50B432', '#ED561B', 
+        '#EA6753', '#50B432', '#ED561B', 
         '#DDDF00', '#24CBE5', '#64E572', 
         '#FF9655', '#FFF263', '#6AF9C4']
 });
