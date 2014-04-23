@@ -15,10 +15,10 @@ urlpatterns = patterns('',
     url(r'^', include('politicas.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^chaining/', include('smart_selects.urls')),
-    url(r'^segunda/$', TemplateView.as_view(template_name="seleccion.html")),
-    url(r'^tercera/$', TemplateView.as_view(template_name="promotores.html")),
-    url(r'^cuarta/$', TemplateView.as_view(template_name="fpromotor.html")),
-    url(r'^quinta/$',TemplateView.as_view(template_name="fprueba.html")),
+    url(r'^seleccion/$', TemplateView.as_view(template_name="seleccion.html")),
+    url(r'^promotor/$', TemplateView.as_view(template_name="promotores.html")),
+    url(r'^fpromotor/$', TemplateView.as_view(template_name="fpromotor.html")),
+    url(r'^fprueba/$',TemplateView.as_view(template_name="fprueba.html")),
 )
 
 urlpatterns += staticfiles_urlpatterns()
