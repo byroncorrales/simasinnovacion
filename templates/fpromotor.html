@@ -32,7 +32,7 @@
                        'is3D':true,
                         'legend': {'position': 'bottom'},};
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
     </script>
@@ -46,7 +46,7 @@
 		<ul class="side-nav menu" id="men">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
-          <li><a href="#">Promotoras y promotores</a></li>
+          <li><a href="#" class="active">Promotoras y promotores</a></li>
           <li><a href="#">Pruebas de practicas productivas</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
@@ -137,17 +137,19 @@
 					<div class="large-5 columns">
 						{% if fpromotor.get_fotos %}
 						<div class="ficha-slid">
-							{% for obj in fpromotor.get_fotos %}
 							<ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
+                        		{% for obj in fpromotor.get_fotos %}
                         			{% thumbnail obj.foto "250x170" crop="10%" as img%}
                         		<li>
                           			<a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>      
                       			</li>
                         			{% endthumbnail %}
+                        		{% endfor %}
 							</ul>
-							{% endfor %}
+							{% else %}
+							<p>No tiene imagenes</p>
+							{% endif %}
 						</div>
-						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -160,44 +162,35 @@
 							<div>
 								<p class="ptittle fpt">Cultivos</p>
 									<div class="product">
+										{% for cultivo in fpromotor.cultivos_finca.all %}
 										<img src="{% static 'img/maiz.png' %}" alt="Maiz">
-										<p>Maiz</p>
-									</div>
-									<div class="product">
-										<img src="{% static 'img/frijol.png' %}" alt="Frijol">
-										<p>Frijol</p>
-									</div>
-									<div class="product">
-										<img src="{% static 'img/platano.png' %}" alt="Platano">
-										<p>Platano</p>
-									</div>
-									<div class="product">
-										<img src="{% static 'img/pasto.png' %}" alt="Pasto">
-										<p>Pasto</p>
-									</div>
+										<span>{{cultivo}}</span>
+										{% empty %}
+										<span>No tienen cultivos en la finca</span>
+										{% endfor %}
+									</div>									
 							</div>
 							<hr/>
 							<div>
 								<p class="ptittle">Animales</p>
 								<div class="product">
+									{% for animales in fpromotor.animales_finca.all %}
 									<img src="{% static 'img/vaca.png' %}" alt="Vaca">
-									<p>Vaca</p>
-								</div>
-								<div class="product">
-									<img src="{% static 'img/cerdo.png' %}" alt="Cerdo">
-									<p>Cerdo</p>
-								</div>
-								<div class="product">
-									<img src="{% static 'img/gallina.png' %}" alt="Gallina">
-									<p>Gallina</p>
-								</div>
+									<span>{{animales}}</span>
+									{% empty %}
+                  					<span>No tienen animales en al finca</span>
+              						{% endfor %}
+								</div>								
 							</div>
 							<hr/>
 							<div>
 								<p class="ptittle">Productos procesados</p>
 									<div class="product">
-										<span class="prod-otrs">Cuajada</span>
-										<span class="prod-otrs">Miel</span>
+										{% for producto in fpromotor.producto_procesado.all %}
+										<span class="prod-otrs">{{producto}}</span>
+										{% empty %}
+										<span class="prod-otrs">No tiene producto procesado</span>
+										{% endfor %}
 									</div>
 							</div>
 						</div>
@@ -253,47 +246,7 @@
 							<td>{{lista.fecha_inicio}}</td>
 							<td>{{lista.fecha_finalizacion}}</td>
 							<td>45</td>
-						</tr><!--
-						<tr>
-							<td>2013</td>
-							<td class="pp">Prueba de Productividad</td>
-							<td>Abono</td>
-							<td>Frijol</td>
-							<td>1/2 Mz</td>
-							<td>3 Ene</td>
-							<td>23 Abr</td>
-							<td>45</td>
 						</tr>
-						<tr>
-							<td>2013</td>
-							<td class="pp">Prueba de Productividad</td>
-							<td>Abono</td>
-							<td>Frijol</td>
-							<td>1/2 Mz</td>
-							<td>3 Ene</td>
-							<td>23 Abr</td>
-							<td>45</td>
-						</tr>
-						<tr>
-							<td>2013</td>
-							<td class="pp">Prueba de Productividad</td>
-							<td>Abono</td>
-							<td>Frijol</td>
-							<td>1/2 Mz</td>
-							<td>3 Ene</td>
-							<td>23 Abr</td>
-							<td>45</td>
-						</tr>
-						<tr>
-							<td>2013</td>
-							<td class="pp">Prueba de Productividad</td>
-							<td>Abono</td>
-							<td>Frijol</td>
-							<td>1/2 Mz</td>
-							<td>3 Ene</td>
-							<td>23 Abr</td>
-							<td>45</td>
-						</tr>-->
 						{% endfor %}
 					</tbody>
 				</table>
