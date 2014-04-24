@@ -163,7 +163,7 @@
 								<p class="ptittle fpt">Cultivos</p>
 									<div class="product">
 										{% for cultivo in fpromotor.cultivos_finca.all %}
-										<img src="{% static 'img/maiz.png' %}" alt="Maiz">
+										<img src="{% static 'img/'|add:cultivo|add:'.png' %}" alt="Maiz">
 										<span>{{cultivo}}</span>
 										{% empty %}
 										<span>No tienen cultivos en la finca</span>
@@ -232,7 +232,6 @@
 							<th class="tpruebasrh">Escala</th>
 							<th class="tpruebasrh">Inicio</th>
 							<th class="tpruebasrh">Fin</th>
-							<th class="tpruebasrh">Dias de Campo</th>
 						</tr>
 					</thead>
 					<tbody class="tpruebasrb">
@@ -245,7 +244,6 @@
 							<td>{{lista.escala_prueba}}</td>
 							<td>{{lista.fecha_inicio}}</td>
 							<td>{{lista.fecha_finalizacion}}</td>
-							<td>45</td>
 						</tr>
 						{% endfor %}
 					</tbody>
