@@ -475,3 +475,7 @@ def promotor(request, template="promotores.html"):
 def fpromotor(request, id, template="fpromotor.html"):
     fpromotor = get_object_or_404(Promotor, id=id)
     return render(request, template, {'fpromotor':fpromotor})
+
+def fprueba(request, id, template="fprueba.html"):
+    practica = get_object_or_404(PracticasProductivas, id=id)
+    return render(request, template, {'practica':practica})
