@@ -317,13 +317,13 @@ li.has-form > a {
     margin-bottom: -10px; 
 }
 
-.selector{
+.selector > select{
     background-color: #fff;
     color: #777;
     border-bottom: 1px solid #ccc;
-    width: 160px;
-    height: 35px;
+    height: 40px;
     margin-right: 20px;
+    border-bottom: 2px solid rgb(221,221,213);
 }
 
 .consulta {
@@ -332,7 +332,7 @@ li.has-form > a {
     border-radius: 3px;
     box-shadow: none !important;
     text-align: center;
-    height: 35px;
+    height: 40px;
 }
 .consulta:hover{
     background-color: rgb(251,117,96);
