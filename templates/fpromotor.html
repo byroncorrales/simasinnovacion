@@ -8,29 +8,36 @@
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load('visualization', '1.0', {'packages':['corechart']});
+      google.load('visualization', '1', {'packages':['corechart']});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Bosque', {{fpromotor.bosque}}],
-          ['Potrero con arboles', {{fpromotor.potrero}}],
-          ['Tacotales', {{fpromotor.tacotales}}],
-          ['Forestal', {{fpromotor.forestal}}],
-          ['Cultivos perennes', {{fpromotor.perennes}}],
-          ['Plantacion para leña', {{fpromotor.lena}}],
-          ['Cultivos anuales', {{fpromotor.anuales}}],
-          ['Frutales', {{fpromotor.frutales}}],
-          ['Potrero abierto', {{fpromotor.potrero_abierto}}],
-          ['Cultivos patio', {{fpromotor.patio}}],
+        var data = new google.visualization.arrayToDataTable([
+          ['Tipo', 'Valor', { role: 'style' }],
+          ['Bosque', {{fpromotor.bosque}}, 'color: #ea6753'],
+          ['Potrero con arboles', {{fpromotor.potrero}}, 'color: #ea6753'],
+          ['Tacotales', {{fpromotor.tacotales}}, 'color: #ea6753'],
+          ['Forestal', {{fpromotor.forestal}}, 'color: #ea6753'],
+          ['Cultivos perennes', {{fpromotor.perennes}}, 'color: #ea6753'],
+          ['Plantacion para leña', {{fpromotor.lena}}, 'color: #ea6753'],
+          ['Cultivos anuales', {{fpromotor.anuales}}, 'color: #ea6753'],
+          ['Frutales', {{fpromotor.frutales}}, 'color: #ea6753'],
+          ['Potrero abierto', {{fpromotor.potrero_abierto}}, 'color: #ea6753'],
+          ['Cultivos patio', {{fpromotor.patio}}, 'color: #ea6753']
         ]);
         var options = {'title':'Uso de tierra',
-                       
-                       'chartArea': {'width': '100%', 'height': '80%'},
-                       'is3D':true,
-                        'legend': {'position': 'bottom'},};
+                        hAxis: {title: "Mz"},
+                        //backgroundColor: '#242421',
+                        colors: ['red','#004411'],
+                        bar: {groupWidth: "35%"},
+                        legend: { position: "none" },
+                        annotations: {
+                        textStyle: {
+                          fontSize: 18,
+                          bold: true,
+                          color: '#871b47',     // The color of the text.
+                        }
+                      },
+                   };
 
         var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
         chart.draw(data, options);
@@ -163,11 +170,13 @@
 								<p class="ptittle fpt">Cultivos</p>
 									<div class="product">
 										{% for cultivo in fpromotor.cultivos_finca.all %}
-										<img src="{% static 'img/'|add:cultivo|add:'.png' %}" alt="Maiz">
+                                        {% with 'img/'|add:cultivo.nombre|add:'.png' as image %}
+                                        <img src="{% static image %}">
+                                        {% endwith %}
 										<span>{{cultivo}}</span>
-										{% empty %}
+                                        {% empty %}
 										<span>No tienen cultivos en la finca</span>
-										{% endfor %}
+                                        {% endfor %}
 									</div>									
 							</div>
 							<hr/>
@@ -175,7 +184,9 @@
 								<p class="ptittle">Animales</p>
 								<div class="product">
 									{% for animales in fpromotor.animales_finca.all %}
-									<img src="{% static 'img/vaca.png' %}" alt="Vaca">
+                                    {% with 'img/'|add:animales.nombre|add:'.png' as image %}
+									<img src="{% static image %}">
+                                    {% endwith %}
 									<span>{{animales}}</span>
 									{% empty %}
                   					<span>No tienen animales en al finca</span>
@@ -209,20 +220,20 @@
 					<p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Pruebas Realizadas</p>
 				</div>
 				<div class="large-1 columns">
-					<a href="#" class="button bty">2014</a>
+					<a href="?year=2014#practicas" class="button bty">2014</a>
 				</div>
 				<div class="large-1 columns">
-					<a href="#" class="button bty">2013</a>
+					<a href="?year=2013#practicas" class="button bty">2013</a>
 				</div>
 				<div class="large-1 columns">
-					<a href="#" class="button bty">2012</a>
+					<a href="?year=2012#practicas" class="button bty">2012</a>
 				</div>
 			</div>
 		</div>
 		<div class="row ">
 			<div class="large-12 columns">
 				{% if fpromotor.practicasproductivas_set.all %}
-				<table class="tpruebasr">
+				<table class="tpruebasr" id="practicas">
 					<thead>
 						<tr>
 							<th class="tpruebasrh">Año Activo</th>
@@ -235,7 +246,7 @@
 						</tr>
 					</thead>
 					<tbody class="tpruebasrb">
-						{% for lista in fpromotor.practicasproductivas_set.all %}    
+						{% for lista in practicas_productivas_queryset %}
 						<tr>
 							<td>{{lista.fecha_prueba}}</td>
 							<td><a class="pp" href="/fprueba/{{lista.id}}/">{{lista.nombre_prueba}}</a></td>

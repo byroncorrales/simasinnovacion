@@ -474,7 +474,13 @@ def promotor(request, template="promotores.html"):
 
 def fpromotor(request, id, template="fpromotor.html"):
     fpromotor = get_object_or_404(Promotor, id=id)
-    return render(request, template, {'fpromotor':fpromotor})
+    year = request.GET.get('year', None)
+    practicas_productivas_queryset = fpromotor.practicasproductivas_set.all()
+
+    if year:
+        practicas_productivas_queryset = practicas_productivas_queryset.filter(fecha_prueba__year=year)
+
+    return render(request, template, locals())
 
 def fprueba(request, id, template="fprueba.html"):
     fprueba = get_object_or_404(PracticasProductivas, id=id)
