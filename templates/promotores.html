@@ -91,19 +91,19 @@ $(document).ready(function() {
         <form class="form-inline" action="." method="POST">
         {%csrf_token%}
             <div class="row frow">
-                <div class="large-2 columns">
+                <div class="large-2 columns selector">
                     {{form.zona}}
                     {{form.zona.errors}}
                 </div>
-                <div class="large-3 columns">
+                <div class="large-3 columns selector">
                     {{form.organizacion_civil}}
                     {{form.organizacion_civil.errors}}
                 </div>
-                <div class="large-2 columns">
+                <div class="large-2 columns selector">
                     {{form.sexo}}
                     {{form.sexo.errors}}
                 </div>
-                <div class="large-2 columns">
+                <div class="large-2 columns selector">
                     {{form.activo}}
                     {{form.activo.errors}}
                 </div>  
