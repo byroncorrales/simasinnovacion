@@ -1,7 +1,45 @@
 {% extends "base_menu.html" %}
 
-{% block title %}Sistema SIMAS - EED{% endblock title %}
+{% block title %}
+    {{promotor.nombre}}
+{% endblock title %}
+
+{% block extra_js %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Bosque', {{fpromotor.bosque}}],
+          ['Potrero con arboles', {{fpromotor.potrero}}],
+          ['Tacotales', {{fpromotor.tacotales}}],
+          ['Forestal', {{fpromotor.forestal}}],
+          ['Cultivos perennes', {{fpromotor.perennes}}],
+          ['Plantacion para leña', {{fpromotor.lena}}],
+          ['Cultivos anuales', {{fpromotor.anuales}}],
+          ['Frutales', {{fpromotor.frutales}}],
+          ['Potrero abierto', {{fpromotor.potrero_abierto}}],
+          ['Cultivos patio', {{fpromotor.patio}}],
+        ]);
+        var options = {'title':'Uso de tierra',
+                       
+                       'chartArea': {'width': '100%', 'height': '80%'},
+                       'is3D':true,
+                        'legend': {'position': 'bottom'},};
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  
+{% endblock extra_js %}
 {% load staticfiles %}
+{% load thumbnail %}
 {% block contenido %}
 <div class="large-12 columns">
 	<div class="large-3 columns">
@@ -37,7 +75,7 @@
 				</div>
 				<div class="large-11 columns">
 					<p class="pmtr">Promotor</p>
-					<p class="npmtr">Jose Abelardo Espinales</p>
+					<p class="npmtr">{{fpromotor.nombre}}</p>
 				</div>
 			</div>
 		</div>
@@ -56,10 +94,10 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td class="pdatosb">Matagalpa</td>
-								<td class="pdatosb">San Ramon</td>
-								<td class="pdatosb">UNAG</td>
-								<td class="pdatosb">SIMAS</td>
+								<td class="pdatosb">{{fpromotor.departamento}}</td>
+								<td class="pdatosb">{{fpromotor.municipio}}</td>
+								<td class="pdatosb">{{fpromotor.organizacion_campesina}}</td>
+								<td class="pdatosb">{{fpromotor.organizacion_civil}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -75,41 +113,41 @@
 							<table class="tpromotor">
 								<tr>
 									<td class="tpromotort">Tipo de Suelo</td>
-									<td class="tpromotord">Franco-Arcilloso</td>
+									<td class="tpromotord">{{fpromotor.tipo_suelo}}</td>
 								</tr>
 								<tr>
 									<td class="tpromotort">Tipo de Clima</td>
-									<td class="tpromotord">Seco</td>
+									<td class="tpromotord">{{fpromotor.get_tipo_clima_display}}</td>
 								</tr>
 								<tr>
 									<td class="tpromotort">Meses de Lluvia</td>
-									<td class="tpromotord">5 Meses</td>
+									<td class="tpromotord">{{fpromotor.meses_lluvia}} Meses</td>
 								</tr>
 								<tr>
 									<td class="tpromotort">Tamaño de Finca</td>
-									<td class="tpromotord">6 Mz</td>
+									<td class="tpromotord">{{fpromotor.finca}} Mz</td>
 								</tr>
 								<tr>
 									<td class="tpromotort">Acceso Riego</td>
-									<td class="tpromotord">No hay</td>
+									<td class="tpromotord">{{fpromotor.get_riego_display}}</td>
 								</tr>
 							</table>
 						</div>
 					</div>
 					<div class="large-5 columns">
+						{% if fpromotor.get_fotos %}
 						<div class="ficha-slid">
+							{% for obj in fpromotor.get_fotos %}
 							<ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
-				  				<li>
-								    <img src="http://placehold.it/450x290" alt="slide 1" />					 
-							  	</li>
-								<li>
-				    				<img src="http://placehold.it/450x290" alt="slide 2" />					    
-				  				</li>
-				  				<li>
-								    <img src="http://placehold.it/450x290" alt="slide 3" />					    
-				  				</li>
+                        			{% thumbnail obj.foto "250x170" crop="10%" as img%}
+                        		<li>
+                          			<a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>      
+                      			</li>
+                        			{% endthumbnail %}
 							</ul>
+							{% endfor %}
 						</div>
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -166,7 +204,7 @@
 					</div>
 					<div class="large-6 columns">
 						<div class="chart">
-							<img src="{% static 'img/chart.png' %}" alt="Bar Chart">
+							<div id="chart_div"></div>
 						</div>
 					</div>
 				</div>
@@ -190,6 +228,7 @@
 		</div>
 		<div class="row ">
 			<div class="large-12 columns">
+				{% if fpromotor.practicasproductivas_set.all %}
 				<table class="tpruebasr">
 					<thead>
 						<tr>
@@ -204,6 +243,17 @@
 						</tr>
 					</thead>
 					<tbody class="tpruebasrb">
+						{% for lista in fpromotor.practicasproductivas_set.all %}    
+						<tr>
+							<td>{{lista.fecha_prueba}}</td>
+							<td><a class="pp" href="/practica/{{lista.id}}/">{{lista.nombre_prueba}}</a></td>
+							<td>{{lista.tema_prueba}}</td>
+							<td>{{lista.rubro_prueba}}</td>
+							<td>{{lista.escala_prueba}}</td>
+							<td>{{lista.fecha_inicio}}</td>
+							<td>{{lista.fecha_finalizacion}}</td>
+							<td>45</td>
+						</tr><!--
 						<tr>
 							<td>2013</td>
 							<td class="pp">Prueba de Productividad</td>
@@ -243,23 +293,13 @@
 							<td>3 Ene</td>
 							<td>23 Abr</td>
 							<td>45</td>
-						</tr>
-						<tr>
-							<td>2013</td>
-							<td class="pp">Prueba de Productividad</td>
-							<td>Abono</td>
-							<td>Frijol</td>
-							<td>1/2 Mz</td>
-							<td>3 Ene</td>
-							<td>23 Abr</td>
-							<td>45</td>
-						</tr>
+						</tr>-->
+						{% endfor %}
 					</tbody>
 				</table>
+				{% endif %}
 			</div>
 		</div>
 	</div>
 </div>
-
-
 {% endblock contenido %}

@@ -62,7 +62,7 @@ $(document).ready(function() {
 		<ul class="side-nav menu" id="men">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
-          <li><a href="#">Promotoras y promotores</a></li>
+          <li><a href="/promotor" class="active">Promotoras y promotores</a></li>
           <li><a href="#">Pruebas de practicas productivas</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
@@ -154,7 +154,7 @@ $(document).ready(function() {
 	<div class="large-12 columns">
         <div id="map" style="width: 100%; height: 450px; border: 1px solid rgb(21,21,21)"></div>
 		<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.7945424150384!2d-86.2707772!3d12.12620565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7155ef5b5b0717%3A0x52f30f8b3467ad29!2sUniversidad+Centroamericana!5e0!3m2!1ses!2ses!4v1395016518001" width="100%" height="450" frameborder="" style="border: 1px solid rgb(21,21,21)"></iframe>-->
-        {% if lista_promotor %}
+        {% if listar_promotor %}
 		<table class="promotord">
 		  <thead>
 		    <tr>
@@ -167,9 +167,9 @@ $(document).ready(function() {
 		    </tr>
 		  </thead>
 		  <tbody>
-            {% for lista in lista_promotor %}
+            {% for lista in listar_promotor %}
 		    <tr>
-		      <td><a href="/promotor/{{lista.id}}/" class="button tnombre">{{lista.nombre}}</a></td>
+		      <td><a href="/fpromotor/{{lista.id}}/" class="button tnombre">{{lista.nombre}}</a></td>
 		      <td>{{lista.get_activo_display}}</td>
               <td>{{lista.get_zona_display}}</td>
               <td>{{lista.organizacion_campesina}}</td>
