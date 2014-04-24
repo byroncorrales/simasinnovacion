@@ -20,4 +20,5 @@ urlpatterns = patterns('promotores.views',
     #esta url es para el template de promotor
     url(r'^promotor/$', 'promotor', name="listar_promotor"),
     url(r'^fpromotor/(?P<id>\w+)/$', 'fpromotor', name="ficha_promotor"),
+    url(r'^fprueba/(?P<id>\w+)/$', 'fprueba', name="ficha_prueba"),
     )
