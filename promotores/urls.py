@@ -17,4 +17,8 @@ urlpatterns = patterns('promotores.views',
     url(r'^gempresas/$', 'gempresas', name="gempresas"),
     url(r'^gespacios/$', 'gespacios', name="gespacios"),
     url(r'^gservicios/$', 'gservicios', name="gservicios"),
+    #esta url es para el template de promotor
+    url(r'^promotor/$', 'promotor', name="listar_promotor"),
+    url(r'^fpromotor/(?P<id>\w+)/$', 'fpromotor', name="ficha_promotor"),
+    url(r'^fprueba/(?P<id>\w+)/$', 'fprueba', name="ficha_prueba"),
     )

@@ -428,3 +428,60 @@ def gservicios(request, template="gservicios.html"):
 
 
     return render(request, template, locals())
+
+def _queryset_filtrado(request):
+    params = {}
+    if 'zona' in request.session:
+        params['zona'] = request.session['zona']
+    if 'organizacion_civil' in request.session:
+        params['organizacion_civil'] = request.session['organizacion_civil']
+    if 'sexo' in request.session:
+        params['sexo'] = request.session['sexo']
+    if 'activo' in request.session:
+        params['activo'] = request.session['activo']
+
+    unvalid_keys = []
+    for key in params:
+        if not params[key]:
+            unvalid_keys.append(key)
+    
+    for key in unvalid_keys:
+        del params[key]
+    
+    return Promotor.objects.filter(**params)
+
+
+def promotor(request, template="promotores.html"):
+    if request.method == 'POST':
+        form = PromotorForm(request.POST)
+        if form.is_valid():
+            request.session['zona'] = form.cleaned_data['zona']            
+            request.session['organizacion_civil'] = form.cleaned_data['organizacion_civil']
+            request.session['sexo'] = form.cleaned_data['sexo']
+            request.session['activo'] = form.cleaned_data['activo']
+            request.session['bandera'] = 1
+    else:
+        form = PromotorForm()
+        request.session['bandera'] = 0
+
+    if request.session['bandera'] == 1:
+        con = _queryset_filtrado(request)
+    else:
+        con = ''
+    
+    return render(request, template, {'form':form,
+                                      'listar_promotor':con})
+
+def fpromotor(request, id, template="fpromotor.html"):
+    fpromotor = get_object_or_404(Promotor, id=id)
+    year = request.GET.get('year', None)
+    practicas_productivas_queryset = fpromotor.practicasproductivas_set.all()
+
+    if year:
+        practicas_productivas_queryset = practicas_productivas_queryset.filter(fecha_prueba__year=year)
+
+    return render(request, template, locals())
+
+def fprueba(request, id, template="fprueba.html"):
+    fprueba = get_object_or_404(PracticasProductivas, id=id)
+    return render(request, template, {'fprueba':fprueba})
