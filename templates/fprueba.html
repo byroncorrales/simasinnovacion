@@ -13,7 +13,7 @@
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
           <li><a href="/promotor">Promotoras y promotores</a></li>
-          <li><a href="#">Pruebas de practicas productivas</a></li>
+          <li><a href="#" class="active">Pruebas de practicas productivas</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
           <li><a href="/gempresas">Estadisticas Generales</a></li>
@@ -138,7 +138,7 @@
 							 {% if fprueba.get_fotos %}
 							<ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
 				  				{% for obj in fprueba.get_fotos %}
-                        			{% thumbnail obj.foto "250x170" crop="10%" as img%}
+                        			{% thumbnail obj.foto "450x300" crop="10%" as img%}
                         		<li>
                           			<a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
                       			</li>

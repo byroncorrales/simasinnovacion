@@ -146,17 +146,20 @@
 						<div class="ficha-slid">
 							<ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
                         		{% for obj in fpromotor.get_fotos %}
-                        			{% thumbnail obj.foto "250x170" crop="10%" as img%}
+                        			{% thumbnail obj.foto "450x350" crop="10%" as img%}
                         		<li>
                           			<a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>      
                       			</li>
                         			{% endthumbnail %}
                         		{% endfor %}
 							</ul>
-							{% else %}
-							<p>No tiene imagenes</p>
-							{% endif %}
+
 						</div>
+                        {% else %}
+                        <div class="ficha-slid">
+                            <p>No tiene imagenes</p>
+                        </div>
+                        {% endif %}
 					</div>
 				</div>
 			</div>
@@ -170,9 +173,7 @@
 								<p class="ptittle fpt">Cultivos</p>
 									<div class="product">
 										{% for cultivo in fpromotor.cultivos_finca.all %}
-                                        {% with 'img/'|add:cultivo.nombre|add:'.png' as image %}
-                                        <img src="{% static image %}">
-                                        {% endwith %}
+                                        <img src="/media/{{cultivo.image_cultivos}}">
 										<span>{{cultivo}}</span>
                                         {% empty %}
 										<span>No tienen cultivos en la finca</span>
@@ -184,9 +185,7 @@
 								<p class="ptittle">Animales</p>
 								<div class="product">
 									{% for animales in fpromotor.animales_finca.all %}
-                                    {% with 'img/'|add:animales.nombre|add:'.png' as image %}
-									<img src="{% static image %}">
-                                    {% endwith %}
+									<img src="/media/{{animales.image_animales}}">
 									<span>{{animales}}</span>
 									{% empty %}
                   					<span>No tienen animales en al finca</span>
@@ -232,7 +231,6 @@
 		</div>
 		<div class="row ">
 			<div class="large-12 columns">
-				{% if fpromotor.practicasproductivas_set.all %}
 				<table class="tpruebasr" id="practicas">
 					<thead>
 						<tr>
@@ -246,6 +244,7 @@
 						</tr>
 					</thead>
 					<tbody class="tpruebasrb">
+                        {% if fpromotor.practicasproductivas_set.all %}
 						{% for lista in practicas_productivas_queryset %}
 						<tr>
 							<td>{{lista.fecha_prueba}}</td>
@@ -257,9 +256,9 @@
 							<td>{{lista.fecha_finalizacion}}</td>
 						</tr>
 						{% endfor %}
+                        {% endif %}
 					</tbody>
 				</table>
-				{% endif %}
 			</div>
 		</div>
 	</div>
