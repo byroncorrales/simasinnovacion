@@ -50,6 +50,8 @@ class EscuelaCampo(models.Model):
 
 class CultivosFinca(models.Model):
     nombre = models.CharField(max_length=200)
+    #Kronos Code Cambio Image Upload for cultivos
+    image_cultivos = models.ImageField(upload_to='cultivos/', blank=True, null=True)
 
     def __unicode__(self):
         return self.nombre
@@ -58,7 +60,9 @@ class CultivosFinca(models.Model):
         verbose_name_plural = "Cultivos en la finca"
 
 class AnimalesFinca(models.Model):
-    nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200)    
+    #Kronos Code cambio Image Upload for animales
+    image_animales = models.ImageField(upload_to='animales/', blank=True, null=True)
 
     def __unicode__(self):
         return self.nombre
@@ -147,6 +151,7 @@ class Promotor(models.Model):
 
     identificador = models.IntegerField(editable=False, null=True, blank=True)
     usuario = models.ForeignKey(User, null=True, blank=True)
+
 
     def save(self):
         self.identificador = 1
