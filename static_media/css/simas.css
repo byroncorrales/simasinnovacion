@@ -1,8 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto);*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700|Roboto:400,300,500,700);
 
 body {
-    background: #e7e5de;
-    font-family: Roboto, Arial;
+    background: #f2f3ea; /*#e7e5de*/
+    font-family: 'Roboto', sans-serif;
 }
 /*===============================
         css base_nuevo.html
@@ -63,7 +64,7 @@ body {
 
  .named {
     float: left;
-    color: rgba(27,67,62,216);
+    color: rgba(27,67,62,0.6);
     font-size: 17px;
     margin-left: -265px;
     margin-top: 10px;
@@ -71,8 +72,13 @@ body {
 
 .head-text { 
    color: rgba(243,251,246,0.8);
-   font-size: 16px;
+   font-size: 14px;
 
+}
+
+.pc {
+    margin-top: -60px;
+    margin-bottom: 30px;
 }
 /*=================================
         css index.html
@@ -137,7 +143,7 @@ header nav ul li {
 .elem-cont{
     color: rgb(106,116,96);
     text-align: left;
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 14px;
     margin-right: 14px;
     margin-top: 7px;
@@ -152,6 +158,7 @@ header nav ul li {
     /*width: 100%;*/
     background-color: #6DB883;
     border-color: #6DB883;
+    border-radius: 2px;
     color: rgb(218,236,217);
     box-shadow: none !important;
 }
@@ -220,25 +227,24 @@ li.has-form > a {
 /*========================================
         css de seleccion.html
 =========================================*/
+.info{
+    padding: 0px;
+}
 .info-elem {
     background: #fff;
     margin-top: 20px;
-    min-height: 270px;
-    -webkit-border-top-left-radius: 5px 10px; 
-    -webkit-border-top-right-radius: 5px 10px; 
-    border-top-right-radius: 5px 10px;
-    border-top-left-radius: 5px 10px;
-    border-bottom: 4px solid rgb(221,221,213);
+    min-height: 245px;
+    border-bottom: 2px solid rgb(221,221,213);
 }
 
 .info-tittle p{
-    /*padding: 1px 2px 2px 20px;*/
     color: rgb(77,72,71);
     font-size: 16px;
     font-weight: bold;
-    padding-top: 20px;
-    padding-left: 20px;
+    padding-top: 15px;
+    padding-left: 15px;
     text-align: left;
+    margin-bottom: -10px;
 }
 
 .info-contenedor{
@@ -247,7 +253,7 @@ li.has-form > a {
 }
 .info-text {
     color: rgb(136,138,133);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: normal;
     text-align: left;
     padding-left: 15px;
@@ -265,6 +271,7 @@ li.has-form > a {
     font-size: 12px;
     background-color: #EA6753;
     border-color: #EA6753;
+    border-radius: 2px;
     box-shadow: none !important;
     width: 100%;
     margin-left: 20px;
@@ -281,6 +288,7 @@ li.has-form > a {
 .menu {
     border-right: 2px solid rgb(222,223,216);
     height: 100%;
+    font-size: 14px;
 }
 
 .menu-titulo a {
@@ -289,17 +297,18 @@ li.has-form > a {
 
 .menu > li > a {
     text-align: right;
-    padding-right: 20px;
+    padding-right: 10px;
     color: #777777;
 }
 
 .menu > li > a.active {
     font-weight: bold;
-    border: 1px solid black;
+    border: 1px solid rgb(222,223,216);
     background-color: #F9FAF6;
     color: #000;
 }
 #men{
+    padding: 0px;
 
 }
 #cont{
@@ -333,6 +342,7 @@ li.has-form > a {
     box-shadow: none !important;
     text-align: center;
     height: 40px;
+    float: right;
 }
 .consulta:hover{
     background-color: rgb(251,117,96);
@@ -355,7 +365,7 @@ li.has-form > a {
     box-shadow: none !important;
     border-radius: 3px;
     margin: 10px 10px;
-    width: 100%;
+    width: 80%;
 }
 
 .tnombre:hover {
@@ -400,7 +410,7 @@ Aca va el CSS de ficha promotor.html
 .pdatos{
     text-align: left;
     float: left;
-    background-color: #e7e5de;
+    background-color: #f2f3ea;
     border: 0px;
     border-bottom: 0px;
     font-weight: normal;
@@ -409,28 +419,26 @@ Aca va el CSS de ficha promotor.html
 .pdatosh {
     color: rgb(155,155,155);
     font-size: 13px;
-    background-color: #e7e5de;
+    background-color: #f2f3ea;
+    padding-left: 0px;
 }
 
 .pdatosb {
     color: rgb(24,24,24);
-    font-size: 16px;
-    background-color: #e7e5de;
-    margin-top: -5px;
+    font-size: 15px;
+    background-color: #f2f3ea;
+    padding-top: 0px;
+    padding-left: 0px;
     font-weight: bold;
 }
 
 .ficha-elem {
     background-color: #fff;
-    /*min-height: 146px;*/
-    -webkit-border-top-left-radius: 5px 10px; 
-    -webkit-border-top-right-radius: 5px 10px; 
-    border-top-right-radius: 5px 10px;
-    border-top-left-radius: 5px 10px;
+    /*min-height: 146px;*/    
     margin-top: 5px;
     width: auto;
     height: 290px;
-    border-bottom: 4px solid rgb(221,221,213); 
+    border-bottom: 1px solid rgb(221,221,213); 
 
 }
 
@@ -445,7 +453,7 @@ Aca va el CSS de ficha promotor.html
     width: 100%;
     height: 100%;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .tpromotort {
@@ -457,7 +465,7 @@ Aca va el CSS de ficha promotor.html
     padding-left: 20px;
     font-weight: bold;
     text-align: left;
-    width: 120px;
+    width: 130px;
 }
 
 .tpromotord {
@@ -470,7 +478,7 @@ Aca va el CSS de ficha promotor.html
 }
 
 .frow{
-    max-width: 90%;
+    max-width: 95%;
 }
 
 .cap {
@@ -478,13 +486,9 @@ Aca va el CSS de ficha promotor.html
     margin-top: 30px;
     margin-bottom: 20px;
     /*min-height: 146px;*/
-    -webkit-border-top-left-radius: 5px 10px; 
-    -webkit-border-top-right-radius: 5px 10px; 
-    border-top-right-radius: 5px 10px;
-    border-top-left-radius: 5px 10px;
     width: auto;
     height: 400px;    
-    border-bottom: 4px solid rgb(221,221,213);
+    border-bottom: 2px solid rgb(221,221,213);
 }
 
 .ptittle {
@@ -494,7 +498,7 @@ Aca va el CSS de ficha promotor.html
 }
 
 .fpt {
-    margin-top: 25px;
+    padding-top: 25px;
 }
 
 .product{
@@ -507,14 +511,33 @@ Aca va el CSS de ficha promotor.html
     text-align: center;
 }
 
-.prod-otrs{
+.celm{
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.celmi{
+    width: 40px;
+    height: 40px;
+}
+.celm > span{
+    font-size: 13px;
+}
+.prod-otrs {
+    border: 2px solid rgb(222,223,216);
+    height: 100%;
+    font-size: 14px;
     float: left;
     margin-right: 15px;
+    padding: 5px;
+}
+.prod-otrs > span {
+    font-size: 13px;
 }
 .chart > #chart_div{
     float: right;
     margin-top: 30px;
-    width: 450px;
+    width: 100%;
     height: 400px;
 }
 
@@ -553,7 +576,7 @@ Aca va el CSS de ficha promotor.html
     background-color: rgb(226,226,226);
     color: rgb(66,66,66);
     font-size: 13px;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .pp{
@@ -607,7 +630,7 @@ Aca va el CSS de ficha promotor.html
 .fpdatos{
     text-align: left;
     float: left;
-    background-color: #e7e5de;
+    background-color: #f2f3ea;
     border: 0px;
     border-bottom: 0px;
     font-weight: normal;
@@ -616,24 +639,23 @@ Aca va el CSS de ficha promotor.html
 .fpdatosh {
     color: rgb(155,155,155);
     font-size: 13px;
-    background-color: #e7e5de;
+    background-color: #f2f3ea;
+    padding: 10px 16px;
 }
 
 .fpdatosb {
     color: rgb(24,24,24);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
-    background-color: #e7e5de;
+    background-color: #f2f3ea;
     margin-top: -5px;
+    padding: 10px 16px;
 }
 
 .cdat {
     overflow: hidden;
 }
 
-.cdatf {
-    margin-left: 15px;
-}
 
 .calend{
     float: left;
@@ -764,18 +786,17 @@ Aca va el CSS de ficha promotor.html
     color: rgb(142,144,125);
     font-size: 35px;
     font-weight: normal;
+    margin-bottom: -10px;
 }
 .charts {
     min-width: 310px;
     height: 400px;
     margin: 0 auto;
-    border-bottom: 4px solid rgb(221,221,213);
-    border-radius: 5px;
+    border-bottom: 2px solid rgb(221,221,213);
 }
 .estad {
     background-color: rgb(255,255,255);
-    border-bottom: 4px solid rgb(221,221,213);
-    border-radius: 5px;
+    border-bottom: 2px solid rgb(221,221,213);
     overflow: hidden;
 }
 .estadn{
@@ -784,6 +805,7 @@ Aca va el CSS de ficha promotor.html
     font-size: 15px;
     margin: auto;
     line-height: 30px;
+    padding-left: 10px;
 }
 .estadc {
     background-color: rgb(251,117,96);
