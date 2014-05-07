@@ -57,7 +57,7 @@ $(document).ready(function() {
 {% endblock extra_js %}
 {% load staticfiles %}
 {% block contenido %}
-<div class="row frow">
+<div class="large-12 columns">
 	<div class="large-2 columns" id="men">
 		<ul class="side-nav menu">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
@@ -82,15 +82,17 @@ $(document).ready(function() {
 		</ul>
 	</div>
 	<div class="large-10 columns" id="cont">
+    <div class="row">
 			<div class="large-12 columns">
 				<p class="ptitulo">Promotoras y promotores</p>
         <hr/>
 			</div>
+    </div>
 		{# dropdowns #}
         
         <form class="form-inline" action="." method="POST">
         {%csrf_token%}
-            <div class="row frow">
+            <div class="row ">
                 <div class="large-2 columns selector">
                     {{form.zona}}
                     {{form.zona.errors}}
@@ -114,7 +116,7 @@ $(document).ready(function() {
         </form>
            
 	
-	<div class="row frow">
+	<div class="row ">
 	<div class="large-12 columns">
         <div id="map" style="width: 100%; height: 450px; border: 1px solid rgb(21,21,21)"></div>
 		
@@ -145,6 +147,8 @@ $(document).ready(function() {
 		</table>
         {% endif %}
 	</div>
+  </div>
+  </div>
 </div>
 
 {% endblock contenido %}
