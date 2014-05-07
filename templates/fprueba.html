@@ -8,8 +8,8 @@
 {% load staticfiles %}
 {% block contenido %}
 <div class="large-12 columns">
-	<div class="large-3 columns">
-		<ul class="side-nav menu" id="men">
+	<div class="large-2 columns" id="men">
+		<ul class="side-nav menu">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
           <li><a href="/promotor">Promotoras y promotores</a></li>
@@ -31,7 +31,7 @@
           <li><a href="#">Servicios para Mejorar Org.</a></li>
 		</ul>
 	</div>
-	<div class="large-9 columns" id="cont">
+	<div class="large-10 columns" id="cont">
 		<div class="row ">
 			<div class="large-12 columns">
 				<p class="ptitulo">Pruebas de Practicas Productivas</p>
@@ -67,18 +67,18 @@
 							<table class="fpdatos">
 								<thead>
 									<tr>
-										<th width="120px" class="fpdatosh">Departamento</th>
-										<th width="120px" class="fpdatosh">Municipio</th>
-										<th width="50px" class="fpdatosh">Año</th>
-										<th width="80px" class="fpdatosh">Tema</th>
-										<th width="80px" class="fpdatosh">Rubro</th>
-										<th width="70x" class="fpdatosh">Escala</th>
+										<th  class="fpdatosh">Departamento</th>
+										<th  class="fpdatosh">Municipio</th>
+										<th  class="fpdatosh">Año</th>
+										<th  class="fpdatosh">Tema</th>
+										<th  class="fpdatosh">Rubro</th>
+										<th  class="fpdatosh">Escala</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td class="fpdatosb">{{fprueba.promotor.departamento}}</td>
-										<td class="fpdatosb">{{fprueba.promotor.municipio}}</td>
+										<td class="fpdatosb">{{fprueba.promotor.municipio.nombre}}</td>
 										<td class="fpdatosb">{{fprueba.fecha_prueba}}</td>
 										<td class="fpdatosb">{{fprueba.tema_prueba}}</td>
 										<td class="fpdatosb">{{fprueba.rubro_prueba}}</td>
@@ -94,44 +94,46 @@
 			<div class="row ">
 				<div class="large-12 columns">
 					<div class="large-6 columns">
-						<div class="cdat">
-							<div class="cdatf">
-								<div class="calend">
-									<img src="{%static 'img/calendar.png'%}">
-								</div>
-								<div class="dat">
-									<p class="dath">Inicio</p><br/>
-									<p class="datb">{{fprueba.fecha_inicio}}</p>
-								</div>
+
+							<div class="cdat">
+								
+									<div class="calend">
+										<img src="{%static 'img/calendar.png'%}">
+									</div>
+									<div class="dat">
+										<p class="dath">Inicio</p><br/>
+										<p class="datb">{{fprueba.fecha_inicio}}</p>
+									</div>
+								
+								
+									<div class="calend">
+										<img src="{%static 'img/calendar.png'%}">
+									</div>
+									<div class="dat">
+										<p class="dath">Fin</p><br/>
+										<p class="datb">{{fprueba.fecha_finalizacion}}</p>
+									</div>
+								
 							</div>
-							<div class="cdatf">
-								<div class="calend">
-									<img src="{%static 'img/calendar.png'%}">
-								</div>
-								<div class="dat">
-									<p class="dath">Fin</p><br/>
-									<p class="datb">{{fprueba.fecha_finalizacion}}</p>
-								</div>
+							<div class="ficha-prueba">
+								<table class="tpromotor">
+									<tr>
+										<td class="tpromotort">Tipo de Suelo</td>
+										<td class="tpromotord">{{fprueba.promotor.tipo_suelo}}</td>
+									</tr>
+									<tr>
+										<td class="tpromotort">Tipo de Clima</td>
+										<td class="tpromotord">{{fprueba.promotor.get_tipo_clima_display}}</td>
+									</tr>
+									<tr>
+										{% if fprueba.promotor.get_zona_display %}
+										<td class="tpromotort">Zona</td>
+										<td class="tpromotord">{{fprueba.promotor.get_zona_display}}</td>
+										{% endif %}
+									</tr>
+								</table>
 							</div>
-						</div>
-						<div class="ficha-prueba">
-							<table class="tpromotor">
-								<tr>
-									<td class="tpromotort">Tipo de Suelo</td>
-									<td class="tpromotord">{{fprueba.promotor.tipo_suelo}}</td>
-								</tr>
-								<tr>
-									<td class="tpromotort">Tipo de Clima</td>
-									<td class="tpromotord">{{fprueba.promotor.get_tipo_clima_display}}</td>
-								</tr>
-								<tr>
-									{% if fprueba.promotor.get_zona_display %}
-									<td class="tpromotort">Zona</td>
-									<td class="tpromotord">{{fprueba.promotor.get_zona_display}}</td>
-									{% endif %}
-								</tr>
-							</table>
-						</div>
+						
 					</div>
 					<div class="large-5 columns">
 						<div class="ficha-slid">
@@ -153,14 +155,12 @@
 				</div>
 			</div>
 
-			<div class="row ">
-				<div class="large-12 columns">
-					<div class="large-1 columns">
-						<p class="logica">Logica</p>
-					</div>
-				</div>
+			
+			<div class="large-12 columns">
+					<p class="logica">Logica</p>				
 			</div>
-			<div class="row ">
+			
+			
 				<div class="large-12 columns">
 					<table class="tlogica">
 						<tr>
@@ -213,7 +213,7 @@
 						</tr>
 					</table>
 				</div>
-			</div>
+			
 			<div class="row ">
 				<div class="large-12 columns">
 					<div class="large-1 columns">
@@ -221,7 +221,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row ">
+
 				<div class="large-12 columns">
 					<table class="tresultado">
 						<tr>
@@ -288,7 +288,7 @@
 						</tr>
 					</table>
 				</div>
-			</div>
+			
 		</div>
 	</div>
 </div>

@@ -58,8 +58,8 @@ $(document).ready(function() {
 {% load staticfiles %}
 {% block contenido %}
 <div class="row frow">
-	<div class="large-3 columns">
-		<ul class="side-nav menu" id="men">
+	<div class="large-2 columns" id="men">
+		<ul class="side-nav menu">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
           <li><a href="/promotor" class="active">Promotoras y promotores</a></li>
@@ -81,11 +81,11 @@ $(document).ready(function() {
           <li><a href="#">Servicios para Mejorar Org.</a></li>
 		</ul>
 	</div>
-	<div class="large-9 columns" id="cont">
+	<div class="large-10 columns" id="cont">
 			<div class="large-12 columns">
 				<p class="ptitulo">Promotoras y promotores</p>
+        <hr/>
 			</div>
-		<hr/>
 		{# dropdowns #}
         
         <form class="form-inline" action="." method="POST">
