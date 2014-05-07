@@ -14,29 +14,40 @@
         var data = new google.visualization.arrayToDataTable([
           ['Tipo', 'Valor', { role: 'style' }],
           ['Bosque', {{fpromotor.bosque}}, 'color: #ea6753'],
-          ['Potrero con arboles', {{fpromotor.potrero}}, 'color: #ea6753'],
+          ['Potrero y arboles', {{fpromotor.potrero}}, 'color: #ea6753'],
           ['Tacotales', {{fpromotor.tacotales}}, 'color: #ea6753'],
           ['Forestal', {{fpromotor.forestal}}, 'color: #ea6753'],
           ['Cultivos perennes', {{fpromotor.perennes}}, 'color: #ea6753'],
-          ['Plantacion para leña', {{fpromotor.lena}}, 'color: #ea6753'],
+          ['Plantacion leña', {{fpromotor.lena}}, 'color: #ea6753'],
           ['Cultivos anuales', {{fpromotor.anuales}}, 'color: #ea6753'],
           ['Frutales', {{fpromotor.frutales}}, 'color: #ea6753'],
           ['Potrero abierto', {{fpromotor.potrero_abierto}}, 'color: #ea6753'],
           ['Cultivos patio', {{fpromotor.patio}}, 'color: #ea6753']
         ]);
         var options = {'title':'Uso de tierra',
-                        hAxis: {title: "Mz"},
-                        //backgroundColor: '#242421',
+                        hAxis: {
+                            title: "Mz",
+                            textStyle: {color: '#fff'},
+                            titleTextStyle: {color: '#fff'},
+                        },
+                        vAxis: {                            
+                            textStyle: {color: '#fff'},
+                            titleTextStyle: {color: '#fff'},
+                        },
+                        titleTextStyle: {
+                            color: '#fff'
+                        },
+                        chartArea: {
+                            left:150,
+                            top:40,
+                            width:"50%",
+                            height:"75%"
+                        },
+                        backgroundColor: '#242421',
                         colors: ['red','#004411'],
-                        bar: {groupWidth: "35%"},
+                        bar: {groupWidth: "25%"},
                         legend: { position: "none" },
-                        annotations: {
-                        textStyle: {
-                          fontSize: 18,
-                          bold: true,
-                          color: '#871b47',     // The color of the text.
-                        }
-                      },
+                        
                    };
 
         var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
@@ -49,8 +60,8 @@
 {% load thumbnail %}
 {% block contenido %}
 <div class="large-12 columns">
-	<div class="large-3 columns">
-		<ul class="side-nav menu" id="men">
+	<div class="large-2 columns" id="men">
+		<ul class="side-nav menu">
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
           <li><a href="#" class="active">Promotoras y promotores</a></li>
@@ -72,7 +83,7 @@
           <li><a href="#">Servicios para Mejorar Org.</a></li>
 		</ul>
 	</div>
-	<div class="large-9 columns" id="cont">
+	<div class="large-10 columns" id="cont">
 		<div class="row ">
 			<div class="large-12 columns">
 				<p class="ptitulo">Promotoras y promotores</p>
@@ -88,28 +99,28 @@
 		</div>
 
 		<div class="row ">
-			<div class="large-12 columns">
+
 				<div class="large-11 columns">
 					<table class="pdatos">
 						<thead>
 							<tr>
-								<th width="120px" class="pdatosh">Departamento</th>
-								<th width="120px" class="pdatosh">Municipio</th>
-								<th width="180px" class="pdatosh">Organizacion Campesina</th>
-								<th width="170px" class="pdatosh">Organizacion de Apoyo</th>
+								<th  class="pdatosh">Departamento</th>
+								<th  class="pdatosh">Municipio</th>
+								<th  class="pdatosh">Organizacion Campesina</th>
+								<th  class="pdatosh">Organizacion de Apoyo</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td class="pdatosb">{{fpromotor.departamento}}</td>
-								<td class="pdatosb">{{fpromotor.municipio}}</td>
+								<td class="pdatosb">{{fpromotor.municipio.nombre}}</td>
 								<td class="pdatosb">{{fpromotor.organizacion_campesina}}</td>
 								<td class="pdatosb">{{fpromotor.organizacion_civil}}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-			</div>
+			
 		</div>
 		
 		<div class="row ">
@@ -135,7 +146,7 @@
 									<td class="tpromotord">{{fpromotor.finca}} Mz</td>
 								</tr>
 								<tr>
-									<td class="tpromotort">Acceso Riego</td>
+									<td class="tpromotort">Acceso a Riego</td>
 									<td class="tpromotord">{{fpromotor.get_riego_display}}</td>
 								</tr>
 							</table>
@@ -173,8 +184,12 @@
 								<p class="ptittle fpt">Cultivos</p>
 									<div class="product">
 										{% for cultivo in fpromotor.cultivos_finca.all %}
-                                        <img src="/media/{{cultivo.image_cultivos}}">
-										<span>{{cultivo}}</span>
+                                        <div class="celm">
+                                            <div class="celmi">
+                                                <img src="/media/{{cultivo.image_cultivos}}">
+                                            </div>
+                                            <span>{{cultivo}}</span>
+                                        </div>
                                         {% empty %}
 										<span>No tienen cultivos en la finca</span>
                                         {% endfor %}
@@ -185,8 +200,12 @@
 								<p class="ptittle">Animales</p>
 								<div class="product">
 									{% for animales in fpromotor.animales_finca.all %}
-									<img src="/media/{{animales.image_animales}}">
-									<span>{{animales}}</span>
+                                    <div class="celm">
+                                        <div class="celmi">
+                                            <img src="/media/{{animales.image_animales}}">
+                                        </div>
+                                        <span>{{animales}}</span>
+                                    </div>
 									{% empty %}
                   					<span>No tienen animales en al finca</span>
               						{% endfor %}
@@ -197,7 +216,9 @@
 								<p class="ptittle">Productos procesados</p>
 									<div class="product">
 										{% for producto in fpromotor.producto_procesado.all %}
-										<span class="prod-otrs">{{producto}}</span>
+                                        <div class="prod-otrs">
+										  <span class="">{{producto}}</span>
+                                        </div>
 										{% empty %}
 										<span class="prod-otrs">No tiene producto procesado</span>
 										{% endfor %}
@@ -215,18 +236,20 @@
 		</div>
 		<div class="row ">
 			<div class="large-12 columns">
-				<div class="large-9 columns">
-					<p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Pruebas Realizadas</p>
-				</div>
-				<div class="large-1 columns">
-					<a href="?year=2014#practicas" class="button bty">2014</a>
-				</div>
-				<div class="large-1 columns">
-					<a href="?year=2013#practicas" class="button bty">2013</a>
-				</div>
-				<div class="large-1 columns">
-					<a href="?year=2012#practicas" class="button bty">2012</a>
-				</div>
+                <div class="row">
+    				<div class="large-9 columns">
+    					<p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Pruebas Realizadas</p>
+    				</div>
+    				<div class="large-1 columns">
+    					<a href="?year=2014#practicas" class="button bty">2014</a>
+    				</div>
+    				<div class="large-1 columns">
+    					<a href="?year=2013#practicas" class="button bty">2013</a>
+    				</div>
+    				<div class="large-1 columns">
+    					<a href="?year=2012#practicas" class="button bty">2012</a>
+    				</div>
+                </div>
 			</div>
 		</div>
 		<div class="row ">
