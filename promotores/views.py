@@ -482,6 +482,28 @@ def fpromotor(request, id, template="fpromotor.html"):
 
     return render(request, template, locals())
 
+def prueba(request, template="prueba.html"):
+    if request.method == 'POST':
+        form = PracticaForm(request.POST)
+        if form.is_valid():
+            request.session['zona'] = form.cleaned_data['zona']
+            request.session['anio'] = form.cleaned_data['anio']         
+            request.session['tema_prueba'] = form.cleaned_data['tema_prueba']
+            request.session['rubro_prueba'] = form.cleaned_data['rubro_prueba']
+            request.session['escala_prueba'] = form.cleaned_data['escala_prueba']
+            request.session['bandera'] = 1
+    else:
+        form = PracticaForm()
+        request.session['bandera'] = 0
+
+    if request.session['bandera'] == 1:
+        con = _queryset_filtrado_practica(request)
+    else:
+        con = ''
+    
+    return render(request, template, {'form':form,
+                                      'listar_prueba':con})
+
 def fprueba(request, id, template="fprueba.html"):
     fprueba = get_object_or_404(PracticasProductivas, id=id)
     return render(request, template, {'fprueba':fprueba})
