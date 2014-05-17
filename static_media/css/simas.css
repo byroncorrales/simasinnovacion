@@ -34,7 +34,7 @@ body {
 }
 
 .headbg {
-    background: url(../img/header.png)  no-repeat center center fixed;
+    background: url(../img/fondo-banner.png)  no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -487,7 +487,7 @@ Aca va el CSS de ficha promotor.html
     margin-bottom: 20px;
     /*min-height: 146px;*/
     width: auto;
-    height: 400px;    
+    height: auto;    
     border-bottom: 2px solid rgb(221,221,213);
 }
 
@@ -530,6 +530,7 @@ Aca va el CSS de ficha promotor.html
     float: left;
     margin-right: 15px;
     padding: 5px;
+    margin-bottom: 10px;
 }
 .prod-otrs > span {
     font-size: 13px;
@@ -815,4 +816,25 @@ Aca va el CSS de ficha promotor.html
     font-size: 17px;
     float: right;
     padding: 7px;
+}
+/*TEMPLATE EMPRESA*/
+
+.fichainterna{
+    background-color: #fff;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: auto;
+    height: auto;    
+    border-bottom: 2px solid rgb(221,221,213);
+}
+.finter-text{
+    border: 2px solid rgb(222,223,216);
+    font-size: 14px;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+    width: auto;
+}
+.clear{
+    clear: both;
 }

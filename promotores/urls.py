@@ -12,13 +12,14 @@ urlpatterns = patterns('promotores.views',
     url(r'^practicas/$', 'practicas_index', name="lista_practicas"),
     url(r'^practica/(?P<id>\w+)/$', 'practica_pagina', name="practica_pagina"),
     url(r'^mapa_completo_practica/$', 'mapa_completo_practica', name="mapa-completo-practica"),
-    #KronosCode Cambios
+    #KronosCode Cambios GRAFICOS
     url(r'^gpromotor/$', 'gpromotor', name="gpromotor"),
     url(r'^gempresas/$', 'gempresas', name="gempresas"),
     url(r'^gespacios/$', 'gespacios', name="gespacios"),
     url(r'^gservicios/$', 'gservicios', name="gservicios"),
-    #esta url es para el template de promotor
+    #esta url es para los template de promotor
     url(r'^promotor/$', 'promotor', name="listar_promotor"),
     url(r'^fpromotor/(?P<id>\w+)/$', 'fpromotor', name="ficha_promotor"),
     url(r'^fprueba/(?P<id>\w+)/$', 'fprueba', name="ficha_prueba"),
+    url(r'^pruebas/$', 'prueba', name="listar_prueba"),
     )

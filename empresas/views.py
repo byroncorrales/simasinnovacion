@@ -127,3 +127,62 @@ def mejoras_index(request, template="empresas/mejoras.html"):
 def mejora_pagina(request, id, template="empresas/ficha_mejora.html"):
     mejora = get_object_or_404(MejoraEmpresas, id=id)
     return render(request, template, {'mejora':mejora})
+
+
+    #Cambios Por el equipo Kronos Code
+def empresa(request, template="empresa.html"):
+    if request.method == 'POST':
+        form = EmpresasForm(request.POST)
+        if form.is_valid():
+            request.session['zona'] = form.cleaned_data['zona']            
+            request.session['organizacion_civil'] = form.cleaned_data['organizacion_civil']
+            request.session['activo'] = form.cleaned_data['activo']
+            request.session['tipo'] = form.cleaned_data['tipo']
+            request.session['bandera'] = 1
+    else:
+        form = EmpresasForm()
+        request.session['bandera'] = 0
+
+    if request.session['bandera'] == 1:
+        con = _queryset_filtrado(request)
+    else:
+        con = ''
+    
+    return render(request, template, {'form':form,
+                                      'listar_empresa':con})
+
+def fempresa(request, id, template="fempresa.html"):
+    fempresa = get_object_or_404(Empresas, id=id)
+    year = request.GET.get('year', None)
+    mejora_empresas_queryset = fempresa.mejoraempresas_set.all()
+
+    if year:
+        mejora_empresas_queryset = mejora_empresas_queryset.filter(fecha_prueba__year=year)
+
+    return render(request, template, locals())
+
+def fmejora(request, id, template="fmejora.html"):
+    fmejora = get_object_or_404(MejoraEmpresas, id=id)
+    return render(request, template, {'fmejora':fmejora})
+
+def mejora(request, template="mejora.html"):
+    if request.method == 'POST':
+        form = MejoraForm(request.POST)
+        if form.is_valid():
+            request.session['zona'] = form.cleaned_data['zona']            
+            request.session['anio'] = form.cleaned_data['anio']
+            request.session['tema_prueba'] = form.cleaned_data['tema_prueba']
+            request.session['rubro_prueba'] = form.cleaned_data['rubro_prueba']
+            request.session['mercado_prueba'] = form.cleaned_data['mercado_prueba']
+            request.session['bandera'] = 1
+    else:
+        form = MejoraForm()
+        request.session['bandera'] = 0
+
+    if request.session['bandera'] == 1:
+        con = _queryset_filtrado_mejora(request)
+    else:
+        con = ''
+    
+    return render(request, template, {'form':form,
+                                      'listar_mejora':con})
