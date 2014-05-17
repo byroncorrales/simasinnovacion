@@ -1,0 +1,297 @@
+{% extends "base_menu.html" %}
+{% block title %}
+    {{fempresa.nombre}}
+{% endblock title %}
+
+{% load thumbnail %}
+{% load staticfiles %}
+{% block contenido %}
+<div class="large-12 columns">
+    <div class="large-2 columns" id="men">
+        <ul class="side-nav menu">
+          <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+          <li><a href="/gpromotor">Estadisticas Generales</a></li>
+          <li><a href="/promotor">Promotoras y promotores</a></li>
+          <li><a href="/pruebas">Pruebas de practicas productivas</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+          <li><a href="/gempresas">Estadisticas Generales</a></li>
+          <li><a href="/empresa" class="active">Empresas Rurales</a></li>
+          <li><a href="/mejora">Mejoras para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+          <li><a href="/gespacios">Estadisticas Generales</a></li>
+          <li><a href="/espacio">Espacios para Innovar</a></li>
+          <li><a href="/iniciativas">Iniciativas para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+          <li><a href="/gservicios">Estadisticas Generales</a></li>
+          <li><a href="#">Conocimientos de Actores</a></li>
+          <li><a href="#">Servicios para Mejorar Org.</a></li>
+        </ul>
+    </div>
+    <div class="large-10 columns" id="cont">
+        <div class="row ">
+            <div class="large-12 columns">
+                <p class="ptitulo">Empresas Rurales</p>
+                <hr/>
+                <div class="large-1 columns">
+                    <img src="{%static 'img/empresa_rural.png' %}" alt="Empresa Rural"/>
+                </div>
+                <div class="large-11 columns">
+                    <p class="pmtr">Empresa</p>
+                    <p class="npmtr">{{fempresa.nombre}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-11 columns">
+                <table class="pdatos">
+                    <thead>
+                        <tr>
+                            <th  class="pdatosh">Departamento</th>
+                            <th  class="pdatosh">Municipio</th>
+                            <th  class="pdatosh">Tipo Empresa</th>
+                            <th  class="pdatosh">Organizacion de Apoyo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="pdatosb">{{fempresa.departamento}}</td>
+                            <td class="pdatosb">{{fempresa.municipio.nombre}}</td>
+                            <td class="pdatosb">{{fempresa.tipo}}</td>
+                            <td class="pdatosb">{{fempresa.organizacion_civil}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
+                <div class="row ">
+                    <div class="large-7 columns">
+                        <div class="ficha-elem">
+                            <table class="tpromotor">
+                                <tr>
+                                    <td class="tpromotort">Años de haberse formado la empresa</td>
+                                    <td class="tpromotord">{{fempresa.formado_empresa}} Años</td>
+                                </tr>
+                                <tr>
+                                    <td class="tpromotort">Nombre de la persona para contactar</td>
+                                    {% if fempresa.contacto_nombre %}
+                                    <td class="tpromotord">{{fempresa.contacto_nombre}}</td>
+                                    {% else %}
+                                    <td class="tpromotord">No posee</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="tpromotort">Celular de la persona para contactar</td>
+                                    {% if fempresa.contacto_celular %}
+                                    <td class="tpromotord">{{fempresa.contacto_celular}}</td>
+                                    {% else %}
+                                    <td class="tpromotord">No posee</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="tpromotort">Correo de la persona para contactar</td>
+                                    {% if fempresa.contacto_correo %}
+                                    <td class="tpromotord">{{fempresa.contacto_correo}}</td>
+                                    {% else %}
+                                    <td class="tpromotord">No posee</td>
+                                    {% endif %}
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="large-5 columns">
+                        {% if fempresa.get_fotos %}
+                        <div class="ficha-slid">
+                            <ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
+                                {% for obj in fempresa.get_fotos %}
+                                    {% thumbnail obj.foto "450x350" crop="10%" as img%}
+                                <li>
+                                    <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>      
+                                </li>
+                                    {% endthumbnail %}
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+                        {% else %}
+                        <div class="ficha-slid">
+                            <p>No tiene imagenes</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
+                <div class="row ">
+                    <div class="large-6 columns">
+                        <div class="cap">
+                            <div>
+                                <p class="ptittle fpt">Rubros</p>
+                                    <div class="product">
+                                        {% for rubros in  fempresa.rubrosprincipales_set.all %}
+                                        <div class="celm">
+                                            <div class="celmi">
+                                                <img src="/media/{{rubro.image_rubro}}">
+                                            </div>
+                                            <span>{{rubros.rubro}}</span>
+                                        </div>
+                                        {% empty %}
+                                        <span>No tienen rubros en la empresa</span>
+                                        {% endfor %}
+                                    </div>                                  
+                            </div>
+                            <hr/>
+                            <div>
+                                <p class="ptittle">Actividad</p>
+                                <div class="product">
+                                    {% for actividad in fempresa.actividadempresarial_set.all %}
+                                    <div class="prod-otrs">
+                                        <span class="">{{actividad.actividad}}</span>
+                                    </div>                                  
+                                    {% empty %}
+                                    <span>No tienen actividades en la finca</span>
+                                    {% endfor %}
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>                              
+                            </div>
+                        </div>
+                    </div>
+                     <div class="large-6 columns">
+                        <div class="cap">
+                            <div>
+                                <p class="ptittle fpt">Mercados</p>
+                                    <div class="product">
+                                        {% for mercado in  fempresa.mercadosrubros_set.all %}
+                                        <div class="prod-otrs">
+                                            <span class="">{{mercado.mercado}}</span>
+                                        </div>                                       
+                                        {% empty %}
+                                        <span>No tienen mercados en la empresa</span>
+                                        {% endfor %}
+                                    </div>                                  
+                            </div>
+                            <hr/>
+                            <div>
+                                <p class="ptittle">Compradores</p>
+                                <div class="product">
+                                    <!--{% for comprador in fempresa.actividadempresarial_set.all %}
+                                    <div class="prod-otrs">
+                                       <span class=""></span>
+                                    </div>
+                                    {% empty %}
+                                    <span>No tienen compradores en la empresa</span>
+                                    {% endfor %}-->
+                                </div>                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-4 columns">
+                        <div class="fichainterna">
+                            <p class="ptittle fpt">Certificaciones</p>
+                            <hr>
+                            {% for certificado in fempresa.certificacionesrubros_set.all %}
+                            <div class="finter-text">
+                                <span class="">{{certificado.certificaciones}}</span>
+                            </div>
+                            <div class="clear"></div>
+                            {% empty %}
+                            <p>Aun no tienen certificaciones</p>
+                            {% endfor %}
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <div class="fichainterna">
+                            <p class="ptittle fpt">Volumen de venta anual</p>
+                            <hr>
+                            {% for volumen in fempresa.certificacionesrubros_set.all %}
+                            <div class="finter-text">
+                                <span class="">{{certificado.certificaciones}}</span>
+                            </div>
+                            {% empty %}
+                            <p>Aun no tienen volumen de venta</p>
+                            {% endfor %}
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <div class="fichainterna">
+                            <p class="ptittle fpt">Involucrados</p>
+                            <hr>
+                            {% for involucrado in fempresa.certificacionesrubros_set.all %}
+                            <div class="finter-text">
+                                <span>{{certificado.certificaciones}}</span>
+                            </div>
+                            {% empty %}
+                            <p>Aun no tienen involucrados</p>
+                            {% endfor %}
+                            <div class="clear"></div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-9 columns">
+                        <p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Mejoras Realizadas</p>
+                    </div>
+                    <div class="large-1 columns">
+                        <a href="?year=2014#mejoras" class="button bty">2014</a>
+                    </div>
+                    <div class="large-1 columns">
+                        <a href="?year=2013#mejoras" class="button bty">2013</a>
+                    </div>
+                    <div class="large-1 columns">
+                        <a href="?year=2012#mejoras" class="button bty">2012</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
+                <table class="tpruebasr" id="practicas">
+                    <thead>
+                        <tr>
+                            <th class="tpruebasrh">Año Activo</th>
+                            <th class="tpruebasrh">Nombre de Prueba</th>
+                            <th class="tpruebasrh">Tema</th>
+                            <th class="tpruebasrh">Rubro</th>
+                            <th class="tpruebasrh">Mercado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tpruebasrb">
+                        {% if fempresa.mejoraempresas_set.all %}
+                        {% for lista in mejora_empresas_queryset %}
+                        <tr>
+                            <td>{{lista.fecha_prueba}}</td>
+                            <td><a class="pp" href="/fmejora/{{lista.id}}/">{{lista.nombre_mejora}}</a></td>
+                            <td>{{lista.tema_prueba}}</td>
+                            <td>{{lista.rubro_prueba}}</td>
+                            <td>{{lista.mercado_prueba}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

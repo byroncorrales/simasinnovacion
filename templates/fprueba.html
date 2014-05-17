@@ -1,7 +1,7 @@
 {% extends "base_menu.html" %}
 
 {% block title %}
-    {{practica.nombre_prueba}}
+    {{fprueba.nombre_prueba}}
 {% endblock title %}
 
 {% load thumbnail %}
@@ -13,17 +13,17 @@
 		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
           <li><a href="/promotor">Promotoras y promotores</a></li>
-          <li><a href="#" class="active">Pruebas de practicas productivas</a></li>
+          <li><a href="/pruebas" class="active">Pruebas de practicas productivas</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
           <li><a href="/gempresas">Estadisticas Generales</a></li>
-          <li><a href="#">Empresas Rurales</a></li>
-          <li><a href="#">Mejoras para Innovar</a></li>
+          <li><a href="/empresa">Empresas Rurales</a></li>
+          <li><a href="/mejora">Mejoras para Innovar</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
           <li><a href="/gespacios">Estadisticas Generales</a></li>
-          <li><a href="#">Espacios para Innovar</a></li>
-          <li><a href="#">Iniciativas para Innovar</a></li>
+          <li><a href="/espacio">Espacios para Innovar</a></li>
+          <li><a href="/inciativas">Iniciativas para Innovar</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
           <li><a href="/gservicios">Estadisticas Generales</a></li>
@@ -126,8 +126,8 @@
 										<td class="tpromotord">{{fprueba.promotor.get_tipo_clima_display}}</td>
 									</tr>
 									<tr>
-										{% if fprueba.promotor.get_zona_display %}
 										<td class="tpromotort">Zona</td>
+										{% if fprueba.promotor.get_zona_display %}
 										<td class="tpromotord">{{fprueba.promotor.get_zona_display}}</td>
 										{% endif %}
 									</tr>

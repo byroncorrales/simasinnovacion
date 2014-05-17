@@ -1,7 +1,7 @@
 {% extends "base_menu.html" %}
 
 {% block title %}
-    Lista de los promotores
+    Lista de las empresas rurales
 {% endblock title %}
 
 {% block extra_js %}
@@ -30,7 +30,7 @@ $(document).ready(function() {
           map.setMapTypeId('map_style');
 
           //comineza para mostrar mapa
-          $.getJSON('/ver_mapa_completo/', function(data){
+          $.getJSON('/mapa_completo_empresa/', function(data){
               $.each(data, function(i, elemento){
                   var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
                   var marker = new google.maps.Marker({
@@ -38,11 +38,11 @@ $(document).ready(function() {
                       map: map,
                       name: elemento.nombre,
                       desc: elemento.id,
-                      icon: '/static/img/'+ elemento.identificador + '.png' 
+                      icon: '/static/img/'+ elemento.identificador+ '.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/promotor/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/promotor/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><a href="/empresa/'+ elemento.id +'" class="verde">' + elemento.nombre +  
+                              '<br>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,
@@ -58,16 +58,16 @@ $(document).ready(function() {
 {% load staticfiles %}
 {% block contenido %}
 <div class="large-12 columns">
-	<div class="large-2 columns" id="men">
-		<ul class="side-nav menu">
-		  <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+  <div class="large-2 columns" id="men">
+    <ul class="side-nav menu">
+      <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
           <li><a href="/gpromotor">Estadisticas Generales</a></li>
-          <li><a href="/promotor" class="active">Promotoras y promotores</a></li>
+          <li><a href="/promotor">Promotoras y promotores</a></li>
           <li><a href="/pruebas">Pruebas de practicas productivas</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
           <li><a href="/gempresas">Estadisticas Generales</a></li>
-          <li><a href="/empresa">Empresas Rurales</a></li>
+          <li><a href="/empresa" class="active">Empresas Rurales</a></li>
           <li><a href="/mejora">Mejoras para Innovar</a></li>
         <br/>
           <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
@@ -79,16 +79,16 @@ $(document).ready(function() {
           <li><a href="/gservicios">Estadisticas Generales</a></li>
           <li><a href="#">Conocimientos de Actores</a></li>
           <li><a href="#">Servicios para Mejorar Org.</a></li>
-		</ul>
-	</div>
-	<div class="large-10 columns" id="cont">
+    </ul>
+  </div>
+  <div class="large-10 columns" id="cont">
     <div class="row">
-			<div class="large-12 columns">
-				<p class="ptitulo">Promotoras y promotores</p>
+      <div class="large-12 columns">
+        <p class="ptitulo">Empresas Rurales</p>
         <hr/>
-			</div>
+      </div>
     </div>
-		{# dropdowns #}
+    {# dropdowns #}
         
         <form class="form-inline" action="." method="POST">
         {%csrf_token%}
@@ -97,58 +97,64 @@ $(document).ready(function() {
                     {{form.zona}}
                     {{form.zona.errors}}
                 </div>
-                <div class="large-3 columns selector">
+                <div class="large-2 columns selector">
                     {{form.organizacion_civil}}
                     {{form.organizacion_civil.errors}}
                 </div>
                 <div class="large-2 columns selector">
-                    {{form.sexo}}
-                    {{form.sexo.errors}}
+                   {{form.activo}}
+                    {{form.activo.errors}}
                 </div>
                 <div class="large-2 columns selector">
-                    {{form.activo}}
-                    {{form.activo.errors}}
+                    {{form.tipo}}
+                    {{form.tipo.errors}}
+                </div>
+                <div class="large-2 columns selector">
+                    {{form.rubro}}
+                    {{form.rubro.errors}}
                 </div>  
-                <div class="large-3 columns">
+                <div class="large-2 columns">
                     <button type="submit" class="boton consulta">CONSULTAR</button>
                 </div>  
             </div>  
         </form>
-           
-	
-	<div class="row ">
-	<div class="large-12 columns">
-        <div id="map" style="width: 100%; height: 450px; border: 1px solid rgb(21,21,21)"></div>
-		
-        {% if listar_promotor %}
-		<table class="promotord">
-		  <thead>
-		    <tr>
-		      <th width="250" class="promotordh">Nombre</th>
-		      <th width="80" class="promotordh">Año Activo</th>
-		      <th width="100" class="promotordh">Sexo</th>
-		      <th width="100" class="promotordh">Zona</th>
-		      <th width="70" class="promotordh">Org. Campesina</th>
-		      <th width="70" class="promotordh">Org. Civil</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-            {% for lista in listar_promotor %}
-		    <tr>
-		      <td><a href="/fpromotor/{{lista.id}}/" class="button tnombre">{{lista.nombre}}</a></td>
-		      <td>{{lista.get_activo_display}}</td>
-              <td>{{lista.get_zona_display}}</td>
-              <td>{{lista.organizacion_campesina}}</td>
-              <td>{{lista.organizacion_civil}}</td>
-              <td>{{lista.get_sexo_display}}</td>
-		    </tr>
-            {% endfor %}
+
+      <div class="row ">
+        <div class="large-12 columns">
+          <div id="map" style="width: 100%; height: 450px; border: 1px solid rgb(21,21,21)"></div>
+
+          {% if listar_empresa %}
+          <table class="promotord">
+            <thead>
+              <tr>
+                <th width="250" class="promotordh">Nombre</th>
+                <th width="80" class="promotordh">Año Activo</th>
+                <th width="100" class="promotordh">Zona</th>
+                <th width="70" class="promotordh">Org. Civil</th>
+                <th width="90" class="promotordh">Tipo Empresa</th>
+                <th width="90" class="promotordh">Rubro</th>
+              </tr>
+            </thead>
+            <tbody>
+             {% for lista in listar_empresa %}    
+              <tr>
+                <td><a href="/fempresa/{{lista.id}}/" class="button tnombre">{{lista.nombre}}</a></td>
+                <td>{{lista.get_activo_display}}</td>
+                <td>{{lista.get_zona_display}}</td>
+                <td>{{lista.organizacion_civil}}</td>
+                <td>{{lista.tipo}}</td>
+                <td>{% for  items in lista.rubrosprincipales_set.all%}
+                      {{items.rubro}},
+                    {%endfor%}
+                </td>
+              </tr>
+              {% endfor %} 
             </tbody>
-		</table>
-        {% endif %}
-	</div>
+          </table>
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
 
 {% endblock contenido %}
