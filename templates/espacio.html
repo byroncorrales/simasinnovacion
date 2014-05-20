@@ -42,8 +42,8 @@ $(document).ready(function() {
                       icon: '/static/img/'+elemento.identificador+'.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/espacio/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/espacio/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><a href="/fespacio/'+ elemento.id +'" class="verde">' + elemento.nombre +  
+                              '<br><a href="/fespacio/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,
@@ -133,7 +133,7 @@ $(document).ready(function() {
           <tbody>
            {% for lista in listar_espacio %}    
             <tr>
-              <td><a href="/espacio/{{lista.id}}/">{{lista.nombre}}</a></td>
+              <td><a href="/fespacio/{{lista.id}}/" class="button tnombre">{{lista.nombre}}</a></td>
               <td>{{lista.get_activos_display}}</td>
               <td>{{lista.get_zona_display}}</td>
               <td>{{lista.get_cobertura_display}}</td>
