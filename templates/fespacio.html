@@ -207,20 +207,20 @@
                         <p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Iniciativas de Innovacion</p>
                     </div>
                     <div class="large-1 columns">
-                        <a href="?year=2014#practicas" class="button bty">2014</a>
+                        <a href="?year=2014#iniciativas" class="button bty">2014</a>
                     </div>
                     <div class="large-1 columns">
-                        <a href="?year=2013#practicas" class="button bty">2013</a>
+                        <a href="?year=2013#iniciativas" class="button bty">2013</a>
                     </div>
                     <div class="large-1 columns">
-                        <a href="?year=2012#practicas" class="button bty">2012</a>
+                        <a href="?year=2012#iniciativas" class="button bty">2012</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row ">
             <div class="large-12 columns">
-                <table class="tpruebasr" id="practicas">
+                <table class="tpruebasr" id="iniciativas">
                     <thead>
                         <tr>
                             <th class="tpruebasrh">Año Activo</th>
@@ -232,7 +232,7 @@
                     </thead>
                     <tbody class="tpruebasrb">
                         {% if fespacio.iniciativainnovacion_set.all %}
-                        {% for lista in fespacio.iniciativainnovacion_set.all %}
+                        {% for lista in ficha_iniciativa_queryset %}
                         <tr>
                             <td>{{lista.fecha}}</td>
                             <td><a class="pp" href="/finiciativa/{{lista.id}}/">{{lista.nombre}}</a></td>
