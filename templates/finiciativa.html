@@ -1,0 +1,282 @@
+{% extends "base_menu.html" %}
+{% block title %}
+    {{finiciativa.nombre}}
+{% endblock title %}
+
+{% load thumbnail %}
+{% load staticfiles %}
+{% block contenido %}
+<div class="large-12 columns">
+    <div class="large-2 columns" id="men">
+        <ul class="side-nav menu">
+          <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+          <li><a href="/gpromotor">Estadisticas Generales</a></li>
+          <li><a href="/promotor">Promotoras y promotores</a></li>
+          <li><a href="/pruebas">Pruebas de practicas productivas</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+          <li><a href="/gempresas">Estadisticas Generales</a></li>
+          <li><a href="/empresa">Empresas Rurales</a></li>
+          <li><a href="/mejora">Mejoras para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+          <li><a href="/gespacios">Estadisticas Generales</a></li>
+          <li><a href="/espacio">Espacios para Innovar</a></li>
+          <li><a href="/iniciativas" class="active">Iniciativas para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+          <li><a href="/gservicios">Estadisticas Generales</a></li>
+          <li><a href="#">Conocimientos de Actores</a></li>
+          <li><a href="#">Servicios para Mejorar Org.</a></li>
+        </ul>
+    </div>
+    <div class="large-10 columns" id="cont">
+        <div class="row ">
+            <div class="large-12 columns">
+                <p class="ptitulo">Iniciativas Para Innovar</p>
+                <hr/>
+                <div class="row ">
+                    <div class="large-1 columns">
+                        <img src="{%static 'img/fpromotor.png' %}" alt="Ficha Promotor"/>
+                    </div>
+                    <div class="large-11 columns">
+                        <div class="fpmtr">Espacio</div>
+                        <div class="fnpmtr">{{finiciativa.espacio}}</div>
+                        <a href="/fespacio/{{finiciativa.espacio.id}}" class="button right btback">«Volver a Ficha</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row ">
+                <div class="large-12 columns">
+                    <div class="large-1 columns">
+                        <img src="{%static 'img/lista2.png'%}" alt"Ficha Prueba"/>
+                    </div>
+                    <div class="large-11 columns">
+                        <p class="fpmtr">Nombre de Iniciativa</p>
+                        <p class="fnpmtr">{{finiciativa.nombre}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="large-12 columns">
+                    <div class="row ">
+                        <div class="large-11 columns">
+                            <table class="fpdatos">
+                                <thead>
+                                    <tr>
+                                        <th  class="fpdatosh">Tipo</th>
+                                        <th  class="fpdatosh">Año</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fpdatosb">{{finiciativa.tipo}}</td>
+                                        <td class="fpdatosb">{{finiciativa.fecha}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="large-12 columns">
+                    <div class="large-6 columns">
+
+                            <div class="cdat">
+                                
+                                    <div class="calend">
+                                        <img src="{%static 'img/calendar.png'%}">
+                                    </div>
+                                    <div class="dat">
+                                        <p class="dath">Inicio</p><br/>
+                                        <p class="datb">{{finiciativa.fecha_inicio}}</p>
+                                    </div>
+                                
+                                
+                                    <div class="calend">
+                                        <img src="{%static 'img/calendar.png'%}">
+                                    </div>
+                                    <div class="dat">
+                                        <p class="dath">Fin</p><br/>
+                                        <p class="datb">{{finiciativa.fecha_finalizacion}}</p>
+                                    </div>
+                                
+                            </div>
+                            <div class="ficha-prueba">
+                                <table class="tpromotor">
+                                    <tr>
+                                        <td class="tpromotort">Temas que aborda</td>
+                                        {% if  finiciativa.temas.all%}
+                                        {% for obj in finiciativa.temas.all %}
+                                        <td class="tpromotord">{{finiciativa.temas.all}}</td>
+                                        {% endfor %}
+                                        {% else %}
+                                        <td class="tpromotord">No posee temas</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        <td class="tpromotort">Actividades</td>                      
+                                        {% if  iniciativa.actividades.all%}
+                                        {% for obj in finiciativa.actividades.all %}
+                                        <td class="tpromotord">{{obj}}</td>
+                                        {% endfor %}
+                                        {% else %}
+                                        <td class="tpromotord">No posee actividades</td>
+                                        {% endif %}
+                                    </tr>                                    
+                                </table>
+                            </div>
+                        
+                    </div>
+                    <div class="large-5 columns">
+                        <div class="ficha-slid">
+                             {% if finiciativa.get_fotos %}
+                            <ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
+                                {% for obj in finiciativa.get_fotos %}
+                                    {% thumbnail obj.foto "450x300" crop="10%" as img%}
+                                <li>
+                                    <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>
+                                </li>
+                                    {% endthumbnail %}
+                                {% endfor %}
+                            </ul>
+                            {%else%}
+                            <p>No tienes imagenes</p>
+                            {% endif %} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="large-12 columns">
+                    <p class="logica">Logica</p>                
+            </div>
+            
+            
+                <div class="large-12 columns">
+                    <table class="tlogica">
+                        <tr>
+                            <td class="tabpro">Problema</td>
+                            {% if finiciativa.problema %}
+                            <td class="tabprod">{{finiciativa.problema}}</td>
+                            {% else%}
+                            <td class="tabprod">No tiene problema aun ingresado en la ficha</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Analisis del Tema</td>
+                            {% if finiciativa.analisis %}
+                            <td class="tabprod">{{finiciativa.analisis}}</td>
+                            {% else%}
+                            <td class="tabprod">No tiene analisis aun ingresado en la ficha</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Enfoque de la iniciativa</td>
+                            {% if finiciativa.enfoque %}
+                            <td class="tabprod">{{finiciativa.enfoque}}</td>
+                            {% else %}
+                            <td class="tabprod">
+                                <ul>
+                                    <li>No tiene enfoque aun ingresado en la ficha</li>
+                                </ul>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Resultados Esperados <img src="{%static 'img/check.png'%}"></td>
+                            {% if finiciativa.resultado %}
+                            <td class="tabprod">
+                                <ul>
+                                    <li>{{finiciativa.resultado}}</li>
+                                </ul>
+                            </td>
+                            {% else %}
+                            <td class="tabprod">
+                                <ul>
+                                    <li>No tiene resultados aun ingresado en la ficha</li>
+                                </ul>
+                            </td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                </div>
+            
+            <div class="row ">
+                <div class="large-12 columns">
+                    <div class="large-1 columns">
+                        <p class="resultado">Resultados</p>
+                    </div>
+                </div>
+            </div>
+
+                <div class="large-12 columns">
+                    <table class="tresultado">
+                        <tr>
+                            <td class="tabpro">Sobre defensa de la tierra</td>
+                            {% if finiciativa.sobre_tierra %}
+                            <td class="tabprod">{{finiciativa.sobre_tierra}}</td>
+                            {% else %}
+                            <td class="tabprod">Aun no tiene ingresado</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Sobre el fomento de producción agroecológica y alimentos sanos</td>
+                            {% if finiciativa.fomento %}
+                            <td class="tabprod">{{finiciativa.fomento}}</td>
+                            {% else %}
+                            <td class="tabprod">Aun no tiene ingresado</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro"> Sobre la conservación de recursos naturales, semilla criolla y biodiversidad</td>
+                            {% if finiciativa.conservacion %}
+                            <td class="tabprod">{{finiciativa.conservacion}}</td>
+                            {% else %}
+                            <td class="tabprod">Aun no tiene ingresado</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Sobre la mejora en inversión pública, privada  o acceso a crédito</td>
+                            {% if finiciativa.inversion %}
+                            <td class="tabprod">{{finiciativa.inversion}}</td>
+                            {% else %}
+                            <td class="tabprod">Aun no tiene ingresado</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Sobre la mejora en acceso a mercados locales para los alimentos</td>
+                            {% if finiciativa.acceso_mercado %}
+                            <td class="tabprod">{{finiciativa.acceso_mercado}}</td>
+                            {% else %}
+                            <td class="tabprod">Aun no tiene ingresado</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Sobre la mejora en comunicación y desarrollo de protagonismo de pequeños produtores</td>
+                            {% if finiciativa.comunicacion %}
+                            <td class="tabprod">{{finiciativa.comunicacion}}}</td>
+                            {% else %}
+                            <td class="tabprod">Aun no tiene ingresado</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td class="tabpro">Sobre la reducción de riesgo de los sistemas locales de alimentos</td>
+                            {% if finiciativa.reduccion %}                               
+                            <td class="tabprod">{{finiciativa.reduccion}}</td>
+                            {% else %}
+                            <td class="tabprod">aun no tiene ingresado</td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

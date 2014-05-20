@@ -1,0 +1,155 @@
+{% extends "base_menu.html" %}
+
+{% block title %}
+    Lista de las Iniciativas de innovación de políticas
+{% endblock title %}
+{% load staticfiles %}
+{% block extra_js %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    
+     var styles = [{"featureType": "landscape","stylers": [{"hue": "#FFA800"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "road.highway","stylers": [{"hue": "#FF0300"},{"saturation": -100},{"lightness": 61.39999999999998},{"gamma": 1}]},{"featureType": "road.arterial","stylers": [{"hue": "#FBFF00"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "road.local","stylers": [{"hue": "#00FFFD"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]},{"featureType": "water","stylers": [{"hue": "#0094FF"},{"saturation": 39.39393939393935},{"lightness": -12.70588235294116},{"gamma": 1}]},{"featureType": "poi","stylers": [{"hue": "#9FFF00"},{"saturation": 0},{"lightness": 0},{"gamma": 1}]}]
+
+      var styledMap = new google.maps.StyledMapType(styles,
+      {name: "Styled Map"});
+
+
+      var mapOptions = {
+            center: new google.maps.LatLng(12.877, -85.001),
+            zoom: 7,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+            }
+          }
+          var map = new google.maps.Map(document.getElementById('map'),
+                                        mapOptions);
+
+          map.mapTypes.set('map_style', styledMap);
+          map.setMapTypeId('map_style');
+
+          //comineza para mostrar mapa
+          $.getJSON('/mapa_completo_espacios/', function(data){
+              $.each(data, function(i, elemento){
+                console.log(elemento);
+                  var latlng = new google.maps.LatLng(elemento.lat, elemento.lon);
+                  var marker = new google.maps.Marker({
+                      position: latlng,
+                      map: map,
+                      name: elemento.nombre,
+                      desc: elemento.id,
+                      icon: '/static/img/'+elemento.identificador+'.png' 
+                  });
+                  google.maps.event.addListener(marker, "click", function() {
+                   var html = '<b><a href="/finiciativa/'+ elemento.id +'" class="verde">' + elemento.nombre +  
+                              '<br><a href="/finiciativa/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                    infowindow = new google.maps.InfoWindow({
+                              content: html,
+                              zIndex: 999,
+                    });
+                    infowindow.open(map, this);
+                    });
+              });
+          });
+
+});
+</script>
+{% endblock extra_js %}
+
+{% block contenido %}
+<div class="large-12 columns">
+  <div class="large-2 columns" id="men">
+    <ul class="side-nav menu">
+      <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+          <li><a href="/gpromotor">Estadisticas Generales</a></li>
+          <li><a href="/promotor">Promotoras y promotores</a></li>
+          <li><a href="/pruebas">Pruebas de practicas productivas</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+          <li><a href="/gempresas">Estadisticas Generales</a></li>
+          <li><a href="/empresa">Empresas Rurales</a></li>
+          <li><a href="/mejora">Mejoras para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+          <li><a href="/gespacios">Estadisticas Generales</a></li>
+          <li><a href="/espacio">Espacios para Innovar</a></li>
+          <li><a href="/iniciativas" class="active">Iniciativas para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+          <li><a href="/gservicios">Estadisticas Generales</a></li>
+          <li><a href="#">Conocimientos de Actores</a></li>
+          <li><a href="#">Servicios para Mejorar Org.</a></li>
+    </ul>
+  </div>
+  <div class="large-10 columns" id="cont">
+    <div class="row">
+      <div class="large-12 columns">
+        <p class="ptitulo">Espacios Para Innovar Politicas</p>
+        <hr/>
+      </div>
+    </div>
+    {# dropdowns #}
+        
+      <form class="form-inline" action="." method="POST">
+      {%csrf_token%}
+          <div class="row ">
+              <div class="large-2 columns selector">
+                  {{form.tipo}}
+                  {{form.tipo.errors}}
+              </div>
+              <div class="large-2 columns selector">
+                  {{form.tema}}
+                  {{form.tema.errors}}
+              </div>
+              <div class="large-2 columns selector">
+                  {{form.cobertura}}
+                  {{form.cobertura.errors}}
+              </div>
+              <div class="large-3 columns selector">
+                  {{form.activos}}
+                  {{form.activos.errors}}
+              </div>  
+              <div class="large-3 columns">
+                  <button type="submit" class="boton consulta">CONSULTAR</button>
+              </div>  
+          </div>  
+      </form>
+      <div class="row ">
+        <div class="large-12 columns">
+          <div id="map" style="width: 100%; height: 450px; border: 1px solid rgb(21,21,21)"></div>
+
+          {% if listar_iniciativas %}
+        <table class="promotord">
+          <thead>
+            <tr>
+              <th width="250" class="promotordh">Nombre</th>
+              <th width="70" class="promotordh">Año Activo</th>
+              <th width="80" class="promotordh">Tipo</th>
+              <th width="100" class="promotordh">Tema</th>
+              <th width="100" class="promotordh">Cobertura</th>
+              <th width="70" class="promotordh">Fecha Inicio</th>
+              <th width="70" class="promotordh">Fecha Fin</th>
+            </tr>
+          </thead>
+          <tbody>
+           {% for lista in listar_iniciativas %}    
+            <tr>
+              <td><a href="/finiciativa/{{lista.id}}/" class="button tnombre">{{lista.nombre}}</a></td>
+              <td>{{lista.espacio.get_activos_display}}</td>
+              <td>{{lista.tipo}}</td>
+              <td>{% for obj in lista.temas.all %} {{obj}}, {%endfor%}</td>
+              <td>{{lista.espacio.get_cobertura_display}}</td>
+              <td>{{lista.fecha_inicio}}</td>
+              <td>{{lista.fecha_finalizacion}}</td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock contenido %}
