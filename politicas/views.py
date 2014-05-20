@@ -143,3 +143,32 @@ def espacio(request, template="espacio.html"):
 
     return render(request, template, {'form':form,
                                       'listar_espacio':con})
+
+def fespacio(request, id, template="fespacio.html"):
+    fespacio = get_object_or_404(EspacioInnovacion, id=id)
+    return render(request, template, {'fespacio':fespacio})
+
+def iniciativas(request, template="iniciativas.html"):
+    if request.method == 'POST':
+        form = IniciativaForm(request.POST)
+        if form.is_valid():
+            request.session['tipo'] = form.cleaned_data['tipo']
+            request.session['tema'] = form.cleaned_data['tema']     
+            request.session['cobertura'] = form.cleaned_data['cobertura']
+            request.session['activos'] = form.cleaned_data['activos']
+            request.session['bandera'] = 1
+    else:
+        form = IniciativaForm()
+        request.session['bandera'] = 0
+
+    if request.session['bandera'] == 1:
+        con = _queryset_filtrado_iniciativa(request)
+    else:
+        con = ''           
+
+    return render(request, template, {'form':form,
+                                      'listar_iniciativas':con})
+
+def finiciativa(request, id, template="finiciativa.html"):
+    finiciativa = get_object_or_404(IniciativaInnovacion, id=id)
+    return render(request, template, {'finiciativa':finiciativa})
