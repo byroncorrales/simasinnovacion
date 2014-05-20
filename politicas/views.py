@@ -146,7 +146,13 @@ def espacio(request, template="espacio.html"):
 
 def fespacio(request, id, template="fespacio.html"):
     fespacio = get_object_or_404(EspacioInnovacion, id=id)
-    return render(request, template, {'fespacio':fespacio})
+    year = request.GET.get('year', None) 
+    ficha_iniciativa_queryset = fespacio.iniciativainnovacion_set.all()
+
+    if year:
+        ficha_iniciativa_queryset = ficha_iniciativa_queryset.filter(fecha__year=year)
+
+    return render(request, template, locals())
 
 def iniciativas(request, template="iniciativas.html"):
     if request.method == 'POST':
