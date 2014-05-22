@@ -42,11 +42,12 @@ $(document).ready(function() {
                       icon: '/static/img/'+elemento.identificador+'.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/finiciativa/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/finiciativa/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><a href="/finiciativa/'+ elemento.id +'">' + elemento.nombre +  
+                              '<br></br><a href="/finiciativa/'+ elemento.id +'" class="boton-tooltip">Ver Ficha</a>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,
+                              Width: 920,
                     });
                     infowindow.open(map, this);
                     });

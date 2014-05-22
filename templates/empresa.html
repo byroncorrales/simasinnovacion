@@ -41,11 +41,12 @@ $(document).ready(function() {
                       icon: '/static/img/'+ elemento.identificador+ '.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/fempresa/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br>';
+                   var html = '<b><a href="/fempresa/'+ elemento.id +'class="tooltip">' + elemento.nombre +  
+                              '<br><br/><a href="/fpromotor/'+ elemento.id +'" class="boton-tooltip">Ver Ficha</a>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,
+                              maxWidth: 600
                     });
                     infowindow.open(map, this);
                     });

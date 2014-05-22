@@ -36,7 +36,7 @@
                 <p class="ptitulo">Espacio Para Innovar Politicas</p>
                 <hr/>
                 <div class="large-1 columns">
-                    <img src="{%static 'img/fpromotor.png' %}" alt="Ficha Promotor"/>
+                    <img src="{%static 'img/innovando.png' %}" alt="Ficha Promotor"/>
                 </div>
                 <div class="large-11 columns">
                     <p class="pmtr">Nombre Espacio</p>
@@ -56,6 +56,7 @@
                                 <th  class="pdatosh">Tiempo Haber Formado Espacio</th>
                                 <th  class="pdatosh">Zona</th>
                                 <th  class="pdatosh">Cobertura</th>
+                                <th  class="pdatosh">Numero de Entidades</th>                                
                             </tr>
                         </thead>
                         <tbody>
@@ -64,7 +65,8 @@
                                 <td class="pdatosb">{{fespacio.activos}} Años</td>
                                 <td class="pdatosb">{{fespacio.tiempo_formado}} Años</td>
                                 <td class="pdatosb">{{fespacio.get_zona_display}}</td>
-                                <td class="pdatosb">{{fespacio.get_cobertura_display}}</td>
+                                <td class="pdatosb">{{fespacio.get_cobertura_display}}</td>                            
+                                <td class="pdatosb">{{fespacio.numero_entidades}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -202,17 +204,58 @@
         </div>
         <div class="row ">
             <div class="large-12 columns">
+            <div class="row">
+                <div class="large-9 columns">
+                    <p class="actemp"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Actividades Empresariales</p>
+                </div>
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <table class="tpruebasr">
+                    <thead>
+                        <tr>
+                            <th class="tpruebasrh">Actividad</th>
+                            <th class="tpruebasrh">Tema 1</th>
+                            <th class="tpruebasrh">Tema 2</th>
+                            <th class="tpruebasrh">Tema 3</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tpruebasrb">
+                        {% if fespacio.actividadempresarial_set.all %}
+                        {% for lista in fespacio.actividadempresarial_set.all %}
+                        <tr>
+                            <td>{{lista.actividad}}</td>
+                            {% if lista.tema_1 == 1%}
+                            <td><img src="{% static 'img/si.png' %}"></td>
+                            {%else%}
+                            <td>{% static 'img/no.png' %}</td>
+                            {% endif %}
+                            {% if lista.tema_2 == 1%}
+                            <td><img src="{% static 'img/si.png' %}"></td>
+                            {%else%}
+                            <td>{% static 'img/no.png' %}</td>
+                            {% endif %}
+                            {% if lista.tema_3 == 1%}
+                            <td><img src="{% static 'img/si.png' %}"></td>
+                            {%else%}
+                            <td>{% static 'img/no.png' %}</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
                 <div class="row">
                     <div class="large-9 columns">
                         <p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Iniciativas de Innovacion</p>
                     </div>
-                    <div class="large-1 columns">
-                        <a href="?year=2014#iniciativas" class="button bty">2014</a>
-                    </div>
-                    <div class="large-1 columns">
-                        <a href="?year=2013#iniciativas" class="button bty">2013</a>
-                    </div>
-                    <div class="large-1 columns">
+                    <div class="large-3 columns fxb">
+                        <a href="?year=2014#iniciativas" class="button bty">2014</a>                    
+                        <a href="?year=2013#iniciativas" class="button bty">2013</a>                    
                         <a href="?year=2012#iniciativas" class="button bty">2012</a>
                     </div>
                 </div>

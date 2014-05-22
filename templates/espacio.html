@@ -42,8 +42,8 @@ $(document).ready(function() {
                       icon: '/static/img/'+elemento.identificador+'.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/fespacio/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/fespacio/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><a href="/fespacio/'+ elemento.id +'">' + elemento.nombre +  
+                              '<br><br/><a href="/fespacio/'+ elemento.id +'" class="boton-tooltip">Ver Ficha</a>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,
