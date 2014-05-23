@@ -21,6 +21,8 @@ class TipoEmpresa(models.Model):
 
 class Rubros(models.Model):
     nombre = models.CharField(max_length=200)
+    #Kronos Code Cambio Image Upload for rubros
+    imagen = models.ImageField(upload_to='rubros/', blank=True, null=True)
 
     def __unicode__(self):
         return self.nombre
