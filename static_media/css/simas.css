@@ -825,17 +825,19 @@ Aca va el CSS de ficha promotor.html
 }
 
 /*clase para los tooltips de los mapas*/
-.tooltip{
-    width: 300px;
-    height: 500px;
+#tooltip{
+    width: 240px;
+    height: 100px;
 }
-.boton-tooltip{
+#boton-tooltip{
     background-color: #EA6753;
     border-color: #EA6754;
     border-radius: 3px;
     box-shadow: none !important;
     text-align: center;
     color: #fff;
+    padding: 5px;
+    width: 70px;
 }
 /*TEMPLATE EMPRESA*/
 
