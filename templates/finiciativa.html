@@ -112,7 +112,7 @@
                                         <td class="tpromotort">Temas que aborda</td>
                                         {% if  finiciativa.temas.all%}
                                         {% for obj in finiciativa.temas.all %}
-                                        <td class="tpromotord">{{finiciativa.temas.all}}</td>
+                                        <td class="tpromotord">{{obj}}</td>
                                         {% endfor %}
                                         {% else %}
                                         <td class="tpromotord">No posee temas</td>
@@ -120,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <td class="tpromotort">Actividades</td>                      
-                                        {% if  iniciativa.actividades.all%}
+                                        {% if  finiciativa.actividades.all%}
                                         {% for obj in finiciativa.actividades.all %}
                                         <td class="tpromotord">{{obj}}</td>
                                         {% endfor %}
