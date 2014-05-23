@@ -41,8 +41,8 @@ $(document).ready(function() {
                       icon: '/static/img/'+ elemento.identificador + '.png' 
                   });
                   google.maps.event.addListener(marker, "click", function() {
-                   var html = '<b><a href="/promotor/'+ elemento.id +'" class="verde">' + elemento.nombre +  
-                              '<br><a href="/promotor/'+ elemento.id +'" class="btn botopococ btn-mini btn-success">Ver Ficha</a>';
+                   var html = '<b><div id="tooltip"><p>' + elemento.nombre +  '</p>' +
+                              '<br><a href="/fpromotor/'+ elemento.id +'" id="boton-tooltip">Ver Ficha</a></div>';
                     infowindow = new google.maps.InfoWindow({
                               content: html,
                               zIndex: 999,

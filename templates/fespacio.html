@@ -1,0 +1,294 @@
+{% extends "base_menu.html" %}
+{% block title %}
+    {{fespacio.nombre}}
+{% endblock title %}
+
+{% load thumbnail %}
+{% load staticfiles %}
+{% block contenido %}
+<div class="large-12 columns">
+    <div class="large-2 columns" id="men">
+        <ul class="side-nav menu">
+          <li class="menu-titulo"><a href="#">Innovando Practicas Productivas</a></li>
+          <li><a href="/gpromotor">Estadisticas Generales</a></li>
+          <li><a href="/promotor">Promotoras y promotores</a></li>
+          <li><a href="/pruebas">Pruebas de practicas productivas</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Practicas Empresariales</a></li>
+          <li><a href="/gempresas">Estadisticas Generales</a></li>
+          <li><a href="/empresa">Empresas Rurales</a></li>
+          <li><a href="/mejora">Mejoras para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Innovando Politicas</a></li>
+          <li><a href="/gespacios">Estadisticas Generales</a></li>
+          <li><a href="/espacio" class="active">Espacios para Innovar</a></li>
+          <li><a href="/inciativas">Iniciativas para Innovar</a></li>
+        <br/>
+          <li class="menu-titulo"><a href="#">Fortaleciendo Capacidades</a></li>
+          <li><a href="/gservicios">Estadisticas Generales</a></li>
+          <li><a href="#">Conocimientos de Actores</a></li>
+          <li><a href="#">Servicios para Mejorar Org.</a></li>
+        </ul>
+    </div>
+    <div class="large-10 columns" id="cont">
+        <div class="row ">
+            <div class="large-12 columns">
+                <p class="ptitulo">Espacio Para Innovar Politicas</p>
+                <hr/>
+                <div class="large-1 columns">
+                    <img src="{%static 'img/innovando.png' %}" alt="Ficha Promotor"/>
+                </div>
+                <div class="large-11 columns">
+                    <p class="pmtr">Nombre Espacio</p>
+                    <p class="npmtr">{{fespacio.nombre}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+
+                <div class="large-11 columns">
+                    <table class="pdatos">
+                        <thead>
+                            <tr>
+                                <th  class="pdatosh">Tipo Espacio</th>
+                                <th  class="pdatosh">Año Activo</th>
+                                <th  class="pdatosh">Tiempo Haber Formado Espacio</th>
+                                <th  class="pdatosh">Zona</th>
+                                <th  class="pdatosh">Cobertura</th>
+                                <th  class="pdatosh">Numero de Entidades</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="pdatosb">{{fespacio.tipos}}</td>
+                                <td class="pdatosb">{{fespacio.activos}} Años</td>
+                                <td class="pdatosb">{{fespacio.tiempo_formado}} Años</td>
+                                <td class="pdatosb">{{fespacio.get_zona_display}}</td>
+                                <td class="pdatosb">{{fespacio.get_cobertura_display}}</td>                       
+                                <td class="pdatosb">{{fespacio.numero_entidades}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+        </div>
+        
+        <div class="row ">
+            <div class="large-12 columns">
+                <div class="row ">
+                    <div class="large-7 columns">
+                        <div class="ficha-elem">
+                            <table class="tpromotor">
+                                <tr>
+                                    <td class="tpromotort">Contacto</td>
+                                    {%if fespacio.nombre_contacto%}
+                                    <td class="tpromotord">{{fespacio.nombre_contacto}}</td>
+                                    {% else %}
+                                    <td class="tpromotord">No Posee</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="tpromotort">Celular</td>
+                                    {%if fespacio.celular_contacto%}
+                                    <td class="tpromotord">{{fespacio.celular_contacto}}</td>
+                                    {% else %}
+                                    <td class="tpromotord">No Posee</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td class="tpromotort">Correo Electronico</td>
+                                    {%if fespacio.correo_contacto%}
+                                    <td class="tpromotord">{{fespacio.correo_contacto}}</td>
+                                    {% else %}
+                                    <td class="tpromotord">No Posee</td>
+                                    {% endif %}
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="large-5 columns">
+                        {% if fespacio.get_fotos %}
+                        <div class="ficha-slid">
+                            <ul class="example-orbit" data-orbit data-options="navigation-arrows:true;bullets: false">
+                                {% for obj in fespacio.get_fotos %}
+                                    {% thumbnail obj.foto "450x350" crop="10%" as img%}
+                                <li>
+                                    <a class="fancybox-effects-d" data-fancybox-group="gallery" href="/media/{{obj.foto}}" title="{{obj.nombre}}"><img src="/media/{{img}}"></a>      
+                                </li>
+                                    {% endthumbnail %}
+                                {% endfor %}
+                            </ul>
+
+                        </div>
+                        {% else %}
+                        <div class="ficha-slid">
+                            <p>No tiene imagenes</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
+                <div class="row ">
+                    <div class="large-6 columns">
+                        <div class="cap">
+                            <div>
+                                <p class="ptittle fpt">Departamento Que Influyen</p>
+                                <div class="product">
+                                    {% for obj in fespacio.departamento_influye.all %}
+                                    <div class="prod-otrs">
+                                      <span class="">{{obj}}</span>
+                                    </div>
+                                    {% empty %}
+                                    <span class="prod-otrs">No tiene departamento influyente</span>
+                                    {% endfor %}
+                                    <div class="clear"></div>
+                                    </div>
+                                <div class="clear"></div>                              
+                            </div>
+                            <hr/>
+                            <div>
+                                <p class="ptittle">Municipio Donde Influye</p>
+                                <div class="product">
+                                    {% for obj in fespacio.municipios_influye.all %}
+                                    <div class="prod-otrs">
+                                      <span class="">{{obj}}</span>
+                                    </div>
+                                    {% empty %}
+                                    <span class="prod-otrs">No tiene municipio influyente</span>
+                                    {% endfor %}
+                                    <div class="clear"></div>
+                                    </div>
+                                <div class="clear"></div>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="large-6 columns">
+                        <div class="cap">
+                            <div>
+                                <p class="ptittle fpt">Papel de SIMAS</p>
+                                <div class="product">
+                                    {% for obj in fespacio.papel.all  %}
+                                    <div class="prod-otrs">
+                                      <span class="">{{obj}}</span>
+                                    </div>
+                                    {% empty %}
+                                    <span class="prod-otrs">SIMAS no cumple ningun papel</span>
+                                    {% endfor %}
+                                    <div class="clear"></div>
+                                    </div>
+                                <div class="clear"></div>                              
+                            </div>
+                            <hr/>
+                            <div>
+                                <p class="ptittle">Temas Principales de Incidencias</p>
+                                <div class="product">
+                                    {% for obj in fespacio.temas.all  %}
+                                    <div class="prod-otrs">
+                                      <span class="">{{obj}}</span>
+                                    </div>
+                                    {% empty %}
+                                    <span class="prod-otrs">No tiene temas principales de incidencias</span>
+                                    {% endfor %}
+                                    <div class="clear"></div>
+                                    </div>
+                                <div class="clear"></div>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
+            <div class="row">
+                <div class="large-9 columns">
+                    <p class="actemp"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Actividades Empresariales</p>
+                </div>
+                </div>
+            </div>
+            <div class="large-12 columns">
+                <table class="tpruebasr">
+                    <thead>
+                        <tr>
+                            <th class="tpruebasrh">Actividad</th>
+                            <th class="tpruebasrh">Tema 1</th>
+                            <th class="tpruebasrh">Tema 2</th>
+                            <th class="tpruebasrh">Tema 3</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tpruebasrb">
+                        {% if fespacio.actividadempresarial_set.all %}
+                        {% for lista in fespacio.actividadempresarial_set.all %}
+                        <tr>
+                            <td>{{lista.actividad}}</td>
+                            {% if lista.tema_1 == 1%}
+                            <td><img src="{% static 'img/si.png' %}"></td>
+                            {%else%}
+                            <td><img src="{% static 'img/no.png' %}"</td>
+                            {% endif %}
+                            {% if lista.tema_2 == 1%}
+                            <td><img src="{% static 'img/si.png' %}"></td>
+                            {%else%}
+                            <td><img src="{% static 'img/no.png' %}"</td>
+                            {% endif %}
+                            {% if lista.tema_3 == 1%}
+                            <td><img src="{% static 'img/si.png' %}"></td>
+                            {%else%}
+                            <td><img src="{% static 'img/no.png' %}"</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-9 columns">
+                        <p class="pruebasr"><img src="{% static 'img/lista.png' %}" alt="Lista"> Listas de Iniciativas de Innovacion</p>
+                    </div>
+                    <div class="large-3 columns fxb">
+                        <a href="?year=2014#iniciativas" class="button bty">2014</a>                    
+                        <a href="?year=2013#iniciativas" class="button bty">2013</a>                    
+                        <a href="?year=2012#iniciativas" class="button bty">2012</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="large-12 columns">
+                <table class="tpruebasr" id="iniciativas">
+                    <thead>
+                        <tr>
+                            <th class="tpruebasrh">Año Activo</th>
+                            <th class="tpruebasrh">Nombre</th>
+                            <th class="tpruebasrh">Zona</th>
+                            <th class="tpruebasrh">Cobertura</th>
+                            <th class="tpruebasrh">Tipo Iniciativa</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tpruebasrb">
+                        {% if fespacio.iniciativainnovacion_set.all %}
+                        {% for lista in ficha_iniciativa_queryset %}
+                        <tr>
+                            <td>{{lista.fecha}}</td>
+                            <td><a class="pp" href="/finiciativa/{{lista.id}}/">{{lista.nombre}}</a></td>
+                            <td>{{lista.espacio.get_zona_display}}</td>
+                            <td>{{lista.espacio.get_cobertura_display}}</td>
+                            <td>{{lista.tipo}}</td>
+                        </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

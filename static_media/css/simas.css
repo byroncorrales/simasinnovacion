@@ -420,15 +420,19 @@ Aca va el CSS de ficha promotor.html
     color: rgb(155,155,155);
     font-size: 13px;
     background-color: #f2f3ea;
-    padding-left: 0px;
+    border-right: 2px solid rgb(222,223,216);
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .pdatosb {
     color: rgb(24,24,24);
     font-size: 15px;
     background-color: #f2f3ea;
+    border-right: 2px solid rgb(222,223,216);
     padding-top: 0px;
-    padding-left: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-weight: bold;
 }
 
@@ -550,7 +554,6 @@ Aca va el CSS de ficha promotor.html
 }
 
 .bty {
-    float: left;
     background-color: rgb(234,103,83);
     border: rgb(234,103,83);
     width: 65px;
@@ -641,7 +644,8 @@ Aca va el CSS de ficha promotor.html
     color: rgb(155,155,155);
     font-size: 13px;
     background-color: #f2f3ea;
-    padding: 10px 16px;
+    padding: 5px 10px;
+    border-right: 2px solid rgb(222,223,216);
 }
 
 .fpdatosb {
@@ -649,8 +653,8 @@ Aca va el CSS de ficha promotor.html
     font-size: 15px;
     font-weight: bold;
     background-color: #f2f3ea;
-    margin-top: -5px;
-    padding: 10px 16px;
+    padding: 1px 10px;
+    border-right: 2px solid rgb(222,223,216);
 }
 
 .cdat {
@@ -714,10 +718,12 @@ Aca va el CSS de ficha promotor.html
     font-size: 24px;
     color: rgb(155,155,155);
     margin-top: 10px;
+    margin-bottom: 6px;
 }
 .resultado{
     font-size: 24px;
     color: rgb(155,155,155);
+    margin-bottom: 6px;
 }
 
 .tlogica{
@@ -817,6 +823,22 @@ Aca va el CSS de ficha promotor.html
     float: right;
     padding: 7px;
 }
+
+/*clase para los tooltips de los mapas*/
+#tooltip{
+    width: 240px;
+    height: 100px;
+}
+#boton-tooltip{
+    background-color: #EA6753;
+    border-color: #EA6754;
+    border-radius: 3px;
+    box-shadow: none !important;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+    width: 70px;
+}
 /*TEMPLATE EMPRESA*/
 
 .fichainterna{
@@ -835,6 +857,16 @@ Aca va el CSS de ficha promotor.html
     float: left;
     width: auto;
 }
+/*STUPID CLASS*/
 .clear{
     clear: both;
+}
+.fxb{
+    text-align: right;
+}
+.actemp {
+    font-size: 24px;
+    font-weight: normal;
+    color: rgb(155,155,155);
+    margin-bottom: 10px;
 }
